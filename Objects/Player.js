@@ -14,7 +14,7 @@ class Player {
 		// Rotation lock
 		Body.setInertia(this.body, Infinity);
 
-		// Friction Settings 
+		// Friction Settings
 		this.body.friction = 0;
 		this.body.frictionAir = 0.1;
 	}
