@@ -38,9 +38,9 @@ function setup() {
 
     // Map
 	player = new Player(world, this);
-	obstacles.push(new Obstacle(0, height - 20, width, 20, world));
-	obstacles.push(new Obstacle(200, windowHeight-100, 100, 80, world));
-	obstacles.push(new Obstacle(400, windowHeight-200, 200, 180, world));
+	obstacles.push(new Obstacle(world, 0, height - 20, width, 20));
+	obstacles.push(new Obstacle(world, 200, windowHeight-100, 100, 80));
+	obstacles.push(new Obstacle(world, 400, windowHeight-200, 200, 180));
 }
 
 
