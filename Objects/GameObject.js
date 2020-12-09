@@ -13,6 +13,9 @@ class GameObject {
         push();
         this.mesh();
         pop();
+
+        this.x = this.body.position.x
+        this.y = this.body.position.y
     }
 
     mesh() {
