@@ -10,7 +10,9 @@ class GameObject {
 
     update () {
         // GameObject Update
+        push();
         this.mesh();
+        pop();
     }
 
     mesh() {
