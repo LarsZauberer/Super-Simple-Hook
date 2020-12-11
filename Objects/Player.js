@@ -1,14 +1,12 @@
-class Player {
+class Player extends GameObject{
 	/* The Complete player object and all it's mechanics
 	*/
-	constructor(world) {
+	constructor(world, x, y, w, h) {
 		/* The constructor of the object
 			Attributes:
 				world [Matter.World]: The world where the player will be spawned
 		*/
-		// Creating the body
-		this.body = Bodies.rectangle(100, 200, 80, 80);
-		World.add(world, this.body)
+		super(world, x, y, w, h, false)
 
 		// Settings
 		// Rotation lock
@@ -23,20 +21,17 @@ class Player {
 	update() {
 		/* The Loop of the Player Character
 		*/
+		super.update();
 		this.move();
-		this.show();
 	}
 
 
-	show() {
+	mesh() {
 		/* Displays the matter.js calculation with p5js
 		*/
-		// TODO: Create an GameObject Class
-		push();
 		translate(this.body.position.x, this.body.position.y);
 		rotate(this.body.angle);
 		rect(0, 0, 80, 80);
-		pop();
 	}
 
 

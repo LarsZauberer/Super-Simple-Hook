@@ -2,6 +2,6 @@ class Ground extends GameObject {
 	mesh() {
 		// Draw the Ground
 		fill(255,0,0);
-		rect(this.x, this.y, this.size.x, 10);
+		rect(this.x, this.y, this.size.x, this.size.y);
 	}
 }
