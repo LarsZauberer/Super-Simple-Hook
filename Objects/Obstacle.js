@@ -1,7 +1,7 @@
 class Obstacle extends GameObject {
 	constructor(world, x, y, w, h) {
 		super(world, x, y, w, h, true);
-		this.ground = new Ground(world, x, y, w, h);
+		this.ground = new Ground(world, x, y-h/2, w, 10, true);
 	}
 
 	update() {
