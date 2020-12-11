@@ -21,10 +21,16 @@ class Player {
 
 
 	update() {
+
+		this.x = this.body.position.x;
+		this.y = this.body.position.y;
+
 		/* The Loop of the Player Character
 		*/
 		this.move();
 		this.show();
+
+	
 	}
 
 
@@ -33,7 +39,7 @@ class Player {
 		*/
 		// TODO: Create an GameObject Class
 		push();
-		translate(this.body.position.x, this.body.position.y);
+		translate(this.x, this.y);
 		rotate(this.body.angle);
 		rect(0, 0, 80, 80);
 		pop();
@@ -45,21 +51,15 @@ class Player {
 		*/
 		// TODO: Self Commenting Code
 		// Left
-		if (keyIsDown(65)) Body.applyForce(this.body, {
-			x: this.body.position.x,
-			y: this.body.position.y,
-		}, {
-			x: -0.01,
-			y: 0,
-		});
+		let leftForce = createVector(-0.01,0);
+		if (keyIsDown(65)) {
+			 Body.applyForce(this.body, {	x: this.body.position.x,	y: this.body.position.y,}, leftForce);
+		}	
 		// Right
-		if (keyIsDown(68)) Body.applyForce(this.body, {
-			x: this.body.position.x,
-			y: this.body.position.y,
-		}, {
-			x: 0.01,
-			y: 0,
-		});
+		let rightForce = createVector(0.01,0);
+		if (keyIsDown(68)) {
+			Body.applyForce(this.body, {x: this.body.position.x,	y: this.body.position.y,}, rightForce);
+		}
 	}
 
 
@@ -84,5 +84,13 @@ class Player {
         if (collision.collided) {
             return true;
         }
-    }
+	}
+	
+
+	shootHook(hook)
+	{
+	let shotAngle = atan2(mouseY-this.body.position.y, mouseX-this.body.position.x);
+		hook = new Hook(this.body.position.x,this.body.position.y,shotAngle)
+		return hook;
+	}
 }

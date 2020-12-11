@@ -10,6 +10,7 @@ var engine;
 var world;
 
 var player;
+var hook;
 var obstacles = [];
 
 
@@ -20,6 +21,7 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(100);
 	rectMode(CENTER);
+	angleMode(DEGREES)
 
     // Matter JS Settings
 	engine = Engine.create({
@@ -53,6 +55,7 @@ function draw() {
 		obstacles[i].update();
 	}
 	player.update();
+	if(hook != undefined) hook.update(player);
 }
 
 
@@ -63,4 +66,10 @@ function keyPressed() {
 	for (let i = 0; i < obstacles.length; i++) {
 		if (key == " ") player.jump(obstacles[i].ground.body);
 	}
+}
+
+
+function mousePressed()
+{
+	hook = player.shootHook(hook)
 }
