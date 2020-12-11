@@ -1,5 +1,5 @@
 class Obstacle extends GameObject {
-	constructor(world, x, y, w, h) {
+	constructor(world, x, y, w, h, gs=10) {
 		// Position Calculation
 		x = x+w/2
 		y = y+h/2
@@ -8,7 +8,7 @@ class Obstacle extends GameObject {
 
 		// Create the ground for the object
 		let groundpos = y-h/2;
-		this.ground = new Ground(world, x, groundpos+5, w, 10, true);
+		this.ground = new Ground(world, x, groundpos+gs/2, w-1, gs, true);
 	}
 
 	update() {
