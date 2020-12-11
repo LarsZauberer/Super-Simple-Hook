@@ -80,7 +80,7 @@ class Player {
     canJump(ground) {
 		/* Checks if the player is grounded
 		*/
-        var collision = Matter.SAT.collides(this.body, ground.body);
+        var collision = Matter.SAT.collides(this.body, ground);
         if (collision.collided) {
             return true;
         }
