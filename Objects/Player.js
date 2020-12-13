@@ -1,18 +1,18 @@
-class Player {
+class Player extends GameObject{
 	/* The Complete player object and all it's mechanics
 	*/
-	constructor(world) {
+	constructor(world, x, y, w, h) {
 		/* The constructor of the object
 			Attributes:
 				world [Matter.World]: The world where the player will be spawned
 		*/
-		// Creating the body
-		this.body = Bodies.rectangle(100, 200, 80, 80);
-		World.add(world, this.body)
+		super(world, x, y, w, h, false)
 
 		// Settings
 		// Rotation lock
 		Body.setInertia(this.body, Infinity);
+		this.hookIsShot = false;
+		this.hook = null;
 
 		// Friction Settings
 		this.body.friction = 0;
@@ -20,29 +20,28 @@ class Player {
 	}
 
 
-	update() {
+	update(obstacle) {
 
 		this.x = this.body.position.x;
 		this.y = this.body.position.y;
 
 		/* The Loop of the Player Character
 		*/
+		super.update();
 		this.move();
-		this.show();
 
-	
+		this.shootHook()
+		if (this.hook != null) this.hook.update(this, obstacle);
+
 	}
 
 
-	show() {
+	mesh() {
 		/* Displays the matter.js calculation with p5js
 		*/
-		// TODO: Create an GameObject Class
-		push();
-		translate(this.x, this.y);
+		translate(this.body.position.x, this.body.position.y);
 		rotate(this.body.angle);
 		rect(0, 0, 80, 80);
-		pop();
 	}
 
 
@@ -87,10 +86,11 @@ class Player {
 	}
 	
 
-	shootHook(hook)
-	{
-	let shotAngle = atan2(mouseY-this.body.position.y, mouseX-this.body.position.x);
-		hook = new Hook(this.body.position.x,this.body.position.y,shotAngle)
-		return hook;
+	shootHook(){
+		if (this.hookIsShot){
+			let shotAngle = atan2(mouseY-this.body.position.y, mouseX-this.body.position.x);
+			this.hook = new Hook(this.body.position.x,this.body.position.y,shotAngle)
+		}
+		this.hookIsShot = false;
 	}
 }
