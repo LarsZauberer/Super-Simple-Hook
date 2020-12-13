@@ -3,16 +3,62 @@ class Hook {
         this.x = x;
         this.y = y;
         this.angle = angle;
+
+        //for collision detection
+        this.body = Bodies.circle(this.x, this.y, 10, {isStatic: true});
+        
+
     }
 
     
-    update(player){
-        this.x += cos(this.angle)*10
-        this.y += sin(this.angle)*10
+    update(player, obstacle){
 
-        circle(this.x,this.y,20)
-			
-			line(this.x,this.y, player.body.position.x, player.body.position.y)
+        if(this.collided(obstacle)){
+            this.pullPlayer(player)
+        }
+        else{
+            this.shoot(obstacle); 
+        }
+      
+
+
+
+        this.mesh();
     }
+
+    collided(obstacle){
+
+        for(let i = 0; i<obstacle.length; i++){
+            var collision = Matter.SAT.collides(this.body, obstacle[i].body);
+            if (collision.collided) {
+                return true;  
+            }
+         }
+    }
+
+
+    shoot(){
+        this.x += cos(this.angle)*10;
+        this.y += sin(this.angle)*10;
+        Body.setPosition(this.body, {x: this.x, y: this.y});
+    }
+
+
+    pullPlayer(player){
+        let forceX = player.x += cos(this.angle)*10
+        let forceY = player.y += sin(this.angle)*10
+
+        Body.setPosition(player.body, {x: forceX, y: forceY})
+
+    }
+
+
+    mesh(){
+        circle(this.body.position.x,this.body.position.y,20)
+			
+            line(this.x,this.y, player.body.position.x, player.body.position.y)
+    }
+
+
 	
 }

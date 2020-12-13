@@ -10,7 +10,6 @@ var engine;
 var world;
 
 var player;
-var hook;
 var obstacles = [];
 
 
@@ -54,8 +53,13 @@ function draw() {
 	for (let i = 0; i < obstacles.length; i++) {
 		obstacles[i].update();
 	}
-	player.update();
-	if(hook != undefined) hook.update(player);
+
+	player.update(obstacles);
+	
+	
+
+	
+
 }
 
 
@@ -71,5 +75,5 @@ function keyPressed() {
 
 function mousePressed()
 {
-	hook = player.shootHook(hook)
+	player.hookIsShot = true;
 }
