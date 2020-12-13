@@ -9,10 +9,17 @@ class Player extends GameObject{
 		super(world, x, y, w, h, false)
 
 		// Settings
-		// Rotation lock
-		Body.setInertia(this.body, Infinity);
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.world = world
+		// hook mechanics setting
 		this.hookIsShot = false;
 		this.hook = null;
+
+		// Rotation lock
+		Body.setInertia(this.body, Infinity);
 
 		// Friction Settings
 		this.body.friction = 0;
@@ -28,10 +35,12 @@ class Player extends GameObject{
 		/* The Loop of the Player Character
 		*/
 		super.update();
+
 		this.move();
 
-		this.shootHook()
-		if (this.hook != null) this.hook.update(this, obstacle);
+		//hook mechanics
+		this.hookMechanics(obstacle);
+
 
 	}
 
@@ -41,7 +50,7 @@ class Player extends GameObject{
 		*/
 		translate(this.body.position.x, this.body.position.y);
 		rotate(this.body.angle);
-		rect(0, 0, 80, 80);
+		rect(0, 0,this.w, this.h);
 	}
 
 
@@ -71,7 +80,7 @@ class Player extends GameObject{
 			y: this.body.position.y
 		}, {
 			x: 0,
-			y: -0.5
+			y: -0.4
 		});
 	}
 
@@ -86,11 +95,40 @@ class Player extends GameObject{
 	}
 	
 
+	hookMechanics(obstacle){
+		this.shootHook()
+		if (this.hook != null){ 
+			this.hook.update(this, obstacle);
+			//hook deleting because distance
+			let hookWillDelete = false;
+			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 500){ 
+				hookWillDelete = true;
+			}
+			if(this.hook.collided(obstacle) && dist(this.hook.x, this.hook.y, this.x, this.y) < this.w/2+this.h/2){
+				hookWillDelete = true;
+			}
+			if(hookWillDelete){
+				this.hook.delete(this.world)
+				this.hook = null;
+			} 
+
+		}  
+	}
+
+
+
 	shootHook(){
 		if (this.hookIsShot){
 			let shotAngle = atan2(mouseY-this.body.position.y, mouseX-this.body.position.x);
-			this.hook = new Hook(this.body.position.x,this.body.position.y,shotAngle)
+			let direction = -1;
+			if(mouseX > this.body.position.x){direction = 1}
+			this.hook = new Hook(this.body.position.x+this.w/2*direction,this.body.position.y,shotAngle, this.w/2*direction)
 		}
 		this.hookIsShot = false;
 	}
+
+
+
+	
+
 }

@@ -1,8 +1,10 @@
 class Hook {
-    constructor(x,y,angle) {
+    constructor(x,y,angle,direction) {
         this.x = x;
         this.y = y;
         this.angle = angle;
+
+        this.startpoint = direction;
 
         //for collision detection
         this.body = Bodies.circle(this.x, this.y, 10, {isStatic: true});
@@ -17,6 +19,7 @@ class Hook {
             this.pullPlayer(player)
         }
         else{
+            player.fly = false;
             this.shoot(obstacle); 
         }
       
@@ -43,22 +46,36 @@ class Hook {
         Body.setPosition(this.body, {x: this.x, y: this.y});
     }
 
-
+    /*
     pullPlayer(player){
+
         let forceX = player.x += cos(this.angle)*10
         let forceY = player.y += sin(this.angle)*10
-
-        Body.setPosition(player.body, {x: forceX, y: forceY})
+        Body.setPosition(player.body, {x: forceX, y: forceY}) 
 
     }
+    */
+    
+    
+
+    
+   pullPlayer(player){
+    Body.applyForce(player.body, {x: player.x, y: player.y}, {x: cos(this.angle)*0.05, y: sin(this.angle)*0.05}) 
+    }
+    
 
 
     mesh(){
         circle(this.body.position.x,this.body.position.y,20)
 			
-            line(this.x,this.y, player.body.position.x, player.body.position.y)
+            line(this.x,this.y, player.body.position.x+this.startpoint, player.body.position.y)
     }
 
+
+    delete(world)
+    {
+        World.remove(world, this.body);
+    }
 
 	
 }
