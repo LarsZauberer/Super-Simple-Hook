@@ -13,10 +13,13 @@ class Player extends GameObject{
 		this.y = y;
 		this.w = w;
 		this.h = h;
-		this.world = world
+		this.world = world;
+
 		// hook mechanics setting
 		this.hookIsShot = false;
 		this.hook = null;
+		this.fly = false
+		this.hookCollision = null;
 
 		// Rotation lock
 		Body.setInertia(this.body, Infinity);
@@ -28,7 +31,6 @@ class Player extends GameObject{
 
 
 	update(obstacle) {
-
 		this.x = this.body.position.x;
 		this.y = this.body.position.y;
 
@@ -36,7 +38,7 @@ class Player extends GameObject{
 		*/
 		super.update();
 
-		this.move();
+		if(!this.fly) this.move();
 
 		//hook mechanics
 		this.hookMechanics(obstacle);
@@ -61,12 +63,12 @@ class Player extends GameObject{
 		// Left
 		let leftForce = createVector(-0.01,0);
 		if (keyIsDown(65)) {
-			 Body.applyForce(this.body, {	x: this.body.position.x,	y: this.body.position.y,}, leftForce);
+			 Body.applyForce(this.body, this.body.position, leftForce);
 		}	
 		// Right
 		let rightForce = createVector(0.01,0);
 		if (keyIsDown(68)) {
-			Body.applyForce(this.body, {x: this.body.position.x,	y: this.body.position.y,}, rightForce);
+			Body.applyForce(this.body, this.body.position, rightForce);
 		}
 	}
 
@@ -75,7 +77,7 @@ class Player extends GameObject{
 		/* Jumping Mechanic
 		*/
 		// TODO: Self Commenting Code
-		if (this.canJump(ground)) Body.applyForce(this.body, {
+		if (this.specificCollide(ground)) Body.applyForce(this.body, {
 			x: this.body.position.x,
 			y: this.body.position.y
 		}, {
@@ -85,31 +87,32 @@ class Player extends GameObject{
 	}
 
 
-    canJump(ground) {
-		/* Checks if the player is grounded
-		*/
-        var collision = Matter.SAT.collides(this.body, ground);
-        if (collision.collided) {
-            return true;
-        }
-	}
+   
 	
 
 	hookMechanics(obstacle){
 		this.shootHook()
 		if (this.hook != null){ 
-			this.hook.update(this, obstacle);
+			this.hook.update(obstacle);
 			//hook deleting because distance
 			let hookWillDelete = false;
-			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 500){ 
+			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){ 
 				hookWillDelete = true;
 			}
-			if(this.hook.collided(obstacle) && dist(this.hook.x, this.hook.y, this.x, this.y) < this.w/2+this.h/2){
+			
+			
+			if(this.hook.collided(obstacle)){
+				if (this.specificCollide(obstacle[this.hookCollision])){
 				hookWillDelete = true;
+				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
+				}
 			}
+			
 			if(hookWillDelete){
 				this.hook.delete(this.world)
 				this.hook = null;
+				this.fly = false
+				Body.setDensity(this.body, 0.001)
 			} 
 
 		}  
@@ -122,10 +125,20 @@ class Player extends GameObject{
 			let shotAngle = atan2(mouseY-this.body.position.y, mouseX-this.body.position.x);
 			let direction = -1;
 			if(mouseX > this.body.position.x){direction = 1}
-			this.hook = new Hook(this.body.position.x+this.w/2*direction,this.body.position.y,shotAngle, this.w/2*direction)
+			this.hook = new Hook(this.body.position.x+this.w/2*direction,this.body.position.y,shotAngle, this.w/2*direction, this)
 		}
 		this.hookIsShot = false;
 	}
+
+
+	specificCollide(obstacle){
+		var collision = Matter.SAT.collides(this.body, obstacle.body);
+            if (collision.collided) {
+                return true;  
+            }
+	}
+
+	
 
 
 
