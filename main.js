@@ -69,7 +69,7 @@ function keyPressed() {
     */
     // Jumping
 	for (let i = 0; i < obstacles.length; i++) {
-		if (key == " ") player.jump(obstacles[i].ground.body);
+		if (key == " ") player.jump(obstacles[i].ground);
 	}
 }
 
