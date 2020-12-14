@@ -10,7 +10,7 @@ class Hook {
 
 
         //for collision detection
-        this.body = Bodies.circle(this.x, this.y, 10, {isStatic: true});
+        this.body = Bodies.circle(this.x, this.y, 5, {isStatic: true});
         
 
     }
@@ -73,7 +73,7 @@ class Hook {
 
 
     mesh(){
-        circle(this.body.position.x,this.body.position.y,20)
+        circle(this.body.position.x,this.body.position.y,10)
 			
             line(this.x,this.y, this.player.body.position.x+this.startpoint, this.player.body.position.y)
     }
