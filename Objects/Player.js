@@ -63,8 +63,8 @@ class Player extends GameObject{
 		// Left
 		let leftForce = createVector(-0.01,0);
 		if (keyIsDown(65)) {
-			 Body.applyForce(this.body, this.body.position, leftForce);
-		}	
+			Body.applyForce(this.body, this.body.position, leftForce);
+		}
 		// Right
 		let rightForce = createVector(0.01,0);
 		if (keyIsDown(68)) {
@@ -87,43 +87,40 @@ class Player extends GameObject{
 	}
 
 
-   
-	
-
 	hookMechanics(obstacle){
 		this.shootHook()
-		if (this.hook != null){ 
+		if (this.hook != null){
 			this.hook.update(obstacle);
 			//hook deleting because distance
 			let hookWillDelete = false;
-			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){ 
+			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){
 				hookWillDelete = true;
 			}
-			
-			
+
+
 			if(this.hook.collided(obstacle)){
 				if (this.specificCollide(obstacle[this.hookCollision])){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
 			}
-			
+
 			if(hookWillDelete){
 				this.hook.delete(this.world)
 				this.hook = null;
 				this.fly = false
 				Body.setDensity(this.body, 0.001)
-			} 
+			}
 
-		}  
+		}
 	}
 
 
 
 	shootHook(){
-		if (this.hookIsShot){
+		if (this.hookIsShot) {
 			let direction = -1;
-			if(mouseX > this.body.position.x){direction = 1}
+			if(mouseX > this.body.position.x) {direction = 1}
 
 			let shotAngle = atan2(mouseY-this.body.position.y, mouseX-(this.body.position.x+this.w/2*direction));
 			this.hook = new Hook(this.body.position.x+this.w/2*direction,this.body.position.y,shotAngle, this.w/2*direction, this)
@@ -135,14 +132,7 @@ class Player extends GameObject{
 	specificCollide(obstacle){
 		var collision = Matter.SAT.collides(this.body, obstacle.body);
             if (collision.collided) {
-                return true;  
+                return true;
             }
 	}
-
-	
-
-
-
-	
-
 }

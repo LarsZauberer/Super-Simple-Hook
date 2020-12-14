@@ -55,11 +55,6 @@ function draw() {
 	}
 
 	player.update(obstacles);
-	
-	
-
-	
-
 }
 
 
