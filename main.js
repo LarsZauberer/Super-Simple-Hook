@@ -42,6 +42,7 @@ function setup() {
 	obstacles.push(new DevObstacle(world, 0, height - 20, width, 20, 10));
 	obstacles.push(new DevObstacle(world, 200, windowHeight-100, 100, 80, 10));
 	obstacles.push(new DevObstacle(world, 400, windowHeight-200, 200, 180, 10));
+	obstacles.push(new DevObstacle(world, 500, 500, 200, 100));
 }
 
 
