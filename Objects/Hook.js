@@ -7,6 +7,7 @@ class Hook {
         this.startpoint = direction;
 
         this.pullAngle = null;
+        this.firstCollision = false;
 
 
         //for collision detection
@@ -19,7 +20,7 @@ class Hook {
     update(obstacle){
 
         if(this.collided(obstacle)){
-            this.pullPlayer()
+            this.pullPlayer(this.pullAngle)
             player.fly = true
 
         }
@@ -39,7 +40,11 @@ class Hook {
             var collision = Matter.SAT.collides(this.body, obstacle[i].body);
             if (collision.collided) {
                 this.player.hookCollision = i;
-                //pullAngle...
+                //first Collision. because pullAngle shouldn't change
+                if(this.firstCollision == false){
+                    this.pullAngle = atan2 (this.y-player.body.position.y, this.x-player.body.position.x-this.startpoint);
+                    this.firstCollision = true;
+                }
                 return true 
             }
            
@@ -66,8 +71,8 @@ class Hook {
     
 
     
-   pullPlayer(){
-    Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(this.angle)*0.04, y: sin(this.angle)*0.04}) 
+   pullPlayer(angle){
+    Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.04, y: sin(angle)*0.04}) 
     }
     
 
