@@ -1,6 +1,12 @@
 class GameObject {
     constructor(world, x, y, sx, sy, staticMesh=false) {
-        // Constructor
+        /* Constructor for the GameObject
+            Parameters:
+                world [Matter.js World]: The world for the Object
+                x [int], y [int]: Position for the object
+                sx[int], sy[int]: Size for the object
+                staticMesh [bool] [Default=false]: static or not
+        */
         // Position
         this.x = x;
         this.y = y;
