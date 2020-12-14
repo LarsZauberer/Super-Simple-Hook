@@ -55,10 +55,9 @@ class Player extends GameObject{
 		rect(0, 0,this.w, this.h);
 	}
 
-
+	
 	move() {
-		/* Player Movement Forces
-		*/
+		//Player Movement Forces
 		// TODO: Self Commenting Code
 		// Left
 		let leftForce = createVector(-0.01,0);
@@ -71,6 +70,21 @@ class Player extends GameObject{
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}
 	}
+	
+
+	/*
+	attempt on World movement
+
+	move(obstacle){
+		let moving = 0
+		if (keyIsDown(68)) moving-=3
+		if (keyIsDown(65)) moving+=3
+		for(let i = 0; i < obstacle.length; i++){
+			Body.setPosition(obstacle[i].body, {x: obstacle[i].body.position.x+ moving, y: obstacle[i].body.position.y} )
+		}
+
+	}
+	*/
 
 
 	jump(ground) {
@@ -108,7 +122,7 @@ class Player extends GameObject{
 				}
 			}
 			
-			if(hookWillDelete){
+			if(hookWillDelete){     
 				this.hook.delete(this.world)
 				this.hook = null;
 				this.fly = false

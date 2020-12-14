@@ -6,7 +6,7 @@ class Hook {
         this.player = player
         this.startpoint = direction;
 
-        this.pullAngle = null;
+        this.pullAngle;
         this.firstCollision = false;
 
 
