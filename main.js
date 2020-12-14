@@ -20,6 +20,7 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(100);
 	rectMode(CENTER);
+	angleMode(DEGREES)
 
     // Matter JS Settings
 	engine = Engine.create({
@@ -52,7 +53,13 @@ function draw() {
 	for (let i = 0; i < obstacles.length; i++) {
 		obstacles[i].update();
 	}
-	player.update();
+
+	player.update(obstacles);
+	
+	
+
+	
+
 }
 
 
@@ -63,4 +70,10 @@ function keyPressed() {
 	for (let i = 0; i < obstacles.length; i++) {
 		if (key == " ") player.jump(obstacles[i].ground);
 	}
+}
+
+
+function mousePressed()
+{
+	player.hookIsShot = true;
 }
