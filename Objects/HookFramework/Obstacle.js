@@ -16,10 +16,4 @@ class Obstacle extends GameObject {
 		super.update();
 		this.ground.update();
 	}
-
-	mesh() {
-		// Draw the Main Obstacle
-		fill(255, 255, 255)
-		rect(this.x, this.y, this.size.x, this.size.y);
-	}
 }
