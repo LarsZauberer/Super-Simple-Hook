@@ -7,8 +7,8 @@ class Target extends GameObject {
     update() {
         super.update();
 
-        let sideCheck = this.x-10 <= mouseX && this.x <= mouseX+10
-        let heightCheck = this.y-10 <= mouseY && this.y <= mouseY+10
+        let sideCheck = this.x-50 <= mouseX && mouseX <= this.x+50
+        let heightCheck = this.y-50 <= mouseY && mouseY <= this.y+50
 
         this.canHook = sideCheck && heightCheck;
         console.log(this.canHook)
