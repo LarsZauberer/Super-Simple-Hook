@@ -71,5 +71,10 @@ function keyPressed() {
 
 function mousePressed()
 {
-	player.hookIsShot = true;
+	for (let index = 0; index < obstacles.length; index++) {
+		const element = obstacles[index];
+		if (element.target.canHook) {
+			player.hookIsShot = true;
+		}
+	}
 }
