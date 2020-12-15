@@ -56,12 +56,15 @@ function draw() {
     */
 	background(100);
 
+	// Camera Calculation
 	cam.update();
 
+	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
 		obstacles[i].update();
 	}
 
+	// Player Calculation
 	player.update(obstacles);
 }
 
