@@ -1,0 +1,3 @@
+class Target extends GameObject {
+    
+}
