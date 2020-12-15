@@ -1,7 +1,7 @@
 class DevObstacle extends Obstacle {
     constructor(world, x, y, sx, sy, st) {
         super(world, x, y, sx, sy, st);
-        this.target = new Target(this.world, this.x, this.y);
+        this.target = new Target(this.world, this.x-this.size.x/2+5, this.y);
     }
 
     mesh() {
