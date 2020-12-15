@@ -38,11 +38,11 @@ function setup() {
 	world.gravity.scale = 0.0025;
 
     // Map
-	player = new Player(world, 100, 200, 60, 80);
-	obstacles.push(new Obstacle(world, 0, height - 20, width, 20, 10));
-	obstacles.push(new Obstacle(world, 200, windowHeight-100, 100, 80, 10));
-	obstacles.push(new Obstacle(world, 400, windowHeight-200, 200, 180, 10));
-	obstacles.push(new Obstacle(world, 600, windowHeight-500, 200, 100, 10));
+	player = new Player(world, 100, 200, 80, 80);
+	obstacles.push(new DevObstacle(world, 0, height - 20, width, 20, 10));
+	obstacles.push(new DevObstacle(world, 200, windowHeight-100, 100, 80, 10));
+	obstacles.push(new DevObstacle(world, 400, windowHeight-200, 200, 180, 10));
+	obstacles.push(new DevObstacle(world, 500, 500, 200, 100));
 }
 
 
@@ -56,11 +56,6 @@ function draw() {
 	}
 
 	player.update(obstacles);
-	
-	
-
-	
-
 }
 
 
