@@ -122,7 +122,7 @@ class Player extends GameObject{
 			let direction = -1;
 			if(mouseX > this.body.position.x) {direction = 1}
 
-			let shotAngle = atan2(mouseY-this.body.position.y, mouseX-(this.body.position.x+this.w/2*direction));
+			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-cam.x)-(this.body.position.x+this.w/2*direction));
 			this.hook = new Hook(this.body.position.x+this.w/2*direction,this.body.position.y,shotAngle, this.w/2*direction, this)
 		}
 		this.hookIsShot = false;
