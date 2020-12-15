@@ -16,6 +16,6 @@ class Target extends GameObject {
 
     mesh() {
         fill(0, 255, 0);
-        rect(this.x, this.y, this.sx, this.sy);
+        rect(this.x, this.y, this.size.x, this.size.y);
     }
 }
