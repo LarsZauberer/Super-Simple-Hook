@@ -1,4 +1,9 @@
 class DevObstacle extends Obstacle {
+    constructor(world, x, y, sx, sy, st) {
+        super(world, x, y, sx, sy, st);
+        this.target = new Target(this.world, this.x, this.y);
+    }
+
     mesh() {
         // Mesh of the obstacle
         fill(255, 255, 255)
