@@ -1,6 +1,9 @@
 class DevObstacle extends Obstacle {
     constructor(world, x, y, sx, sy, st) {
+        // Constructor
         super(world, x, y, sx, sy, st);
+
+        // Target creation
         this.target = new Target(this.world, this.x-this.size.x/2+5, this.y);
     }
 
