@@ -7,6 +7,9 @@ class GameObject {
                 sx[int], sy[int]: Size for the object
                 staticMesh [bool] [Default=false]: static or not
         */
+        // World
+        this.world = world;
+
         // Position
         this.x = x;
         this.y = y;
