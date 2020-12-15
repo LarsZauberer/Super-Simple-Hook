@@ -96,7 +96,7 @@ class Player extends GameObject{
 			y: this.body.position.y
 		}, {
 			x: 0,
-			y: -0.4
+			y: -0.3
 		});
 	}
 
