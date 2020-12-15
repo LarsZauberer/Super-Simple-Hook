@@ -9,7 +9,7 @@ class Target extends GameObject {
         super.update();
 
         // Checking Mouse is in range
-        let sideCheck = this.x-50 <= mouseX && mouseX <= this.x+50
+        let sideCheck = this.x-50 <= mouseX+(-cam.x) && mouseX+(-cam.x) <= this.x+50
         let heightCheck = this.y-50 <= mouseY && mouseY <= this.y+50
 
         // CanHook?
