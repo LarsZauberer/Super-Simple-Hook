@@ -12,6 +12,8 @@ var world;
 var player;
 var obstacles = [];
 
+let cam;
+
 
 function setup() {
     /* Setting everything up
@@ -43,6 +45,9 @@ function setup() {
 	obstacles.push(new DevObstacle(world, 200, height-100, 100, 80, 10));
 	obstacles.push(new DevObstacle(world, 400, height-200, 200, 180, 10));
 	obstacles.push(new DevObstacle(world, 500, height-500, 200, 100));
+
+	// Camera
+	cam = new Camera(player);
 }
 
 
@@ -50,6 +55,8 @@ function draw() {
     /* Main Game Loop
     */
 	background(100);
+
+	cam.update();
 
 	for (let i = 0; i < obstacles.length; i++) {
 		obstacles[i].update();
