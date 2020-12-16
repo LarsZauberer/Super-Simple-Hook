@@ -1,7 +1,7 @@
 class Target extends GameObject {
-    constructor(world, x, y) {
+    constructor(world, x, y, w, h) {
         // Constructor
-        super(world, x, y, 10, 10, true)
+        super(world, x, y, w, h, true)
     }
 
     update() {

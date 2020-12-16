@@ -45,6 +45,9 @@ function setup() {
 	obstacles.push(new DevObstacle(world, 200, height-100, 100, 80, 10));
 	obstacles.push(new DevObstacle(world, 400, height-200, 200, 180, 10));
 	obstacles.push(new DevObstacle(world, 500, height-500, 200, 100));
+	obstacles.push(new UnstaticObstacle(world, 300, height - 200, 60, 60));
+
+
 
 	// Camera
 	cam = new Camera(player);

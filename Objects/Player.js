@@ -23,7 +23,7 @@ class Player extends GameObject{
 
 		// Rotation lock
 		Body.setInertia(this.body, Infinity);
-
+ 
 		// Friction Settings
 		this.body.friction = 0;
 		this.body.frictionAir = 0.1;
