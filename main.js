@@ -1,18 +1,25 @@
 // Namespace Variablename change
-var Engine = Matter.Engine,
+let Engine = Matter.Engine,
 	World = Matter.World,
 	Bodies = Matter.Bodies,
 	Body = Matter.Body,
 	Detector = Matter.Detector;
 
 // Globale Variables
-var engine;
-var world;
+let engine;
+let world;
 
-var player;
-var obstacles = [];
+let player;
+let obstacles = [];
+
+let objectRegistry = [
+					DevObstacle,
+					Player,
+					]
 
 let cam;
+
+let levelManager;
 
 
 function setup() {
@@ -51,6 +58,11 @@ function setup() {
 
 	// Camera
 	cam = new Camera(player);
+
+	// Level Manager
+	levelManager = new MapManager([
+									"dev_map.json",
+								  ]);
 }
 
 
@@ -68,7 +80,9 @@ function draw() {
 	}
 
 	// Player Calculation
-	player.update(obstacles);
+	if (player) {
+		player.update(obstacles);
+	}
 }
 
 
@@ -87,8 +101,10 @@ function mousePressed()
 {
 	for (let index = 0; index < obstacles.length; index++) {
 		const element = obstacles[index];
-		if (element.target.canHook) {
-			player.hookIsShot = true;
+		if (element.target) {
+			if (element.target.canHook) {
+				player.hookIsShot = true;
+			}
 		}
 	}
 }
