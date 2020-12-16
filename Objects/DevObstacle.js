@@ -1,10 +1,10 @@
 class DevObstacle extends Obstacle {
     constructor(world, x, y, sx, sy, st) {
         // Constructor
-        super(world, x, y, sx, sy, st);
+        super(world, x, y, sx, sy, st, );
 
         // Target creation
-        this.target = new Target(this.world, this.x-this.size.x/2+5, this.y);
+        this.target = new Target(this.world, this.x-this.size.x/2+5, this.y, 10, 30);
     }
 
     mesh() {
@@ -13,7 +13,7 @@ class DevObstacle extends Obstacle {
 		rect(this.x, this.y, this.size.x, this.size.y);
 
         // Setting the ground mesh for the obstacle
-        this.ground.mesh = this.groundMesh;
+        this.ground.mesh = this.groundMesh; 
     }
 
     groundMesh() {
