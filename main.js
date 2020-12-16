@@ -15,6 +15,7 @@ let obstacles = [];
 let objectRegistry = [
 					DevObstacle,
 					Player,
+
 					]
 
 let cam;
@@ -91,7 +92,7 @@ function keyPressed() {
     */
     // Jumping
 	for (let i = 0; i < obstacles.length; i++) {
-		if (key == " ") player.jump(obstacles[i].ground);
+		if (key == " ") player.jump(obstacles[i]);
 	}
 }
 
