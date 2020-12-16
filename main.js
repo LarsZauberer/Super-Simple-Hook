@@ -1,18 +1,20 @@
 // Namespace Variablename change
-var Engine = Matter.Engine,
+let Engine = Matter.Engine,
 	World = Matter.World,
 	Bodies = Matter.Bodies,
 	Body = Matter.Body,
 	Detector = Matter.Detector;
 
 // Globale Variables
-var engine;
-var world;
+let engine;
+let world;
 
-var player;
-var obstacles = [];
+let player;
+let obstacles = [];
 
 let cam;
+
+let levelManager;
 
 
 function setup() {
@@ -48,6 +50,13 @@ function setup() {
 
 	// Camera
 	cam = new Camera(player);
+
+	// Level Manager
+	levelManager = new MapManager([
+									"dev_map.json",
+								  ]);
+	// levelManager.load();
+	levelManager.loadLevel(0, [DevObstacle]);
 }
 
 
