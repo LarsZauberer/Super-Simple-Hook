@@ -28,10 +28,6 @@ class Hook {
         else{
             this.shoot(); 
         }
-      
-
-
-
         this.mesh();
     }
 
