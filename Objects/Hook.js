@@ -8,6 +8,7 @@ class Hook {
 
         this.pullAngle = null;
         this.firstCollision = false;
+        this.playerGetsPulled = false
 
 
         //for collision detection
@@ -18,14 +19,14 @@ class Hook {
 
     
     update(obstacle){
-
-        if(this.collided(obstacle)){
+        
+        if(this.playerGetsPulled){
             this.pullPlayer(this.pullAngle)
             player.fly = true
 
         }
         else{
-            this.shoot(obstacle); 
+            this.shoot(); 
         }
       
 
@@ -34,22 +35,19 @@ class Hook {
         this.mesh();
     }
 
-    collided(obstacle){
 
-        for(let i = 0; i<obstacle.length; i++){
-            var collision = Matter.SAT.collides(this.body, obstacle[i].body);
+    collided(obstacle){
+        let collision = Matter.SAT.collides(this.body, obstacle.body);
             if (collision.collided) {
-                this.player.hookCollision = i;
                 //first Collision. because pullAngle shouldn't change
                 if(this.firstCollision == false){
                     this.pullAngle = atan2 (this.y-player.body.position.y, this.x-player.body.position.x-this.startpoint);
                     this.firstCollision = true;
                 }
-                return true 
+                return true;
             }
-           
-         }
     }
+    
     
 
 

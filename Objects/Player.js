@@ -97,13 +97,19 @@ class Player extends GameObject{
 				hookWillDelete = true;
 			}
 
-
-			if(this.hook.collided(obstacle)){
-				if (this.specificCollide(obstacle[this.hookCollision])){
+		for(let i = 0; i < obstacle.length; i++){
+			if(this.hook.collided(obstacle[i].target)){
+				this.hook.playerGetsPulled = true;
+				if (this.specificCollide(obstacle[i])){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
 			}
+			else if(this.hook.collided(obstacle[i])){
+				hookWillDelete = true;
+			} 
+		}
+
 
 			if(hookWillDelete){
 				this.hook.delete(this.world)
