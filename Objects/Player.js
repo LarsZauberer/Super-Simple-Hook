@@ -9,11 +9,10 @@ class Player extends GameObject{
 		super(world, x, y, w, h, false)
 
 		// Settings
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
 		this.world = world;
+
+		//foot
+		this.foot = Bodies.rectangle(this.x, this.y, 60,10, {isStatic: true});
 
 		// hook mechanics setting
 		this.hookIsShot = false;
@@ -36,12 +35,17 @@ class Player extends GameObject{
 
 		/* The Loop of the Player Character
 		*/
+
+		Body.setPosition(this.foot, {x: this.body.position.x, y: this.body.position.y+this.size.y/2+10})
+		
 		super.update();
 
 		if(!this.fly) this.move();
 
 		//hook mechanics
 		this.hookMechanics(obstacle);
+
+		
 
 
 	}
@@ -50,9 +54,12 @@ class Player extends GameObject{
 	mesh() {
 		/* Displays the matter.js calculation with p5js
 		*/
-		translate(this.body.position.x, this.body.position.y);
+		translate();
 		rotate(this.body.angle);
-		rect(0, 0,this.w, this.h);
+		rect(0, 0,this.size.x, this.size.y);
+
+		fill(255,0,0)
+		rect(0, this.size.y/2+10, 60, 10)
 	}
 
 
@@ -70,20 +77,25 @@ class Player extends GameObject{
 		if (keyIsDown(68)) {
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}
+		
 	}
 
 
-	jump(ground) {
+	jump(obstacle) {
 		/* Jumping Mechanic
 		*/
 		// TODO: Self Commenting Code
-		if (this.specificCollide(ground)) Body.applyForce(this.body, {
+		if (this.specificCollide(this.foot, obstacle)) {
+		
+
+		Body.applyForce(this.body, {
 			x: this.body.position.x,
 			y: this.body.position.y
 		}, {
 			x: 0,
 			y: -0.4
 		});
+		}
 	}
 
 
@@ -100,7 +112,7 @@ class Player extends GameObject{
 		for(let i = 0; i < obstacle.length; i++){
 			if(this.hook.collided(obstacle[i].target)){
 				this.hook.playerGetsPulled = true;
-				if (this.specificCollide(obstacle[i])){
+				if (this.specificCollide(this.body, obstacle[i])){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
@@ -128,17 +140,18 @@ class Player extends GameObject{
 			let direction = -1;
 			if(mouseX > this.body.position.x) {direction = 1}
 
-			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-cam.x)-(this.body.position.x+this.w/2*direction));
-			this.hook = new Hook(this.body.position.x+this.w/2*direction,this.body.position.y,shotAngle, this.w/2*direction, this)
+			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-cam.x)-(this.body.position.x+this.size.x/2*direction));
+			this.hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
 		}
 		this.hookIsShot = false;
 	}
 
 
-	specificCollide(obstacle){
-		var collision = Matter.SAT.collides(this.body, obstacle.body);
+	specificCollide(player, obstacle){
+		var collision = Matter.SAT.collides(player, obstacle.body);
             if (collision.collided) {
+				console.log(1)
                 return true;
-            }
+            } 
 	}
 }
