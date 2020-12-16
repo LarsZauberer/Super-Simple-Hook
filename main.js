@@ -12,6 +12,11 @@ let world;
 let player;
 let obstacles = [];
 
+let objectRegistry = [
+					DevObstacle,
+					Player,
+					]
+
 let cam;
 
 let levelManager;
@@ -55,8 +60,6 @@ function setup() {
 	levelManager = new MapManager([
 									"dev_map.json",
 								  ]);
-	// levelManager.load();
-	levelManager.loadLevel(0, [DevObstacle]);
 }
 
 
@@ -74,7 +77,9 @@ function draw() {
 	}
 
 	// Player Calculation
-	player.update(obstacles);
+	if (player) {
+		player.update(obstacles);
+	}
 }
 
 
@@ -92,8 +97,10 @@ function mousePressed()
 {
 	for (let index = 0; index < obstacles.length; index++) {
 		const element = obstacles[index];
-		if (element.target.canHook) {
-			player.hookIsShot = true;
+		if (element.target) {
+			if (element.target.canHook) {
+				player.hookIsShot = true;
+			}
 		}
 	}
 }
