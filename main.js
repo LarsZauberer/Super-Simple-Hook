@@ -79,6 +79,7 @@ function keyPressed() {
 }
 
 
+/*
 function mousePressed()
 {
 	for (let index = 0; index < obstacles.length; index++) {
@@ -88,3 +89,12 @@ function mousePressed()
 		}
 	}
 }
+*/
+
+function mousePressed()
+{
+	
+	player.hookIsShot = true;
+	
+}
+
