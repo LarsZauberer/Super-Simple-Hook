@@ -8,14 +8,14 @@ class Obstacle extends GameObject {
 
 		// Create the ground for the object
 		let groundpos = y-h/2;
-		this.ground = new Ground(world, x, groundpos+gs/2, w-1, gs, true);
+		//this.ground = new Ground(world, x, groundpos+gs/2, w-1, gs, true);
 		this.target;
 	}
 
 	update() {
 		// Update everything
 		super.update();
-		this.ground.update();
+		//this.ground.update();
 		if (this.target) {
 			this.target.update();
 		}
