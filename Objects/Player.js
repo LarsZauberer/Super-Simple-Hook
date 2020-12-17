@@ -12,7 +12,7 @@ class Player extends GameObject{
 		this.world = world;
 
 		//foot
-		this.foot = Bodies.rectangle(this.x, this.y, 60,10, {isStatic: true});
+		this.foot = Bodies.rectangle(this.x, this.y, 59,10, {isStatic: true});
 
 		// hook mechanics setting
 		this.hookIsShot = false;
@@ -36,7 +36,7 @@ class Player extends GameObject{
 		/* The Loop of the Player Character
 		*/
 
-		Body.setPosition(this.foot, {x: this.body.position.x, y: this.body.position.y+this.size.y/2+10})
+		Body.setPosition(this.foot, {x: this.body.position.x, y: this.body.position.y+this.size.y/2-5})
 		
 		super.update();
 
@@ -54,12 +54,12 @@ class Player extends GameObject{
 	mesh() {
 		/* Displays the matter.js calculation with p5js
 		*/
-		translate();
+		translate(this.body.position.x,this.body.position.y);
 		rotate(this.body.angle);
 		rect(0, 0,this.size.x, this.size.y);
 
 		fill(255,0,0)
-		rect(0, this.size.y/2+10, 60, 10)
+		rect(0, this.size.y/2-5, 60, 10)
 	}
 
 

@@ -13,7 +13,7 @@ class DevObstacle extends Obstacle {
 		rect(this.x, this.y, this.size.x, this.size.y);
 
         // Setting the ground mesh for the obstacle
-        this.ground.mesh = this.groundMesh; 
+        //this.ground.mesh = this.groundMesh; 
     }
 
     groundMesh() {
