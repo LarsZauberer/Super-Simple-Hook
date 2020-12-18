@@ -14,6 +14,9 @@ class Player extends GameObject{
 		//foot
 		this.foot = Bodies.rectangle(this.x, this.y, 59,10, {isStatic: true});
 
+		//cam
+		this.cam = null;
+
 		// hook mechanics setting
 		this.hookIsShot = false;
 		this.hook = null;
@@ -33,6 +36,8 @@ class Player extends GameObject{
 		this.x = this.body.position.x;
 		this.y = this.body.position.y;
 
+
+		this.camera();
 		/* The Loop of the Player Character
 		*/
 
@@ -140,7 +145,7 @@ class Player extends GameObject{
 			let direction = -1;
 			if(mouseX > this.body.position.x) {direction = 1}
 
-			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-cam.x)-(this.body.position.x+this.size.x/2*direction));
+			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-this.cam.x)-(this.body.position.x+this.size.x/2*direction));
 			this.hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
 		}
 		this.hookIsShot = false;
@@ -150,8 +155,21 @@ class Player extends GameObject{
 	specificCollide(player, obstacle){
 		var collision = Matter.SAT.collides(player, obstacle.body);
             if (collision.collided) {
-				console.log(1)
+				
                 return true;
             } 
+	}
+
+
+	camera()	{
+	
+		if(this.cam == null){
+		this.cam = new Camera(this)
+		}
+		else{	
+			this.cam.update();
+		}
+		
+
 	}
 }

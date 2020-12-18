@@ -48,22 +48,30 @@ function setup() {
 	world.gravity.scale = 0.0025;
 
     // Map
-	player = new Player(world, 100, 200, 60, 80);
+	//player = new Player(world, 100, 200, 60, 80);
+	
+	/*
 	obstacles.push(new DevObstacle(world, 0, height - 20, width, 20, 10));
 	obstacles.push(new DevObstacle(world, 200, height-100, 100, 80, 10));
 	obstacles.push(new DevObstacle(world, 400, height-200, 200, 180, 10));
 	obstacles.push(new DevObstacle(world, 500, height-500, 200, 100));
 	obstacles.push(new UnstaticObstacle(world, 300, height - 200, 60, 60));
+	*/
 
 
 
 	// Camera
-	cam = new Camera(player);
+	
 
 	// Level Manager
 	levelManager = new MapManager([
 									"dev_map.json",
 								  ]);
+
+
+	
+
+	
 }
 
 
@@ -73,17 +81,20 @@ function draw() {
 	background(100);
 
 	// Camera Calculation
-	cam.update();
+	if (player) {
+		player.update(obstacles);
+	}
 
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
+		
 		obstacles[i].update();
 	}
 
 	// Player Calculation
-	if (player) {
-		player.update(obstacles);
-	}
+	
+
+	
 }
 
 
