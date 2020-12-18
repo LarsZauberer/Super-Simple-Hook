@@ -26,7 +26,7 @@ class MapManager {
                     const element = map.mapData[index];
                     if (element.id == 1) {
                         // ID Player, create Player
-                        player = new Player(world, element.x, element.y, element.sx, element.sy);
+                        player = new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy);
                     } else {
                         obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
                     }
