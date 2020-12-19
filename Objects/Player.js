@@ -92,7 +92,6 @@ class Player extends GameObject{
 		// TODO: Self Commenting Code
 		if (this.specificCollide(this.foot, obstacle)) {
 		
-
 		Body.applyForce(this.body, {
 			x: this.body.position.x,
 			y: this.body.position.y
@@ -117,7 +116,7 @@ class Player extends GameObject{
 		for(let i = 0; i < obstacle.length; i++){
 			if(this.hook.collided(obstacle[i].target)){
 				this.hook.playerGetsPulled = true;
-				if (this.specificCollide(this.body, obstacle[i])){
+				if (this.specificCollide(this.body, obstacle[i].body)){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
@@ -153,11 +152,14 @@ class Player extends GameObject{
 
 
 	specificCollide(player, obstacle){
-		var collision = Matter.SAT.collides(player, obstacle.body);
+			if(obstacle != player && obstacle != this.body){
+			var collision = Matter.SAT.collides(player, obstacle);
             if (collision.collided) {
 				
                 return true;
-            } 
+			} 
+		}
+		
 	}
 
 
