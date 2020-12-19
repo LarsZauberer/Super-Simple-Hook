@@ -13,6 +13,8 @@ let player;
 let obstacles = [];
 let unstatics = [];
 
+let targets = []
+
 let objectRegistry = [
 					Player,
 					DevObstacle,
@@ -70,6 +72,7 @@ function setup() {
 								  ]);
 
 
+	targets.push(new Target(world, 600, 100, 100, 10))
 	
 
 	
@@ -94,6 +97,10 @@ function draw() {
 	// unstatic Obstacles Calculations
 	for (let i = 0; i < unstatics.length; i++) {
 		unstatics[i].update();
+	}
+
+	for (let i = 0; i < targets.length; i++) {
+		targets[i].update();
 	}
 
 
@@ -137,5 +144,9 @@ function mousePressed()
 	
 	player.hookIsShot = true;
 	
+}
+
+function mouseReleased(){
+
 }
 

@@ -115,9 +115,9 @@ class Player extends GameObject{
 
 		//pullplayer
 		for(let i = 0; i < obstacles.length; i++){
-			if(this.hook.collided(obstacles[i].target)){
+			if(this.hook.collided(targets[0] )&& !mouseIsPressed){
 				this.hook.playerGetsPulled = true;
-				if (this.specificCollide(this.body, obstacles[i].body)){
+				if (this.specificCollide(this.body, obstacles[3].body)){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
@@ -128,15 +128,8 @@ class Player extends GameObject{
 		}
 
 		//pullObstacles
-		for(let i = 0; i < unstatics.length; i++){
-			if(this.hook.collided(unstatics[i])){
-				this.hook.obstacleGetsPulled = true;
-				this.hook.hookedObject = unstatics[i].body;
-				if (this.specificCollide(this.body, this.hook.hookedObject)){
-					hookWillDelete = true
-				}
-			}
-
+		if(this.hook.collided(targets[0]) && mouseIsPressed){
+			this.hook.twoHookMode = true
 		}
 
 		
