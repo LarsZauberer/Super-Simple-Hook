@@ -1,5 +1,5 @@
 class GameObject {
-    constructor(world, x, y, sx, sy, staticMesh=false) {
+    constructor(world, x, y, sx, sy, staticMesh) {
         /* Constructor for the GameObject
             Parameters:
                 world [Matter.js World]: The world for the Object
