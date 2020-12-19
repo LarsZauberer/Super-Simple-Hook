@@ -24,12 +24,17 @@ class MapManager {
                 // Create Objects
                 for (let index = 0; index < map.mapData.length; index++) {
                     const element = map.mapData[index];
-                    if (element.id == 1) {
+                    if (element.id == 0) {
                         // ID Player, create Player
                         player = new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy);
-                    } else {
+                    } else if (element.id == 1){
                         obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
                     }
+                    //unstatic Obstacle. Has own Brackets because organization.
+                    else{
+                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
+                    }
+                   
                 }
             }
         };

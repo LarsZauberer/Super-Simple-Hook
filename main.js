@@ -13,9 +13,9 @@ let player;
 let obstacles = [];
 
 let objectRegistry = [
-					DevObstacle,
 					Player,
-
+					DevObstacle,
+					UnstaticObstacle
 					]
 
 let cam;
@@ -101,9 +101,13 @@ function draw() {
 function keyPressed() {
     /* Keypress Handling
     */
-    // Jumping
-	for (let i = 0; i < obstacles.length; i++) {
-		if (key == " ") player.jump(obstacles[i]);
+	// Jumping
+	let allBodies = Matter.Composite.allBodies(world)
+	
+	
+
+	for (let i = 0; i < allBodies.length; i++) {
+		if (key == " ") player.jump(allBodies[i]);
 	}
 }
 
