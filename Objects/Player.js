@@ -113,6 +113,7 @@ class Player extends GameObject{
 				hookWillDelete = true;
 			}
 
+		//pullplayer
 		for(let i = 0; i < obstacle.length; i++){
 			if(this.hook.collided(obstacle[i].target)){
 				this.hook.playerGetsPulled = true;
@@ -125,6 +126,11 @@ class Player extends GameObject{
 				hookWillDelete = true;
 			} 
 		}
+
+		//pullObstacles
+		
+
+
 
 
 			if(hookWillDelete){

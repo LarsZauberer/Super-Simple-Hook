@@ -11,6 +11,7 @@ let world;
 
 let player;
 let obstacles = [];
+let unstatics = [];
 
 let objectRegistry = [
 					Player,
@@ -87,9 +88,14 @@ function draw() {
 
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
-		
 		obstacles[i].update();
 	}
+
+	// unstatic Obstacles Calculations
+	for (let i = 0; i < unstatics.length; i++) {
+		unstatics[i].update();
+	}
+
 
 	// Player Calculation
 	

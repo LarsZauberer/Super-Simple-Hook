@@ -13,8 +13,6 @@ class Hook {
 
         //for collision detection
         this.body = Bodies.circle(this.x, this.y, 5, {isStatic: true});
-        
-
     }
 
     
@@ -23,7 +21,6 @@ class Hook {
         if(this.playerGetsPulled){
             this.pullPlayer(this.pullAngle)
             player.fly = true
-
         }
         else{
             this.shoot(); 
