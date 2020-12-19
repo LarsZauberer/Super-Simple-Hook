@@ -10,6 +10,9 @@ class Hook {
         this.firstCollision = false;
         this.playerGetsPulled = false
 
+        this.obstacleGetsPulled  = false;
+        this.hookedObject;
+
 
         //for collision detection
         this.body = Bodies.circle(this.x, this.y, 5, {isStatic: true});
@@ -17,10 +20,13 @@ class Hook {
 
     
     update(obstacle){
-        
+
         if(this.playerGetsPulled){
             this.pullPlayer(this.pullAngle)
             player.fly = true
+        } 
+       else if(this.obstacleGetsPulled){
+            this.pullObstacle(this.pullAngle)
         }
         else{
             this.shoot(); 
@@ -65,13 +71,19 @@ class Hook {
    pullPlayer(angle){
     Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.04, y: sin(angle)*0.04}) 
     }
+
+    pullObstacle(angle){
+        Body.applyForce(this.hookedObject, {x: this.player.x, y: this.player.y}, {x: -cos(angle)*0.01, y: -sin(angle)*0.01})
+       
+        Body.setPosition(this.body, this.hookedObject.position); 
+    }
     
 
 
     mesh(){
         circle(this.body.position.x,this.body.position.y,10)
 			
-            line(this.x,this.y, this.player.body.position.x+this.startpoint, this.player.body.position.y)
+            line(this.body.position.x,this.body.position.y, this.player.body.position.x+this.startpoint, this.player.body.position.y)
     }
 
 
