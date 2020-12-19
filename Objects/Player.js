@@ -103,10 +103,10 @@ class Player extends GameObject{
 	}
 
 
-	hookMechanics(obstacle){
+	hookMechanics(){
 		this.shootHook()
 		if (this.hook != null){
-			this.hook.update(obstacle);
+			this.hook.update(obstacles);
 			//hook deleting because distance
 			let hookWillDelete = false;
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){
@@ -114,20 +114,31 @@ class Player extends GameObject{
 			}
 
 		//pullplayer
-		for(let i = 0; i < obstacle.length; i++){
-			if(this.hook.collided(obstacle[i].target)){
+		for(let i = 0; i < obstacles.length; i++){
+			if(this.hook.collided(obstacles[i].target)){
 				this.hook.playerGetsPulled = true;
-				if (this.specificCollide(this.body, obstacle[i].body)){
+				if (this.specificCollide(this.body, obstacles[i].body)){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
 			}
-			else if(this.hook.collided(obstacle[i])){
+			else if(this.hook.collided(obstacles[i])){
 				hookWillDelete = true;
 			} 
 		}
 
 		//pullObstacles
+		for(let i = 0; i < unstatics.length; i++){
+			if(this.hook.collided(unstatics[i])){
+				this.hook.obstacleGetsPulled = true;
+				this.hook.hookedObject = unstatics[i].body;
+				if (this.specificCollide(this.body, this.hook.hookedObject)){
+					hookWillDelete = true
+				}
+			}
+
+		}
+
 		
 
 
@@ -157,20 +168,18 @@ class Player extends GameObject{
 	}
 
 
-	specificCollide(player, obstacle){
-			if(obstacle != player && obstacle != this.body){
-			var collision = Matter.SAT.collides(player, obstacle);
+	specificCollide(player, body2){
+			if(body2 != player && body2 != this.body){
+			var collision = Matter.SAT.collides(player, body2);
             if (collision.collided) {
-				
                 return true;
 			} 
-		}
-		
+		}	
 	}
 
 
+
 	camera()	{
-	
 		if(this.cam == null){
 		this.cam = new Camera(this)
 		}
