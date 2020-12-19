@@ -79,19 +79,23 @@ class Hook {
    
     //twoHook
     twoHooks(){
+        let twoHookPullAngle 
         if(this.hookTwo){
             if(!this.twoHookPull){
             this.hookTwo.update();
             let allBodies = Matter.Composite.allBodies(world);
                 for(let i = 0; i < allBodies.length; i++){
                     if(this.hookTwo.collided(allBodies[i])){
-                        let twoHookPullAngle = atan2(this.y-this.hookTwo.y, this.x-this.hookTwo.x);
-                        this.twoHookPull = true
+                        twoHookPullAngle = atan2(this.y-this.hookTwo.y, this.x-this.hookTwo.x);
+                        console.log( twoHookPullAngle)
+                        this.pullObject2 = allBodies[i];
+                        this.twoHookPull = true;
                     }
                 }
             }
             else{
-                
+                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(twoHookPullAngle)*0.04, y: -sin(twoHookPullAngle)*0.04})
+                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(twoHookPullAngle)*0.01, y: sin(twoHookPullAngle)*0.01})
             }
         }
     }
