@@ -11,6 +11,11 @@ class Hook {
         this.playerGetsPulled = false
 
         this.twoHookMode = false;
+        this.hookTwo;
+        this.twoHookPull = false
+        this.getMeshed = true;
+        this.pullObject1;
+        this.pullObject2;
 
 
         //for collision detection
@@ -18,10 +23,10 @@ class Hook {
     }
 
     
-    update(obstacle){
+    update(){
 
         if(this.twoHookMode){
-
+            this.twoHooks();
         }
         else if(this.playerGetsPulled){
             this.pullPlayer(this.pullAngle)
@@ -35,7 +40,7 @@ class Hook {
 
 
     collided(obstacle){
-        let collision = Matter.SAT.collides(this.body, obstacle.body);
+        let collision = Matter.SAT.collides(this.body, obstacle);
             if (collision.collided) {
                 //first Collision. because pullAngle shouldn't change
                 if(this.firstCollision == false){
@@ -73,13 +78,34 @@ class Hook {
 
    
     //twoHook
-    
+    twoHooks(){
+        if(this.hookTwo){
+            if(!this.twoHookPull){
+            this.hookTwo.update();
+            let allBodies = Matter.Composite.allBodies(world);
+                for(let i = 0; i < allBodies.length; i++){
+                    if(this.hookTwo.collided(allBodies[i])){
+                        let twoHookPullAngle = atan2(this.y-this.hookTwo.y, this.x-this.hookTwo.x);
+                        this.twoHookPull = true
+                    }
+                }
+            }
+            else{
+                
+            }
+        }
+    }
 
 
     mesh(){
         circle(this.body.position.x,this.body.position.y,10)
-			
+            
+        if(this.twoHookMode && this.hookTwo){
+            line(this.x,this.y,this.hookTwo.x,this.hookTwo.y)
+        }
+        else if(this.getMeshed == true){
             line(this.body.position.x,this.body.position.y, this.player.body.position.x+this.startpoint, this.player.body.position.y)
+        }
     }
 
 

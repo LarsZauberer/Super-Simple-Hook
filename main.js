@@ -26,6 +26,7 @@ let cam;
 let levelManager;
 
 
+
 function setup() {
     /* Setting everything up
     */
@@ -74,7 +75,6 @@ function setup() {
 
 	targets.push(new Target(world, 600, 100, 100, 10))
 	
-
 	
 }
 
@@ -84,10 +84,11 @@ function draw() {
     */
 	background(100);
 
+	//update Obstacle list
+	
+
 	// Camera Calculation
-	if (player) {
-		player.update(obstacles);
-	}
+	player.camera();
 
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
@@ -104,9 +105,9 @@ function draw() {
 	}
 
 
-	// Player Calculation
 	
-
+	// Player Calculation
+	player.update(obstacles);
 	
 }
 
@@ -116,9 +117,6 @@ function keyPressed() {
     */
 	// Jumping
 	let allBodies = Matter.Composite.allBodies(world)
-	
-	
-
 	for (let i = 0; i < allBodies.length; i++) {
 		if (key == " ") player.jump(allBodies[i]);
 	}
@@ -146,7 +144,15 @@ function mousePressed()
 	
 }
 
-function mouseReleased(){
 
+let hook2
+function mouseReleased(){
+	if(player.hook.twoHookMode){
+		player.hookIsShot = true;
+		hook2 = player.shootHook(hook2)
+		hook2.getMeshed = false;
+		player.hook.hookTwo = hook2;
+
+	}
 }
 

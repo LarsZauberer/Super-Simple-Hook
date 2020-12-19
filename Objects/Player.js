@@ -32,12 +32,11 @@ class Player extends GameObject{
 	}
 
 
-	update(obstacle) {
+	update() {
 		this.x = this.body.position.x;
 		this.y = this.body.position.y;
 
 
-		this.camera();
 		/* The Loop of the Player Character
 		*/
 
@@ -48,7 +47,7 @@ class Player extends GameObject{
 		if(!this.fly) this.move();
 
 		//hook mechanics
-		this.hookMechanics(obstacle);
+		this.hookMechanics();
 
 		
 
@@ -104,7 +103,7 @@ class Player extends GameObject{
 
 
 	hookMechanics(){
-		this.shootHook()
+		this.hook = this.shootHook(this.hook)
 		if (this.hook != null){
 			this.hook.update(obstacles);
 			//hook deleting because distance
@@ -115,27 +114,25 @@ class Player extends GameObject{
 
 		//pullplayer
 		for(let i = 0; i < obstacles.length; i++){
-			if(this.hook.collided(targets[0] )&& !mouseIsPressed){
+			if(this.hook.collided(targets[0].body )&& !mouseIsPressed){
 				this.hook.playerGetsPulled = true;
 				if (this.specificCollide(this.body, obstacles[3].body)){
 				hookWillDelete = true;
 				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 				}
 			}
-			else if(this.hook.collided(obstacles[i])){
+			else if(this.hook.collided(obstacles[i].body) && !mouseIsPressed){
 				hookWillDelete = true;
 			} 
 		}
 
 		//pullObstacles
-		if(this.hook.collided(targets[0]) && mouseIsPressed){
+		if(this.hook.collided(targets[0].body) && mouseIsPressed){
+			this.hook.pullObject1 = targets[0].body
 			this.hook.twoHookMode = true
 		}
 
-		
-
-
-
+	
 
 			if(hookWillDelete){
 				this.hook.delete(this.world)
@@ -149,15 +146,16 @@ class Player extends GameObject{
 
 
 
-	shootHook(){
+	shootHook(hook){
 		if (this.hookIsShot) {
 			let direction = -1;
 			if(mouseX-this.cam.x > this.body.position.x) {direction = 1}
 
 			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-this.cam.x)-(this.body.position.x+this.size.x/2*direction));
-			this.hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
+			hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
 		}
 		this.hookIsShot = false;
+		return hook;
 	}
 
 
