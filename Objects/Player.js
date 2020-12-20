@@ -135,6 +135,7 @@ class Player extends GameObject{
 	
 
 			if(hookWillDelete){
+				
 				this.hook.delete(this.world)
 				this.hook = null;
 				this.fly = false
