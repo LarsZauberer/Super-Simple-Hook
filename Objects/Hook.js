@@ -54,6 +54,16 @@ class Hook {
                 return true;
             }
     }
+
+    anyCollision(){
+        let allBodies = Matter.Composite.allBodies(world);
+        for(let i = 0; i < allBodies.length; i++){
+            let collision = Matter.SAT.collides(this.body, allBodies[i]);
+            if (collision.collided) {
+                return true;
+            }
+        }
+    }
     
     
 

@@ -151,12 +151,13 @@ function mousePressed()
 
 let hook2
 function mouseReleased(){
-	if(player.hook.twoHookMode){
+	if(player.hook){
+		if(player.hook.twoHookMode){
 		player.hookIsShot = true;
 		hook2 = player.shootHook(hook2)
 		hook2.getMeshed = false;
 		player.hook.hookTwo = hook2;
-
+		}
 	}
 }
 
