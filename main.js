@@ -15,8 +15,8 @@ let unstatics = [];
 
 let objectRegistry = [
 					Player,
+					UnstaticObstacle,
 					DevObstacle,
-					UnstaticObstacle
 					]
 
 let cam;
@@ -54,8 +54,6 @@ function setup() {
 	levelManager = new MapManager([
 									"dev_map.json",
 								  ]);
-
-	grid = new Grid(100);
 }
 
 
@@ -78,8 +76,6 @@ function draw() {
 	for (let i = 0; i < unstatics.length; i++) {
 		unstatics[i].update();
 	}
-
-	grid.update()
 }
 
 

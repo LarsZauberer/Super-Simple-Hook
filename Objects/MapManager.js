@@ -28,14 +28,11 @@ class MapManager {
                     if (element.id == 0) {
                         // ID Player, create Player
                         player = new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy);
-                    } else if (element.id == 1){
-                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
-                    }
-                    //unstatic Obstacle. Has own Brackets because organization.
-                    else{
+                    } else if (element.id == 1) {
                         unstatics.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
-                    }
-                   
+                    } else {
+                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
+                    }                 
                 }
             }
         };
