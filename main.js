@@ -120,6 +120,10 @@ function keyPressed() {
 	for (let i = 0; i < allBodies.length; i++) {
 		if (key == " ") player.jump(allBodies[i]);
 	}
+
+	if (keyCode == ENTER){
+		player.hookWill
+	}
 }
 
 

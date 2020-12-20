@@ -132,6 +132,11 @@ class Player extends GameObject{
 			this.hook.twoHookMode = true
 		}
 
+		if(keyIsPressed && key == "c"){
+			hookWillDelete = true;
+		}
+
+
 	
 
 			if(hookWillDelete){
