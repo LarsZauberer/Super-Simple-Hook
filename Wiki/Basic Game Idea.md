@@ -2,14 +2,15 @@
 
 Das Spiel Super-Simple-Hook soll ein Portal ähnliches Puzzel spiel werden. Man soll Level, die einzelne kleine Räume sind durchlaufen.
 
-// TODO: Regel an welchen Wänden
+Ein Raum ist fertig, wenn man durch eine Tür am Ende des Levels geht. Dann gelangt der Spieler in das nächste Level.
 
-Der Hauptanreiz des Spiels ist die **Hook** Mechanic. Man kann sich an bestimmten Wänden hochziehen können.
+Der Hauptanreiz des Spiels ist die **Hook** Mechanic. Man kann sich an bestimmten Wänden hochziehen können. Diese Wände an denen man sich Hooken kann werden mit Orange gekennzeichnet.
 
-// TODO: Regel welche Objekte
+Zusätzlich kann man noch kleine Objekte mit sich ziehen. Die bewegbaren Objekte sind Blau markiert.
 
-Zusätzlich kann man noch kleine Objekte mit sich ziehen.
+15 Räume sind Minimum.
 
-// TODO: Anzahl Räume
 
-// TODO: Wann ist das Spiel zu ende
+## Wünsche:
+Endboss Fight
+

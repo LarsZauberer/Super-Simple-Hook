@@ -1,5 +1,5 @@
 # Design Theme
 
-Das Design von Super Simple Hook soll...
+Das Design von Super Simple Hook soll ein simples Vektor Game sein.
 
-// TODO: Theme
+Robin macht mit Illustrator die Designs.
