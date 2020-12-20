@@ -27,11 +27,11 @@ class MapManager {
                     const element = map.mapData[index];
                     if (element.id == 0) {
                         // ID Player, create Player
-                        player = new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy);
+                        player = new objectRegistry[element.id](world, windowWidth/100*element.x, windowHeight/50*element.y, windowWidth/100*element.sx, windowHeight/50*element.sy);
                     } else if (element.id == 1) {
-                        unstatics.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
+                        unstatics.push(new objectRegistry[element.id](world, windowWidth/100*element.x, windowHeight/50*element.y, windowWidth/100*element.sx, windowHeight/50*element.sy));
                     } else {
-                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
+                        obstacles.push(new objectRegistry[element.id](world, windowWidth/100*element.x, windowHeight/50*element.y, windowWidth/100*element.sx, windowHeight/50*element.sy));
                     }                 
                 }
             }

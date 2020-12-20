@@ -30,7 +30,7 @@ function setup() {
     /* Setting everything up
     */
     // P5JS Settings
-	createCanvas(1900, 1080);
+	createCanvas(windowWidth, windowHeight);
 	background(100);
 	rectMode(CENTER);
 	angleMode(DEGREES)
@@ -52,6 +52,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
+									"percentDev.json",
 									"dev_map.json",
 								  ]);
 }
