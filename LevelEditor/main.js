@@ -29,6 +29,8 @@ let mapData;
 
 const STEP = 10;
 
+let scaling = false;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 	rectMode(CENTER);
@@ -57,7 +59,6 @@ function setup() {
 
 function draw() {
     background(100);
-    translate(translation.x, translation.y, translation.z);
 
     mx = Math.round(mouseX/STEP)*STEP
     my = Math.round(mouseY/STEP)*STEP
@@ -72,7 +73,18 @@ function draw() {
             for (let index = 0; index < mapData.mapData.length; index++) {
                 const element = mapData.mapData[index];
                 if (element.id == 0) {
-                    element[index] = {"x": 100/windowWidth*mx, "y": 50/windowHeight*my, "sx": element.sx, "sy": element.sy, "id": 0}
+                    mapData.mapData[index] = {"x": 100/windowWidth*mx, "y": 50/windowHeight*my, "sx": element.sx, "sy": element.sy, "id": 0}
+                }
+            }
+        } else if (scaling && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            player.size.x = translation.x
+            player.size.y = translation.y
+
+            // Change MapData
+            for (let index = 0; index < mapData.mapData.length; index++) {
+                const element = mapData.mapData[index];
+                if (element.id == 0) {
+                    mapData.mapData[index] = {"x": player.x, "y": player.y, "sx": 100/windowWidth*translation.x, "sy": 50/windowHeight*translation.y, "id": 0}
                 }
             }
         }
@@ -88,28 +100,44 @@ function draw() {
 		unstatics[i].update();
     }
 
-    console.log(mapData);
+    console.log(scaling);
 }
 
 function keyPressed() {
     switch (keyCode) {
         case 39:
             // Right
-            translation.x -= 10;
+            translation.x -= STEP;
             break;
         case 37:
             // Left
-            translation.x += 10;
+            translation.x += STEP;
             break;
         case 38:
             // Up
-            translation.y += 10;
+            translation.y += STEP;
             break;
         case 40:
             // Down
-            translation.y -= 10;
+            translation.y -= STEP;
+            break;
+        case 17:
+            scaling = true;
+            break;
+        case 81:
+            console.log(mapData)
+            let a = document.createElement("a");
+            let d = JSON.stringify(mapData)
+            let file = new Blob([d], {type: "txt"});
+            a.href = URL.createObjectURL(file);
+            a.download = "percentDev.json";
+            a.click();
             break;
     }
+}
+
+function keyReleased() {
+    if (keyCode === 17) scaling = false;
 }
 
 function mousePressed() {
