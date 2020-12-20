@@ -81,7 +81,7 @@ class Hook {
     //twoHook
     twoHooks(){
         if(this.hookTwo){
-          
+    
             if(!this.twoHookPull){
             this.hookTwo.shoot();
             let allBodies = Matter.Composite.allBodies(world);
@@ -90,11 +90,16 @@ class Hook {
                         
                         this.pullObject2 = allBodies[i];
                         this.twoHookPull = true;
+
+                        //let hook2posX = dist(this.hookTwo.body.position.x, 0, this.pullObject2.position.x, 0);
+                
+                        //let hook2posY = dist(0, this.hookTwo.body.position.y, 0, this.pullObject2.position.y);
                     }
                 }
             }
             else{
-                Body.setPosition(this.hookTwo.body, this.pullObject2.position)
+                
+                Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x, y: this.pullObject2.position.y});
                 
                 this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
                 Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.04, y: -sin(this.twoHookPullAngle)*0.04})
