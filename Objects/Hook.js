@@ -16,6 +16,7 @@ class Hook {
         this.getMeshed = true;
         this.pullObject1;
         this.pullObject2;
+        this.twoHookPullAngle;
 
 
         //for collision detection
@@ -79,30 +80,32 @@ class Hook {
    
     //twoHook
     twoHooks(){
-        let twoHookPullAngle 
         if(this.hookTwo){
+          
             if(!this.twoHookPull){
             this.hookTwo.update();
             let allBodies = Matter.Composite.allBodies(world);
                 for(let i = 0; i < allBodies.length; i++){
                     if(this.hookTwo.collided(allBodies[i])){
-                        twoHookPullAngle = atan2(this.y-this.hookTwo.y, this.x-this.hookTwo.x);
-                        console.log( twoHookPullAngle)
+                        
                         this.pullObject2 = allBodies[i];
                         this.twoHookPull = true;
                     }
                 }
             }
             else{
-                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(twoHookPullAngle)*0.04, y: -sin(twoHookPullAngle)*0.04})
-                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(twoHookPullAngle)*0.01, y: sin(twoHookPullAngle)*0.01})
+                Body.setPosition(this.hookTwo.body, this.pullObject2.position)
+                console.log(this.hookTwo.body.position)
+                this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
+                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.04, y: -sin(this.twoHookPullAngle)*0.04})
+                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02, y: sin(this.twoHookPullAngle)*0.02})
             }
         }
     }
 
 
     mesh(){
-        circle(this.body.position.x,this.body.position.y,10)
+        circle(this.x,this.y,10)
             
         if(this.twoHookMode && this.hookTwo){
             line(this.x,this.y,this.hookTwo.x,this.hookTwo.y)
