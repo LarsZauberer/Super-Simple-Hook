@@ -112,40 +112,47 @@ class Player extends GameObject{
 				hookWillDelete = true;
 			}
 
-		//pullplayer
-		for(let i = 0; i < obstacles.length; i++){
-			if(this.hook.collided(targets[0].body )&& !mouseIsPressed){
+		
+		for(let i = 0; i < targets.length; i++){
+			for(let j = 0; j < unstatics.length; j++){
+
+				//pullplayer
+				if((this.hook.collided(targets[i].body) || this.hook.collided(unstatics[j].body)) && !mouseIsPressed){
 				this.hook.playerGetsPulled = true;
-				if (this.specificCollide(this.body, obstacles[3].body)){
-				hookWillDelete = true;
-				Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
+					if (this.specificCollide(this.body, targets[i].body) || this.specificCollide(this.body, unstatics[j].body)){
+						hookWillDelete = true;
+						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
+					}
+				}
+				else if(this.hook.anyCollision() && !mouseIsPressed){
+					hookWillDelete = true;
+				}
+
+				//pullObstacles
+				if(this.hook.collided(targets[i].body)  && mouseIsPressed){
+					this.hook.pullObject1 = targets[i].body
+					this.hook.twoHookMode = true
+				}
+				if(this.hook.collided(unstatics[j].body)  && mouseIsPressed){
+					this.hook.pullObject1 = unstatics[j].body
+					this.hook.twoHookMode = true
 				}
 			}
-			else if(this.hook.collided(obstacles[i].body) && !mouseIsPressed){
-				hookWillDelete = true;
-			} 
 		}
 
-		//pullObstacles
-		if(this.hook.collided(targets[0].body) && mouseIsPressed){
-			this.hook.pullObject1 = targets[0].body
-			this.hook.twoHookMode = true
-		}
 
 		if(keyIsPressed && key == "c"){
 			hookWillDelete = true;
 		}
 
 
-	
 
-			if(hookWillDelete){
-				
-				this.hook.delete(this.world)
-				this.hook = null;
-				this.fly = false
-				Body.setDensity(this.body, 0.001)
-			}
+		if(hookWillDelete){	
+			this.hook.delete(this.world)
+			this.hook = null;
+			this.fly = false
+			Body.setDensity(this.body, 0.001)
+		}
 
 		}
 	}
@@ -158,7 +165,7 @@ class Player extends GameObject{
 			if(mouseX-this.cam.x > this.body.position.x) {direction = 1}
 
 			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-this.cam.x)-(this.body.position.x+this.size.x/2*direction));
-			hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
+			hook = new Hook(this.body.position.x+this.size.x/2*direction + 10,this.body.position.y,shotAngle, this.size.x/2*direction, this)
 		}
 		this.hookIsShot = false;
 		return hook;
