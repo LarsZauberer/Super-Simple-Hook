@@ -65,6 +65,7 @@ function draw() {
 
 	// Camera Calculation
 	if (player) {
+		Body.setMass(player.body, 4);
 		player.update(obstacles);
 	}
 
