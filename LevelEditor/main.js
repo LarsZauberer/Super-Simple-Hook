@@ -27,6 +27,8 @@ let mouseDown = false;
 
 let mapData;
 
+const STEP = 10;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 	rectMode(CENTER);
@@ -57,16 +59,20 @@ function draw() {
     background(100);
     translate(translation.x, translation.y, translation.z);
 
+    mx = Math.round(mouseX/STEP)*STEP
+    my = Math.round(mouseY/STEP)*STEP
+
     if (player) {
         player.update(obstacles);
         if (mouseDown && dist(player.x, player.y, mouseX, mouseY) < 50) {
-            player.x = mouseX;
-            player.y = mouseY;
-            Body.setPosition(player.body, {"x": mouseX, "y": mouseY})
+            // Update Visuals
+            Body.setPosition(player.body, {"x": mx, "y": my})
+
+            // Change MapData
             for (let index = 0; index < mapData.mapData.length; index++) {
                 const element = mapData.mapData[index];
                 if (element.id == 0) {
-                    element[index] = {"x": mouseX, "y": mouseY, "sx": element.sx, "sy": element.sy, "id": 0}
+                    element[index] = {"x": 100/windowWidth*mx, "y": 50/windowHeight*my, "sx": element.sx, "sy": element.sy, "id": 0}
                 }
             }
         }
