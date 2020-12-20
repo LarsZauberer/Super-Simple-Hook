@@ -4,7 +4,7 @@ class DevObstacle extends Obstacle {
         super(world, x, y, sx, sy, st, );
 
         // Target creation
-        this.target = new Target(this.world, this.x-this.size.x/2+5, this.y, 10, 30);
+        this.target = new Target(this.world, this.x-this.size.x/2+5, this.y, 10, this.size.y-10);
     }
 
     mesh() {
