@@ -32,7 +32,12 @@ class MapManager {
                         unstatics.push(new objectRegistry[element.id](world, windowWidth/100*element.x, windowHeight/50*element.y, windowWidth/100*element.sx, windowHeight/50*element.sy));
                     } else {
                         obstacles.push(new objectRegistry[element.id](world, windowWidth/100*element.x, windowHeight/50*element.y, windowWidth/100*element.sx, windowHeight/50*element.sy));
-                    }                 
+                    }
+                }
+                try {
+                    mapData = map
+                } catch (error) {
+                    
                 }
             }
         };
