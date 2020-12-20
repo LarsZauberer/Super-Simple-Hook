@@ -83,7 +83,7 @@ class Hook {
         if(this.hookTwo){
           
             if(!this.twoHookPull){
-            this.hookTwo.update();
+            this.hookTwo.shoot();
             let allBodies = Matter.Composite.allBodies(world);
                 for(let i = 0; i < allBodies.length; i++){
                     if(this.hookTwo.collided(allBodies[i])){
@@ -95,20 +95,21 @@ class Hook {
             }
             else{
                 Body.setPosition(this.hookTwo.body, this.pullObject2.position)
-                console.log(this.hookTwo.body.position)
+                
                 this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
                 Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.04, y: -sin(this.twoHookPullAngle)*0.04})
                 Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02, y: sin(this.twoHookPullAngle)*0.02})
             }
+            this.hookTwo.mesh();
         }
     }
 
 
     mesh(){
-        circle(this.x,this.y,10)
+        circle(this.body.position.x,this.body.position.y,10)
             
         if(this.twoHookMode && this.hookTwo){
-            line(this.x,this.y,this.hookTwo.x,this.hookTwo.y)
+            line(this.x,this.y,this.hookTwo.body.position.x,this.hookTwo.body.position.y);
         }
         else if(this.getMeshed == true){
             line(this.body.position.x,this.body.position.y, this.player.body.position.x+this.startpoint, this.player.body.position.y)
