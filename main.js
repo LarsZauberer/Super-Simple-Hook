@@ -30,7 +30,7 @@ function setup() {
     /* Setting everything up
     */
     // P5JS Settings
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(1900, 1080);
 	background(100);
 	rectMode(CENTER);
 	angleMode(DEGREES)
@@ -55,7 +55,7 @@ function setup() {
 									"dev_map.json",
 								  ]);
 
-	grid = new Grid(100, 100);
+	grid = new Grid(100);
 }
 
 
@@ -79,7 +79,7 @@ function draw() {
 		unstatics[i].update();
 	}
 
-	// grid.update()
+	grid.update()
 }
 
 
