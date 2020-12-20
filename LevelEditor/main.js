@@ -23,6 +23,10 @@ let world;
 
 let translation;
 
+let mouseDown = false;
+
+let mapData;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 	rectMode(CENTER);
@@ -54,7 +58,18 @@ function draw() {
     translate(translation.x, translation.y, translation.z);
 
     if (player) {
-		player.update(obstacles);
+        player.update(obstacles);
+        if (mouseDown && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            player.x = mouseX;
+            player.y = mouseY;
+            Body.setPosition(player.body, {"x": mouseX, "y": mouseY})
+            for (let index = 0; index < mapData.mapData.length; index++) {
+                const element = mapData.mapData[index];
+                if (element.id == 0) {
+                    element[index] = {"x": mouseX, "y": mouseY, "sx": element.sx, "sy": element.sy, "id": 0}
+                }
+            }
+        }
 	}
 
 	// Obstacle Calculation
@@ -65,8 +80,9 @@ function draw() {
 	// unstatic Obstacles Calculations
 	for (let i = 0; i < unstatics.length; i++) {
 		unstatics[i].update();
-	}
-    // translate(x, y, [z])
+    }
+
+    console.log(mapData);
 }
 
 function keyPressed() {
@@ -88,4 +104,12 @@ function keyPressed() {
             translation.y -= 10;
             break;
     }
+}
+
+function mousePressed() {
+    mouseDown = true;
+}
+
+function mouseReleased() {
+    mouseDown = false;
 }
