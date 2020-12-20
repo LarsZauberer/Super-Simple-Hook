@@ -18,6 +18,9 @@ class Hook {
         this.pullObject2;
         this.twoHookPullAngle;
 
+        this.hook2posX = 0;
+        this.hook2posY = 0;
+
 
         //for collision detection
         this.body = Bodies.circle(this.x, this.y, 5, {isStatic: true});
@@ -81,7 +84,8 @@ class Hook {
     //twoHook
     twoHooks(){
         if(this.hookTwo){
-    
+            var hook2PosX = 0;
+            var hook2PosY = 0;
             if(!this.twoHookPull){
             this.hookTwo.shoot();
             let allBodies = Matter.Composite.allBodies(world);
@@ -91,15 +95,15 @@ class Hook {
                         this.pullObject2 = allBodies[i];
                         this.twoHookPull = true;
 
-                        //let hook2posX = dist(this.hookTwo.body.position.x, 0, this.pullObject2.position.x, 0);
-                
-                        //let hook2posY = dist(0, this.hookTwo.body.position.y, 0, this.pullObject2.position.y);
+                        if(this.pullObject2.isStatic){
+                        this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
+                        this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;
+                        }
                     }
                 }
             }
             else{
-                
-                Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x, y: this.pullObject2.position.y});
+                Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x + this.hook2posX, y: this.pullObject2.position.y + this.hook2posY});
                 
                 this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
                 Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.04, y: -sin(this.twoHookPullAngle)*0.04})
