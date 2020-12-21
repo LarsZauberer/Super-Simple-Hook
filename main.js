@@ -73,7 +73,7 @@ function setup() {
 								  ]);
 
 
-	targets.push(new Target(world, 600, 100, 100, 10))
+	targets.push(new Target(world, 600, 95, 100, 10))
 	
 	
 }

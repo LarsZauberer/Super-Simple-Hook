@@ -34,9 +34,7 @@ class Hook {
         }
         else if(this.playerGetsPulled){
         
-                this.pullAngle = atan2 (this.y-player.body.position.y, this.x-player.body.position.x-this.startpoint);
-            
-    
+            this.pullAngle = atan2 (this.y-player.body.position.y, this.x-player.body.position.x-this.startpoint);
             this.pullPlayer(this.pullAngle)
             player.fly = true
         } 
@@ -86,7 +84,7 @@ class Hook {
 
     
    pullPlayer(angle){
-       console.log(angle)
+
     Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.04, y: sin(angle)*0.04}) 
     }
 
@@ -97,10 +95,10 @@ class Hook {
         if(this.hookTwo){
             if(!this.twoHookPull){
             this.hookTwo.shoot();
-                    if(this.hookTwo.collidedAny(targets)){
+                    if(this.hookTwo.collidedAny(unstatics)){
                         this.twoHookPull = true;
                         //2nd Object settings.
-                        this.pullObject2 = this.hookTwo.collidedAny(targets, "return")
+                        this.pullObject2 = this.hookTwo.collidedAny(unstatics, "return")
                         if(this.pullObject2.isStatic){
                         this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
                         this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;
