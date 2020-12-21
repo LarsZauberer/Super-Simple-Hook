@@ -43,29 +43,18 @@ class Hook {
     }
 
 
-    collided(obstacle){
-        let collision = Matter.SAT.collides(this.body, obstacle);
-            if (collision.collided) {
-                //first Collision. because pullAngle shouldn't change
-                if(this.firstCollision == false){
-                    this.pullAngle = atan2 (this.y-player.body.position.y, this.x-player.body.position.x-this.startpoint);
-                    this.firstCollision = true;
-                }
-                return true;
-            }
-    }
+    
 
-    anyCollision(collObstacle){
-        let allBodies = Matter.Composite.allBodies(world);
-        for(let i = 0; i < allBodies.length; i++){
-            let collision = Matter.SAT.collides(this.body, allBodies[i]);
-            if (collision.collided && !this.player.specificCollide(this.player.body, this.body) ) {
-                this.pullObject2 = allBodies[i]
-                if(collObstacle = null){
+    collidedAny(collObstacle, returnIt){
+      
+        for(let i = 0; i < collObstacle.length; i++){
+            let collision = Matter.SAT.collides(this.body, collObstacle[i].body);
+            if (collision.collided) {
+                if(returnIt = null){
                     return true;
                 }
                 else{
-                    return allBodies[i]
+                    return collObstacle[i].body
                 }
             }
         }
@@ -93,6 +82,7 @@ class Hook {
 
     
    pullPlayer(angle){
+       console.log(angle)
     Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.04, y: sin(angle)*0.04}) 
     }
 
@@ -103,10 +93,10 @@ class Hook {
         if(this.hookTwo){
             if(!this.twoHookPull){
             this.hookTwo.shoot();
-                    if(this.hookTwo.anyCollision()){
+                    if(this.hookTwo.collidedAny(targets)){
                         this.twoHookPull = true;
                         //2nd Object settings.
-                        this.pullObject2 = this.hookTwo.anyCollision("return Obstacle")
+                        this.pullObject2 = this.hookTwo.collidedAny(targets, "return")
                         if(this.pullObject2.isStatic){
                         this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
                         this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;

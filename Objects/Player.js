@@ -105,7 +105,7 @@ class Player extends GameObject{
 	hookMechanics(){
 		this.hook = this.shootHook(this.hook)
 		if (this.hook != null){
-			this.hook.update(obstacles);
+			this.hook.update();
 			//hook deleting because distance
 			let hookWillDelete = false;
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){
@@ -116,45 +116,45 @@ class Player extends GameObject{
 				hookWillDelete = true;
 				}
 			}
+			if(keyIsPressed && key == "c"){
+				hookWillDelete = true;
+			}
 
-		
-		for(let i = 0; i < targets.length; i++){
-			for(let j = 0; j < unstatics.length; j++){
 
 				//pullplayer
-				if((this.hook.collided(targets[i].body) || this.hook.collided(unstatics[j].body)) && !mouseIsPressed){
+				if((this.hook.collidedAny(targets) || this.hook.collidedAny(unstatics)) && !mouseIsPressed){
 				this.hook.playerGetsPulled = true;
-					if (this.specificCollide(this.body, targets[i].body) || this.specificCollide(this.body, unstatics[j].body)){
+					let collidedObstacle
+					if(this.hook.collidedAny(targets)){
+						collidedObstacle = this.hook.collidedAny(targets, "return")
+					}
+					else{
+						collidedObstacle = this.hook.collidedAny(unstatics, "return")
+					}
+					this.hook.pullAngle = atan2(this.hook.y-this.y, this.hook.x,this.x )
+
+					if (this.specificCollide(this.body, collidedObstacle)){
 						hookWillDelete = true;
 						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 					}
 				}
-				
 				//pullObstacles
-				else if(this.hook.collided(targets[i].body)  && mouseIsPressed){
-					this.hook.pullObject1 = targets[i].body
+				else if(this.hook.collidedAny(targets)  && mouseIsPressed){
+					this.hook.pullObject1 = this.hook.collidedAny(targets, "return")
 					this.hook.twoHookMode = true
 				}
-				else if(this.hook.collided(unstatics[j].body)  && mouseIsPressed){
-					this.hook.pullObject1 = unstatics[j].body
+				else if(this.hook.collidedAny(unstatics)  && mouseIsPressed){
+					this.hook.pullObject1 = this.hook.collidedAny(unstatics, "return")
 					this.hook.twoHookMode = true
 				}
-				else if(this.hook.anyCollision()){
+				else if(this.hook.collidedAny(obstacles)){
 					hookWillDelete = true;
 				}
+			
+		
+			if(hookWillDelete){	
+				this.hook.delete(this.world)
 			}
-		}
-
-
-		if(keyIsPressed && key == "c"){
-			hookWillDelete = true;
-		}
-
-
-
-		if(hookWillDelete){	
-			this.hook.delete(this.world)
-		}
 
 		}
 	}
