@@ -112,7 +112,28 @@ function draw() {
 
 	// unstatic Obstacles Calculations
 	for (let i = 0; i < unstatics.length; i++) {
-		unstatics[i].update();
+        const element = unstatics[i];
+        unstatics[i].update();
+        
+        let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
+
+        if (mouseDown && inRange) {
+            // Change Location
+            loc(element, 0, mx, my);
+
+        } else if (scaling && inRange) {
+            // Change Scaling of Object
+            scaleObj(element, 0, translation);
+
+        } else if (keyIsDown(46) && inRange) {
+            // Delete Objects
+            delFromMap(element, 0);
+            World.remove(world, element.body);
+            if (element.target) {
+                World.remove(world, element.target.body);
+            }
+            obstacles.splice(i, 1);
+        }
     }
 }
 
