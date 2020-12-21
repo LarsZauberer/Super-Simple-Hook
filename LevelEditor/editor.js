@@ -2,11 +2,14 @@ function loc(ele, id, posX, posY) {
     // Change Location
 
     // Update Visuals
+    // Target Update
     try {
         Body.setPosition(ele.target.body, {"x": posX+ele.diff.x, "y": posY+ele.diff.y})
     } catch (error) {
         
     }
+
+    // Obstacle
     Body.setPosition(ele.body, {"x": posX, "y": posY})
 
     // Change MapData
@@ -22,6 +25,8 @@ function scaleObj(ele, id, trans) {
     // Change Scaling
 
     // Change Visuals
+    // TODO: Target Update
+
     ele.size.x = trans.x
     ele.size.y = trans.y
 
