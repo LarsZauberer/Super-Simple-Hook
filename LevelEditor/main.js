@@ -1,3 +1,6 @@
+// TODO: Fix the MapData Filter Bug
+// TODO: Fix Menu Closing Bug
+// TODO: Fix Unstatic Object Bug
 let player;
 let obstacles = [];
 let unstatics = [];
@@ -31,6 +34,9 @@ const STEP = 10;
 
 let scaling = false;
 
+let showMenu = false;
+let menu;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 	rectMode(CENTER);
@@ -62,6 +68,10 @@ function draw() {
 
     mx = Math.round(mouseX/STEP)*STEP
     my = Math.round(mouseY/STEP)*STEP
+
+    if (showMenu) {
+        return;
+    }
 
     if (player) {
         player.update(obstacles);
@@ -157,9 +167,11 @@ function keyPressed() {
             translation.y -= STEP;
             break;
         case 17:
+            // Control (Scaling)
             scaling = true;
             break;
         case 81:
+            // q (Saving)
             console.log(mapData)
             let a = document.createElement("a");
             let d = JSON.stringify(mapData)
@@ -168,6 +180,16 @@ function keyPressed() {
             a.download = "percentDev.json";
             a.click();
             break;
+        case 27:
+            // Show and Hide Menu
+            if (showMenu) {
+                showMenu = false;
+                menu = null;
+            } else {
+                showMenu = true;
+                menu = new Menu();
+                menu.generate();
+            }
     }
 }
 
