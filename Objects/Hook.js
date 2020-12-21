@@ -33,6 +33,10 @@ class Hook {
             this.twoHooks();
         }
         else if(this.playerGetsPulled){
+        
+                this.pullAngle = atan2 (this.y-player.body.position.y, this.x-player.body.position.x-this.startpoint);
+            
+    
             this.pullPlayer(this.pullAngle)
             player.fly = true
         } 
