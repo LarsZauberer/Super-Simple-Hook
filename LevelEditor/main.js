@@ -67,44 +67,17 @@ function draw() {
         player.update(obstacles);
         if (mouseDown && dist(player.x, player.y, mouseX, mouseY) < 50) {
             // Change Location
+            loc(player, 0, mx, my);
 
-            // Update Visuals
-            Body.setPosition(player.body, {"x": mx, "y": my})
-
-            // Change MapData
-            for (let index = 0; index < mapData.mapData.length; index++) {
-                const element = mapData.mapData[index];
-                if (element.id == 0) {
-                    mapData.mapData[index] = {"x": 100/windowWidth*mx, "y": 50/windowHeight*my, "sx": element.sx, "sy": element.sy, "id": 0}
-                }
-            }
         } else if (scaling && dist(player.x, player.y, mouseX, mouseY) < 50) {
-            // Change Scaling
+            // Change Scaling of Object
+            scaleObj(player, 0, translation);
 
-            // Change Visuals
-            player.size.x = translation.x
-            player.size.y = translation.y
-
-            // Change MapData
-            for (let index = 0; index < mapData.mapData.length; index++) {
-                const element = mapData.mapData[index];
-                if (element.id == 0) {
-                    mapData.mapData[index] = {"x": player.x, "y": player.y, "sx": 100/windowWidth*translation.x, "sy": 50/windowHeight*translation.y, "id": 0}
-                }
-            }
         } else if (keyIsDown(46) && dist(player.x, player.y, mouseX, mouseY) < 50) {
             // Delete Objects
-
             // Change Visuals
             player = null;
-
-            // Change MapData
-            for (let index = 0; index < mapData.mapData.length; index++) {
-                const element = mapData.mapData[index];
-                if (element.id == 0) {
-                    mapData.mapData.splice(index, 1);
-                }
-            }
+            delFromMap(0);
         }
 	}
 
