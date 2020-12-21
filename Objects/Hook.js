@@ -75,13 +75,7 @@ class Hook {
     }
 
 
-    /*
-    pullPlayer(player){
-        let forceX = player.x += cos(this.angle)*10
-        let forceY = player.y += sin(this.angle)*10
-        Body.setPosition(player.body, {x: forceX, y: forceY}) 
-    }
-    */
+  
     
     
 
@@ -95,6 +89,9 @@ class Hook {
    
     //twoHook
     twoHooks(){
+        if(!this.pullObject1.isStatic){
+            Body.setPosition(this.body, this.pullObject1.position)
+        }
         if(this.hookTwo){
             if(!this.twoHookPull){
             this.hookTwo.shoot();
@@ -105,22 +102,17 @@ class Hook {
                 if(this.hookTwo.collidedAny(targets)){
                     this.twoHookPull = true
                     this.pullObject2 = this.hookTwo.collidedAny(targets, "return")
-                    
-
-
                 }  
             }
             else{
-                this.hook2posX = this.hookTwo.body.position.x-this.pullObject2.position.x
-                this.hook2posY = this.hookTwo.body.position.y-this.pullObject2.position.y
                 let pDirect;
                 if(!this.pullObject2.isStatic){
-                    Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x - this.hook2posX, y: this.pullObject2.position.y - this.hook2posY});
+                    Body.setPosition(this.hookTwo.body, this.pullObject2.position);
                     this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
                     pDirect = 1;
                 }
                 if(this.pullObject2.isStatic){
-                    Body.setPosition(this.body, {x: this.pullObject1.position.x + this.hook2posX, y: this.pullObject1.position.y + this.hook2posY});
+                    Body.setPosition(this.body, this.pullObject1.position);
                     this.twoHookPullAngle = atan2(this.hookTwo.body.position.y-this.y, this.hookTwo.body.position.x-this.x);
                     pDirect = -1;
                 }

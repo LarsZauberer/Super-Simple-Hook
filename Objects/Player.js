@@ -108,7 +108,7 @@ class Player extends GameObject{
 			this.hook.update();
 			//hook deleting because distance
 			let hookWillDelete = false;
-			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){
+			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400 && !this.hook.twoHookMode){
 				hookWillDelete = true;
 			}
 			if(this.hook.playerGetsPulled && this.specificCollide(this.body, this.hook.body)){
@@ -117,12 +117,19 @@ class Player extends GameObject{
 			if(keyIsPressed && key == "c"){
 				hookWillDelete = true;
 			}
+			
 
 			if(this.hook.hookTwo){
 				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > 500) {
-				hookWillDelete = true;
+					hookWillDelete = true;
 				}
-				
+				if(this.hook.hookTwo.collidedAny(obstacles) && this.hook.pullObject2 == null){
+					hookWillDelete = true;
+				}
+
+				if(this.hook.pullObject1 == this.hook.pullObject2 ){
+					hookWillDelete = true;
+				}
 			}
 			
 
@@ -139,7 +146,7 @@ class Player extends GameObject{
 					}
 					this.hook.pullAngle = atan2(this.hook.y-this.y, this.hook.x,this.x )
 
-					if (this.specificCollide(this.body, collidedObstacle)){
+					if (this.specificCollide(this.body, collidedObstacle) && !this.hook.hookTwo){
 						hookWillDelete = true;
 						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 					}
