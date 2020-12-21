@@ -77,6 +77,7 @@ function draw() {
                 }
             }
         } else if (scaling && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            // Change Visuals
             player.size.x = translation.x
             player.size.y = translation.y
 
@@ -85,6 +86,17 @@ function draw() {
                 const element = mapData.mapData[index];
                 if (element.id == 0) {
                     mapData.mapData[index] = {"x": player.x, "y": player.y, "sx": 100/windowWidth*translation.x, "sy": 50/windowHeight*translation.y, "id": 0}
+                }
+            }
+        } else if (keyIsDown(46) && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            // Change Visuals
+            player = null;
+
+            // Change MapData
+            for (let index = 0; index < mapData.mapData.length; index++) {
+                const element = mapData.mapData[index];
+                if (element.id == 0) {
+                    mapData.mapData.splice(index, 1);
                 }
             }
         }
@@ -100,7 +112,7 @@ function draw() {
 		unstatics[i].update();
     }
 
-    console.log(scaling);
+    console.log(mapData);
 }
 
 function keyPressed() {
