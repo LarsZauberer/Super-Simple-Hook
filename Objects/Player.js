@@ -85,20 +85,24 @@ class Player extends GameObject{
 	}
 
 
-	jump(obstacle) {
+	jump() {
 		/* Jumping Mechanic
 		*/
 		// TODO: Self Commenting Code
-		if (this.specificCollide(this.foot, obstacle)) {
-		
-		Body.applyForce(this.body, {
-			x: this.body.position.x,
-			y: this.body.position.y
-		}, {
-			x: 0,
-			y: -0.4
-		});
+		let allBodies = Matter.Composite.allBodies(this.world)
+		for (let i = 0; i < allBodies.length; i++) {
+			if (this.specificCollide(this.foot, allBodies[i])) {
+				Body.applyForce(this.body, {
+					x: this.body.position.x,
+					y: this.body.position.y
+				}, {
+					x: 0,
+					y: -0.4
+				});
+				break;
+			}
 		}
+
 	}
 
 
