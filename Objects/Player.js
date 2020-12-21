@@ -122,9 +122,7 @@ class Player extends GameObject{
 				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > 500) {
 				hookWillDelete = true;
 				}
-				if(this.hook.hookTwo.collidedAny(obstacles)){
-					hookWillDelete = true;
-				}
+				
 			}
 			
 
