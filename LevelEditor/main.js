@@ -65,17 +65,19 @@ function draw() {
 
     if (player) {
         player.update(obstacles);
-        if (mouseDown && dist(player.x, player.y, mouseX, mouseY) < 50) {
+
+        let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
+
+        if (mouseDown && inRange) {
             // Change Location
             loc(player, 0, mx, my);
 
-        } else if (scaling && dist(player.x, player.y, mouseX, mouseY) < 50) {
+        } else if (scaling && inRange) {
             // Change Scaling of Object
             scaleObj(player, 0, translation);
 
-        } else if (keyIsDown(46) && dist(player.x, player.y, mouseX, mouseY) < 50) {
+        } else if (keyIsDown(46) && inRange) {
             // Delete Objects
-            // Change Visuals
             delFromMap(player, 0);
             player = null;
         }
