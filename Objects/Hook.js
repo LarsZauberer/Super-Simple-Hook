@@ -55,12 +55,18 @@ class Hook {
             }
     }
 
-    anyCollision(){
+    anyCollision(collObstacle){
         let allBodies = Matter.Composite.allBodies(world);
         for(let i = 0; i < allBodies.length; i++){
             let collision = Matter.SAT.collides(this.body, allBodies[i]);
-            if (collision.collided) {
-                return true;
+            if (collision.collided && !this.player.specificCollide(this.player.body, this.body) ) {
+                this.pullObject2 = allBodies[i]
+                if(collObstacle = null){
+                    return true;
+                }
+                else{
+                    return allBodies[i]
+                }
             }
         }
     }
@@ -90,34 +96,32 @@ class Hook {
     Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.04, y: sin(angle)*0.04}) 
     }
 
+
    
     //twoHook
     twoHooks(){
         if(this.hookTwo){
-            var hook2PosX = 0;
-            var hook2PosY = 0;
             if(!this.twoHookPull){
             this.hookTwo.shoot();
-            let allBodies = Matter.Composite.allBodies(world);
-                for(let i = 0; i < allBodies.length; i++){
-                    if(this.hookTwo.collided(allBodies[i])){
-                        
-                        this.pullObject2 = allBodies[i];
+                    if(this.hookTwo.anyCollision()){
                         this.twoHookPull = true;
-
+                        //2nd Object settings.
+                        this.pullObject2 = this.hookTwo.anyCollision("return Obstacle")
                         if(this.pullObject2.isStatic){
                         this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
                         this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;
                         }
                     }
-                }
             }
             else{
                 Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x + this.hook2posX, y: this.pullObject2.position.y + this.hook2posY});
-                
                 this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
-                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.04, y: -sin(this.twoHookPullAngle)*0.04})
-                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02, y: sin(this.twoHookPullAngle)*0.02})
+                let pDirect = 1;
+                if(this.pullObject1.position.y > this.pullObject2.position.y){
+                    pDirect = -1;
+                }
+                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.02*pDirect, y: -sin(this.twoHookPullAngle)*0.02*pDirect})
+                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02*pDirect, y: sin(this.twoHookPullAngle)*0.02*pDirect})
             }
             this.hookTwo.mesh();
         }
@@ -138,7 +142,10 @@ class Hook {
 
     delete(world)
     {
-        World.remove(world, this.body);
+        World.remove(world, this.body)
+        this.player.hook = null;
+		this.player.fly = false
+		Body.setDensity(this.player.body, 0.001)
     }
 
 	
