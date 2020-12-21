@@ -111,6 +111,11 @@ class Player extends GameObject{
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){
 				hookWillDelete = true;
 			}
+			if(this.hook.hookTwo){
+				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > 500) {
+				hookWillDelete = true;
+				}
+			}
 
 		
 		for(let i = 0; i < targets.length; i++){
@@ -124,18 +129,18 @@ class Player extends GameObject{
 						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 					}
 				}
-				else if(this.hook.anyCollision() && !mouseIsPressed){
-					hookWillDelete = true;
-				}
-
+				
 				//pullObstacles
-				if(this.hook.collided(targets[i].body)  && mouseIsPressed){
+				else if(this.hook.collided(targets[i].body)  && mouseIsPressed){
 					this.hook.pullObject1 = targets[i].body
 					this.hook.twoHookMode = true
 				}
-				if(this.hook.collided(unstatics[j].body)  && mouseIsPressed){
+				else if(this.hook.collided(unstatics[j].body)  && mouseIsPressed){
 					this.hook.pullObject1 = unstatics[j].body
 					this.hook.twoHookMode = true
+				}
+				else if(this.hook.anyCollision()){
+					hookWillDelete = true;
 				}
 			}
 		}
@@ -149,9 +154,6 @@ class Player extends GameObject{
 
 		if(hookWillDelete){	
 			this.hook.delete(this.world)
-			this.hook = null;
-			this.fly = false
-			Body.setDensity(this.body, 0.001)
 		}
 
 		}
@@ -165,7 +167,7 @@ class Player extends GameObject{
 			if(mouseX-this.cam.x > this.body.position.x) {direction = 1}
 
 			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-this.cam.x)-(this.body.position.x+this.size.x/2*direction));
-			hook = new Hook(this.body.position.x+this.size.x/2*direction + 10,this.body.position.y,shotAngle, this.size.x/2*direction, this)
+			hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
 		}
 		this.hookIsShot = false;
 		return hook;
