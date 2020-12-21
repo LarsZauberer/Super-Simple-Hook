@@ -28,6 +28,9 @@ class Hook {
 
     
     update(){
+        this.x = this.body.position.x;
+        this.y = this.body.position.y;
+
 
         if(this.twoHookMode){
             this.twoHooks();
@@ -101,24 +104,29 @@ class Hook {
                 }
                 if(this.hookTwo.collidedAny(targets)){
                     this.twoHookPull = true
-                    this.pullObject2 = this.pullObject1;
-                    this.pullObject1 = this.hookTwo.collidedAny(targets, "return")
-                    this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
-                    this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;
+                    this.pullObject2 = this.hookTwo.collidedAny(targets, "return")
+                    
 
 
                 }  
             }
             else{
-
+                this.hook2posX = this.hookTwo.body.position.x-this.pullObject2.position.x
+                this.hook2posY = this.hookTwo.body.position.y-this.pullObject2.position.y
+                let pDirect;
                 if(!this.pullObject2.isStatic){
-                Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x + this.hook2posX, y: this.pullObject2.position.y + this.hook2posY});
+                    Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x - this.hook2posX, y: this.pullObject2.position.y - this.hook2posY});
+                    this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
+                    pDirect = 1;
                 }
-                this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
-                let pDirect = 1;
-                if(this.pullObject1.position.y > this.pullObject2.position.y){
+                if(this.pullObject2.isStatic){
+                    Body.setPosition(this.body, {x: this.pullObject1.position.x + this.hook2posX, y: this.pullObject1.position.y + this.hook2posY});
+                    this.twoHookPullAngle = atan2(this.hookTwo.body.position.y-this.y, this.hookTwo.body.position.x-this.x);
                     pDirect = -1;
                 }
+                
+               
+                
                 Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.02*pDirect, y: -sin(this.twoHookPullAngle)*0.02*pDirect})
                 Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02*pDirect, y: sin(this.twoHookPullAngle)*0.02*pDirect})
             }
