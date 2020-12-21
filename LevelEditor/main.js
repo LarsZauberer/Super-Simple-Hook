@@ -85,7 +85,24 @@ function draw() {
 
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
-		obstacles[i].update();
+        const element = obstacles[i];
+        element.update();
+
+        let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
+
+        if (mouseDown && inRange) {
+            // Change Location
+            loc(element, 0, mx, my);
+
+        } else if (scaling && inRange) {
+            // Change Scaling of Object
+            scaleObj(element, 0, translation);
+
+        } else if (keyIsDown(46) && inRange) {
+            // Delete Objects
+            delFromMap(element, 0);
+            obstacles.splice(i, 1);
+        }
 	}
 
 	// unstatic Obstacles Calculations
