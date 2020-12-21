@@ -10,6 +10,10 @@ class Obstacle extends GameObject {
 		let groundpos = y-h/2;
 		//this.ground = new Ground(world, x, groundpos+gs/2, w-1, gs, true);
 		this.target;
+
+		// Difference Calculation Variables for the Editor
+		this.diffCalc = false;
+		this.diff;
 	}
 
 	update() {
@@ -18,6 +22,11 @@ class Obstacle extends GameObject {
 		//this.ground.update();
 		if (this.target) {
 			this.target.update();
+		}
+		// Difference Calculation for the Editor
+		if (this.diffCalc == false && this.target) {
+			this.diff = createVector(-(this.x-this.target.x), -(this.y-this.target.y));
+			this.diffCalc = true;
 		}
 	}
 }
