@@ -2,6 +2,11 @@ function loc(ele, id, posX, posY) {
     // Change Location
 
     // Update Visuals
+    try {
+        Body.setPosition(ele.target.body, {"x": posX+ele.diff.x, "y": posY+ele.diff.y})
+    } catch (error) {
+        
+    }
     Body.setPosition(ele.body, {"x": posX, "y": posY})
 
     // Change MapData
