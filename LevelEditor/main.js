@@ -79,6 +79,7 @@ function draw() {
         } else if (keyIsDown(46) && inRange) {
             // Delete Objects
             delFromMap(player, 0);
+            World.remove(world, player.body);
             player = null;
         }
 	}
@@ -101,6 +102,10 @@ function draw() {
         } else if (keyIsDown(46) && inRange) {
             // Delete Objects
             delFromMap(element, 0);
+            World.remove(world, element.body);
+            if (element.target) {
+                World.remove(world, element.target.body);
+            }
             obstacles.splice(i, 1);
         }
 	}
