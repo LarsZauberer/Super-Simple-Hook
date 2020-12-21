@@ -66,6 +66,8 @@ function draw() {
     if (player) {
         player.update(obstacles);
         if (mouseDown && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            // Change Location
+
             // Update Visuals
             Body.setPosition(player.body, {"x": mx, "y": my})
 
@@ -77,6 +79,8 @@ function draw() {
                 }
             }
         } else if (scaling && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            // Change Scaling
+
             // Change Visuals
             player.size.x = translation.x
             player.size.y = translation.y
@@ -89,6 +93,8 @@ function draw() {
                 }
             }
         } else if (keyIsDown(46) && dist(player.x, player.y, mouseX, mouseY) < 50) {
+            // Delete Objects
+
             // Change Visuals
             player = null;
 
