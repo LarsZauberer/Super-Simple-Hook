@@ -76,8 +76,8 @@ function draw() {
         } else if (keyIsDown(46) && dist(player.x, player.y, mouseX, mouseY) < 50) {
             // Delete Objects
             // Change Visuals
+            delFromMap(player, 0);
             player = null;
-            delFromMap(0);
         }
 	}
 

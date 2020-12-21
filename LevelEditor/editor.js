@@ -29,13 +29,13 @@ function scaleObj(ele, id, trans) {
     }
 }
 
-function delFromMap(id) {
+function delFromMap(ele, id) {
     // Delete Objects
 
     // Change MapData
     for (let index = 0; index < mapData.mapData.length; index++) {
         const element = mapData.mapData[index];
-        if (element.id == id) {
+        if (element.id == id && 100/windowWidth*ele.x == element.x && 100/windowHeight*ele.y == element.y) {
             mapData.mapData.splice(index, 1);
         }
     }
