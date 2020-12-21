@@ -117,34 +117,13 @@ function keyPressed() {
     /* Keypress Handling
     */
 	// Jumping
-	let allBodies = Matter.Composite.allBodies(world)
-	for (let i = 0; i < allBodies.length; i++) {
-		if (key == " ") player.jump(allBodies[i]);
-	}
-
-	if (keyCode == ENTER){
-		player.hookWill
-	}
+	if (key == " ") player.jump();
 }
 
 
-/*
-function mousePressed()
-{
-	for (let index = 0; index < obstacles.length; index++) {
-		const element = obstacles[index];
-		if (element.target) {
-			if (element.target.canHook) {
-				player.hookIsShot = true;
-			}
-		}
-	}
-}
-*/
 
 function mousePressed()
 {
-	
 	player.hookIsShot = true;
 	
 }
