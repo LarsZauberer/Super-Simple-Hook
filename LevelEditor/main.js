@@ -114,11 +114,10 @@ function draw() {
 	for (let i = 0; i < unstatics.length; i++) {
 		unstatics[i].update();
     }
-
-    console.log(mapData);
 }
 
 function keyPressed() {
+    // TODO: KeyIsPressed
     switch (keyCode) {
         case 39:
             // Right
