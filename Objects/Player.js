@@ -111,14 +111,22 @@ class Player extends GameObject{
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400){
 				hookWillDelete = true;
 			}
-			if(this.hook.hookTwo){
-				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > 500) {
+			if(this.hook.playerGetsPulled && this.specificCollide(this.body, this.hook.body)){
 				hookWillDelete = true;
-				}
 			}
 			if(keyIsPressed && key == "c"){
 				hookWillDelete = true;
 			}
+
+			if(this.hook.hookTwo){
+				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > 500) {
+				hookWillDelete = true;
+				}
+				if(this.hook.hookTwo.collidedAny(obstacles)){
+					hookWillDelete = true;
+				}
+			}
+			
 
 
 				//pullplayer
