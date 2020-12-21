@@ -95,18 +95,25 @@ class Hook {
         if(this.hookTwo){
             if(!this.twoHookPull){
             this.hookTwo.shoot();
-                    if(this.hookTwo.collidedAny(unstatics)){
-                        this.twoHookPull = true;
-                        //2nd Object settings.
-                        this.pullObject2 = this.hookTwo.collidedAny(unstatics, "return")
-                        if(this.pullObject2.isStatic){
-                        this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
-                        this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;
-                        }
-                    }
+                if(this.hookTwo.collidedAny(unstatics)){
+                    this.twoHookPull = true;
+                    this.pullObject2 = this.hookTwo.collidedAny(unstatics, "return")
+                }
+                if(this.hookTwo.collidedAny(targets)){
+                    this.twoHookPull = true
+                    this.pullObject2 = this.pullObject1;
+                    this.pullObject1 = this.hookTwo.collidedAny(targets, "return")
+                    this.hook2posX = this.hookTwo.body.position.x - this.pullObject2.position.x;
+                    this.hook2posY =  this.hookTwo.body.position.y - this.pullObject2.position.y;
+
+
+                }  
             }
             else{
+
+                if(!this.pullObject2.isStatic){
                 Body.setPosition(this.hookTwo.body, {x: this.pullObject2.position.x + this.hook2posX, y: this.pullObject2.position.y + this.hook2posY});
+                }
                 this.twoHookPullAngle = atan2(this.y-this.hookTwo.body.position.y, this.x-this.hookTwo.body.position.x);
                 let pDirect = 1;
                 if(this.pullObject1.position.y > this.pullObject2.position.y){
