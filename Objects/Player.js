@@ -126,9 +126,13 @@ class Player extends GameObject{
 				if(this.hook.hookTwo.collidedAny(obstacles) && this.hook.pullObject2 == null){
 					hookWillDelete = true;
 				}
-
 				if(this.hook.pullObject1 == this.hook.pullObject2 ){
 					hookWillDelete = true;
+				}
+				if(this.hook.pullObject2){
+					if(this.hook.pullObject1.isStatic && this.hook.pullObject2.isStatic){
+						hookWillDelete = true;
+					}
 				}
 			}
 			
