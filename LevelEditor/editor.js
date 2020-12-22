@@ -1,4 +1,4 @@
-function loc(ele, id, posX, posY) {
+function loc(ele, posX, posY) {
     // Change Location
 
     // Update Visuals
@@ -15,8 +15,8 @@ function loc(ele, id, posX, posY) {
     // Change MapData
     for (let index = 0; index < mapData.mapData.length; index++) {
         const element = mapData.mapData[index];
-        if (element.id == id && 100/windowWidth*ele.x == element.x && 100/windowHeight*ele.y == element.y) {
-            mapData.mapData[index] = {"x": 100/windowWidth*posX, "y": 50/windowHeight*posY, "sx": element.sx, "sy": element.sy, "id": id}
+        if ((100/windowWidth*ele.x)-(100/windowWidth*ele.size.x)/2) {
+            mapData.mapData[index] = {"x": 100/windowWidth*posX, "y": 50/windowHeight*posY, "sx": element.sx, "sy": element.sy, "id": element.id}
         }
     }
 }

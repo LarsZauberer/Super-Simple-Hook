@@ -103,7 +103,7 @@ function draw() {
 
         if (mouseDown && inRange) {
             // Change Location
-            loc(element, 0, mx, my);
+            loc(element, mx, my);
 
         } else if (scaling && inRange) {
             // Change Scaling of Object
