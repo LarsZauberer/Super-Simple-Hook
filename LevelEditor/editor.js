@@ -15,7 +15,7 @@ function loc(ele, posX, posY) {
     // Change MapData
     for (let index = 0; index < mapData.mapData.length; index++) {
         const element = mapData.mapData[index];
-        if ((100/windowWidth*ele.x)-(100/windowWidth*ele.size.x)/2 && (50/windowHeight*ele.y)-(50/windowHeight*ele.size.y)/2) {
+        if ((100/windowWidth*ele.x)-(100/windowWidth*ele.size.x)/2 == element.x && (50/windowHeight*ele.y)-(50/windowHeight*ele.size.y)/2 == element.y) {
             mapData.mapData[index] = {"x": 100/windowWidth*posX, "y": 50/windowHeight*posY, "sx": element.sx, "sy": element.sy, "id": element.id}
         }
     }
