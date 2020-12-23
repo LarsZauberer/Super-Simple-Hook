@@ -16,12 +16,8 @@ let unstatics = [];
 let targets = []
 
 let objectRegistry = [
-<<<<<<< HEAD
-=======
-					Player,
-					UnstaticObstacle,
->>>>>>> main
 					DevObstacle,
+					UnstaticObstacle,
 					]
 
 let cam;
@@ -58,7 +54,6 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-<<<<<<< HEAD
 									"dev_map2.json",
 								  ]);
 
@@ -67,11 +62,6 @@ function setup() {
 
 	
 	
-=======
-									"percentDev.json",
-									"dev_map.json",
-								  ]);
->>>>>>> main
 }
 
 
