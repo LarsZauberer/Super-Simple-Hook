@@ -12,9 +12,12 @@ let world;
 let player;
 let obstacles = [];
 let unstatics = [];
-
 let targets = [];
 let triggers = [];
+
+let door;
+
+
 
 
 let objectRegistry = [
@@ -22,7 +25,8 @@ let objectRegistry = [
 					DevObstacle,
 					UnstaticObstacle,
 					Target,
-					Button
+					Button,
+					Door
 					]
 
 let cam;
@@ -90,10 +94,9 @@ function draw() {
     */
 	background(100);
 
-	//update Obstacle list
 	
-	if (player){
 	// Camera Calculation
+	if (player){
 	player.camera();
 	}
 
@@ -111,15 +114,20 @@ function draw() {
 		targets[i].update();
 	}
 
-	for (let i = 0; i < triggers.length; i++) {
-		triggers[i].update();
-	}
-
-	
 	// Player Calculation
 	if(player){
 	player.update(obstacles);
 	}
+
+	for(let i = 0; i < triggers.length; i++){
+		triggers[i].update();
+	}
+
+	if(door){
+		door.update();
+	}
+
+
 	
 }
 
