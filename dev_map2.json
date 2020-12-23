@@ -1,12 +1,12 @@
 {
     "player": {"x": 1, "y": 1, "sx": 1, "sy": 1, "type": 0},
     "obstacles": [
-        {"x": 10, "y": 10, "sx": 1, "sy": 1, "type": 2}
+        {"x": 10, "y": 10, "sx": 1, "sy": 1, "type": 0}
     ],
     "unstatics": [
 
     ],
     "targets": [
         
-    ],
+    ]
 }

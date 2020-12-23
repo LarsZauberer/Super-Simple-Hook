@@ -16,7 +16,6 @@ let unstatics = [];
 let targets = []
 
 let objectRegistry = [
-					Player,
 					DevObstacle,
 					UnstaticObstacle
 					]
@@ -69,7 +68,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"dev_map.json",
+									"dev_map2.json",
 								  ]);
 
 
@@ -89,7 +88,9 @@ function draw() {
 	
 
 	// Camera Calculation
-	player.camera();
+	if (player) {
+		player.camera();
+	}
 
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
@@ -108,8 +109,9 @@ function draw() {
 	levelManager.drawGrid();
 	
 	// Player Calculation
-	player.update(obstacles);
-	
+	if (player) {
+		player.update(obstacles);
+	}
 }
 
 

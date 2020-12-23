@@ -12,7 +12,7 @@ class Player extends GameObject{
 		this.world = world;
 
 		//foot
-		this.foot = Bodies.rectangle(this.x, this.y, 59,10, {isStatic: true});
+		this.foot = Bodies.rectangle(this.x, this.y, this.size.x-1, this.size.y-1, {isStatic: true});
 
 		//cam
 		this.cam = null;
@@ -29,6 +29,9 @@ class Player extends GameObject{
 		// Friction Settings
 		this.body.friction = 0;
 		this.body.frictionAir = 0.1;
+
+		// Mass
+		Body.setMass(this.body, 4);
 	}
 
 
@@ -62,8 +65,9 @@ class Player extends GameObject{
 		rotate(this.body.angle);
 		rect(0, 0,this.size.x, this.size.y);
 
+		/*
 		fill(255,0,0)
-		rect(0, this.size.y/2-5, 60, 10)
+		rect(0, this.size.y/2-5, 10)*/
 	}
 
 
