@@ -27,7 +27,7 @@ let mouseDown = false;
 
 let mapData;
 
-const STEP = 10;
+const STEP = 40;
 
 let scaling = false;
 
@@ -62,6 +62,17 @@ function setup() {
 
 function draw() {
     background(100);
+
+    for(let i = 0; i < width/STEP; i++){
+        for(let j = 0; j < height/STEP; j++){
+            push();
+                noFill()
+                rect(i*STEP, j*STEP, STEP, STEP)
+            pop()
+            
+        }
+    }
+
 
     mx = Math.round(mouseX/STEP)*STEP
     my = Math.round(mouseY/STEP)*STEP
