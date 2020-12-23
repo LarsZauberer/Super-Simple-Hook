@@ -84,9 +84,10 @@ class Menu {
             btn.position(x, y)
             btn.mousePressed(function() {
                 mouseDown = true;
-                mapData.mapData.push({"x": 100/windowWidth*mouseX, "y": 100/windowHeight*mouseY, "sx": 10, "sy": 10, "id": parseInt(btn.value(), 10)})
-                obstacles.push(new objectRegistry[parseInt(btn.value(), 10)](world, mouseX, mouseY, windowWidth/100*10, windowHeight/100*10));
-                this.hide();
+                mapData.mapData.push({"x": 100/windowWidth*mouseX, "y": 50/windowHeight*(mouseY+100), "sx": 10, "sy": 10, "id": parseInt(btn.value(), 10)})
+                obstacles.push(new objectRegistry[parseInt(btn.value(), 10)](world, mouseX-(windowWidth/100*10)/2, (mouseY+100)-(windowWidth/100*10)/2, windowWidth/100*10, windowHeight/100*10));
+                showMenu = false;
+                menu = null;
             });
             this.btns.push(btn);
 
@@ -97,10 +98,5 @@ class Menu {
                 y += 100;
             }
         }
-    }
-
-    hide() {
-        showMenu = false;
-        menu = null;
     }
 }
