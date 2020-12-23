@@ -1,6 +1,3 @@
-// TODO: Fix the MapData Filter Bug
-// TODO: Fix Menu Closing Bug
-// TODO: Fix Unstatic Object Bug
 let player;
 let obstacles = [];
 let unstatics = [];
