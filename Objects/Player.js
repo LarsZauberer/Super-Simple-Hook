@@ -29,9 +29,12 @@ class Player extends GameObject{
 		// Friction Settings
 		this.body.friction = 0;
 		this.body.frictionAir = 0.1;
+		this.foot.friction = 0;
+		this.foot.frictionAir = 0.1;
 
 		// Mass
 		Body.setMass(this.body, 4);
+		Body.setMass(this.foot, 4);
 	}
 
 
