@@ -40,7 +40,7 @@ class MapManager {
                         targets.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
                     }
                     else {
-                        triggers.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
+                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
                     }
                    
                 }
