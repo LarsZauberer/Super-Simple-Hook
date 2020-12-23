@@ -105,7 +105,7 @@ function draw() {
 		targets[i].update();
 	}
 
-
+	levelManager.drawGrid();
 	
 	// Player Calculation
 	player.update(obstacles);
