@@ -20,26 +20,47 @@ class MapManager {
                 World.clear(world);
                 obstacles = [];
                 unstatics = [];
+                targets = [];
                 player = null;
 
-                // Create Objects
-                for (let index = 0; index < map.mapData.length; index++) {
-                    const element = map.mapData[index];
-                    if (element.id == 0) {
-                        // ID Player, create Player
-                        player = new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy);
-                    } else if (element.id == 1){
-                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
-                    }
-                    //unstatic Obstacle. Has own Brackets because organization.
-                    else{
-                        unstatics.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
-                    }
-                   
+                // Create Player
+                player = new Player(world, windowWidth/80*map.player.x, windowHeight/45*map.player.y, windowWidth/80*map.player.sx, windowHeight/45*map.player.sy);
+
+                // Create Obstacles
+                for (let index = 0; index < map.obstacles.length; index++) {
+                    const element = map.obstacles[index];
+                    obstacles.push(new objectRegistry[element.type](world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                }
+
+                // Create Unstatics
+                for (let index = 0; index < map.unstatics.length; index++) {
+                    const element = map.unstatics[index];
+                    unstatics.push(new objectRegistry[element.type](world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                }
+
+                // Create Targets
+                for (let index = 0; index < map.targets.length; index++) {
+                    const element = map.targets[index];
+                    // Position Translation
+                    let x = windowWidth/80*element.x-(windowWidth/80*element.sx)/2;
+                    let y = windowHeight/45*element.y-(windowHeight/45*element.sy)/2;
+                    targets.push(new Target(world, x, y, windowWidth/80*element.sx, windowHeight/45*element.sy));
                 }
             }
         };
         xml.open("GET", this.mapNames[this.loaded], true);
         xml.send();
+    }
+
+    drawGrid() {
+        // Debug Grid
+        // x Stripes
+        for (let index = 0; index < 80; index++) {
+            line(windowWidth/80*index, 0, windowWidth/80*index, windowHeight);
+        }
+        // y Stripes
+        for (let index = 0; index < 45; index++) {
+            line(0, windowHeight/45*index, windowWidth, windowHeight/45*index);
+        }
     }
 }
