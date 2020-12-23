@@ -2,6 +2,7 @@ class UnstaticObstacle extends GameObject{
     constructor(world, x,y,w,h){
         //unstatic
         super(world, x,y,w,h, false);
+        Body.setMass(this.body, 3);
     }
 
     mesh(){
