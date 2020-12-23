@@ -148,6 +148,7 @@ class Player extends GameObject{
 					let collidedObstacle
 					if(this.hook.collidedAny(targets)){
 						collidedObstacle = this.hook.collidedAny(targets, "return")
+						
 					}
 					else{
 						collidedObstacle = this.hook.collidedAny(unstatics, "return")

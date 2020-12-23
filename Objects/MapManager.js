@@ -20,6 +20,7 @@ class MapManager {
                 World.clear(world);
                 obstacles = [];
                 unstatics = [];
+                targets = [];
                 player = null;
 
                 // Create Objects
@@ -32,8 +33,14 @@ class MapManager {
                         obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
                     }
                     //unstatic Obstacle. Has own Brackets because organization.
-                    else{
+                    else if(element.id == 2){
                         unstatics.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy));
+                    }
+                    else if(element.id == 3){
+                        targets.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
+                    }
+                    else {
+                        triggers.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
                     }
                    
                 }

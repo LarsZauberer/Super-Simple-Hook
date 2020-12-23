@@ -4,9 +4,6 @@ class Target extends GameObject {
         super(world, x, y, w, h, true)
     }
 
-    update() {
-        super.update();
-    }
 
     mesh() {
         // Design of the target
