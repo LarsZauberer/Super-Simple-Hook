@@ -85,11 +85,11 @@ function draw() {
 
         } else if (scaling && inRange) {
             // Change Scaling of Object
-            scaleObj(player, 0, translation);
+            scaleObj(player, translation);
 
         } else if (keyIsDown(46) && inRange) {
             // Delete Objects
-            delFromMap(player, 0);
+            delFromMap(player);
             World.remove(world, player.body);
             player = null;
         }
@@ -108,11 +108,11 @@ function draw() {
 
         } else if (scaling && inRange) {
             // Change Scaling of Object
-            scaleObj(element, 0, translation);
+            scaleObj(element, translation);
 
         } else if (keyIsDown(46) && inRange) {
             // Delete Objects
-            delFromMap(element, 0);
+            delFromMap(element);
             World.remove(world, element.body);
             if (element.target) {
                 World.remove(world, element.target.body);
@@ -134,11 +134,11 @@ function draw() {
 
         } else if (scaling && inRange) {
             // Change Scaling of Object
-            scaleObj(element, 0, translation);
+            scaleObj(element, translation);
 
         } else if (keyIsDown(46) && inRange) {
             // Delete Objects
-            delFromMap(element, 0);
+            delFromMap(element);
             World.remove(world, element.body);
             if (element.target) {
                 World.remove(world, element.target.body);
