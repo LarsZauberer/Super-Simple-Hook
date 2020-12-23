@@ -1,8 +1,11 @@
 class Button extends GameObject{
-    constructor(world, x,y,w,h){
+    constructor(world, x,y){
         //unstatic
-        super(world, x,y, 50, 10, true);
-        this.base = Bodies.rectangle(x,y+10, 60, 20, {isStatic: true});
+        let w =80
+        let h = 10;
+
+        super(world, x+w/2,y+h/2, w, h, true);
+        this.base = Bodies.rectangle(x+w/2,y+h/2+5, w+10, h, {isStatic: true});
         World.add(world, this.base)
     }
 
@@ -13,7 +16,7 @@ class Button extends GameObject{
         if(this.triggered()) {fill(0)}
         rect(this.x,this.y,this.size.x,this.size.y);
         pop()
-        rect(this.x, this.y+10, 60, 20)
+        rect(this.x, this.y+5, this.size.x+10,this.size.y)
         
     }
 
