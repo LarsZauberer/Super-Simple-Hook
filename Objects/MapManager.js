@@ -50,9 +50,12 @@ class MapManager {
     }
 
     drawGrid() {
+        // Debug Grid
+        // x Stripes
         for (let index = 0; index < 80; index++) {
             line(windowWidth/80*index, 0, windowWidth/80*index, windowHeight);
         }
+        // y Stripes
         for (let index = 0; index < 45; index++) {
             line(0, windowHeight/45*index, windowWidth, windowHeight/45*index);
         }
