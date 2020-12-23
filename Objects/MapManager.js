@@ -39,8 +39,11 @@ class MapManager {
                     else if(element.id == 3){
                         targets.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
                     }
-                    else {
-                        obstacles.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
+                    else if (element.id == 4) {
+                        triggers.push(new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy))
+                    }
+                    else{
+                        door = new objectRegistry[element.id](world, element.x, element.y, element.sx, element.sy);
                     }
                    
                 }
