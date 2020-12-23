@@ -16,13 +16,19 @@ let unstatics = [];
 let targets = []
 
 let objectRegistry = [
+<<<<<<< HEAD
+=======
+					Player,
+					UnstaticObstacle,
+>>>>>>> main
 					DevObstacle,
-					UnstaticObstacle
 					]
 
 let cam;
 
 let levelManager;
+
+let grid;
 
 
 
@@ -50,24 +56,9 @@ function setup() {
     // World Properties
 	world.gravity.scale = 0.0025;
 
-    // Map
-	//player = new Player(world, 100, 200, 60, 80);
-	
-	/*
-	obstacles.push(new DevObstacle(world, 0, height - 20, width, 20, 10));
-	obstacles.push(new DevObstacle(world, 200, height-100, 100, 80, 10));
-	obstacles.push(new DevObstacle(world, 400, height-200, 200, 180, 10));
-	obstacles.push(new DevObstacle(world, 500, height-500, 200, 100));
-	obstacles.push(new UnstaticObstacle(world, 300, height - 200, 60, 60));
-	*/
-
-
-
-	// Camera
-	
-
 	// Level Manager
 	levelManager = new MapManager([
+<<<<<<< HEAD
 									"dev_map2.json",
 								  ]);
 
@@ -76,6 +67,11 @@ function setup() {
 
 	
 	
+=======
+									"percentDev.json",
+									"dev_map.json",
+								  ]);
+>>>>>>> main
 }
 
 

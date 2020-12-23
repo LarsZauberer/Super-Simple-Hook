@@ -68,9 +68,15 @@ class Player extends GameObject{
 		rotate(this.body.angle);
 		rect(0, 0,this.size.x, this.size.y);
 
+<<<<<<< HEAD
 		/*
 		fill(255,0,0)
 		rect(0, this.size.y/2-5, 10)*/
+=======
+		// Foot
+		/*fill(255, 0, 0)
+		rect(0, this.size.y/2-5, this.size.x-1, 10);*/
+>>>>>>> main
 	}
 
 
