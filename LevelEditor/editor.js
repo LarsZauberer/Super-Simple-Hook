@@ -87,6 +87,7 @@ class Menu {
                 mapData.mapData.push({"x": 100/windowWidth*mouseX, "y": 50/windowHeight*(mouseY+100), "sx": 10, "sy": 10, "id": parseInt(btn.value(), 10)})
                 obstacles.push(new objectRegistry[parseInt(btn.value(), 10)](world, mouseX-(windowWidth/100*10)/2, (mouseY+100)-(windowWidth/100*10)/2, windowWidth/100*10, windowHeight/100*10));
                 showMenu = false;
+                clearButtons();
                 menu = null;
             });
             this.btns.push(btn);
@@ -97,6 +98,15 @@ class Menu {
                 x = 10;
                 y += 100;
             }
+        }
+    }
+}
+
+function clearButtons() {
+    if (menu) {
+        for (let index = 0; index < menu.btns.length; index++) {
+            const element = menu.btns[index];
+            element.remove()
         }
     }
 }
