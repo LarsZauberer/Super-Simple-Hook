@@ -1,8 +1,7 @@
 class Obstacle extends GameObject {
 	constructor(world, x, y, w, h, gs=10) {
 		// Position Calculation
-		x = x+w/2;
-		y = y+h/2;
+	
 
 		super(world, x, y, w, h, true);
 

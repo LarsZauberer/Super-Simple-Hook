@@ -1,6 +1,8 @@
 class DevObstacle extends Obstacle {
     constructor(world, x, y, sx, sy, st) {
         // Constructor
+        
+
         super(world, x, y, sx, sy, st, );
 
         // Target creation

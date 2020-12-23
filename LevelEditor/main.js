@@ -27,12 +27,35 @@ let mouseDown = false;
 
 let mapData;
 
-const STEP = 40;
+const step = 40;
 
 let scaling = false;
 
 let showMenu = false;
 let menu;
+
+let checkbox
+
+
+let checked = 0;
+
+let getsEdit = {
+    obstacles: [],
+    unstatics: []
+} 
+
+/*
+Erklärung:
+
+Box auswählen
+mit Maus auf Map platzieren
+WASD: Objekt nachträglich verschieben
+up/down/left/right: grösse verändern
+Enter: editieren beenden
+
+
+*/ 
+
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -54,162 +77,108 @@ function setup() {
     // World Properties
 	world.gravity.scale = 0;
 
-    mapEngine = new MapManager(["../percentDev.json"]);
-    mapEngine.load()
+    
 
     translation = createVector(0, 0, 0)
+
+    checkbox = createCheckbox('obstacle', false);
+  checkbox.changed(canObjectPlace);
+  checkbox.position(100,10)
 }
+
+function canObjectPlace() {
+  if (this.checked) {
+    checked = 1;
+  }
+  else{
+      checked = 0;
+  }
+}
+
 
 function draw() {
     background(100);
+    
 
-    for(let i = 0; i < width/STEP; i++){
-        for(let j = 0; j < height/STEP; j++){
+    for(let i = 0; i < width/step; i++){
+        for(let j = 0; j < height/step; j++){
             push();
                 noFill()
-                rect(i*STEP, j*STEP, STEP, STEP)
+                rect(i*step, j*step, step, step)
             pop()
             
         }
     }
 
+    rect(width/2,20,width,40)
 
-    mx = Math.round(mouseX/STEP)*STEP
-    my = Math.round(mouseY/STEP)*STEP
-
-    if (showMenu) {
-        return;
+    for(let i = 0; i < obstacles.length; i++){
+        obstacles[i].update();
     }
 
-    // Player Calculation
-    if (player) {
-        player.update(obstacles);
 
-        let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
 
-        if (mouseDown && inRange) {
-            // Change Location
-            loc(player, mx, my);
-
-        } else if (scaling && inRange) {
-            // Change Scaling of Object
-            scaleObj(player, translation);
-
-        } else if (keyIsDown(46) && inRange) {
-            // Delete Objects
-            delFromMap(player);
-            World.remove(world, player.body);
-            player = null;
-        }
-	}
-
-	// Obstacle Calculation
-	for (let i = 0; i < obstacles.length; i++) {
-        const element = obstacles[i];
-        element.update();
-
-        let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
-
-        if (mouseDown && inRange) {
-            // Change Location
-            loc(element, mx, my);
-
-        } else if (scaling && inRange) {
-            // Change Scaling of Object
-            scaleObj(element, translation);
-
-        } else if (keyIsDown(46) && inRange) {
-            // Delete Objects
-            delFromMap(element);
-            World.remove(world, element.body);
-            if (element.target) {
-                World.remove(world, element.target.body);
-            }
-            obstacles.splice(i, 1);
-        }
-	}
-
-	// unstatic Obstacles Calculations
-	for (let i = 0; i < unstatics.length; i++) {
-        const element = unstatics[i];
-        unstatics[i].update();
-        
-        let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
-
-        if (mouseDown && inRange) {
-            // Change Location
-            loc(element, mx, my);
-
-        } else if (scaling && inRange) {
-            // Change Scaling of Object
-            scaleObj(element, translation);
-
-        } else if (keyIsDown(46) && inRange) {
-            // Delete Objects
-            delFromMap(element);
-            World.remove(world, element.body);
-            if (element.target) {
-                World.remove(world, element.target.body);
-            }
-            obstacles.splice(i, 1);
-        }
+    for(let i = 0; i < getsEdit.obstacles.length; i++){
+        if(getsEdit.obstacles[i]){
+            obstacles[i] = edit(obstacles[i])
+            if(keyIsDown(13)){getsEdit.obstacles[i] = false;}
+            
+        } 
     }
+   
 }
 
-function keyPressed() {
-    // TODO: KeyIsPressed
-    switch (keyCode) {
-        case 39:
-            // Right
-            translation.x -= STEP;
-            break;
-        case 37:
-            // Left
-            translation.x += STEP;
-            break;
-        case 38:
-            // Up
-            translation.y += STEP;
-            break;
-        case 40:
-            // Down
-            translation.y -= STEP;
-            break;
-        case 17:
-            // Control (Scaling)
-            scaling = true;
-            break;
-        case 81:
-            // q (Saving)
-            console.log(mapData)
-            let a = document.createElement("a");
-            let d = JSON.stringify(mapData)
-            let file = new Blob([d], {type: "txt"});
-            a.href = URL.createObjectURL(file);
-            a.download = "percentDev.json";
-            a.click();
-            break;
-        case 27:
-            // Show and Hide Menu
-            if (showMenu) {
-                showMenu = false;
-                menu = null;
-            } else {
-                showMenu = true;
-                menu = new Menu();
-                menu.generate();
-            }
-    }
-}
 
-function keyReleased() {
-    if (keyCode === 17) scaling = false;
-}
 
 function mousePressed() {
     mouseDown = true;
+    let placePos = createVector(Math.round(mouseX/step), Math.round(mouseY/step))
+
+
+    if(mouseY > 40){
+        if (checked == 1 && !getsEdit.obstacles[getsEdit.obstacles.length-1]) {
+            obstacles.push(new DevObstacle(world,placePos.x*step,placePos.y*step,step,step))
+            getsEdit.obstacles.push(true)
+
+        }
+    } 
 }
 
-function mouseReleased() {
-    mouseDown = false;
+function edit(object){
+    if(frameCount % 10 == 0){
+        if(keyIsDown(68)){
+            object.x += step
+        }
+        if(keyIsDown(65) ){
+            object.x -= step
+        }
+        if(keyIsDown(83)){
+            object.y += step
+        }
+        if(keyIsDown(87)){
+            object.y -= step
+        }
+
+        if(keyIsDown(39)){
+            object.x+=step/2
+            object.size.x += step
+        }
+        if(keyIsDown(37)){
+            object.x-=step/2
+            object.size.x -= step
+        }
+        if(keyIsDown(40)){
+            object.y+=step/2
+            object.size.y += step
+        }
+        if(keyIsDown(38)){
+            object.y-=step/2
+            object.size.y -= step
+        }
+    }
+    World.remove(world, object.body)
+    return new DevObstacle(world, object.x, object.y, object.size.x, object.size.y)
+
 }
+
+
