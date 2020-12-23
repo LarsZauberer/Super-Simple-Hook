@@ -73,6 +73,7 @@ function draw() {
         return;
     }
 
+    // Player Calculation
     if (player) {
         player.update(obstacles);
 
@@ -80,7 +81,7 @@ function draw() {
 
         if (mouseDown && inRange) {
             // Change Location
-            loc(player, 0, mx, my);
+            loc(player, mx, my);
 
         } else if (scaling && inRange) {
             // Change Scaling of Object
@@ -129,7 +130,7 @@ function draw() {
 
         if (mouseDown && inRange) {
             // Change Location
-            loc(element, 0, mx, my);
+            loc(element, mx, my);
 
         } else if (scaling && inRange) {
             // Change Scaling of Object
