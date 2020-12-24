@@ -21,19 +21,10 @@ let Engine = Matter.Engine,
 let engine;
 let world;
 
-let translation;
-
 let mouseDown;
 let mouseUp;
 
 let mapData;
-
-const STEP = 40;
-
-let scaling = false;
-
-let showMenu = false;
-let menu;
 
 let targetDrawing = false;
 
@@ -65,17 +56,15 @@ function setup() {
 function draw() {
     background(100);
 
+    // Debug Grid
     mapEngine.drawGrid();
-
-    if (showMenu) {
-        return;
-    }
 
     // Player Calculation
     if (player) {
         player.update(obstacles);
         player.camera();
 
+        // Delete Object if in range and button pressed
         let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
         if (inRange && keyIsDown(46)) {
             player = null;
@@ -107,6 +96,7 @@ function draw() {
     }
 
     if (mouseUp) {
+        // Drawing
         obstacleDraw(mouseDown, mouseUp, targetDrawing);
     }
 }
@@ -138,16 +128,19 @@ function keyPressed() {
 }
 
 function keyReleased() {
+    // Should draw target or not
     if (keyCode === 17) targetDrawing = false;
 }
 
 function mousePressed() {
+    // First Position of the Obstacle/Target
     let mx = Math.trunc(mouseX/(windowWidth/80))*(windowWidth/80);
     let my = Math.trunc(mouseY/(windowHeight/45))*(windowHeight/45);
     mouseDown = createVector(mx, my, 0);
 }
 
 function mouseReleased() {
+    // Second Position of the Obstacle/Target
     let mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
     let my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
     mouseUp = createVector(mx, my, 0);
