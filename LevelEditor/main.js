@@ -85,6 +85,10 @@ function draw() {
         element.update();
 
         let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
+        if (inRange && keyIsDown(46)) {
+            obstacles.splice(i, 1);
+            mapData.obstacles.splice(i, 1);
+        }
 	}
 
 	// unstatic Obstacles Calculations
