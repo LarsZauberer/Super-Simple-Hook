@@ -22,12 +22,14 @@ function obstacleDraw(pos1, pos2, target) {
         }
     }
 
+    // Reset positions
     mouseDown = null;
     mouseUp = null;
 }
 
 
 function deleteObject(index, category, mapCategory) {
+    // Delete an object
     let inRange = dist(category[index].x, category[index].y, mouseX, mouseY) < 50
     if (inRange && keyIsDown(46)) {
         category.splice(index, 1);
@@ -37,11 +39,13 @@ function deleteObject(index, category, mapCategory) {
 
 
 function spawnObject(id, group, mapGroup, sx, sy) {
+    // Spawn an object
     group.push(new objectRegistry[id](world, mouseX, mouseY, windowWidth/80*sx, windowHeight/45*sy));
     mapGroup.push({"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": sx, "sy": sy, "type": id});
 }
 
 function spawnPlayer() {
+    // Spawn a player
     player = new Player(world, mouseX, mouseY, windowWidth/80*2, windowHeight/45*4);
     mapData.player = {"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": 2, "sy": 4};
 }

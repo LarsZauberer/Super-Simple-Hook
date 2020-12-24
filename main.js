@@ -54,8 +54,8 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"dev_map2.json",
 									"percentDev.json",
+									"dev_map2.json",
 								  ]);
 
 
@@ -92,8 +92,6 @@ function draw() {
 	for (let i = 0; i < targets.length; i++) {
 		targets[i].update();
 	}
-
-	levelManager.drawGrid();
 	
 	// Player Calculation
 	if (player) {
