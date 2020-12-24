@@ -1,4 +1,4 @@
-function obstacleDraw(pos1, pos2) {
+function obstacleDraw(pos1, pos2, target) {
     // Draw an Obstacle on the grid
     // Check if the obstacle already exists
     let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
@@ -13,8 +13,13 @@ function obstacleDraw(pos1, pos2) {
 
     // Create a new obstacle if it doesn't exist
     if (found == false) {
-        obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
-        mapData.obstacles.push({"x": 80/windowWidth*pos1.x, "y": 45/windowHeight*pos1.y, "sx": 80/windowWidth*size.x, "sy": 45/windowHeight*size.y, "type": 0});
+        if (target) {
+            targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
+            mapData.targets.push({"x": 80/windowWidth*pos1.x, "y": 45/windowHeight*pos1.y, "sx": 80/windowWidth*size.x, "sy": 45/windowHeight*size.y});
+        } else {
+            obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
+            mapData.obstacles.push({"x": 80/windowWidth*pos1.x, "y": 45/windowHeight*pos1.y, "sx": 80/windowWidth*size.x, "sy": 45/windowHeight*size.y, "type": 0});
+        }
     }
 
     mouseDown = null;
