@@ -28,6 +28,8 @@ let mapData;
 
 let targetDrawing = false;
 
+let mapName;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 	rectMode(CENTER);
@@ -46,9 +48,15 @@ function setup() {
 	Engine.run(engine);
 
     // World Properties
-	world.gravity.scale = 0;
+    world.gravity.scale = 0;
 
-    mapEngine = new MapManager(["../percentDev.json"]);
+    mapName = prompt("Map Name");
+
+    if (mapName.indexOf(".json") == -1) {
+        mapName = "../" + mapName + ".json"
+    }
+
+    mapEngine = new MapManager([mapName]);
 
     translation = createVector(0, 0, 0)
 }
@@ -113,7 +121,7 @@ function keyPressed() {
             let d = JSON.stringify(mapData)
             let file = new Blob([d], {type: "txt"});
             a.href = URL.createObjectURL(file);
-            a.download = "percentDev.json";
+            a.download = mapName.split("../")[1];
             a.click();
             break;
         case 80:
