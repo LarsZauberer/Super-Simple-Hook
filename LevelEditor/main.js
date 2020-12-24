@@ -76,7 +76,6 @@ function draw() {
         player.update(obstacles);
         player.camera();
 
-        let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
 	}
 
 	// Obstacle Calculation
@@ -84,11 +83,7 @@ function draw() {
         const element = obstacles[i];
         element.update();
 
-        let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
-        if (inRange && keyIsDown(46)) {
-            obstacles.splice(i, 1);
-            mapData.obstacles.splice(i, 1);
-        }
+        deleteObject(i, obstacles, mapData.obstacles);
 	}
 
 	// unstatic Obstacles Calculations

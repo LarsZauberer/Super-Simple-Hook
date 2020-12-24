@@ -25,3 +25,12 @@ function obstacleDraw(pos1, pos2, target) {
     mouseDown = null;
     mouseUp = null;
 }
+
+
+function deleteObject(index, category, mapCategory) {
+    let inRange = dist(category[index].x, category[index].y, mouseX, mouseY) < 50
+    if (inRange && keyIsDown(46)) {
+        category.splice(index, 1);
+        mapCategory.splice(index, 1);
+    }
+}
