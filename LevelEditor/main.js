@@ -127,7 +127,12 @@ function keyPressed() {
             a.click();
             break;
         case 80:
+            // Spawn Player
             spawnPlayer();
+            break;
+        case 49:
+            // Spawn Unstatic
+            spawnObject(1, unstatics, mapData.unstatics, 2, 2)
             break;
     }
 }
