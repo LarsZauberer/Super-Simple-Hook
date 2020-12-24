@@ -1,12 +1,12 @@
 let player;
 let obstacles = [];
 let unstatics = [];
+let targets = [];
 
 let objectRegistry = [
-					Player,
-					UnstaticObstacle,
-					DevObstacle,
-                    ]
+                      DevObstacle,
+                      UnstaticObstacle,
+                     ]
 
 let mapEngine;
 
@@ -54,8 +54,7 @@ function setup() {
     // World Properties
 	world.gravity.scale = 0;
 
-    mapEngine = new MapManager(["../percentDev.json"]);
-    mapEngine.load()
+    mapEngine = new MapManager(["../dev_map2.json"]);
 
     translation = createVector(0, 0, 0)
 }
@@ -63,15 +62,7 @@ function setup() {
 function draw() {
     background(100);
 
-    for(let i = 0; i < width/STEP; i++){
-        for(let j = 0; j < height/STEP; j++){
-            push();
-                noFill()
-                rect(i*STEP, j*STEP, STEP, STEP)
-            pop()
-            
-        }
-    }
+    mapEngine.drawGrid();
 
 
     mx = Math.round(mouseX/STEP)*STEP
@@ -84,23 +75,9 @@ function draw() {
     // Player Calculation
     if (player) {
         player.update(obstacles);
+        player.camera();
 
         let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
-
-        if (mouseDown && inRange) {
-            // Change Location
-            loc(player, mx, my);
-
-        } else if (scaling && inRange) {
-            // Change Scaling of Object
-            scaleObj(player, translation);
-
-        } else if (keyIsDown(46) && inRange) {
-            // Delete Objects
-            delFromMap(player);
-            World.remove(world, player.body);
-            player = null;
-        }
 	}
 
 	// Obstacle Calculation
@@ -109,24 +86,6 @@ function draw() {
         element.update();
 
         let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
-
-        if (mouseDown && inRange) {
-            // Change Location
-            loc(element, mx, my);
-
-        } else if (scaling && inRange) {
-            // Change Scaling of Object
-            scaleObj(element, translation);
-
-        } else if (keyIsDown(46) && inRange) {
-            // Delete Objects
-            delFromMap(element);
-            World.remove(world, element.body);
-            if (element.target) {
-                World.remove(world, element.target.body);
-            }
-            obstacles.splice(i, 1);
-        }
 	}
 
 	// unstatic Obstacles Calculations
@@ -135,25 +94,12 @@ function draw() {
         unstatics[i].update();
         
         let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
-
-        if (mouseDown && inRange) {
-            // Change Location
-            loc(element, mx, my);
-
-        } else if (scaling && inRange) {
-            // Change Scaling of Object
-            scaleObj(element, translation);
-
-        } else if (keyIsDown(46) && inRange) {
-            // Delete Objects
-            delFromMap(element);
-            World.remove(world, element.body);
-            if (element.target) {
-                World.remove(world, element.target.body);
-            }
-            obstacles.splice(i, 1);
-        }
     }
+
+    // Targets Calculations
+    for (let i = 0; i < targets.length; i++) {
+		targets[i].update();
+	}
 }
 
 function keyPressed() {

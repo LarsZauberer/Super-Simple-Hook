@@ -16,6 +16,12 @@ class MapManager {
                 // Load Json
                 let map = JSON.parse(this.responseText);
 
+                try {
+                    mapData = map;
+                } catch (error) {
+                    
+                }
+
                 // Reset the world
                 World.clear(world);
                 obstacles = [];
