@@ -55,7 +55,7 @@ function setup() {
     // World Properties
 	world.gravity.scale = 0;
 
-    mapEngine = new MapManager(["../dev_map2.json"]);
+    mapEngine = new MapManager(["../percentDev.json"]);
 
     translation = createVector(0, 0, 0)
 }
