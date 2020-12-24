@@ -23,7 +23,8 @@ let world;
 
 let translation;
 
-let mouseDown = false;
+let mouseDown;
+let mouseUp;
 
 let mapData;
 
@@ -65,8 +66,8 @@ function draw() {
     mapEngine.drawGrid();
 
 
-    mx = Math.round(mouseX/STEP)*STEP
-    my = Math.round(mouseY/STEP)*STEP
+    mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
+    my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
 
     if (showMenu) {
         return;
@@ -99,7 +100,11 @@ function draw() {
     // Targets Calculations
     for (let i = 0; i < targets.length; i++) {
 		targets[i].update();
-	}
+    }
+
+    if (mouseDown) {
+        obstacleDraw(mouseDown.x, mouseDown.y);
+    }
 }
 
 function keyPressed() {
@@ -153,9 +158,14 @@ function keyReleased() {
 }
 
 function mousePressed() {
-    mouseDown = true;
+    mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
+    my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
+    mouseDown = createVector(mx, my, 0);
 }
 
 function mouseReleased() {
-    mouseDown = false;
+    mouseDown = null;
+    mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
+    my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
+    mouseUp = createVector(mx, my, 0);
 }

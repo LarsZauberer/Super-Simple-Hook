@@ -55,6 +55,7 @@ function setup() {
 	// Level Manager
 	levelManager = new MapManager([
 									"dev_map2.json",
+									"percentDev.json",
 								  ]);
 
 
