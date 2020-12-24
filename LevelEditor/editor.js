@@ -1,7 +1,7 @@
 function obstacleDraw(pos1, pos2) {
     // Draw an Obstacle on the grid
     // Check if the obstacle already exists
-    let size = createVector(abs(pos1.x-pos2.x), abs(pos1.y-pos2.y));
+    let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
 
     let found = false;
     for (let index = 0; index < obstacles.length; index++) {
