@@ -37,7 +37,7 @@ function deleteObject(index, category, mapCategory) {
 
 
 function spawnObject(id, group, mapGroup, sx, sy) {
-    group.push(new objectRegistry[id](world, mouseX, mouseY, sx, sy));
+    group.push(new objectRegistry[id](world, mouseX, mouseY, windowWidth/80*sx, windowHeight/45*sy));
     mapGroup.push({"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": sx, "sy": sy, "type": id});
 }
 
