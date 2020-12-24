@@ -76,6 +76,11 @@ function draw() {
         player.update(obstacles);
         player.camera();
 
+        let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
+        if (inRange && keyIsDown(46)) {
+            player = null;
+            mapData.player = null;
+        }
 	}
 
 	// Obstacle Calculation
