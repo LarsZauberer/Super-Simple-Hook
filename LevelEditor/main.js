@@ -65,10 +65,6 @@ function draw() {
 
     mapEngine.drawGrid();
 
-
-    mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
-    my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
-
     if (showMenu) {
         return;
     }
@@ -158,13 +154,13 @@ function keyReleased() {
 }
 
 function mousePressed() {
-    mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
-    my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
+    let mx = Math.trunc(mouseX/(windowWidth/80))*(windowWidth/80);
+    let my = Math.trunc(mouseY/(windowHeight/45))*(windowHeight/45);
     mouseDown = createVector(mx, my, 0);
 }
 
 function mouseReleased() {
-    mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
-    my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
+    let mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
+    let my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
     mouseUp = createVector(mx, my, 0);
 }
