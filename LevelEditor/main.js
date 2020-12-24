@@ -102,8 +102,8 @@ function draw() {
 		targets[i].update();
     }
 
-    if (mouseDown) {
-        obstacleDraw(mouseDown.x, mouseDown.y);
+    if (mouseUp) {
+        obstacleDraw(mouseDown, mouseUp);
     }
 }
 
@@ -164,7 +164,6 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-    mouseDown = null;
     mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
     my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
     mouseUp = createVector(mx, my, 0);
