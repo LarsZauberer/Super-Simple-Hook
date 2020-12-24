@@ -34,3 +34,14 @@ function deleteObject(index, category, mapCategory) {
         mapCategory.splice(index, 1);
     }
 }
+
+
+function spawnObject(id, group, mapGroup, sx, sy) {
+    group.push(new objectRegistry[id](world, mouseX, mouseY, sx, sy));
+    mapGroup.push({"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": sx, "sy": sy, "type": id});
+}
+
+function spawnPlayer() {
+    player = new Player(world, mouseX, mouseY, windowWidth/80*2, windowHeight/45*4);
+    mapData.player = {"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": 2, "sy": 4};
+}
