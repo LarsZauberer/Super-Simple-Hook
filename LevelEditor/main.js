@@ -126,6 +126,9 @@ function keyPressed() {
             a.download = "percentDev.json";
             a.click();
             break;
+        case 80:
+            spawnPlayer();
+            break;
     }
 }
 
