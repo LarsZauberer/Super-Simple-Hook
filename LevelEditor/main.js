@@ -96,12 +96,14 @@ function draw() {
         const element = unstatics[i];
         unstatics[i].update();
         
-        let inRange = dist(element.x, element.y, mouseX, mouseY) < 50
+        deleteObject(i, unstatics, mapData.unstatics);
     }
 
     // Targets Calculations
     for (let i = 0; i < targets.length; i++) {
-		targets[i].update();
+        targets[i].update();
+
+        deleteObject(i, targets, mapData.targets);
     }
 
     if (mouseUp) {
