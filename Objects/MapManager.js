@@ -47,10 +47,7 @@ class MapManager {
                 // Create Targets
                 for (let index = 0; index < map.targets.length; index++) {
                     const element = map.targets[index];
-                    // Position Translation
-                    let x = windowWidth/80*element.x-(windowWidth/80*element.sx)/2;
-                    let y = windowHeight/45*element.y-(windowHeight/45*element.sy)/2;
-                    targets.push(new Target(world, x, y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                    targets.push(new Target(world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
                 }
             }
         };

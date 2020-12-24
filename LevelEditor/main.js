@@ -35,6 +35,8 @@ let scaling = false;
 let showMenu = false;
 let menu;
 
+let targetDrawing = false;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 	rectMode(CENTER);
@@ -99,32 +101,14 @@ function draw() {
     }
 
     if (mouseUp) {
-        obstacleDraw(mouseDown, mouseUp);
+        obstacleDraw(mouseDown, mouseUp, targetDrawing);
     }
 }
 
 function keyPressed() {
-    // TODO: KeyIsPressed
     switch (keyCode) {
-        case 39:
-            // Right
-            translation.x -= STEP;
-            break;
-        case 37:
-            // Left
-            translation.x += STEP;
-            break;
-        case 38:
-            // Up
-            translation.y += STEP;
-            break;
-        case 40:
-            // Down
-            translation.y -= STEP;
-            break;
         case 17:
-            // Control (Scaling)
-            scaling = true;
+            targetDrawing = true;
             break;
         case 81:
             // q (Saving)
@@ -136,21 +120,11 @@ function keyPressed() {
             a.download = "percentDev.json";
             a.click();
             break;
-        case 27:
-            // Show and Hide Menu
-            if (showMenu) {
-                showMenu = false;
-                menu = null;
-            } else {
-                showMenu = true;
-                menu = new Menu();
-                menu.generate();
-            }
     }
 }
 
 function keyReleased() {
-    if (keyCode === 17) scaling = false;
+    if (keyCode === 17) targetDrawing = false;
 }
 
 function mousePressed() {
