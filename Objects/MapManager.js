@@ -51,7 +51,11 @@ class MapManager {
                 }
 
                 // Load Music for the map:
-                soundmanager.play(map.soundtrack);
+                try {
+                    soundmanager.play(map.soundtrack);
+                } catch (error) {
+                    
+                }
             }
         };
         xml.open("GET", this.mapNames[this.loaded], true);
