@@ -49,6 +49,9 @@ class MapManager {
                     const element = map.targets[index];
                     targets.push(new Target(world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
                 }
+
+                // Load Music for the map:
+                soundmanager.play(map.soundtrack);
             }
         };
         xml.open("GET", this.mapNames[this.loaded], true);
