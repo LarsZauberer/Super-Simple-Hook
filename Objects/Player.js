@@ -118,6 +118,9 @@ class Player extends GameObject{
 			if(keyIsPressed && key == "c"){
 				hookWillDelete = true;
 			}
+			if(this.hook.playerGetsPulled && !this.hook.twoHookMode && this.specificCollide(this.body, this.hook.body)){
+				hookWillDelete = true;
+			}
 			
 
 			if(this.hook.hookTwo){
