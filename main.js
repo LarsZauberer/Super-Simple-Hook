@@ -68,8 +68,6 @@ function setup() {
 
 
 	targets.push(new Target(world, 600, 95, 100, 10))
-
-	soundmanager.play("Assets/music/Try and Solve This Loop.wav");
 	
 }
 
