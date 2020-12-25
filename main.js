@@ -26,6 +26,14 @@ let levelManager;
 
 let grid;
 
+let soundmanager;
+
+
+function preload() {
+	soundmanager = new Sound([
+		"Assets/music/Try and Solve This Loop.wav"
+	]);
+}
 
 
 function setup() {
@@ -61,7 +69,7 @@ function setup() {
 
 	targets.push(new Target(world, 600, 95, 100, 10))
 
-	
+	soundmanager.play("Assets/music/Try and Solve This Loop.wav");
 	
 }
 
