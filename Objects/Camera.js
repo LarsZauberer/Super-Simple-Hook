@@ -13,8 +13,8 @@ class Camera {
             this.x = -(this.player.x-width/2);
         }
 
-        if(this.player.y < height/3){
-            this.y = -this.player.y + height/3
+        if(this.player.y < height/4){
+            this.y = -this.player.y + height/4
         }
         // Translate Screen
         translate(this.x, this.y);

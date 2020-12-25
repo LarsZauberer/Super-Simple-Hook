@@ -9,6 +9,18 @@ class Button extends GameObject{
         World.add(world, this.base)
     }
 
+    update(){
+        if(player.hook){
+            let collision = Matter.SAT.collides(this.body, player.hook.body);
+            if (collision.collided) {
+                player.hook.delete(world)
+            }
+        }
+
+        this.mesh();
+    }
+
+
     mesh(){
         
         fill(255)
