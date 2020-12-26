@@ -40,7 +40,7 @@ function setup() {
     /* Setting everything up
     */
     // P5JS Settings
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(windowHeight/9*16, windowHeight);
 	background(100);
 	rectMode(CENTER);
 	angleMode(DEGREES)
