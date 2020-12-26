@@ -61,8 +61,32 @@ function setup() {
     translation = createVector(0, 0, 0)
 }
 
+
+let cameraX = 0;
+let cameraY = 0;
+
 function draw() {
     background(100);
+
+    //right
+    if(keyIsDown(39)){
+        cameraX-=2
+    }
+    //left
+    if(keyIsDown(37)){
+        cameraX+=2
+    }
+    //down
+    if(keyIsDown(40)){
+        cameraY-=2
+    }
+    //up
+    if(keyIsDown(38)){
+        cameraY+=2
+    }
+    translate(cameraX,cameraY)
+    
+
 
     // Debug Grid
     mapEngine.drawGrid();
@@ -73,7 +97,7 @@ function draw() {
         player.camera();
 
         // Delete Object if in range and button pressed
-        let inRange = dist(player.x, player.y, mouseX, mouseY) < 50
+        let inRange = dist(player.x, player.y, mouseX-cameraX, mouseY-cameraY) < 50
         if (inRange && keyIsDown(46)) {
             player = null;
             mapData.player = null;
@@ -87,7 +111,6 @@ function draw() {
 
         deleteObject(i, obstacles, mapData.obstacles);
 	}
-
 	// unstatic Obstacles Calculations
 	for (let i = 0; i < unstatics.length; i++) {
         const element = unstatics[i];
@@ -95,18 +118,20 @@ function draw() {
         
         deleteObject(i, unstatics, mapData.unstatics);
     }
-
     // Targets Calculations
     for (let i = 0; i < targets.length; i++) {
         targets[i].update();
-
         deleteObject(i, targets, mapData.targets);
     }
+    
 
     if (mouseUp) {
         // Drawing
         obstacleDraw(mouseDown, mouseUp, targetDrawing);
     }
+
+
+
 }
 
 function keyPressed() {
@@ -142,14 +167,14 @@ function keyReleased() {
 
 function mousePressed() {
     // First Position of the Obstacle/Target
-    let mx = Math.trunc(mouseX/(width/32))*(width/32);
-    let my = Math.trunc(mouseY/(height/18))*(height/18);
+    let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
+    let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
     mouseDown = createVector(mx, my, 0);
 }
 
 function mouseReleased() {
     // Second Position of the Obstacle/Target
-    let mx = Math.round(mouseX/(width/32))*(width/32);
-    let my = Math.round(mouseY/(height/18))*(height/18);
+    let mx = Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32);
+    let my = Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18);
     mouseUp = createVector(mx, my, 0);
 }

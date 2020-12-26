@@ -30,7 +30,7 @@ function obstacleDraw(pos1, pos2, target) {
 
 function deleteObject(index, category, mapCategory) {
     // Delete an object
-    let inRange = dist(category[index].x, category[index].y, mouseX, mouseY) < 50
+    let inRange = dist(category[index].x, category[index].y, mouseX-cameraX, mouseY-cameraY) < 50
     if (inRange && keyIsDown(46)) {
         category.splice(index, 1);
         mapCategory.splice(index, 1);
@@ -40,12 +40,12 @@ function deleteObject(index, category, mapCategory) {
 
 function spawnObject(id, group, mapGroup, sx, sy) {
     // Spawn an object
-    group.push(new objectRegistry[id](world, mouseX, mouseY, width/32*sx, height/18*sy));
-    mapGroup.push({"x": 32/width*mouseX, "y": 18/height*mouseY, "sx": sx, "sy": sy, "type": id});
+    group.push(new objectRegistry[id](world, mouseX-cameraX, mouseY-cameraY, width/32*sx, height/18*sy));
+    mapGroup.push({"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": sx, "sy": sy, "type": id});
 }
 
 function spawnPlayer() {
     // Spawn a player
-    player = new Player(world, mouseX, mouseY, width/32*2, height/18*4);
-    mapData.player = {"x": 32/width*mouseX, "y": 18/height*mouseY, "sx": 2, "sy": 4};
+    player = new Player(world, mouseX-cameraX, mouseY-cameraY, width/32*2, height/18*3);
+    mapData.player = {"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": 2, "sy": 3};
 }
