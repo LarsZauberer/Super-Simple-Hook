@@ -35,7 +35,7 @@ class MapManager {
                 // Create Obstacles
                 for (let index = 0; index < map.obstacles.length; index++) {
                     const element = map.obstacles[index];
-                    obstacles.push(new DevObstacle(world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy, true, 0));
+                    obstacles.push(new DevObstacle(world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy, true, element.tileNum));
                 }
 
                 // Create Unstatics
