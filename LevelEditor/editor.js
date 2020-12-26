@@ -46,6 +46,6 @@ function spawnObject(id, group, mapGroup, sx, sy) {
 
 function spawnPlayer() {
     // Spawn a player
-    player = new Player(world, mouseX, mouseY, width/tw*2, height/th*4);
-    mapData.player = {"x": tw/width*mouseX, "y": th/height*mouseY, "sx": 2, "sy": 4};
+    player = new Player(world, mouseX, mouseY, width/tw*1, height/th*2);
+    mapData.player = {"x": tw/width*mouseX, "y": th/height*mouseY, "sx": 1, "sy": 2};
 }
