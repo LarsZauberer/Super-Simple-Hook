@@ -43,8 +43,8 @@ function setup() {
         element: document.body,
         engine: engine,
         options: {
-            width: windowWidth,
-            height: windowHeight,
+            width: width,
+            height: height,
         },
     });
 	world = engine.world;
@@ -145,14 +145,14 @@ function keyReleased() {
 
 function mousePressed() {
     // First Position of the Obstacle/Target
-    let mx = Math.trunc(mouseX/(windowWidth/80))*(windowWidth/80);
-    let my = Math.trunc(mouseY/(windowHeight/45))*(windowHeight/45);
+    let mx = Math.trunc(mouseX/(width/tw))*(width/tw);
+    let my = Math.trunc(mouseY/(height/th))*(height/th);
     mouseDown = createVector(mx, my, 0);
 }
 
 function mouseReleased() {
     // Second Position of the Obstacle/Target
-    let mx = Math.round(mouseX/(windowWidth/80))*(windowWidth/80);
-    let my = Math.round(mouseY/(windowHeight/45))*(windowHeight/45);
+    let mx = Math.round(mouseX/(width/tw))*(width/tw);
+    let my = Math.round(mouseY/(height/th))*(height/th);
     mouseUp = createVector(mx, my, 0);
 }

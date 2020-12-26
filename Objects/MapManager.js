@@ -30,24 +30,24 @@ class MapManager {
                 player = null;
 
                 // Create Player
-                player = new Player(world, windowWidth/tw*map.player.x, windowHeight/th*map.player.y, windowWidth/tw*map.player.sx, windowHeight/th*map.player.sy);
+                player = new Player(world, width/tw*map.player.x, height/th*map.player.y, width/tw*map.player.sx, height/th*map.player.sy);
 
                 // Create Obstacles
                 for (let index = 0; index < map.obstacles.length; index++) {
                     const element = map.obstacles[index];
-                    obstacles.push(new objectRegistry[element.type](world, windowWidth/tw*element.x, windowHeight/th*element.y, windowWidth/tw*element.sx, windowHeight/th*element.sy));
+                    obstacles.push(new objectRegistry[element.type](world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy));
                 }
 
                 // Create Unstatics
                 for (let index = 0; index < map.unstatics.length; index++) {
                     const element = map.unstatics[index];
-                    unstatics.push(new objectRegistry[element.type](world, windowWidth/tw*element.x, windowHeight/th*element.y, windowWidth/tw*element.sx, windowHeight/th*element.sy));
+                    unstatics.push(new objectRegistry[element.type](world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy));
                 }
 
                 // Create Targets
                 for (let index = 0; index < map.targets.length; index++) {
                     const element = map.targets[index];
-                    targets.push(new Target(world, windowWidth/tw*element.x, windowHeight/th*element.y, windowWidth/tw*element.sx, windowHeight/th*element.sy));
+                    targets.push(new Target(world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy));
                 }
 
                 // Load Music for the map:
