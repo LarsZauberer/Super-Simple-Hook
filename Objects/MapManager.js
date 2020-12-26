@@ -50,6 +50,12 @@ class MapManager {
                     targets.push(new Target(world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy));
                 }
 
+                 // Create Triggers
+                 for (let index = 0; index < map.triggers.length; index++) {
+                    const element = map.triggers[index];
+                    triggers.push(new objectRegistry[element.type](world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy));
+                }
+
                 // Load Music for the map:
                 try {
                     soundmanager.play(map.soundtrack);

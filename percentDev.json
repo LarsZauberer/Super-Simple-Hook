@@ -119,5 +119,13 @@
             "sy": 1.0000000000000002
         }
     ],
+    "triggers": [
+        {
+            "x": 5,
+            "y": 5,
+            "type": 2
+        }
+    ],
+
     "soundtrack": "Try and Solve This Loop.wav"
 }
