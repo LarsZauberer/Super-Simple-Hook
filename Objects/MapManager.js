@@ -30,24 +30,24 @@ class MapManager {
                 player = null;
 
                 // Create Player
-                player = new Player(world, windowWidth/80*map.player.x, windowHeight/45*map.player.y, windowWidth/80*map.player.sx, windowHeight/45*map.player.sy);
+                player = new Player(world, windowWidth/tw*map.player.x, windowHeight/th*map.player.y, windowWidth/tw*map.player.sx, windowHeight/th*map.player.sy);
 
                 // Create Obstacles
                 for (let index = 0; index < map.obstacles.length; index++) {
                     const element = map.obstacles[index];
-                    obstacles.push(new objectRegistry[element.type](world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                    obstacles.push(new objectRegistry[element.type](world, windowWidth/tw*element.x, windowHeight/th*element.y, windowWidth/tw*element.sx, windowHeight/th*element.sy));
                 }
 
                 // Create Unstatics
                 for (let index = 0; index < map.unstatics.length; index++) {
                     const element = map.unstatics[index];
-                    unstatics.push(new objectRegistry[element.type](world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                    unstatics.push(new objectRegistry[element.type](world, windowWidth/tw*element.x, windowHeight/th*element.y, windowWidth/tw*element.sx, windowHeight/th*element.sy));
                 }
 
                 // Create Targets
                 for (let index = 0; index < map.targets.length; index++) {
                     const element = map.targets[index];
-                    targets.push(new Target(world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                    targets.push(new Target(world, windowWidth/tw*element.x, windowHeight/th*element.y, windowWidth/tw*element.sx, windowHeight/th*element.sy));
                 }
 
                 // Load Music for the map:
@@ -65,12 +65,12 @@ class MapManager {
     drawGrid() {
         // Debug Grid
         // x Stripes
-        for (let index = 0; index < 32; index++) {
-            line(width/32*index, 0, width/32*index, height);
+        for (let index = 0; index < tw; index++) {
+            line(width/tw*index, 0, width/tw*index, height);
         }
         // y Stripes
-        for (let index = 0; index < 18; index++) {
-            line(0, height/18*index, width, height/18*index);
+        for (let index = 0; index < th; index++) {
+            line(0, height/th*index, width, height/th*index);
         }
     }
 }
