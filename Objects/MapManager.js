@@ -73,7 +73,7 @@ class MapManager {
             line(0, height/18*index, width/32*200, height/18*index);
         }
 
-
+        //red outline
         push();
         stroke(255,0,0)
         line(0,0,width,0)
