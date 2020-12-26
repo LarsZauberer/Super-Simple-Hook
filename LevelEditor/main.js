@@ -33,6 +33,15 @@ let mapName;
 const tw = 32; // Tile Width
 const th = 18; // Tile Height
 
+let obstacleTiles;
+
+let obstacleTiles;
+
+
+function preload() {
+	obstacleTiles = new Tilemap(["testTile.jpg"]);
+}
+
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
 	rectMode(CENTER);

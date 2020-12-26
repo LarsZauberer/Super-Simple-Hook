@@ -31,11 +31,15 @@ let soundmanager;
 const tw = 32; // Tile Width
 const th = 18; // Tile Height
 
+let obstacleTiles;
+
 
 function preload() {
 	soundmanager = new Sound([
 		"Assets/music/Try and Solve This Loop.wav"
 	]);
+
+	obstacleTiles = new Tilemap(["testTile.jpg"]);
 }
 
 
@@ -46,7 +50,8 @@ function setup() {
 	createCanvas(windowHeight/9*16, windowHeight);
 	background(100);
 	rectMode(CENTER);
-	angleMode(DEGREES)
+	imageMode(CENTER);
+	angleMode(DEGREES);
 
     // Matter JS Settings
 	engine = Engine.create({
