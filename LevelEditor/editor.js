@@ -18,7 +18,7 @@ function obstacleDraw(pos1, pos2, target) {
             mapData.targets.push({"x": 80/windowWidth*pos1.x, "y": 45/windowHeight*pos1.y, "sx": 80/windowWidth*size.x, "sy": 45/windowHeight*size.y});
         } else {
             obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.obstacles.push({"x": 80/windowWidth*pos1.x, "y": 45/windowHeight*pos1.y, "sx": 80/windowWidth*size.x, "sy": 45/windowHeight*size.y, "type": 0});
+            mapData.obstacles.push({"x": 32/width*pos1.x, "y": 18/height*pos1.y, "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0});
         }
     }
 
@@ -40,12 +40,12 @@ function deleteObject(index, category, mapCategory) {
 
 function spawnObject(id, group, mapGroup, sx, sy) {
     // Spawn an object
-    group.push(new objectRegistry[id](world, mouseX, mouseY, windowWidth/80*sx, windowHeight/45*sy));
-    mapGroup.push({"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": sx, "sy": sy, "type": id});
+    group.push(new objectRegistry[id](world, mouseX, mouseY, width/32*sx, height/18*sy));
+    mapGroup.push({"x": 32/width*mouseX, "y": 18/height*mouseY, "sx": sx, "sy": sy, "type": id});
 }
 
 function spawnPlayer() {
     // Spawn a player
-    player = new Player(world, mouseX, mouseY, windowWidth/80*2, windowHeight/45*4);
-    mapData.player = {"x": 80/windowWidth*mouseX, "y": 45/windowHeight*mouseY, "sx": 2, "sy": 4};
+    player = new Player(world, mouseX, mouseY, width/32*2, height/18*4);
+    mapData.player = {"x": 32/width*mouseX, "y": 18/height*mouseY, "sx": 2, "sy": 4};
 }
