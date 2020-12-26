@@ -2,10 +2,12 @@ let player;
 let obstacles = [];
 let unstatics = [];
 let targets = [];
+let triggers = [];
 
 let objectRegistry = [
                       DevObstacle,
                       UnstaticObstacle,
+                      Button
                      ]
 
 let mapEngine;
@@ -123,6 +125,11 @@ function draw() {
         targets[i].update();
         deleteObject(i, targets, mapData.targets);
     }
+
+    for (let i = 0; i < triggers.length; i++) {
+        triggers[i].update();
+        deleteObject(i, triggers, mapData.targets);
+    }
     
 
     if (mouseUp) {
@@ -157,6 +164,9 @@ function keyPressed() {
             // Spawn Unstatic
             spawnObject(1, unstatics, mapData.unstatics, 2, 2)
             break;
+        case 50:
+            spawnObject(2, triggers, mapData.triggers, 0, 0 )
+
     }
 }
 

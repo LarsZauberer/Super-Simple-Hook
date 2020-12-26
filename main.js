@@ -12,12 +12,13 @@ let world;
 let player;
 let obstacles = [];
 let unstatics = [];
-
-let targets = []
+let targets = [];
+let triggers = [];
 
 let objectRegistry = [
 					DevObstacle,
 					UnstaticObstacle,
+					Button
 					]
 
 let cam;
@@ -97,6 +98,10 @@ function draw() {
 
 	for (let i = 0; i < targets.length; i++) {
 		targets[i].update();
+	}
+
+	for (let i = 0; i < triggers.length; i++) {
+		triggers[i].update();
 	}
 	
 	// Player Calculation
