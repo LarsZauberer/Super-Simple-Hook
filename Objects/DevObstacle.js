@@ -7,6 +7,10 @@ class DevObstacle extends Obstacle {
 
     mesh() {
         // Mesh of the obstacle
-        image(obstacleTiles.tiles[this.tile], this.x, this.y, this.size.x, this.size.y);
+        try {
+            image(obstacleTiles.tiles[this.tile], this.x, this.y, this.size.x, this.size.y);
+        } catch (error) {
+            image(obstacleTiles.tiles[0], this.x, this.y, this.size.x, this.size.y);
+        }
     }
 }
