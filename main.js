@@ -28,6 +28,9 @@ let grid;
 
 let soundmanager;
 
+const tw = 32; // Tile Width
+const th = 18; // Tile Height
+
 
 function preload() {
 	soundmanager = new Sound([
