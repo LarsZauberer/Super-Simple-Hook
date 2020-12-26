@@ -1,9 +1,7 @@
 class DevObstacle extends Obstacle {
     constructor(world, x, y, sx, sy, st) {
         // Constructor
-        super(world, x, y, sx, sy, st, );
-
-        // Target creation
+        super(world, x, y, sx, sy, st);
     }
 
     mesh() {
@@ -13,11 +11,5 @@ class DevObstacle extends Obstacle {
 
         // Setting the ground mesh for the obstacle
         //this.ground.mesh = this.groundMesh; 
-    }
-
-    groundMesh() {
-        // Ground Mesh
-        fill(255,0,0);
-		rect(this.x, this.y, this.size.x, this.size.y);
     }
 }

@@ -31,7 +31,7 @@ let targetDrawing = false;
 let mapName;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowHeight/9*16, windowHeight);
 	rectMode(CENTER);
 	angleMode(DEGREES);
 
