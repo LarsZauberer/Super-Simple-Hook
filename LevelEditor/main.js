@@ -30,6 +30,9 @@ let targetDrawing = false;
 
 let mapName;
 
+const tw = 32; // Tile Width
+const th = 18; // Tile Height
+
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
 	rectMode(CENTER);
