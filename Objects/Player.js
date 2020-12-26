@@ -12,7 +12,7 @@ class Player extends GameObject{
 		this.world = world;
 
 		//foot
-		this.foot = Bodies.rectangle(this.x, this.y, this.size.x-1, this.size.y-1, {isStatic: true});
+		this.foot = Bodies.rectangle(this.x, this.y, this.size.x-1, 10, {isStatic: true});
 
 		//cam
 		this.cam = null;
@@ -69,8 +69,9 @@ class Player extends GameObject{
 		rect(0, 0,this.size.x, this.size.y);
 
 		// Foot
-		/*fill(255, 0, 0)
-		rect(0, this.size.y/2-5, this.size.x-1, 10);*/
+		
+		fill(255, 0, 0)
+		rect(0, this.size.y/2-5, this.size.x-1, 10);
 	}
 
 
