@@ -119,7 +119,7 @@ class Player extends GameObject{
 			this.hook.update();
 			//hook deleting because distance
 			let hookWillDelete = false;
-			if (dist(this.hook.x,this.hook.y,this.x,this.y) > 400 && !this.hook.twoHookMode){
+			if (dist(this.hook.x,this.hook.y,this.x,this.y) > height && !this.hook.twoHookMode){
 				hookWillDelete = true;
 			}
 			if(this.hook.playerGetsPulled && this.specificCollide(this.body, this.hook.body)){
@@ -131,7 +131,7 @@ class Player extends GameObject{
 			
 
 			if(this.hook.hookTwo){
-				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > 500) {
+				if(dist(this.hook.x,this.hook.y,this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > height+100) {
 					hookWillDelete = true;
 				}
 				if(this.hook.hookTwo.collidedAny(obstacles) && this.hook.pullObject2 == null){
