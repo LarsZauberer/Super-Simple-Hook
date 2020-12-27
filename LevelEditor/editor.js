@@ -15,10 +15,10 @@ function obstacleDraw(pos1, pos2, target) {
     if (found == false) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.targets.push({"x": 32/width*pos1.x, "y": 18/height*pos1.y, "sx": 32/width*size.x, "sy": 18/height*size.y});
+            mapData.targets.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y});
         } else {
             obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.obstacles.push({"x": 32/width*pos1.x, "y": 18/height*pos1.y, "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0});
+            mapData.obstacles.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0});
         }
         
     }
