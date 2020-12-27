@@ -15,12 +15,19 @@ let obstacles = [];
 let unstatics = [];
 let targets = [];
 let triggers = [];
+let loadTriggers = [];
+
+let door;
+
+
+
+
+let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
 					UnstaticObstacle,
-					Button,
-					Door
+					Button
 					]
 
 let cam;
@@ -68,10 +75,7 @@ function setup() {
 									"percentDev.json",
 									"dev_map2.json",
 								  ]);
-
-
-	targets.push(new Target(world, 600, 95, 100, 10))
-	
+	loadTriggers.push(new LoadTrigger(world, 200, windowHeight-100, 10, 100));
 }
 
 
@@ -79,6 +83,10 @@ function draw() {
     /* Main Game Loop
     */
 	background(100);
+
+	if (debug) {
+		levelManager.drawGrid();
+	}
 
 	
 	// Camera Calculation
@@ -111,8 +119,17 @@ function draw() {
 	}
 	
 	// Player Calculation
-	if (player) {
+	if(player){
 		player.update(obstacles);
+	}
+
+
+	if(door){
+		door.update();
+	}
+
+	for(let i = 0; i < loadTriggers.length; i++){
+		loadTriggers[i].update();
 	}
 }
 
