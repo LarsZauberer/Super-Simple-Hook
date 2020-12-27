@@ -70,13 +70,7 @@ function setup() {
 									"percentDev.json",
 									"dev_map2.json",
 								  ]);
-
-
-	
-	
-
-	
-	
+	triggers.push(new LoadTrigger(world, 200, windowHeight-100, 10, 100));
 }
 
 
