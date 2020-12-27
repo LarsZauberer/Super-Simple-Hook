@@ -15,11 +15,12 @@ function obstacleDraw(pos1, pos2, target) {
     if (found == false) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.targets.push({"x": 80/windowWidth*pos1.x, "y": 45/windowHeight*pos1.y, "sx": 80/windowWidth*size.x, "sy": 45/windowHeight*size.y});
+            mapData.targets.push({"x": 32/width*pos1.x, "y": 18/height*pos1.y, "sx": 32/width*size.x, "sy": 18/height*size.y});
         } else {
             obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
             mapData.obstacles.push({"x": 32/width*pos1.x, "y": 18/height*pos1.y, "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0});
         }
+        
     }
 
     // Reset positions
@@ -42,7 +43,7 @@ function spawnObject(id, group, mapGroup, sx, sy, gridbased) {
     // Spawn an object
     if(gridbased){
     group.push(new objectRegistry[id](world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), width/32*sx, height/18*sy));
-    mapGroup.push({"x": 32/width*Math.trunc(mouseX-cameraX), "y": 18/height*Math.trunc(mouseY-cameraY+1), "sx": sx, "sy": sy, "type": id});
+    mapGroup.push({"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32))*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), "sx": sx, "sy": sy, "type": id});
     }
     else{
         group.push(new objectRegistry[id](world, mouseX-cameraX, mouseY-cameraY, width/32*sx, height/18*sy));
@@ -59,5 +60,5 @@ function spawnPlayer() {
 function spawnDoor() {
     // Spawn Door
     door = new Door(world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18))*(height/18));
-    mapData.player = {"x": 32/width*Math.trunc(mouseX-cameraX), "y": 18/height*Math.trunc(mouseY-cameraY)};
+    mapData.door = {"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32))*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18))*(height/18)};
 }

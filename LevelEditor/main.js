@@ -142,7 +142,7 @@ function draw() {
 
     for (let i = 0; i < triggers.length; i++) {
         triggers[i].update();
-        deleteObject(i, triggers, mapData.targets);
+        deleteObject(i, triggers, mapData.triggers);
     }
     
 
