@@ -32,6 +32,8 @@ let targetDrawing = false;
 
 let mapName;
 
+let debug = true;
+
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
 	rectMode(CENTER);
@@ -87,11 +89,11 @@ function draw() {
         cameraY+=2
     }
     translate(cameraX,cameraY)
-    
 
-
-    // Debug Grid
-    mapEngine.drawGrid();
+    if (debug) {
+        // Debug Grid
+        mapEngine.drawGrid();
+    }
 
     // Player Calculation
     if (player) {

@@ -11,4 +11,5 @@ class UnstaticObstacle extends GameObject{
         fill(255)
         rect(0,0,this.size.x,this.size.y);
     }
+    
 } 
