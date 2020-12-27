@@ -24,6 +24,14 @@
     }
   ],
   "unstatics": [],
-  "targets": [],
+  "targets": [
+    {
+      "x": 30.000000000000004,
+      "y": 0,
+      "sx": 0.9999999999999977,
+      "sy": 17,
+      "tileNum": 0
+    }
+  ],
   "soundtrack": "Try and Solve This Loop.wav"
 }

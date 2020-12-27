@@ -34,12 +34,14 @@ const tw = 32; // Tile Width
 const th = 18; // Tile Height
 
 let obstacleTiles;
+let targetTiles;
 
 let tileNum = 0;
 
 
 function preload() {
-	obstacleTiles = new Tilemap(["../testTile.jpg"]);
+    obstacleTiles = new Tilemap(["../testTile.jpg"]);
+    targetTiles = new Tilemap(["../testTile.jpg"]);
 }
 
 function setup() {
