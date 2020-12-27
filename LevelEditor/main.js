@@ -141,11 +141,10 @@ function keyPressed() {
             // Spawn Player
             spawnPlayer();
             break;
-        // TODO: Rework Unstatic Objects Spawning
-        /*case 49:
+        case 87:
             // Spawn Unstatic
             spawnObject(1, unstatics, mapData.unstatics, 2, 2)
-            break;*/
+            break;
 
         // Tiles
         case 191:
