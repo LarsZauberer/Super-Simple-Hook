@@ -33,7 +33,9 @@ class MapManager {
 
                 // Create Player
                 player = new Player(world, width/32*map.player.x, height/18*map.player.y, width/32*map.player.sx, height/18*map.player.sy);
-                door = new Door(world, width/32*map.door.x, height/18*map.door.y);
+                if(map.door){
+                    door = new Door(world, width/32*map.door.x, height/18*map.door.y);
+                }
 
                 // Create Obstacles
                 for (let index = 0; index < map.obstacles.length; index++) {
