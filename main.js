@@ -80,9 +80,7 @@ function draw() {
     */
 	background(100);
 
-	//update Obstacle list
 	
-
 	// Camera Calculation
 	if (player) {
 		player.camera();
