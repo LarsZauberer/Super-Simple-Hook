@@ -1,7 +1,7 @@
 class DevObstacle extends Obstacle {
-    constructor(world, x, y, sx, sy, st, tile) {
+    constructor(world, x, y, sx, sy, tile) {
         // Constructor
-        super(world, x, y, sx, sy, st);
+        super(world, x, y, sx, sy, true);
         this.tile = tile;
     }
 

@@ -17,8 +17,8 @@ function obstacleDraw(pos1, pos2, target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
             mapData.targets.push({"x": tw/width*pos1.x, "y": th/height*pos1.y, "sx": tw/width*size.x, "sy": th/height*size.y, "tileNum": tileNum});
         } else {
-            obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y, true, tileNum));
-            mapData.obstacles.push({"x": tw/width*pos1.x, "y": th/height*pos1.y, "sx": tw/width*size.x, "sy": th/height*size.y, "type": 0, "tileNum": tileNum});
+            obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y, tileNum));
+            mapData.obstacles.push({"x": tw/width*pos1.x, "y": th/height*pos1.y, "sx": tw/width*size.x, "sy": th/height*size.y, "tileNum": tileNum});
         }
     }
 
