@@ -38,14 +38,26 @@ function deleteObject(index, category, mapCategory) {
 }
 
 
-function spawnObject(id, group, mapGroup, sx, sy) {
+function spawnObject(id, group, mapGroup, sx, sy, gridbased) {
     // Spawn an object
-    group.push(new objectRegistry[id](world, mouseX-cameraX, mouseY-cameraY, width/32*sx, height/18*sy));
-    mapGroup.push({"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": sx, "sy": sy, "type": id});
+    if(gridbased){
+    group.push(new objectRegistry[id](world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), width/32*sx, height/18*sy));
+    mapGroup.push({"x": 32/width*Math.trunc(mouseX-cameraX), "y": 18/height*Math.trunc(mouseY-cameraY+1), "sx": sx, "sy": sy, "type": id});
+    }
+    else{
+        group.push(new objectRegistry[id](world, mouseX-cameraX, mouseY-cameraY, width/32*sx, height/18*sy));
+        mapGroup.push({"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": sx, "sy": sy, "type": id}); 
+    }
 }
 
 function spawnPlayer() {
     // Spawn a player
     player = new Player(world, mouseX-cameraX, mouseY-cameraY, width/32*2, height/18*3);
     mapData.player = {"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": 2, "sy": 3};
+}
+
+function spawnDoor() {
+    // Spawn Door
+    door = new Door(world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18))*(height/18));
+    mapData.player = {"x": 32/width*Math.trunc(mouseX-cameraX), "y": 18/height*Math.trunc(mouseY-cameraY)};
 }

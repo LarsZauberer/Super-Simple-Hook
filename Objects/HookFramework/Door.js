@@ -1,9 +1,12 @@
 class Door extends GameObject{
     constructor(world, x, y){
-        let w = 20
-        let h = 120
+        let w = 0.9*width/32
+        let h = 4*height/18
 
-        super(world, x, y, w, h, true)
+        let x1 = x+(width/32)/2;
+        let y1 = y+h*1.5
+
+        super(world, x1, y1, w, h, true)
 
         this.currentPos = 0;
         this.h = h;
@@ -38,10 +41,12 @@ class Door extends GameObject{
         this.mesh();
 
 
-        if(player.hook){
-            let collision = Matter.SAT.collides(this.body, player.hook.body);
-            if (collision.collided) {
+        if(player){
+            if(player.hook){
+                let collision = Matter.SAT.collides(this.body, player.hook.body);
+                if (collision.collided) {
                 player.hook.delete(world)
+                }
             }
         }
     }
