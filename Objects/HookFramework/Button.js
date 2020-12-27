@@ -4,7 +4,7 @@ class Button extends GameObject{
         let w = 2*width/32
         let h = (height/18)/4;
 
-        let y1 = y - 2*h +2.5
+        let y1 = y - 2*h+2.5
 
         super(world, x+w/2,y1+h/2, w, h, true);
         this.base = Bodies.rectangle(this.x+w/2,this.y+h/2+5, w+10, h, {isStatic: true});

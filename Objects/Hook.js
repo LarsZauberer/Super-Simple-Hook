@@ -144,7 +144,7 @@ class Hook {
         World.remove(world, this.body)
         this.player.hook = null;
 		this.player.fly = false
-		Body.setDensity(this.player.body, 0.001)
+		
     }
 
 	
