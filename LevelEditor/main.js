@@ -34,6 +34,8 @@ let mapName;
 
 let debug = true;
 
+const camSpeed = 10;
+
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
 	rectMode(CENTER);
@@ -74,21 +76,21 @@ function draw() {
 
     //right
     if(keyIsDown(39)){
-        cameraX-=2
+        cameraX-=camSpeed;
     }
     //left
     if(keyIsDown(37)){
-        cameraX+=2
+        cameraX+=camSpeed;
     }
     //down
     if(keyIsDown(40)){
-        cameraY-=2
+        cameraY-=camSpeed;
     }
     //up
     if(keyIsDown(38)){
-        cameraY+=2
+        cameraY+=camSpeed;
     }
-    translate(cameraX,cameraY)
+    translate(cameraX, cameraY)
 
     if (debug) {
         // Debug Grid
