@@ -5,6 +5,8 @@ class Camera {
         this.x = 0;
         this.y = 0;
         this.player = player;
+
+        this.lol = 0
     }
 
     update() {
@@ -13,9 +15,17 @@ class Camera {
             this.x = -(this.player.x-width/2);
         }
 
-        if(this.player.y < height/4){
-            this.y = -this.player.y + height/4
+        if(this.player.y < 0){
+            this.y = -this.player.y + this.lol
+            if(this.lol < 100) this.lol +=2
+            
         }
+        if(this.player.y+this.player.size.y/2 > height){
+            this.y = -this.player.y-this.player.size.y/2 + height-this.lol
+            if(this.lol < 100) this.lol+= 2
+        }
+        
+           
         // Translate Screen
         translate(this.x, this.y);
     }

@@ -7,14 +7,14 @@ class Button extends GameObject{
         let y1 = y - 2*h+2.5
 
         super(world, x+w/2,y1+h/2, w, h, true);
-        this.base = Bodies.rectangle(this.x+w/2,this.y+h/2+5, w+10, h, {isStatic: true});
+        this.base = Bodies.rectangle(this.x,this.y+h/2, w+10, h, {isStatic: true});
         World.add(world, this.base)
     }
 
     update(){
         if(player){
             if(player.hook){
-                let collision = Matter.SAT.collides(this.body, player.hook.body);
+                let collision = Matter.SAT.collides(this.base, player.hook.body);
                 if (collision.collided) {
                 player.hook.delete(world)
                 }
@@ -32,7 +32,7 @@ class Button extends GameObject{
         if(this.triggered()) {fill(0)}
         rect(this.x,this.y,this.size.x,this.size.y);
         pop()
-        rect(this.x, this.y+5, this.size.x+10,this.size.y)
+        rect(this.base.position.x, this.base.position.y, this.size.x+10,this.size.y)
         
     }
 
