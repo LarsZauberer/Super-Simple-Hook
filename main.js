@@ -21,7 +21,7 @@ let loadTriggers = [];
 
 
 
-let debug = false;
+let debug = true;
 
 let objectRegistry = [
 					DevObstacle,
@@ -33,9 +33,7 @@ let objectRegistry = [
 let cam;
 
 let levelManager;
-
 let grid;
-
 let soundmanager;
 
 
@@ -73,9 +71,9 @@ function setup() {
 	// Level Manager
 	levelManager = new MapManager([
 									"percentDev.json",
-									"dev_map2.json",
+									"percentDev (10).json",
 								  ]);
-	loadTriggers.push(new LoadTrigger(world, 200, windowHeight-100, 10, 100));
+	loadTriggers.push(new LoadTrigger(world, 500, windowHeight-100, 10, 100));
 }
 
 

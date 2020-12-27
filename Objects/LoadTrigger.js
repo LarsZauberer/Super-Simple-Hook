@@ -1,11 +1,11 @@
 class LoadTrigger extends GameObject {
-    constructor(world, x, y, sx, sy, nextLevel) {
+    constructor(world, x, y, sx, sy) {
         x = x-sx/2;
         y = y-sy/2;
 
         super(world, x, y, sx, sy, true);
 
-        this.nextLevel = nextLevel;
+        
     }
 
     mesh() {
@@ -17,9 +17,7 @@ class LoadTrigger extends GameObject {
 
         // If Collided with player
         if (Matter.SAT.collides(this.body, player.body).collided) {
-            if (this.nextLevel) {
-                levelManager.loaded++;
-            }
+            levelManager.loaded++;
             levelManager.load()
         }
     }

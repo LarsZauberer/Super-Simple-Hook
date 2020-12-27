@@ -82,7 +82,7 @@ class Hook {
     
    pullPlayer(angle){
 
-    Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.04, y: sin(angle)*0.04}) 
+    Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.035, y: sin(angle)*0.035}) 
     }
 
 
