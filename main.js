@@ -17,7 +17,6 @@ let targets = [];
 let triggers = [];
 let loadTriggers = [];
 
-let door;
 
 
 
@@ -27,7 +26,8 @@ let debug = false;
 let objectRegistry = [
 					DevObstacle,
 					UnstaticObstacle,
-					Button
+					Button,
+					Door
 					]
 
 let cam;
@@ -120,13 +120,9 @@ function draw() {
 	
 	// Player Calculation
 	if(player){
-		player.update(obstacles);
+		player.update();
 	}
 
-
-	if(door){
-		door.update();
-	}
 
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
