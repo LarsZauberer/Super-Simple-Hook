@@ -23,10 +23,10 @@ class Camera {
 
         if(this.player.y-this.player.size.y/2 < 0){
             this.y = -this.player.y+this.player.size.y/2
-            if(this.smooth < 100) this.smooth +=2 
+            if(this.smooth < 200) this.smooth +=4
         }
         else if(this.smooth > 0){
-            this.smooth-=2
+            this.smooth-=3
         }
        
 
@@ -35,7 +35,7 @@ class Camera {
             if(this.smooth > -100) this.smooth-= 2
         }
         else if(this.smooth < 0){
-            this.smooth+=2
+            this.smooth+=3
         }
 
 
