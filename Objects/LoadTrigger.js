@@ -7,8 +7,11 @@ class LoadTrigger extends GameObject {
     }
 
     mesh() {
-        fill(0, 0, 255, 10);
-        rect(this.x, this.y, this.size.x, this.size.y);
+        // Debug Mesh
+        if (debug) {
+            fill(0, 0, 255, 10);
+            rect(this.x, this.y, this.size.x, this.size.y);
+        }
 
         // If Collided with player
         if (Matter.SAT.collides(this.body, player.body).collided) {
