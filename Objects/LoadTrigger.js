@@ -16,9 +16,11 @@ class LoadTrigger extends GameObject {
         }
 
         // If Collided with player
-        if (Matter.SAT.collides(this.body, player.body).collided) {
-            levelManager.loaded++;
-            levelManager.load()
+        if(player){
+            if (Matter.SAT.collides(this.body, player.body).collided) {
+                levelManager.loaded++;
+                levelManager.load()
+            }
         }
     }
 }

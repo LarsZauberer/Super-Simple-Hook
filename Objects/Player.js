@@ -55,7 +55,6 @@ class Player extends GameObject{
 		//hook mechanics
 		this.hookMechanics();
 
-		
 
 
 	}
@@ -69,7 +68,6 @@ class Player extends GameObject{
 		rect(0, 0,this.size.x, this.size.y);
 
 		// Foot
-		
 		fill(255, 0, 0)
 		rect(0, this.size.y/2-5, this.size.x-1, 10);
 	}
@@ -78,7 +76,7 @@ class Player extends GameObject{
 	move() {
 		/* Player Movement Forces
 		*/
-		// TODO: Self Commenting Code
+
 		// Left
 		let leftForce = createVector(-0.01,0);
 		if (keyIsDown(65)) {
@@ -89,6 +87,8 @@ class Player extends GameObject{
 		if (keyIsDown(68)) {
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}
+
+		
 		
 	}
 
@@ -110,8 +110,9 @@ class Player extends GameObject{
 				break;
 			}
 		}
-
 	}
+
+	
 
 
 	hookMechanics(){
@@ -129,6 +130,8 @@ class Player extends GameObject{
 			if(this.hook.playerGetsPulled && !this.hook.twoHookMode && this.specificCollide(this.body, this.hook.body)){
 				hookWillDelete = true;
 			}
+
+		
 			
 
 			if(this.hook.hookTwo){
@@ -165,7 +168,7 @@ class Player extends GameObject{
 
 					if ((this.specificCollide(this.body, collidedObstacle) ||  this.specificCollide(this.body, this.hook.body)) && !this.hook.hookTwo){
 						hookWillDelete = true;
-						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
+						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.15})
 					}
 				}
 				//pullObstacles
@@ -206,7 +209,7 @@ class Player extends GameObject{
 
 	specificCollide(player, body2){
 			if(body2 != player && body2 != this.body){
-			var collision = Matter.SAT.collides(player, body2);
+			let collision = Matter.SAT.collides(player, body2);
             if (collision.collided) {
                 return true;
 			} 
