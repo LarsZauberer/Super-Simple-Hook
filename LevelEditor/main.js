@@ -1,4 +1,5 @@
 let player;
+let door;
 let obstacles = [];
 let unstatics = [];
 let targets = [];
@@ -7,7 +8,8 @@ let triggers = [];
 let objectRegistry = [
                       DevObstacle,
                       UnstaticObstacle,
-                      Button
+                      Button,
+                      Door
                      ]
 
 let mapEngine;
@@ -95,7 +97,7 @@ function draw() {
 
     // Player Calculation
     if (player) {
-        player.update(obstacles);
+        player.update();
         player.camera();
 
         // Delete Object if in range and button pressed
@@ -104,8 +106,20 @@ function draw() {
             player = null;
             mapData.player = null;
         }
-	}
+    }
+    
+    //door Calculation
+    if (door) {
+        door.update();
 
+        // Delete Object if in range and button pressed
+        let inRange = dist(door.x, door.y, mouseX-cameraX, mouseY-cameraY) < 50
+        if (inRange && keyIsDown(46)) {
+            door = null;
+            mapData.door = null;
+        }
+    }
+    
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
         const element = obstacles[i];
@@ -160,12 +174,16 @@ function keyPressed() {
             // Spawn Player
             spawnPlayer();
             break;
+        case 79:
+            //o
+            spawnDoor();
+            break;
         case 49:
             // Spawn Unstatic
-            spawnObject(1, unstatics, mapData.unstatics, 2, 2)
+            spawnObject(1, unstatics, mapData.unstatics, 2, 2, false)
             break;
         case 50:
-            spawnObject(2, triggers, mapData.triggers, 0, 0 )
+            spawnObject(2, triggers, mapData.triggers, 0, 0, true)
 
     }
 }

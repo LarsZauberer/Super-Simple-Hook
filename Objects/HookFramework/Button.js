@@ -1,19 +1,23 @@
 class Button extends GameObject{
     constructor(world, x,y){
         //unstatic
-        let w =80
-        let h = 10;
+        let w = 2*width/32
+        let h = (height/18)/4;
 
-        super(world, x+w/2,y+h/2, w, h, true);
-        this.base = Bodies.rectangle(x+w/2,y+h/2+5, w+10, h, {isStatic: true});
+        let y1 = y - 2*h +2.5
+
+        super(world, x+w/2,y1+h/2, w, h, true);
+        this.base = Bodies.rectangle(this.x+w/2,this.y+h/2+5, w+10, h, {isStatic: true});
         World.add(world, this.base)
     }
 
     update(){
-        if(player.hook){
-            let collision = Matter.SAT.collides(this.body, player.hook.body);
-            if (collision.collided) {
+        if(player){
+            if(player.hook){
+                let collision = Matter.SAT.collides(this.body, player.hook.body);
+                if (collision.collided) {
                 player.hook.delete(world)
+                }
             }
         }
 
