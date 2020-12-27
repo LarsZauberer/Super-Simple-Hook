@@ -10,6 +10,7 @@ let engine;
 let world;
 
 let player;
+let door;
 let obstacles = [];
 let unstatics = [];
 let targets = [];
@@ -18,7 +19,8 @@ let triggers = [];
 let objectRegistry = [
 					DevObstacle,
 					UnstaticObstacle,
-					Button
+					Button,
+					Door
 					]
 
 let cam;
@@ -84,6 +86,10 @@ function draw() {
 	// Camera Calculation
 	if (player) {
 		player.camera();
+	}
+
+	if(door){
+		door.update();
 	}
 
 	// Obstacle Calculation
