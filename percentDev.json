@@ -126,6 +126,7 @@
             "type": 2
         }
     ],
+    "door": {"x": 30, "y": 5},
 
     "soundtrack": "Try and Solve This Loop.wav"
 }
