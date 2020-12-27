@@ -123,10 +123,10 @@ class Player extends GameObject{
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > height && !this.hook.twoHookMode){
 				hookWillDelete = true;
 			}
-			if(this.hook.playerGetsPulled && this.specificCollide(this.body, this.hook.body)){
+			if(keyIsPressed && key == "c"){
 				hookWillDelete = true;
 			}
-			if(keyIsPressed && key == "c"){
+			if(this.hook.playerGetsPulled && !this.hook.twoHookMode && this.specificCollide(this.body, this.hook.body)){
 				hookWillDelete = true;
 			}
 			
@@ -156,13 +156,14 @@ class Player extends GameObject{
 					let collidedObstacle
 					if(this.hook.collidedAny(targets)){
 						collidedObstacle = this.hook.collidedAny(targets, "return")
+						
 					}
 					else{
 						collidedObstacle = this.hook.collidedAny(unstatics, "return")
 					}
 					this.hook.pullAngle = atan2(this.hook.y-this.y, this.hook.x,this.x )
 
-					if (this.specificCollide(this.body, collidedObstacle) && !this.hook.hookTwo){
+					if ((this.specificCollide(this.body, collidedObstacle) ||  this.specificCollide(this.body, this.hook.body)) && !this.hook.hookTwo){
 						hookWillDelete = true;
 						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.2})
 					}
@@ -195,7 +196,7 @@ class Player extends GameObject{
 			let direction = -1;
 			if(mouseX-this.cam.x > this.body.position.x) {direction = 1}
 
-			let shotAngle = atan2(mouseY-this.body.position.y, mouseX+(-this.cam.x)-(this.body.position.x+this.size.x/2*direction));
+			let shotAngle = atan2(mouseY-this.cam.y-this.body.position.y, mouseX-this.cam.x-(this.body.position.x+this.size.x/2*direction));
 			hook = new Hook(this.body.position.x+this.size.x/2*direction,this.body.position.y,shotAngle, this.size.x/2*direction, this)
 		}
 		this.hookIsShot = false;
