@@ -14,11 +14,14 @@ let obstacles = [];
 let unstatics = [];
 let targets = [];
 let triggers = [];
+let loadTriggers = [];
 
 let door;
 
 
 
+
+let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
@@ -70,7 +73,7 @@ function setup() {
 									"percentDev.json",
 									"dev_map2.json",
 								  ]);
-	triggers.push(new LoadTrigger(world, 200, windowHeight-100, 10, 100));
+	loadTriggers.push(new LoadTrigger(world, 200, windowHeight-100, 10, 100));
 }
 
 
@@ -78,6 +81,10 @@ function draw() {
     /* Main Game Loop
     */
 	background(100);
+
+	if (debug) {
+		levelManager.drawGrid();
+	}
 
 	
 	// Camera Calculation
@@ -112,8 +119,9 @@ function draw() {
 		door.update();
 	}
 
-
-	
+	for(let i = 0; i < loadTriggers.length; i++){
+		loadTriggers[i].update();
+	}
 }
 
 
