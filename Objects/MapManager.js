@@ -50,6 +50,18 @@ class MapManager {
                     targets.push(new Target(world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
                 }
 
+                // Create Triggers
+                for (let index = 0; index < map.triggers.length; index++) {
+                    const element = map.triggers[index];
+                    triggers.push(new objectRegistry[element.type](world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy));
+                }
+
+                // Create Load Triggers
+                for (let index = 0; index < map.loadTriggers.length; index++) {
+                    const element = map.loadTriggers[index];
+                    loadTriggers.push(new LoadTrigger(world, windowWidth/80*element.x, windowHeight/45*element.y, windowWidth/80*element.sx, windowHeight/45*element.sy, element.nextLoad))
+                }
+
                 // Load Music for the map:
                 try {
                     soundmanager.play(map.soundtrack);
