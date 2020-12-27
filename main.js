@@ -65,7 +65,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"percentDev.json",
+									"percentDev (9).json",
 									"dev_map2.json",
 								  ]);
 
@@ -88,9 +88,11 @@ function draw() {
 		player.camera();
 	}
 
+	
 	if(door){
 		door.update();
 	}
+	
 
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
