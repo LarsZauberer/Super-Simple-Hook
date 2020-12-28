@@ -28,7 +28,8 @@ let objectRegistry = [
 					UnstaticObstacle,
 					Button,
 					Door,
-					LoadTrigger
+					LoadTrigger,
+					DeathTrigger
 					]
 
 let cam;
@@ -74,6 +75,9 @@ function setup() {
 									"percentDev (13).json",
 									"percentDev (10).json",
 								  ]);
+
+	loadTriggers.push(new LoadTrigger(world, 1,1, 100,100))
+
 	
 }
 
