@@ -1,0 +1,8 @@
+class TileManager{
+    constructor(){
+
+    }
+
+    load()
+
+}
