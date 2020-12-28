@@ -15,7 +15,7 @@ function obstacleDraw(pos1, pos2, target, deathTrigger) {
     if (found == false) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.targets.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y)+0.01, "sx": 32/width*size.x, "sy": 18/height*size.y});
+            mapData.targets.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y)+0.02, "sx": 32/width*size.x, "sy": 18/height*size.y});
         } 
         else if (deathTrigger) {
             loadTriggers.push(new DeathTrigger(world, pos1.x, pos1.y, size.x, size.y));
@@ -59,7 +59,7 @@ function spawnObject(id, group, mapGroup, sx, sy, gridbased) {
 function spawnPlayer() {
     // Spawn a player
     player = new Player(world, mouseX-cameraX, mouseY-cameraY, width/32*2, height/18*3);
-    mapData.player = {"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": 2, "sy": 3};
+    mapData.player = {"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": 1.8, "sy": 2.7};
 }
 
 function spawnDoor() {

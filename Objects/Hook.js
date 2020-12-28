@@ -55,7 +55,7 @@ class Hook {
         for(let i = 0; i < collObstacle.length; i++){
             let collision = Matter.SAT.collides(this.body, collObstacle[i].body);
             if (collision.collided) {
-                if(returnIt = null){
+                if(returnIt == null){
                     return true;
                 }
                 else{
