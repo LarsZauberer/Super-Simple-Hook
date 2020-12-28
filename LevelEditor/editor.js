@@ -1,4 +1,4 @@
-function obstacleDraw(pos1, pos2, target) {
+function obstacleDraw(pos1, pos2, target, deathTrigger) {
     // Draw an Obstacle on the grid
     // Check if the obstacle already exists
     let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
@@ -16,7 +16,12 @@ function obstacleDraw(pos1, pos2, target) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
             mapData.targets.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y)+0.01, "sx": 32/width*size.x, "sy": 18/height*size.y});
-        } else {
+        } 
+        else if (deathTrigger) {
+            loadTriggers.push(new DeathTrigger(world, pos1.x, pos1.y, size.x, size.y));
+            mapData.loadTriggers.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 5});
+        }
+        else{
             obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
             mapData.obstacles.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0});
         }

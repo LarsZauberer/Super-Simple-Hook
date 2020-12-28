@@ -5,6 +5,8 @@ class LoadTrigger extends GameObject {
 
         super(world, x, y, sx, sy, true);
 
+        this.fade = 0;
+
         
     }
 
@@ -18,9 +20,19 @@ class LoadTrigger extends GameObject {
         // If Collided with player
         if(player){
             if (Matter.SAT.collides(this.body, player.body).collided) {
-                levelManager.loaded++;
-                levelManager.load()
+                this.nextLoad()
             }
+        }
+    }
+
+
+    nextLoad(){
+        player.death = true;
+        background(0,this.fade)
+        if(this.fade < 255) this.fade+=5
+        else{
+            levelManager.loaded++
+            levelManager.load()
         }
     }
 }

@@ -11,7 +11,8 @@ let objectRegistry = [
                       UnstaticObstacle,
                       Button,
                       Door,
-                      LoadTrigger
+                      LoadTrigger,
+                      DeathTrigger
                      ]
 
 let mapEngine;
@@ -33,6 +34,7 @@ let mouseUp;
 let mapData;
 
 let targetDrawing = false;
+let deathTrigDrawing = false;
 
 let mapName;
 
@@ -159,7 +161,7 @@ function draw() {
 
     if (mouseUp) {
         // Drawing
-        obstacleDraw(mouseDown, mouseUp, targetDrawing);
+        obstacleDraw(mouseDown, mouseUp, targetDrawing, deathTrigDrawing);
     }
 
 
@@ -170,6 +172,9 @@ function keyPressed() {
     switch (keyCode) {
         case 17:
             targetDrawing = true;
+            break;
+        case 16:
+            deathTrigDrawing = true;
             break;
         case 81:
             // q (Saving)
@@ -207,6 +212,7 @@ function keyPressed() {
 function keyReleased() {
     // Should draw target or not
     if (keyCode === 17) targetDrawing = false;
+    if (keyCode === 16) deathTrigDrawing = false;
 }
 
 function mousePressed() {

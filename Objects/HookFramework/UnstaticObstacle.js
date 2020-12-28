@@ -4,6 +4,7 @@ class UnstaticObstacle extends GameObject{
         super(world, x,y,w,h, false);
         Body.setMass(this.body, 3);
         this.body.friction = 0.1;
+        this.startPos = createVector(this.x, this.y);
     }
 
 
