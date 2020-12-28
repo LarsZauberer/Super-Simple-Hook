@@ -35,25 +35,28 @@ class Player extends GameObject{
 		// Mass
 		Body.setMass(this.body, 4);
 		Body.setMass(this.foot, 4);
+
+		this.death = false;
 	}
 
 
 	update() {
-		this.x = this.body.position.x;
-		this.y = this.body.position.y;
-
-
-		/* The Loop of the Player Character
-		*/
-
-		Body.setPosition(this.foot, {x: this.body.position.x, y: this.body.position.y+this.size.y/2-5})
 		
 		super.update();
+		
+		
+		if(!this.death){
+			this.x = this.body.position.x;
+			this.y = this.body.position.y;
 
-		if(!this.fly) this.move();
+			Body.setPosition(this.foot, {x: this.body.position.x, y: this.body.position.y+this.size.y/2-5})
+		
+			if(!this.fly) this.move();
 
-		//hook mechanics
-		this.hookMechanics();
+			//hook mechanics
+			this.hookMechanics();
+		}
+		
 
 
 

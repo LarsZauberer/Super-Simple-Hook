@@ -76,7 +76,7 @@ function setup() {
 									"percentDev (10).json",
 								  ]);
 
-	loadTriggers.push(new LoadTrigger(world, 1,1, 100,100))
+	loadTriggers.push(new DeathTrigger(world, 500, windowHeight-200, 50, 100));
 
 	
 }
@@ -137,7 +137,7 @@ function keyPressed() {
     /* Keypress Handling
     */
 	// Jumping
-	if (key == " ") player.jump();
+	if (key == " " && !player.death) player.jump();
 }
 
 
