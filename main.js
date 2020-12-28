@@ -144,7 +144,6 @@ function keyPressed() {
 function mousePressed()
 {
 	player.hookIsShot = true;
-	
 }
 
 

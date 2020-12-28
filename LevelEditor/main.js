@@ -80,6 +80,7 @@ let cameraY = 0;
 function draw() {
     background(100);
 
+    // Camera Movement
     //right
     if(keyIsDown(39)){
         cameraX-=camSpeed;
@@ -98,6 +99,7 @@ function draw() {
     }
     translate(cameraX, cameraY)
 
+    // Debug Modes
     if (debug) {
         // Debug Grid
         mapEngine.drawGrid();
@@ -171,9 +173,11 @@ function draw() {
 function keyPressed() {
     switch (keyCode) {
         case 17:
+            // Control: Draw a target
             targetDrawing = true;
             break;
         case 16:
+            // Shift: Draw Death Trigger
             deathTrigDrawing = true;
             break;
         case 81:
@@ -191,7 +195,7 @@ function keyPressed() {
             spawnPlayer();
             break;
         case 79:
-            //o
+            // o
             spawnDoor();
             break;
         case 49:
