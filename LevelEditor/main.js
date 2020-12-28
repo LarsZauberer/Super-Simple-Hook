@@ -4,12 +4,14 @@ let obstacles = [];
 let unstatics = [];
 let targets = [];
 let triggers = [];
+let loadTriggers = [];
 
 let objectRegistry = [
                       DevObstacle,
                       UnstaticObstacle,
                       Button,
-                      Door
+                      Door,
+                      LoadTrigger
                      ]
 
 let mapEngine;
@@ -148,6 +150,11 @@ function draw() {
         triggers[i].update();
         deleteObject(i, triggers, mapData.triggers);
     }
+
+    for(let i = 0; i < loadTriggers.length; i++){
+        loadTriggers[i].update();
+        deleteObject(i, loadTriggers, mapData.loadTriggers)
+    }
     
 
     if (mouseUp) {
@@ -187,7 +194,12 @@ function keyPressed() {
             spawnObject(1, unstatics, mapData.unstatics, 2, 2, false)
             break;
         case 50:
+            //button
             spawnObject(2, triggers, mapData.triggers, 0, 0, true)
+            break;
+        case 51:
+            spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
+            break;
 
     }
 }

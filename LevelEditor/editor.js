@@ -42,8 +42,8 @@ function deleteObject(index, category, mapCategory) {
 function spawnObject(id, group, mapGroup, sx, sy, gridbased) {
     // Spawn an object
     if(gridbased){
-    group.push(new objectRegistry[id](world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), width/32*sx, height/18*sy));
-    mapGroup.push({"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32))*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), "sx": sx, "sy": sy, "type": id});
+    group.push(new objectRegistry[id](world, Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32), Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), width/32*sx, height/18*sy));
+    mapGroup.push({"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), "sx": sx, "sy": sy, "type": id});
     }
     else{
         group.push(new objectRegistry[id](world, mouseX-cameraX, mouseY-cameraY, width/32*sx, height/18*sy));
