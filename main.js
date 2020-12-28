@@ -72,11 +72,10 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"percentDev (13).json",
+									"percentDev (14).json",
 									"percentDev (10).json",
 								  ]);
 
-	loadTriggers.push(new DeathTrigger(world, 500, windowHeight-200, 50, 100));
 
 	
 }

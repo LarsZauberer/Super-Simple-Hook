@@ -17,7 +17,19 @@ class DeathTrigger extends GameObject{
                 player.death = true;
                 this.death()
             }
+            if(player.hook){
+                if (Matter.SAT.collides(this.body, player.hook.body).collided) {
+                    player.hook.delete(world);
+                }
+            }
         }
+
+        for(let i = 0; i < unstatics.length; i++){
+            if (Matter.SAT.collides(this.body, unstatics[i].body).collided) {
+                Body.setPosition(unstatics[i].body, unstatics[i].startPos)
+            }
+        }
+
     }
 
 
@@ -26,7 +38,6 @@ class DeathTrigger extends GameObject{
         if(this.fade < 255) this.fade+=5
         else{
             levelManager.load()
-            this.fade = 0;
         }
         
         

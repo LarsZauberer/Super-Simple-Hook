@@ -28,6 +28,7 @@ class MapManager {
                 unstatics = [];
                 targets = [];
                 triggers = [];
+                loadTriggers = []
               
                 player = null;
 
