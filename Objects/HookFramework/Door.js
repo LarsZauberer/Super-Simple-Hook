@@ -1,7 +1,7 @@
 class Door extends GameObject{
     constructor(world, x, y){
         let w = 0.9*width/32
-        let h = 4*height/18
+        let h = 5*height/18
 
         let x1 = x+(width/32)/2;
         let y1 = y+h*1.5

@@ -27,7 +27,8 @@ let objectRegistry = [
 					DevObstacle,
 					UnstaticObstacle,
 					Button,
-					Door
+					Door,
+					LoadTrigger
 					]
 
 let cam;
@@ -70,10 +71,10 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"percentDev (12).json",
+									"percentDev (13).json",
 									"percentDev (10).json",
 								  ]);
-	loadTriggers.push(new LoadTrigger(world, 200, windowHeight-200, 10, 100));
+	
 }
 
 

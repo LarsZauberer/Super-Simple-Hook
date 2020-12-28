@@ -28,7 +28,9 @@ class MapManager {
                 unstatics = [];
                 targets = [];
                 triggers = [];
+                loadTriggers = []
                 player = null;
+
 
 
                 // Create Player
@@ -65,7 +67,7 @@ class MapManager {
                 // Create Load Triggers
                 for (let index = 0; index < map.loadTriggers.length; index++) {
                     const element = map.loadTriggers[index];
-                    loadTriggers.push(new LoadTrigger(world, windowWidth/32*element.x, windowHeight/18*element.y, windowWidth/32*element.sx, windowHeight/18*element.sy, element.nextLoad))
+                    loadTriggers.push(new objectRegistry[element.type](world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy))
                 }
 
                 // Load Music for the map:
