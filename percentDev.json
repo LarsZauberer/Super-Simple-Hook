@@ -133,5 +133,11 @@
     ],
         
     "loadTriggers": [],
+
+
+    "obstacleTiles": [],
+
+
+
     "soundtrack": "Try and Solve This Loop.wav"
 }
