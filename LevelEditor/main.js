@@ -106,6 +106,7 @@ function draw() {
     // Player Calculation
     if (player) {
         player.update();
+        player.death = true;
         player.camera();
 
         // Delete Object if in range and button pressed
