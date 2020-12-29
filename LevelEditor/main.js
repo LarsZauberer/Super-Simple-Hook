@@ -181,6 +181,9 @@ function draw() {
 
 
     image(tileCanvas, 0,0)
+
+
+    deleteTile(mapData.obstacleTiles)
 }
 
 function keyPressed() {
@@ -311,10 +314,6 @@ function mousePressed() {
         if(!foundTile(mapData.obstacleTiles)){
             tilePlace(mx, my, tileNum, tilesManager.tiles, mapData.obstacleTiles);
         }
-        else{
-            tileDelete(mapData.obstacleTiles)
-        }
-        
     }
 
 

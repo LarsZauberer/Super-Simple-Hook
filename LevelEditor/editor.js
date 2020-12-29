@@ -74,20 +74,29 @@ function tilePlace(posX, posY, nr, group, mapGroup){
     mapGroup.push({"nr": nr, "x": Math.round(32/width*posX), "y": Math.round(32/width*posY)})
 }
 
-function foundTile(mapGroup){
+function foundTile(mapGroup, returnIt){
     let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
     let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
 
     for(let i = 0; i < mapGroup.length; i++){
         const element = mapGroup[i];
         if(Math.round(32/width*mx) == element.x && Math.round(32/width*my) == element.y){
-            return true;
+            
+            if(returnIt == null){
+                return true;  
+            }
+            else{
+                return i;
+            }
+            
+           
         }
     }
 }
 
 function deleteTile(mapGroup){
     if(foundTile(mapGroup) && keyIsDown(8)){
-        background(255,0,0)
+        mapGroup.splice(foundTile(mapGroup, "return"), 1)
+        
     }
 }

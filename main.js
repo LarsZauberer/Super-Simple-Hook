@@ -141,7 +141,8 @@ function draw() {
 		loadTriggers[i].update();
     }
     
-    image(tileCanvas, 0,0)
+	image(tileCanvas, 0,0)
+	
 }
 
 
