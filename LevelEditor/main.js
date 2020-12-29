@@ -47,7 +47,7 @@ const camSpeed = 10;
 
 
 // tile settings
-let tilemode = true;
+let tilemode = false;
 let tilesManager;
 function preload(){
     tilesManager = new TileManager();
