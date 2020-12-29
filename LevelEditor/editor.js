@@ -12,7 +12,7 @@ function obstacleDraw(pos1, pos2, target) {
     }
 
     // Create a new obstacle if it doesn't exist
-    if (found == false) {
+    if (found == false && size.x != 0 && size.y != 0) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
             mapData.targets.push({"x": tw/width*pos1.x, "y": th/height*pos1.y, "sx": tw/width*size.x, "sy": th/height*size.y, "tileNum": tileNum});
