@@ -40,7 +40,16 @@ let tileNum = 0;
 
 
 function preload() {
-    obstacleTiles = new Tilemap(["../testTile.jpg"]);
+    obstacleTiles = new Tilemap([
+		"../Assets/obstacle/0.jpg",
+		"../Assets/obstacle/1.jpg",
+		"../Assets/obstacle/2.jpg",
+		"../Assets/obstacle/3.jpg",
+		"../Assets/obstacle/4.jpg",
+		"../Assets/obstacle/5.jpg",
+		"../Assets/obstacle/6.jpg",
+		"../Assets/obstacle/7.jpg",
+	]);
     targetTiles = new Tilemap(["../testTile.jpg"]);
 }
 
