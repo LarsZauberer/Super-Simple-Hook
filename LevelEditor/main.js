@@ -59,7 +59,12 @@ function preload() {
 		"../Assets/obstacle/4.jpg",
 		"../Assets/obstacle/5.jpg",
 		"../Assets/obstacle/6.jpg",
-		"../Assets/obstacle/7.jpg",
+        "../Assets/obstacle/7.jpg",
+        "../Assets/obstacle/8.jpg",
+		"../Assets/obstacle/9.jpg",
+		"../Assets/obstacle/10.jpg",
+		"../Assets/obstacle/11.jpg",
+		"../Assets/obstacle/12.jpg",
 	]);
     targetTiles = new Tilemap(["../testTile.jpg"]);
 }
@@ -214,67 +219,79 @@ function keyPressed() {
             a.click();
             break;
         case 80:
-            // Spawn Player
+            // p, Spawn Player
             spawnPlayer();
             break;
         case 79:
-            // o
+            // o,  Door
             spawnDoor();
             break;
-        case 49:
-            // Spawn Unstatic
+        case 73:
+            // i, unstatic rect
             spawnObject(1, unstatics, mapData.unstatics, 2, 2, false)
             break;
-        case 50:
-            //button
+        case 85:
+            // u,  Button
             spawnObject(2, triggers, mapData.triggers, 0, 0, true)
             break;
-        case 51:
+        case 90:
+            //z, loadtrigger
             spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
             break;
 
+
         // Tiles
         case 191:
+            //§
             tileNum = 0;
             break;
         case 49:
+            //1
             tileNum = 1;
             break;
         case 50:
+            //2
             tileNum = 2;
             break;
         case 51:
+            //3
             tileNum = 3;
             break;
         case 52:
+            //4
             tileNum = 4;
             break;
         case 53:
+            //5
             tileNum = 5;
             break;
         case 54:
+            //6
             tileNum = 6;
             break;
         case 55:
+            //7
             tileNum = 7;
             break;
         case 56:
+            //8
             tileNum = 8;
             break;
         case 57:
+            //9
             tileNum = 9;
             break;
         case 48:
+            //0
             tileNum = 10;
             break;
-        case 49:
+        case 219:
+            //' ?
             tileNum = 11;
             break;
-        case 219:
-            tileNum = 12;
-            break;
         case 221:
-            tileNum = 13;
+            //^^
+            tileNum = 12;
             break;
     }
 }

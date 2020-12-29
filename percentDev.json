@@ -5,11 +5,7 @@
         "sx": 1.8,
         "sy": 2.7
     },
-    "door": {
-        "x": 10,
-        "y": 12
-    },
-
+    
     "obstacles": [
         {
             "x": 0,
@@ -133,5 +129,11 @@
     ],
         
     "loadTriggers": [],
+
+    "door": {
+      "x": 10,
+      "y": 12
+    },
+    
     "soundtrack": "Try and Solve This Loop.wav"
 }
