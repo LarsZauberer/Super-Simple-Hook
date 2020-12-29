@@ -96,7 +96,12 @@ function foundTile(mapGroup, returnIt){
 
 function deleteTile(mapGroup){
     if(foundTile(mapGroup) && keyIsDown(8)){
+        const element = mapGroup[foundTile(mapGroup, "return")];
+        
+        tileCanvas.rect(element.x*width/32,element.y*height/18,width/32,height/18)
+
         mapGroup.splice(foundTile(mapGroup, "return"), 1)
+        
         
     }
 }
