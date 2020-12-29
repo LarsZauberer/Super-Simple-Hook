@@ -47,7 +47,7 @@ class MapManager {
                 // Create Targets
                 for (let index = 0; index < map.targets.length; index++) {
                     const element = map.targets[index];
-                    targets.push(new Target(world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy));
+                    targets.push(new Target(world, width/tw*element.x, height/th*element.y, width/tw*element.sx, height/th*element.sy, element.tileNum));
                 }
 
                 // Load Music for the map:
