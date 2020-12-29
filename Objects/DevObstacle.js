@@ -1,15 +1,16 @@
 class DevObstacle extends Obstacle {
-    constructor(world, x, y, sx, sy, st) {
+    constructor(world, x, y, sx, sy, tile) {
         // Constructor
-        super(world, x, y, sx, sy, st);
+        super(world, x, y, sx, sy, true);
+        this.tile = tile;
     }
 
     mesh() {
         // Mesh of the obstacle
-        fill(255, 255, 255);
-		rect(this.x, this.y, this.size.x, this.size.y);
-
-        // Setting the ground mesh for the obstacle
-        //this.ground.mesh = this.groundMesh; 
+        try {
+            image(obstacleTiles.tiles[this.tile], this.x, this.y, this.size.x, this.size.y);
+        } catch (error) {
+            image(obstacleTiles.tiles[0], this.x, this.y, this.size.x, this.size.y);
+        }
     }
 }

@@ -57,6 +57,9 @@ class Player extends GameObject{
 			this.hookMechanics();
 		}
 		
+		// Mass
+		Body.setMass(this.body, 4);
+		Body.setMass(this.foot, 4);
 
 
 
