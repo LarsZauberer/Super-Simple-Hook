@@ -183,7 +183,7 @@ function draw() {
     image(tileCanvas, 0,0)
 
 
-    deleteTile(mapData.obstacleTiles)
+    deleteTile(mapData.obstacleTiles); 
 }
 
 function keyPressed() {
