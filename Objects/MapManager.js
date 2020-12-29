@@ -73,8 +73,14 @@ class MapManager {
 
                 for(let index = 0; index < map.obstacleTiles.length; index++){
                     const element = map.obstacleTiles[index];
-                    tileCanvas.image(tilesManager.tiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                    tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
                 }
+
+                for(let index = 0; index < map.targetTiles.length; index++){
+                    const element = map.targetTiles[index];
+                    tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                }
+
 
                 
 
