@@ -18,6 +18,9 @@ let triggers = [];
 let loadTriggers = [];
 
 
+let tileCanvas;
+
+
 
 
 
@@ -58,7 +61,10 @@ function setup() {
 	createCanvas(windowHeight/9*16, windowHeight);
 	background(100);
 	rectMode(CENTER);
-	angleMode(DEGREES)
+    angleMode(DEGREES);
+    
+    tileCanvas = createGraphics(width, height);
+    tileCanvas.clear();
 
     // Matter JS Settings
 	engine = Engine.create({
@@ -133,7 +139,9 @@ function draw() {
 
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
-	}
+    }
+    
+    image(tileCanvas, 0,0)
 }
 
 
