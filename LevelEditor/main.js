@@ -209,8 +209,8 @@ function keyPressed() {
         case 16:
             deathTrigDrawing = true;
             break;
-        case 81:
-            // q (Saving)
+        case 83:
+            // s (Saving)
             console.log(mapData)
             let a = document.createElement("a");
             let d = JSON.stringify(mapData)
@@ -243,8 +243,8 @@ function keyPressed() {
     
     else{
         switch(keyCode){
-            case 81:
-                // q (Saving)
+            case 83:
+                // s (Saving)
                 console.log(mapData)
                 let a = document.createElement("a");
                 let d = JSON.stringify(mapData)
@@ -255,6 +255,7 @@ function keyPressed() {
                 break; 
 
             case 223:
+                //$
                 tarTileMode = !tarTileMode;
                 break;
 
@@ -310,6 +311,55 @@ function keyPressed() {
                 //^^
                 tileNum = 12;
                 break;
+            case 81:
+                //q
+                tileNum = 13;
+                break;
+            case 87:
+                //w
+                tileNum = 14;
+                break;
+            case 69:
+                //e
+                tileNum = 15;
+                break;
+            case 82:
+                //r
+                tileNum = 16;
+                break;
+            case 84:
+                //t
+                tileNum = 17;
+                break;
+            case 90:
+                //z
+                tileNum = 18;
+                break;
+            case 85:
+                //u
+                tileNum = 19;
+                break;
+            case 73:
+                //i
+                tileNum = 20;
+                break;
+            case 79:
+                //o
+                tileNum = 21;
+                break;
+            case 80:
+                //p
+                tileNum = 22;
+                break;
+            case 186:
+                //[
+                tileNum = 23;
+                break;
+            case 192:
+                //]
+                tileNum = 24;
+                break;
+
         }
     }
 
@@ -331,6 +381,7 @@ function mousePressed() {
 
         if(!foundTile(mapData.obstacleTiles)){
             if(!tarTileMode){
+                if(tileNum > 12) tileNum = 0;
                 tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
             }
             else{
