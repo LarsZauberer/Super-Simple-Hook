@@ -219,23 +219,24 @@ function keyPressed() {
             a.download = mapName.split("../")[1];
             a.click();
             break;
-        case 80:
-            // Spawn Player
+        case 49:
+            //1 Spawn Player
             spawnPlayer();
             break;
-        case 79:
-            //o
+        case 50:
+            //2
             spawnDoor();
             break;
-        case 49:
-            // Spawn Unstatic
+        case 51:
+            // 3 Spawn Unstatic
             spawnObject(1, unstatics, mapData.unstatics, 2, 2, false)
             break;
-        case 50:
-            //button
+        case 52:
+            //4 button
             spawnObject(2, triggers, mapData.triggers, 0, 0, true)
             break;
-        case 51:
+        case 53:
+            //5 loadTrigger
             spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
             break;
     }
@@ -367,7 +368,10 @@ function keyPressed() {
 
 function keyReleased() {
     // Should draw target or not
+
+    //ctrl
     if (keyCode === 17) targetDrawing = false;
+    //shift
     if (keyCode === 16) deathTrigDrawing = false;
 }
 
