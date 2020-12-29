@@ -7,7 +7,7 @@ let triggers = [];
 let loadTriggers = [];
 
 
-let tilemode = true;
+
 
 let objectRegistry = [
                       DevObstacle,
@@ -45,12 +45,16 @@ let debug = true;
 
 const camSpeed = 10;
 
+
+// tile settings
+let tilemode = true;
 let tilesManager;
 function preload(){
     tilesManager = new TileManager();
 }
 let tileCanvas;
 let tileNum = 0;
+tarTileMode = false;
 
 
 function setup() {
@@ -183,11 +187,20 @@ function draw() {
 
     image(tileCanvas, 0,0)
 
-
-    deleteTile(mapData.obstacleTiles); 
+    if(!tarTileMode){
+        deleteTile(mapData.obstacleTiles); 
+    }
+    else{
+        deleteTile(mapData.targetTiles);
+    }
 }
 
 function keyPressed() {
+
+    if(keyCode == 13){
+        tilemode = !tilemode
+    }
+
     if(!tilemode){
     switch (keyCode) {
         case 17:
@@ -240,7 +253,11 @@ function keyPressed() {
                 a.download = mapName.split("../")[1];
                 a.click();
                 break; 
-            
+
+            case 223:
+                tarTileMode = !tarTileMode;
+                break;
+
             case 191:
                 //§
                 tileNum = 0;
@@ -313,7 +330,12 @@ function mousePressed() {
     if(tilemode){
 
         if(!foundTile(mapData.obstacleTiles)){
-            tilePlace(mx, my, tileNum, tilesManager.tiles, mapData.obstacleTiles);
+            if(!tarTileMode){
+                tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
+            }
+            else{
+                tilePlace(mx, my, tileNum, tilesManager.tarTiles, mapData.targetTiles);
+            }
         }
     }
 
