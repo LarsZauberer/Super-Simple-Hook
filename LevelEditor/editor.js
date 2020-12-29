@@ -73,3 +73,21 @@ function tilePlace(posX, posY, nr, group, mapGroup){
     tileCanvas.image(group[nr], posX, posY, width/32, height/18)
     mapGroup.push({"nr": nr, "x": Math.round(32/width*posX), "y": Math.round(32/width*posY)})
 }
+
+function foundTile(mapGroup){
+    let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
+    let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
+
+    for(let i = 0; i < mapGroup.length; i++){
+        const element = mapGroup[i];
+        if(Math.round(32/width*mx) == element.x && Math.round(32/width*my) == element.y){
+            return true;
+        }
+    }
+}
+
+function deleteTile(mapGroup){
+    if(foundTile(mapGroup) && keyIsDown(8)){
+        background(255,0,0)
+    }
+}
