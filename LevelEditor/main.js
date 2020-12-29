@@ -6,6 +6,9 @@ let targets = [];
 let triggers = [];
 let loadTriggers = [];
 
+
+let tilemode = true;
+
 let objectRegistry = [
                       DevObstacle,
                       UnstaticObstacle,
@@ -42,10 +45,21 @@ let debug = true;
 
 const camSpeed = 10;
 
+let tilesManager;
+function preload(){
+    tilesManager = new TileManager();
+}
+let tileCanvas;
+let tileNr = 0;
+
+
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
 	rectMode(CENTER);
-	angleMode(DEGREES);
+    angleMode(DEGREES);
+    
+    tileCanvas = createGraphics(width, height);
+    tileCanvas.clear();
 
     // Matter JS Settings
 	engine = Engine.create({
@@ -160,16 +174,18 @@ function draw() {
     }
     
 
-    if (mouseUp) {
+    if (mouseUp && !tilemode) {
         // Drawing
         obstacleDraw(mouseDown, mouseUp, targetDrawing, deathTrigDrawing);
     }
 
 
+    image(tileCanvas, 0,0)
 
 }
 
 function keyPressed() {
+    if(!tilemode){
     switch (keyCode) {
         case 17:
             targetDrawing = true;
@@ -206,8 +222,29 @@ function keyPressed() {
         case 51:
             spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
             break;
+    }
+    } 
+    
+    else{
+        switch(keyCode){
+            case 81:
+                // q (Saving)
+                console.log(mapData)
+                let a = document.createElement("a");
+                let d = JSON.stringify(mapData)
+                let file = new Blob([d], {type: "txt"});
+                a.href = URL.createObjectURL(file);
+                a.download = mapName.split("../")[1];
+                a.click();
+                break; 
+            
+            
+            
+        }
+
 
     }
+
 }
 
 function keyReleased() {
@@ -221,6 +258,10 @@ function mousePressed() {
     let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
     let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
     mouseDown = createVector(mx, my, 0);
+
+    if(tilemode){
+        tilePlace(mx, my, tileNr, tilesManager.tiles, mapData.obstacleTiles);
+    }
 }
 
 function mouseReleased() {

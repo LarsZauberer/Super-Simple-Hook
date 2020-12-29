@@ -67,3 +67,9 @@ function spawnDoor() {
     door = new Door(world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18))*(height/18));
     mapData.door = {"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32))*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18))*(height/18)};
 }
+
+
+function tilePlace(posX, posY, nr, group, mapGroup){
+    tileCanvas.image(group[nr], posX, posY, width/32, height/18)
+    mapGroup.push({"nr": nr, "x": Math.round(32/width*posX), "y": Math.round(32/width*posY)})
+}
