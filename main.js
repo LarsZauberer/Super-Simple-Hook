@@ -37,12 +37,17 @@ let cam;
 let levelManager;
 let grid;
 let soundmanager;
+let tilesManager;
 
 
 function preload() {
 	soundmanager = new Sound([
 		"Assets/music/Try and Solve This Loop.wav"
 	]);
+
+
+	tilesManager = new TileManager()
+
 }
 
 
@@ -84,6 +89,7 @@ function draw() {
     /* Main Game Loop
     */
 	background(100);
+	
 
 	if (debug) {
 		levelManager.drawGrid();

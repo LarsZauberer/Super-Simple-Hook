@@ -71,6 +71,13 @@ class MapManager {
                     loadTriggers.push(new objectRegistry[element.type](world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy))
                 }
 
+                for(let index = 0; index < map.obstacleTiles.length; index++){
+                    const element = map.obstacleTiles[index];
+                    image(tilesManager.tiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                }
+
+                
+
                 // Load Music for the map:
                 try {
                     soundmanager.play(map.soundtrack);
@@ -103,4 +110,7 @@ class MapManager {
         line(width,0,width,height)
         pop();
     }
+
+
+    
 }

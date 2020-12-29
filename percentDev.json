@@ -135,7 +135,15 @@
     "loadTriggers": [],
 
 
-    "obstacleTiles": [],
+    "obstacleTiles": [
+        {
+            "nr": 0,
+            "x": 10, 
+            "y": 5
+            
+        }
+
+    ],
 
 
 
