@@ -50,7 +50,7 @@ function preload(){
     tilesManager = new TileManager();
 }
 let tileCanvas;
-let tileNr = 0;
+let tileNum = 0;
 
 
 function setup() {
@@ -181,7 +181,6 @@ function draw() {
 
 
     image(tileCanvas, 0,0)
-
 }
 
 function keyPressed() {
@@ -238,11 +237,59 @@ function keyPressed() {
                 a.click();
                 break; 
             
-            
-            
+            case 191:
+                //§
+                tileNum = 0;
+                break;
+            case 49:
+                //1
+                tileNum = 1;
+                break;
+            case 50:
+                //2
+                tileNum = 2;
+                break;
+            case 51:
+                //3
+                tileNum = 3;
+                break;
+            case 52:
+                //4
+                tileNum = 4;
+                break;
+            case 53:
+                //5
+                tileNum = 5;
+                break;
+            case 54:
+                //6
+                tileNum = 6;
+                break;
+            case 55:
+                //7
+                tileNum = 7;
+                break;
+            case 56:
+                //8
+                tileNum = 8;
+                break;
+            case 57:
+                //9
+                tileNum = 9;
+                break;
+            case 48:
+                //0
+                tileNum = 10;
+                break;
+            case 219:
+                //' ?
+                tileNum = 11;
+                break;
+            case 221:
+                //^^
+                tileNum = 12;
+                break;
         }
-
-
     }
 
 }
@@ -260,8 +307,17 @@ function mousePressed() {
     mouseDown = createVector(mx, my, 0);
 
     if(tilemode){
-        tilePlace(mx, my, tileNr, tilesManager.tiles, mapData.obstacleTiles);
+
+        if(!foundTile(mapData.obstacleTiles)){
+            tilePlace(mx, my, tileNum, tilesManager.tiles, mapData.obstacleTiles);
+        }
+        else{
+            tileDelete(mapData.obstacleTiles)
+        }
+        
     }
+
+
 }
 
 function mouseReleased() {
