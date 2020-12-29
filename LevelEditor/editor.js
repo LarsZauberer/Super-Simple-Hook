@@ -12,7 +12,7 @@ function obstacleDraw(pos1, pos2, target, deathTrigger) {
     }
 
     // Create a new obstacle if it doesn't exist
-    if (found == false) {
+    if (found == false && size.x != 0 && size.y != 0) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
             mapData.targets.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y)+0.02, "sx": 32/width*size.x, "sy": 18/height*size.y});
@@ -22,8 +22,8 @@ function obstacleDraw(pos1, pos2, target, deathTrigger) {
             mapData.loadTriggers.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 5});
         }
         else{
-            obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.obstacles.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0});
+            obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y, tileNum));
+            mapData.obstacles.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": 32/width*size.x, "sy": 18/height*size.y, "type": 0, "tileNum": tileNum});
         }
         
     }

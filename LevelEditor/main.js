@@ -41,10 +41,33 @@ let mapName;
 let debug = true;
 
 const camSpeed = 10;
+const tw = 32; // Tile Width
+const th = 18; // Tile Height
+
+let obstacleTiles;
+let targetTiles;
+
+let tileNum = 0;
+
+
+function preload() {
+    obstacleTiles = new Tilemap([
+		"../Assets/obstacle/0.jpg",
+		"../Assets/obstacle/1.jpg",
+		"../Assets/obstacle/2.jpg",
+		"../Assets/obstacle/3.jpg",
+		"../Assets/obstacle/4.jpg",
+		"../Assets/obstacle/5.jpg",
+		"../Assets/obstacle/6.jpg",
+		"../Assets/obstacle/7.jpg",
+	]);
+    targetTiles = new Tilemap(["../testTile.jpg"]);
+}
 
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
-	rectMode(CENTER);
+    rectMode(CENTER);
+    imageMode(CENTER);
 	angleMode(DEGREES);
 
     // Matter JS Settings
@@ -52,8 +75,8 @@ function setup() {
         element: document.body,
         engine: engine,
         options: {
-            width: windowHeight/9*16,
-            height: windowHeight,
+            width: width,
+            height: height,
         },
     });
 	world = engine.world;
@@ -210,6 +233,49 @@ function keyPressed() {
             spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
             break;
 
+        // Tiles
+        case 191:
+            tileNum = 0;
+            break;
+        case 49:
+            tileNum = 1;
+            break;
+        case 50:
+            tileNum = 2;
+            break;
+        case 51:
+            tileNum = 3;
+            break;
+        case 52:
+            tileNum = 4;
+            break;
+        case 53:
+            tileNum = 5;
+            break;
+        case 54:
+            tileNum = 6;
+            break;
+        case 55:
+            tileNum = 7;
+            break;
+        case 56:
+            tileNum = 8;
+            break;
+        case 57:
+            tileNum = 9;
+            break;
+        case 48:
+            tileNum = 10;
+            break;
+        case 49:
+            tileNum = 11;
+            break;
+        case 219:
+            tileNum = 12;
+            break;
+        case 221:
+            tileNum = 13;
+            break;
     }
 }
 
@@ -221,8 +287,8 @@ function keyReleased() {
 
 function mousePressed() {
     // First Position of the Obstacle/Target
-    let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
-    let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
+    let mx = Math.trunc(mouseX/(width/tw))*(width/tw);
+    let my = Math.trunc(mouseY/(height/th))*(height/th);
     mouseDown = createVector(mx, my, 0);
 }
 
