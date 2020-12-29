@@ -188,7 +188,7 @@ function draw() {
     image(tileCanvas, 0,0)
 
     if(!tarTileMode){
-        deleteTile(mapData.obstacleTiles); 
+        deleteTile(mapData.obstacleTiles);
     }
     else{
         deleteTile(mapData.targetTiles);
