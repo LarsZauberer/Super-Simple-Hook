@@ -60,6 +60,7 @@ function setup() {
     
     tileCanvas = createGraphics(width, height);
     tileCanvas.clear();
+    tileCanvas.fill(100);
 
     // Matter JS Settings
 	engine = Engine.create({
