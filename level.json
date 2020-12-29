@@ -1,6 +1,12 @@
 {
-    "player": {},
-    "door": {},
+    "player": 
+        {
+            "x": 12.208333333333332,
+            "y": 12.886363636363637,
+            "sx": 1.8,
+            "sy": 2.7
+        },
+    "door": {"x": 5, "y": 5},
     "obstacles": [],
     "unstatics": [],
     "targets": [],
@@ -8,10 +14,7 @@
     "loadTriggers": [],
     "obstacleTiles": [],
     "targetTiles": [],
-    "soundtrack": "Try and Solve This Loop.wav"}
-
-
-
+    "soundtrack": "Try and Solve This Loop.wav"
 
 
 }
