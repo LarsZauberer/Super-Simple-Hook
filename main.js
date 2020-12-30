@@ -59,6 +59,11 @@ function preload() {
 		"Assets/obstacle/5.jpg",
 		"Assets/obstacle/6.jpg",
 		"Assets/obstacle/7.jpg",
+		"Assets/obstacle/8.jpg",
+		"Assets/obstacle/9.jpg",
+		"Assets/obstacle/10.jpg",
+		"Assets/obstacle/11.jpg",
+		"Assets/obstacle/12.jpg",
 	]);
 	targetTiles = new Tilemap(["testTile.jpg"]);
 }
