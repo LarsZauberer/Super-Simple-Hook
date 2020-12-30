@@ -62,7 +62,7 @@ function setup() {
 	rectMode(CENTER);
     angleMode(DEGREES);
     
-    tileCanvas = createGraphics(width, height);
+    tileCanvas = createGraphics(width*2, height);
     tileCanvas.clear();
     tileCanvas.fill(100);
 
@@ -165,7 +165,9 @@ function draw() {
     // Targets Calculations
     for (let i = 0; i < targets.length; i++) {
         targets[i].update();
+        if(keyIsDown(17)){
         deleteObject(i, targets, mapData.targets);
+        }
     }
 
     for (let i = 0; i < triggers.length; i++) {
@@ -175,23 +177,44 @@ function draw() {
 
     for(let i = 0; i < loadTriggers.length; i++){
         loadTriggers[i].update();
-        deleteObject(i, loadTriggers, mapData.loadTriggers)
+        if(keyIsDown(16)){
+            deleteObject(i, loadTriggers, mapData.loadTriggers)
+        }
     }
     
 
-    if (mouseUp && !tilemode) {
+    if (mouseUp) {
         // Drawing
         obstacleDraw(mouseDown, mouseUp, targetDrawing, deathTrigDrawing);
     }
 
 
-    image(tileCanvas, 0,0)
+    
 
-    if(!tarTileMode){
-        deleteTile(mapData.obstacleTiles);
-    }
-    else{
-        deleteTile(mapData.targetTiles);
+    if(tilemode){
+        image(tileCanvas, 0, 0)
+
+        if(mouseIsPressed){
+            let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
+            let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
+            if(!foundTile(mapData.obstacleTiles)){
+                if(!tarTileMode){
+                    if(tileNum > 12) tileNum = 0;
+                    tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
+                }
+                else{
+                    tilePlace(mx, my, tileNum, tilesManager.tarTiles, mapData.targetTiles);
+                }
+            }
+        }
+        
+
+        if(!tarTileMode){
+            deleteTile(mapData.obstacleTiles);
+        }
+        else{
+            deleteTile(mapData.targetTiles);
+        }
     }
 }
 
@@ -381,18 +404,7 @@ function mousePressed() {
     let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
     mouseDown = createVector(mx, my, 0);
 
-    if(tilemode){
-
-        if(!foundTile(mapData.obstacleTiles)){
-            if(!tarTileMode){
-                if(tileNum > 12) tileNum = 0;
-                tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
-            }
-            else{
-                tilePlace(mx, my, tileNum, tilesManager.tarTiles, mapData.targetTiles);
-            }
-        }
-    }
+    
 
 
 }

@@ -24,7 +24,7 @@ let tileCanvas;
 
 
 
-let debug = true;
+let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
@@ -63,7 +63,7 @@ function setup() {
 	rectMode(CENTER);
     angleMode(DEGREES);
     
-    tileCanvas = createGraphics(width, height);
+    tileCanvas = createGraphics(width*2, height);
     tileCanvas.clear();
 
     // Matter JS Settings
@@ -83,7 +83,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"level.json",
+									"level (4).json",
 								  ]);
 
 
@@ -94,7 +94,11 @@ function setup() {
 function draw() {
     /* Main Game Loop
     */
+
+
 	background(100);
+
+	
 	
 
 	if (debug) {
@@ -106,6 +110,9 @@ function draw() {
 	if (player) {
 		player.camera();
 	}
+
+
+	image(tileCanvas, 0,0)
 
 	
 	if(door){
@@ -141,7 +148,7 @@ function draw() {
 		loadTriggers[i].update();
     }
     
-	image(tileCanvas, 0,0)
+	
 	
 }
 
