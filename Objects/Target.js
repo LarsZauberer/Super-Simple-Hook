@@ -11,7 +11,10 @@ class Target extends GameObject {
 
     mesh() {
         // Design of the target
+        if(debug){
         fill(0, 255, 0);
         rect(this.x, this.y, this.size.x, this.size.y);
+        }
+        
     }
 }
