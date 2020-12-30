@@ -83,7 +83,8 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"level (4).json",
+									"Level2.json",
+									"Level1.json"
 								  ]);
 
 

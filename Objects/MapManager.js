@@ -29,6 +29,7 @@ class MapManager {
                 targets = [];
                 triggers = [];
                 loadTriggers = []
+                tileCanvas.background(100);
               
                 player = null;
 

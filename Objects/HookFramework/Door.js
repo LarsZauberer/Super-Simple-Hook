@@ -35,7 +35,7 @@ class Door extends GameObject{
         }
         else if(this.body.position.y < this.y){
             Body.setPosition(this.body, {x: this.x, y: this.y-this.currentPos})
-            this.currentPos-=6;
+            this.currentPos-=4;
         }
 
         this.mesh();
@@ -55,7 +55,7 @@ class Door extends GameObject{
 
     open(){
         if(this.body.position.y > this.y-this.h){
-        this.currentPos+=6;
+        this.currentPos+=4;
         Body.setPosition(this.body, {x: this.x, y: this.y-this.currentPos})
         }
     }

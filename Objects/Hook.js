@@ -17,7 +17,6 @@ class Hook {
         this.pullObject1;
         this.pullObject2;
         this.twoHookPullAngle;
-
         this.hook2posX = 0;
         this.hook2posY = 0;
 
