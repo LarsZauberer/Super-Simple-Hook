@@ -31,6 +31,7 @@ class LoadTrigger extends GameObject {
         background(0,this.fade)
         if(this.fade < 255) this.fade+=5
         else{
+            tileCanvas.background(100);
             levelManager.loaded++
             levelManager.load()
         }
