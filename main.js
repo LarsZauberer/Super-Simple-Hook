@@ -17,6 +17,7 @@ let targets = [];
 let triggers = [];
 let loadTriggers = [];
 
+let lavaAni = []
 
 let tileCanvas;
 
@@ -83,7 +84,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"Level2.json",
+									"percentDev.json",
 									"Level1.json"
 								  ]);
 
@@ -147,8 +148,13 @@ function draw() {
 
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
-    }
-    
+	}
+	
+	for(let i = 0; i < lavaAni.length; i++){
+		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
+	}
+	
+	
 	
 	
 }

@@ -73,12 +73,18 @@ class MapManager {
 
                 for(let index = 0; index < map.obstacleTiles.length; index++){
                     const element = map.obstacleTiles[index];
-                    tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                    tileCanvas.image(tilesManager.obstacTiles[element.nr], 0, 0, width/32, height/18)
+                    
                 }
 
                 for(let index = 0; index < map.targetTiles.length; index++){
                     const element = map.targetTiles[index];
                     tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                }
+
+                for(let index = 0; index < map.lavaTiles.length; index++){
+                    const element = map.lavaTiles[index];
+                    lavaAni.push({nr: tilesManager.lavTiles[element.nr],x: element.x*width/32,y: element.y*height/18})
                 }
 
 
