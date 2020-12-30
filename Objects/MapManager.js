@@ -35,7 +35,9 @@ class MapManager {
 
 
                 // Create Player
+                if(map.player){
                 player = new Player(world, width/32*map.player.x, height/18*map.player.y, width/32*map.player.sx, height/18*map.player.sy);
+                }
                 if(map.door){
                     door = new Door(world, width/32*map.door.x, height/18*map.door.y);
                 }
@@ -73,7 +75,7 @@ class MapManager {
 
                 for(let index = 0; index < map.obstacleTiles.length; index++){
                     const element = map.obstacleTiles[index];
-                    tileCanvas.image(tilesManager.obstacTiles[element.nr], 0, 0, width/32, height/18)
+                    tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
                     
                 }
 
