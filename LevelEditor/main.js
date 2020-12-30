@@ -54,7 +54,7 @@ function preload(){
 }
 let tileCanvas;
 let tileNum = 0;
-tarTileMode = false;
+let specTileMode = 0;
 
 
 function setup() {
@@ -197,23 +197,28 @@ function draw() {
         if(mouseIsPressed){
             let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
             let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
-            if(!foundTile(mapData.obstacleTiles)){
-                if(!tarTileMode){
-                    if(tileNum > 12) tileNum = 0;
-                    tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
-                }
-                else{
-                    tilePlace(mx, my, tileNum, tilesManager.tarTiles, mapData.targetTiles);
-                }
+            if(!foundTile(mapData.obstacleTiles) && specTileMode == 0){
+                if(tileNum > 12) tileNum = 0;
+                tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
+            }
+            if(!foundTile(mapData.targetTiles) && specTileMode == 1){
+                tilePlace(mx, my, tileNum, tilesManager.tarTiles, mapData.targetTiles);
+            }
+            if(!foundTile(mapData.lavaTiles) && specTileMode == 2){
+                if(tileNum > 4) tileNum = 0;
+                tilePlace(mx, my, tileNum, tilesManager.lavTiles, mapData.lavaTiles);
             }
         }
         
 
-        if(!tarTileMode){
+        if(specTileMode == 0){
             deleteTile(mapData.obstacleTiles);
         }
-        else{
+        else if(specTileMode == 1){
             deleteTile(mapData.targetTiles);
+        }
+        else{
+            deleteTile(mapData.lavaTiles);
         }
     }
 }
@@ -280,7 +285,10 @@ function keyPressed() {
 
             case 223:
                 //$
-                tarTileMode = !tarTileMode;
+                specTileMode+=1;
+                if(specTileMode > 2){
+                    specTileMode = 0;
+                }
                 break;
 
             case 191:

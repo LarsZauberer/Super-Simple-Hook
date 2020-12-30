@@ -8,8 +8,10 @@ class DeathTrigger extends GameObject{
     }
 
     mesh(){
+        if(debug){
         fill(255,0,0);
         rect(this.x,this.y,this.size.x,this.size.y);
+        }
 
 
         if(player){
