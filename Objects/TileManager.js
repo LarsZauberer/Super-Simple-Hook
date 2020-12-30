@@ -2,6 +2,7 @@ class TileManager{
     constructor(){
         this.obstacTiles = [];
         this.tarTiles = [];
+        this.lavTiles = []
 
         this.load()
     }
@@ -13,6 +14,10 @@ class TileManager{
 
         for(let i = 1; i <= 25; i++){
 	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + ".jpg"))
+        }
+
+        for(let i = 1; i <= 4; i++){
+	        this.lavTiles.push(loadImage("../Assets/lavaTiles/" + i + ".gif"))
         }
         
 

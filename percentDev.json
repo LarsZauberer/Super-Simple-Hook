@@ -151,6 +151,17 @@
     ],
 
 
+    "lavaTiles":[
+        {
+            "nr": 2,
+            "x": 5,
+            "y": 5
+        }
+
+
+    ],
+
+
 
     "soundtrack": "Try and Solve This Loop.wav"
 }
