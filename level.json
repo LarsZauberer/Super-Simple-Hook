@@ -1,12 +1,6 @@
 {
-    "player": 
-        {
-            "x": 12.208333333333332,
-            "y": 12.886363636363637,
-            "sx": 1.8,
-            "sy": 2.7
-        },
-    "door": {"x": 5, "y": 5},
+    "player": null,
+    "door": null,
     "obstacles": [],
     "unstatics": [],
     "targets": [],
