@@ -11,7 +11,7 @@ class Menu {
         for (let index = 0; index < this.buttons.length; index++) {
             const element = this.buttons[index];
             let button = createButton(element.label, element.value);
-            button.position(width/2, y);
+            button.position(width/2-75, y);
             button.mousePressed(element.function);
             this.btns.push(button);
         }
@@ -29,6 +29,6 @@ class Menu {
         if (this.bg) {
             background(this.bg);
         }
-        text(this.title, width/2, height/8, width/2, height/8)
+        text(this.title, width/2, height/8, 100, 100);
     }
 }

@@ -108,9 +108,9 @@ function setup() {
 		"label": "Test Button 1",
 		"value": "Test",
 		"function": function() {
-			console.log("Test");
+			console.log("");
 		}
-	}]);
+	}], 255);
 
 	pauseMenu.show();
 }
