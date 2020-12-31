@@ -37,7 +37,7 @@ class DeathTrigger extends GameObject{
 
     death(){
         background(0,this.fade)
-        if(this.fade < 255) this.fade+=5
+        if(this.fade < 255) this.fade+=4
         else{
             tileCanvas.background(100)
             levelManager.load()

@@ -84,7 +84,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"Level1 (3).json",
+									"Level1 (3) (1).json",
 									"Level2.json"
 								  ]);
 
@@ -112,7 +112,6 @@ function draw() {
 	if (player) {
 		player.camera();
 	}
-
 
 	image(tileCanvas, 0,0)
 
@@ -146,14 +145,14 @@ function draw() {
 	}
 
 
-	for(let i = 0; i < loadTriggers.length; i++){
-		loadTriggers[i].update();
-	}
-	
+
 	for(let i = 0; i < lavaAni.length; i++){
 		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
 	}
 	
+	for(let i = 0; i < loadTriggers.length; i++){
+		loadTriggers[i].update();
+	}
 	
 	
 	
