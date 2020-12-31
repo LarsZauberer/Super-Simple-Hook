@@ -110,7 +110,7 @@ function setup() {
 		"function": function() {
 			console.log("");
 		}
-	}], 255);
+	}]);
 
 	pauseMenu.show();
 }
@@ -120,6 +120,7 @@ function draw() {
     /* Main Game Loop
     */
 	background(100);
+	push()
 
 	if (debug) {
 		levelManager.drawGrid();
