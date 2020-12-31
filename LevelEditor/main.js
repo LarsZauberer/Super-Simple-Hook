@@ -12,7 +12,8 @@ let lavaAni = []
 
 let objectRegistry = [
                       DevObstacle,
-                      UnstaticObstacle,
+                      UnstaticRect,
+                      UnstaticCircle,
                       Button,
                       Door,
                       LoadTrigger,
@@ -48,30 +49,9 @@ const camSpeed = 10;
 const tw = 32; // Tile Width
 const th = 18; // Tile Height
 
-let obstacleTiles;
-let targetTiles;
 
 
 
-
-function preload() {
-    obstacleTiles = new Tilemap([
-		"../Assets/obstacle/0.jpg",
-		"../Assets/obstacle/1.jpg",
-		"../Assets/obstacle/2.jpg",
-		"../Assets/obstacle/3.jpg",
-		"../Assets/obstacle/4.jpg",
-		"../Assets/obstacle/5.jpg",
-		"../Assets/obstacle/6.jpg",
-        "../Assets/obstacle/7.jpg",
-        "../Assets/obstacle/8.jpg",
-		"../Assets/obstacle/9.jpg",
-		"../Assets/obstacle/10.jpg",
-		"../Assets/obstacle/11.jpg",
-		"../Assets/obstacle/12.jpg",
-	]);
-    targetTiles = new Tilemap(["../testTile.jpg"]);
-}
 
 
 // tile settings
@@ -299,12 +279,15 @@ function keyPressed() {
             break;
         case 52:
             //4 button
-            spawnObject(2, triggers, mapData.triggers, 0, 0, true)
+            spawnObject(3, triggers, mapData.triggers, 0, 0, true)
             break;
         case 53:
             //5 loadTrigger
-            spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
+            spawnObject(5, loadTriggers, mapData.loadTriggers, 1, 7, true)
             break;
+        case 54:
+            //6
+            spawnObject(2, unstatics, mapData.unstatics, 1, 0, false)
     }
     } 
     
