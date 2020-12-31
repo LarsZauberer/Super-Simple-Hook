@@ -44,6 +44,8 @@ const th = 18; // Tile Height
 let obstacleTiles;
 let targetTiles;
 
+let pauseMenu;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -101,7 +103,16 @@ function setup() {
 								  ]);
 
 
-	
+	pauseMenu = new Menu("Pause",
+	[{
+		"label": "Test Button 1",
+		"value": "Test",
+		"function": function() {
+			console.log("Test");
+		}
+	}]);
+
+	pauseMenu.show();
 }
 
 
@@ -153,6 +164,8 @@ function draw() {
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
 	}
+
+	pauseMenu.update();
 }
 
 
