@@ -105,7 +105,7 @@ function setup() {
 
 	pauseMenu = new Menu("Pause",
 	[{
-		"label": "Test Button 1",
+		"label": "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCDkaJymmr9v5Vf9JKsIaf2tCnDrgk4OndJw&usqp=CAU'></img>",
 		"value": "Test",
 		"function": function() {
 			console.log("");
