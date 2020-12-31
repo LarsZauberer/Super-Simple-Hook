@@ -29,13 +29,17 @@ class MapManager {
                 targets = [];
                 triggers = [];
                 loadTriggers = []
+                lavaAni = []
+                
               
                 player = null;
 
 
 
                 // Create Player
+                if(map.player){
                 player = new Player(world, width/32*map.player.x, height/18*map.player.y, width/32*map.player.sx, height/18*map.player.sy);
+                }
                 if(map.door){
                     door = new Door(world, width/32*map.door.x, height/18*map.door.y);
                 }
@@ -71,6 +75,28 @@ class MapManager {
                     loadTriggers.push(new objectRegistry[element.type](world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy))
                 }
 
+                for(let index = 0; index < map.obstacleTiles.length; index++){
+                    const element = map.obstacleTiles[index];
+                    tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                    
+                }
+
+                for(let index = 0; index < map.targetTiles.length; index++){
+                    const element = map.targetTiles[index];
+                    tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                }
+
+                for(let index = 0; index < map.lavaTiles.length; index++){
+                    const element = map.lavaTiles[index];
+                    if(debug){
+                        tileCanvas.image(tilesManager.lavTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                    }
+                    lavaAni.push({nr: tilesManager.lavTiles[element.nr],x: element.x*width/32,y: element.y*height/18})
+                }
+
+
+                
+
                 // Load Music for the map:
                 try {
                     soundmanager.play(map.soundtrack);
@@ -103,4 +129,7 @@ class MapManager {
         line(width,0,width,height)
         pop();
     }
+
+
+    
 }

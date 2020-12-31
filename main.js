@@ -17,11 +17,15 @@ let targets = [];
 let triggers = [];
 let loadTriggers = [];
 
+let lavaAni = []
+
+let tileCanvas;
 
 
 
 
-let debug = true;
+
+let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
@@ -37,6 +41,7 @@ let cam;
 let levelManager;
 let grid;
 let soundmanager;
+let tilesManager;
 
 const tw = 32; // Tile Width
 const th = 18; // Tile Height
@@ -50,17 +55,9 @@ function preload() {
 		"Assets/music/Try and Solve This Loop.wav"
 	]);
 
-	obstacleTiles = new Tilemap([
-		"Assets/obstacle/0.jpg",
-		"Assets/obstacle/1.jpg",
-		"Assets/obstacle/2.jpg",
-		"Assets/obstacle/3.jpg",
-		"Assets/obstacle/4.jpg",
-		"Assets/obstacle/5.jpg",
-		"Assets/obstacle/6.jpg",
-		"Assets/obstacle/7.jpg",
-	]);
-	targetTiles = new Tilemap(["testTile.jpg"]);
+
+	tilesManager = new TileManager()
+
 }
 
 
@@ -71,8 +68,10 @@ function setup() {
 	createCanvas(windowHeight/9*16, windowHeight);
 	background(100);
 	rectMode(CENTER);
-	imageMode(CENTER);
-	angleMode(DEGREES);
+    angleMode(DEGREES);
+    
+    tileCanvas = createGraphics(width*2, height);
+    tileCanvas.clear();
 
     // Matter JS Settings
 	engine = Engine.create({
@@ -91,8 +90,8 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"percentDev (15).json",
-									"percentDev.json",
+									"Level1 (3) (1).json",
+									"Level2.json"
 								  ]);
 
 
@@ -103,7 +102,12 @@ function setup() {
 function draw() {
     /* Main Game Loop
     */
+
+
 	background(100);
+
+	
+	
 
 	if (debug) {
 		levelManager.drawGrid();
@@ -114,6 +118,8 @@ function draw() {
 	if (player) {
 		player.camera();
 	}
+
+	image(tileCanvas, 0,0)
 
 	
 	if(door){
@@ -145,9 +151,17 @@ function draw() {
 	}
 
 
+
+	for(let i = 0; i < lavaAni.length; i++){
+		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
+	}
+	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
 	}
+	
+	
+	
 }
 
 

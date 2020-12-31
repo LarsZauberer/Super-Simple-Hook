@@ -8,8 +8,10 @@ class DeathTrigger extends GameObject{
     }
 
     mesh(){
+        if(debug){
         fill(255,0,0);
         rect(this.x,this.y,this.size.x,this.size.y);
+        }
 
 
         if(player){
@@ -35,8 +37,9 @@ class DeathTrigger extends GameObject{
 
     death(){
         background(0,this.fade)
-        if(this.fade < 255) this.fade+=5
+        if(this.fade < 255) this.fade+=4
         else{
+            tileCanvas.background(100)
             levelManager.load()
         }
         

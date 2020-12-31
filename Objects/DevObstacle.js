@@ -7,10 +7,14 @@ class DevObstacle extends Obstacle {
 
     mesh() {
         // Mesh of the obstacle
-        try {
-            image(obstacleTiles.tiles[this.tile], this.x, this.y, this.size.x, this.size.y);
-        } catch (error) {
-            image(obstacleTiles.tiles[0], this.x, this.y, this.size.x, this.size.y);
+        
+        if(debug){
+        fill(255, 255, 255);
+        rect(this.x, this.y, this.size.x, this.size.y);
         }
+        
+
+        // Setting the ground mesh for the obstacle
+        //this.ground.mesh = this.groundMesh; 
     }
 }

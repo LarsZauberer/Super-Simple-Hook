@@ -1,0 +1,15 @@
+{
+    "player": null,
+    "door": null,
+    "obstacles": [],
+    "unstatics": [],
+    "targets": [],
+    "triggers": [],
+    "loadTriggers": [],
+    "obstacleTiles": [],
+    "targetTiles": [],
+    "lavaTiles": [],
+    "soundtrack": "Try and Solve This Loop.wav"
+
+
+}

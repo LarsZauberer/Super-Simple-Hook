@@ -1,7 +1,7 @@
 class Button extends GameObject{
     constructor(world, x,y){
         //unstatic
-        let w = 2*width/32
+        let w = 3*width/32
         let h = (height/18)/4;
 
         let y1 = y - 2*h+3
