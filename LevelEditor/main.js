@@ -5,6 +5,10 @@ let unstatics = [];
 let targets = [];
 let triggers = [];
 let loadTriggers = [];
+let lavaAni = []
+
+
+
 
 let objectRegistry = [
                       DevObstacle,
@@ -47,7 +51,7 @@ const th = 18; // Tile Height
 let obstacleTiles;
 let targetTiles;
 
-let tileNum = 0;
+
 
 
 function preload() {
@@ -69,11 +73,26 @@ function preload() {
     targetTiles = new Tilemap(["../testTile.jpg"]);
 }
 
+
+// tile settings
+let tilemode = false;
+let tilesManager;
+function preload(){
+    tilesManager = new TileManager();
+}
+let tileCanvas;
+let tileNum = 0;
+let specTileMode = 0;
+
+
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
-    rectMode(CENTER);
-    imageMode(CENTER);
-	angleMode(DEGREES);
+	rectMode(CENTER);
+    angleMode(DEGREES);
+    
+    tileCanvas = createGraphics(width*2, height);
+    tileCanvas.clear();
+    tileCanvas.fill(100);
 
     // Matter JS Settings
 	engine = Engine.create({
@@ -99,6 +118,8 @@ function setup() {
     mapEngine = new MapManager([mapName]);
 
     translation = createVector(0, 0, 0)
+
+    
 }
 
 
@@ -108,7 +129,10 @@ let cameraY = 0;
 function draw() {
     background(100);
 
-    // Camera Movement
+
+    
+    
+
     //right
     if(keyIsDown(39)){
         cameraX-=camSpeed;
@@ -136,6 +160,7 @@ function draw() {
     // Player Calculation
     if (player) {
         player.update();
+        player.death = true;
         player.camera();
 
         // Delete Object if in range and button pressed
@@ -157,6 +182,8 @@ function draw() {
             mapData.door = null;
         }
     }
+
+    
     
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
@@ -175,7 +202,9 @@ function draw() {
     // Targets Calculations
     for (let i = 0; i < targets.length; i++) {
         targets[i].update();
+        if(keyIsDown(17)){
         deleteObject(i, targets, mapData.targets);
+        }
     }
 
     for (let i = 0; i < triggers.length; i++) {
@@ -185,7 +214,9 @@ function draw() {
 
     for(let i = 0; i < loadTriggers.length; i++){
         loadTriggers[i].update();
-        deleteObject(i, loadTriggers, mapData.loadTriggers)
+        if(keyIsDown(16)){
+            deleteObject(i, loadTriggers, mapData.loadTriggers)
+        }
     }
     
 
@@ -196,9 +227,45 @@ function draw() {
 
 
 
+    
+
+    if(tilemode){
+        image(tileCanvas, 0, 0)
+
+        if(mouseIsPressed){
+            let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
+            let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
+            if(!foundTile(mapData.obstacleTiles) && specTileMode == 0){
+                if(tileNum > 12) tileNum = 0;
+                tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
+            }
+            if(!foundTile(mapData.targetTiles) && specTileMode == 1){
+                tilePlace(mx, my, tileNum, tilesManager.tarTiles, mapData.targetTiles);
+            }
+            if(!foundTile(mapData.lavaTiles) && specTileMode == 2){
+                if(tileNum > 4) tileNum = 0;
+                tilePlace(mx, my, tileNum, tilesManager.lavTiles, mapData.lavaTiles);
+            }
+        }
+        
+
+            deleteTile(mapData.obstacleTiles);
+            deleteTile(mapData.targetTiles);
+            deleteTile(mapData.lavaTiles);
+    }
+
+
+   
 }
 
 function keyPressed() {
+
+    if(keyCode == 13){
+        tilemode = !tilemode
+        specTileMode = 0;
+    }
+
+    if(!tilemode){
     switch (keyCode) {
         case 17:
             // Control: Draw a target
@@ -208,8 +275,8 @@ function keyPressed() {
             // Shift: Draw Death Trigger
             deathTrigDrawing = true;
             break;
-        case 81:
-            // q (Saving)
+        case 83:
+            // s (Saving)
             console.log(mapData)
             let a = document.createElement("a");
             let d = JSON.stringify(mapData)
@@ -218,87 +285,162 @@ function keyPressed() {
             a.download = mapName.split("../")[1];
             a.click();
             break;
-        case 80:
-            // p, Spawn Player
-            spawnPlayer();
-            break;
-        case 79:
-            // o,  Door
-            spawnDoor();
-            break;
-        case 73:
-            // i, unstatic rect
-            spawnObject(1, unstatics, mapData.unstatics, 2, 2, false)
-            break;
-        case 85:
-            // u,  Button
-            spawnObject(2, triggers, mapData.triggers, 0, 0, true)
-            break;
-        case 90:
-            //z, loadtrigger
-            spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
-            break;
-
-
-        // Tiles
-        case 191:
-            //§
-            tileNum = 0;
-            break;
         case 49:
-            //1
-            tileNum = 1;
+            //1 Spawn Player
+            spawnPlayer();
             break;
         case 50:
             //2
-            tileNum = 2;
+            spawnDoor();
             break;
         case 51:
-            //3
-            tileNum = 3;
+            // 3 Spawn Unstatic
+            spawnObject(1, unstatics, mapData.unstatics, 2, 2, false)
             break;
         case 52:
-            //4
-            tileNum = 4;
+            //4 button
+            spawnObject(2, triggers, mapData.triggers, 0, 0, true)
             break;
         case 53:
-            //5
-            tileNum = 5;
-            break;
-        case 54:
-            //6
-            tileNum = 6;
-            break;
-        case 55:
-            //7
-            tileNum = 7;
-            break;
-        case 56:
-            //8
-            tileNum = 8;
-            break;
-        case 57:
-            //9
-            tileNum = 9;
-            break;
-        case 48:
-            //0
-            tileNum = 10;
-            break;
-        case 219:
-            //' ?
-            tileNum = 11;
-            break;
-        case 221:
-            //^^
-            tileNum = 12;
+            //5 loadTrigger
+            spawnObject(4, loadTriggers, mapData.loadTriggers, 1, 7, true)
             break;
     }
+    } 
+    
+    else{
+        switch(keyCode){
+            case 83:
+                // s (Saving)
+                console.log(mapData)
+                let a = document.createElement("a");
+                let d = JSON.stringify(mapData)
+                let file = new Blob([d], {type: "txt"});
+                a.href = URL.createObjectURL(file);
+                a.download = mapName.split("../")[1];
+                a.click();
+                break; 
+
+            case 223:
+                //$
+                specTileMode+=1;
+                if(specTileMode > 2){
+                    specTileMode = 0;
+                }
+                break;
+
+            case 191:
+                //§
+                tileNum = 0;
+                break;
+            case 49:
+                //1
+                tileNum = 1;
+                break;
+            case 50:
+                //2
+                tileNum = 2;
+                break;
+            case 51:
+                //3
+                tileNum = 3;
+                break;
+            case 52:
+                //4
+                tileNum = 4;
+                break;
+            case 53:
+                //5
+                tileNum = 5;
+                break;
+            case 54:
+                //6
+                tileNum = 6;
+                break;
+            case 55:
+                //7
+                tileNum = 7;
+                break;
+            case 56:
+                //8
+                tileNum = 8;
+                break;
+            case 57:
+                //9
+                tileNum = 9;
+                break;
+            case 48:
+                //0
+                tileNum = 10;
+                break;
+            case 219:
+                //' ?
+                tileNum = 11;
+                break;
+            case 221:
+                //^^
+                tileNum = 12;
+                break;
+            case 81:
+                //q
+                tileNum = 13;
+                break;
+            case 87:
+                //w
+                tileNum = 14;
+                break;
+            case 69:
+                //e
+                tileNum = 15;
+                break;
+            case 82:
+                //r
+                tileNum = 16;
+                break;
+            case 84:
+                //t
+                tileNum = 17;
+                break;
+            case 90:
+                //z
+                tileNum = 18;
+                break;
+            case 85:
+                //u
+                tileNum = 19;
+                break;
+            case 73:
+                //i
+                tileNum = 20;
+                break;
+            case 79:
+                //o
+                tileNum = 21;
+                break;
+            case 80:
+                //p
+                tileNum = 22;
+                break;
+            case 186:
+                //[
+                tileNum = 23;
+                break;
+            case 192:
+                //]
+                tileNum = 24;
+                break;
+
+        }
+    }
+
 }
 
 function keyReleased() {
     // Should draw target or not
+
+    //ctrl
     if (keyCode === 17) targetDrawing = false;
+    //shift
     if (keyCode === 16) deathTrigDrawing = false;
 }
 
@@ -307,6 +449,10 @@ function mousePressed() {
     let mx = Math.trunc(mouseX/(width/tw))*(width/tw);
     let my = Math.trunc(mouseY/(height/th))*(height/th);
     mouseDown = createVector(mx, my, 0);
+
+    
+
+
 }
 
 function mouseReleased() {

@@ -2,6 +2,11 @@ class UnstaticObstacle extends GameObject{
     constructor(world, x,y,w,h){
         //unstatic
         super(world, x,y,w,h, false);
+        World.remove(world, this.body)
+        this.body = Bodies.rectangle(x,y,w,h, {chamfer: 5})
+        World.add(world, this.body)
+        
+
         Body.setMass(this.body, 3);
         this.body.friction = 0.1;
         this.startPos = createVector(this.x, this.y);

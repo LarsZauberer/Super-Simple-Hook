@@ -11,10 +11,10 @@ class Target extends GameObject {
 
     mesh() {
         // Design of the target
-        try {
-            image(targetTiles.tiles[this.tile], this.x, this.y, this.size.x, this.size.y);
-        } catch (error) {
-            image(targetTiles.tiles[0], this.x, this.y, this.size.x, this.size.y);
+        if(debug){
+        fill(0, 255, 0);
+        rect(this.x, this.y, this.size.x, this.size.y);
         }
+        
     }
 }

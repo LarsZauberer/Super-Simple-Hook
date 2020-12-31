@@ -7,9 +7,13 @@ class Player extends GameObject{
 				world [Matter.World]: The world where the player will be spawned
 		*/
 		super(world, x, y, w, h, false)
-
+		World.remove(world, this.body)
+        this.body = Bodies.rectangle(x,y,w,h, {chamfer: 5})
+        World.add(world, this.body)
+	
 		// Settings
 		this.world = world;
+		
 
 		//foot
 		this.foot = Bodies.rectangle(this.x, this.y, this.size.x-1, 10, {isStatic: true});
@@ -34,6 +38,7 @@ class Player extends GameObject{
 
 		// Mass
 		Body.setMass(this.body, 4);
+		
 		Body.setMass(this.foot, 4);
 
 		this.death = false;
@@ -111,7 +116,7 @@ class Player extends GameObject{
 					y: this.body.position.y
 				}, {
 					x: 0,
-					y: -0.4
+					y: -0.3
 				});
 				break;
 			}

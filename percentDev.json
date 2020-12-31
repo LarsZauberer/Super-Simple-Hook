@@ -97,7 +97,7 @@
         },
         {
             "x": 90,
-            "y": 30,
+            "y": -30,
             "sx": 10,
             "sy": 1
         },
@@ -130,10 +130,34 @@
         
     "loadTriggers": [],
 
-    "door": {
-      "x": 10,
-      "y": 12
-    },
-    
+
+    "obstacleTiles": [
+        {
+            "nr": 0,
+            "x": 10, 
+            "y": 5
+            
+        }
+
+    ],
+
+
+    "targetTiles":[
+        
+    ],
+
+
+    "lavaTiles":[
+        {
+            "nr": 2,
+            "x": 5,
+            "y": 5
+        }
+
+
+    ],
+
+
+
     "soundtrack": "Try and Solve This Loop.wav"
 }
