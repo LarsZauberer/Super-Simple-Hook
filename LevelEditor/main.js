@@ -5,6 +5,7 @@ let unstatics = [];
 let targets = [];
 let triggers = [];
 let loadTriggers = [];
+let lavaAni = []
 
 
 
@@ -90,6 +91,8 @@ function setup() {
     mapEngine = new MapManager([mapName]);
 
     translation = createVector(0, 0, 0)
+
+    
 }
 
 
@@ -98,6 +101,10 @@ let cameraY = 0;
 
 function draw() {
     background(100);
+
+
+    
+    
 
     //right
     if(keyIsDown(39)){
@@ -147,6 +154,8 @@ function draw() {
             mapData.door = null;
         }
     }
+
+    
     
 	// Obstacle Calculation
 	for (let i = 0; i < obstacles.length; i++) {
@@ -189,6 +198,7 @@ function draw() {
     }
 
 
+
     
 
     if(tilemode){
@@ -211,22 +221,20 @@ function draw() {
         }
         
 
-        if(specTileMode == 0){
             deleteTile(mapData.obstacleTiles);
-        }
-        else if(specTileMode == 1){
             deleteTile(mapData.targetTiles);
-        }
-        else{
             deleteTile(mapData.lavaTiles);
-        }
     }
+
+
+   
 }
 
 function keyPressed() {
 
     if(keyCode == 13){
         tilemode = !tilemode
+        specTileMode = 0;
     }
 
     if(!tilemode){

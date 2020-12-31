@@ -17,7 +17,8 @@ class TileManager{
         }
 
         for(let i = 1; i <= 5; i++){
-	        this.lavTiles.push(loadImage("../Assets/lavaTiles/" + i + ".gif"))
+            this.lavTiles.push(loadImage("../Assets/lavaTiles/" + i + ".gif"))
+            
         }
         
 

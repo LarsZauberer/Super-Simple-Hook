@@ -29,6 +29,8 @@ class MapManager {
                 targets = [];
                 triggers = [];
                 loadTriggers = []
+                lavaAni = []
+                
               
                 player = null;
 
@@ -86,6 +88,9 @@ class MapManager {
 
                 for(let index = 0; index < map.lavaTiles.length; index++){
                     const element = map.lavaTiles[index];
+                    if(debug){
+                        tileCanvas.image(tilesManager.lavTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                    }
                     lavaAni.push({nr: tilesManager.lavTiles[element.nr],x: element.x*width/32,y: element.y*height/18})
                 }
 

@@ -38,6 +38,7 @@ class Player extends GameObject{
 
 		// Mass
 		Body.setMass(this.body, 4);
+		
 		Body.setMass(this.foot, 4);
 
 		this.death = false;
