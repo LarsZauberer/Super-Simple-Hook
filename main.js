@@ -29,7 +29,8 @@ let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
-					UnstaticObstacle,
+					UnstaticRect,
+					UnstaticCircle,
 					Button,
 					Door,
 					LoadTrigger,

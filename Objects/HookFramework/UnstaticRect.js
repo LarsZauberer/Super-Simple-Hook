@@ -1,4 +1,4 @@
-class UnstaticObstacle extends GameObject{
+class UnstaticRect extends GameObject{
     constructor(world, x,y,w,h){
         //unstatic
         super(world, x,y,w,h, false);
