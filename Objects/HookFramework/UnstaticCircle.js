@@ -1,10 +1,12 @@
 class UnstaticCircle extends GameObject{
-    constructor(world, x,y,r){
+    constructor(world, x,y,r, sy, restitution){
         //unstatic
         super(world, x,y,r,5, false);
         World.remove(world, this.body)
         this.body = Bodies.circle(x,y,r)
         World.add(world, this.body)
+
+        this.body.restitution = restitution;
         
 
         Body.setMass(this.body, 3);

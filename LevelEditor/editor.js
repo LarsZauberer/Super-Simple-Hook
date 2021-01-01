@@ -49,7 +49,11 @@ function deleteObject(index, category, mapCategory) {
 
 function spawnObject(id, group, mapGroup, sx, sy, gridbased) {
     // Spawn an object
-    if(gridbased){
+    if (group == unstatics){
+        group.push(new objectRegistry[id](world, Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32), Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), width/32*sx, height/18*sy, 0));
+        mapGroup.push({"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), "sx": sx, "sy": sy, "rest": 0, "type": id});
+    }
+    else if(gridbased){
     group.push(new objectRegistry[id](world, Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32), Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), width/32*sx, height/18*sy));
     mapGroup.push({"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32)+1)*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18)+1)*(height/18), "sx": sx, "sy": sy, "type": id});
     }
@@ -57,6 +61,8 @@ function spawnObject(id, group, mapGroup, sx, sy, gridbased) {
         group.push(new objectRegistry[id](world, mouseX-cameraX, mouseY-cameraY, width/32*sx, height/18*sy));
         mapGroup.push({"x": 32/width*(mouseX-cameraX), "y": 18/height*(mouseY-cameraY), "sx": sx, "sy": sy, "type": id}); 
     }
+
+
 }
 
 function spawnPlayer() {
