@@ -53,7 +53,7 @@ class MapManager {
                 // Create Unstatics
                 for (let index = 0; index < map.unstatics.length; index++) {
                     const element = map.unstatics[index];
-                    unstatics.push(new objectRegistry[element.type](world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy));
+                    unstatics.push(new objectRegistry[element.type](world, width/32*element.x, height/18*element.y, width/32*element.sx, height/18*element.sy, element.rest));
                 }
 
                 // Create Targets

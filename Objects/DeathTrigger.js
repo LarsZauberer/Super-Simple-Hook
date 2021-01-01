@@ -14,7 +14,7 @@ class DeathTrigger extends GameObject{
         }
 
 
-        if(player){
+        if(player && !debug){
             if (Matter.SAT.collides(this.body, player.body).collided) {
                 player.death = true;
                 this.death()
