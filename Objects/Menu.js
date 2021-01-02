@@ -15,6 +15,7 @@ class Menu {
             button.position(width/2-200, y);
             button.mousePressed(element.function);
             this.btns.push(button);
+            y += height/4;
         }
     }
 
