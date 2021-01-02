@@ -110,7 +110,16 @@ function setup() {
 		"label": "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCDkaJymmr9v5Vf9JKsIaf2tCnDrgk4OndJw&usqp=CAU'></img>",
 		"value": "Test",
 		"function": function() {
-			console.log("");
+			pauseButton = createButton("Pause", "Pause");
+			pauseButton.position(0, 0);
+			pauseButton.mousePressed(function() {
+				pauseButton.remove();
+				pauseButton = null;
+				pauseMenu.show();
+				pauseMenu.shouldUpdate = true;
+			})
+			pauseMenu.shouldUpdate = false;
+			pauseMenu.hide();
 		}
 	}], 40);
 
