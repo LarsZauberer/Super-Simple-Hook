@@ -28,9 +28,10 @@ class MapManager {
                 unstatics = [];
                 targets = [];
                 triggers = [];
-                loadTriggers = []
+                loadTriggers = [];
               
                 player = null;
+                door = null;
 
 
 
