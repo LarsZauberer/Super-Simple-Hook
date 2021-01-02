@@ -56,6 +56,8 @@ let pauseButton;
 
 let mainMenu;
 
+let continueMap = 1;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -101,9 +103,29 @@ function setup() {
 									"Level1 (3) (1).json",
 									"Level2.json",
 								  ]);
+	
+	continueMap = window.localStorage.getItem("map");
+	if (continueMap == null) continueMap = 1;
 
 	mainMenu = new Menu("Super Simple Hook",
 	[
+		{
+			"label": "Continue",
+			"value": "",
+			"function": function() {
+				levelManager.loaded = continueMap;
+				levelManager.load();
+				pauseButton = createButton("Pause", "Pause");
+				pauseButton.position(0, 0);
+				pauseButton.mousePressed(function() {
+					pauseButton.remove();
+					pauseButton = null;
+					pauseMenu.show();
+					pauseMenu.shouldUpdate = true;
+				})
+				mainMenu.hide();
+			}
+		},
 		{
 			"label": "New Game",
 			"value": "",
