@@ -48,6 +48,8 @@ let pauseMenu;
 
 let pauseButton;
 
+let mainMenu;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -100,9 +102,31 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
+									"emptyMap.json",
 									"percentDev (15).json",
 									"percentDev.json",
 								  ]);
+
+	mainMenu = new Menu("Super Simple Hook",
+	[
+		{
+			"label": "New Game",
+			"value": "",
+			"function": function() {
+				levelManager.loaded = 1;
+				levelManager.load();
+				pauseButton = createButton("Pause", "Pause");
+				pauseButton.position(0, 0);
+				pauseButton.mousePressed(function() {
+					pauseButton.remove();
+					pauseButton = null;
+					pauseMenu.show();
+					pauseMenu.shouldUpdate = true;
+				})
+				mainMenu.hide();
+			}
+		}
+	]);
 
 
 	pauseMenu = new Menu("Pause",
@@ -123,14 +147,7 @@ function setup() {
 		}
 	}], 40);
 
-	pauseButton = createButton("Pause", "Pause");
-	pauseButton.position(0, 0);
-	pauseButton.mousePressed(function() {
-		pauseButton.remove();
-		pauseButton = null;
-		pauseMenu.show();
-		pauseMenu.shouldUpdate = true;
-	})
+	mainMenu.show();
 }
 
 
@@ -185,6 +202,7 @@ function draw() {
 	}
 
 	if (pauseMenu.shouldUpdate) pauseMenu.update();
+	if (levelManager.loaded == 0) mainMenu.update();
 }
 
 
