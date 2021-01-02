@@ -243,8 +243,8 @@ function draw() {
 		loadTriggers[i].update();
 	}
 
-	if (pauseMenu.shouldUpdate) pauseMenu.update();
-	if (levelManager.loaded == 0) mainMenu.update();
+	if (pauseMenu.shouldUpdate) pauseMenu.update(50);
+	if (levelManager.loaded == 0) mainMenu.update(500);
 }
 
 
