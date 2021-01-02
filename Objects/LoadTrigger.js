@@ -32,8 +32,9 @@ class LoadTrigger extends GameObject {
         if(this.fade < 255) this.fade+=5
         else{
             tileCanvas.background(100);
-            levelManager.loaded++
-            levelManager.load()
+            levelManager.loaded++;
+            levelManager.load();
+            window.localStorage.setItem("map", levelManager.loaded);
         }
     }
 }
