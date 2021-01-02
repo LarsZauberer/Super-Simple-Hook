@@ -28,8 +28,10 @@ class MapManager {
                 unstatics = [];
                 targets = [];
                 triggers = [];
-                loadTriggers = []
-                lavaAni = []
+                loadTriggers = [];
+                lavaAni = [];
+
+                tileCanvas.clear();
                 
               
                 player = null;

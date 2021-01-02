@@ -10,5 +10,8 @@
     "triggers": [
     ],
     "loadTriggers": [],
+    "lavaTiles": [],
+    "targetTiles": [],
+    "obstacleTiles": [],
     "soundtrack": "Try and Solve This Loop.wav"
 }
