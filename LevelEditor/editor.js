@@ -23,7 +23,7 @@ function obstacleDraw(pos1, pos2, target, deathTrigger) {
         } 
         else if (deathTrigger) {
             loadTriggers.push(new DeathTrigger(world, pos1.x, pos1.y, size.x, size.y));
-            mapData.loadTriggers.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": Math.round(32/width*size.x), "sy": Math.round(18/height*size.y), "type": 5});
+            mapData.loadTriggers.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": Math.round(32/width*size.x), "sy": Math.round(18/height*size.y), "type": 6});
         }
         else{
             obstacles.push(new DevObstacle(world, pos1.x, pos1.y, size.x, size.y));

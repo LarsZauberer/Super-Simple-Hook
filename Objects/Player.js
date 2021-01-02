@@ -132,7 +132,7 @@ class Player extends GameObject{
 			this.hook.update();
 			//hook deleting because distance
 			let hookWillDelete = false;
-			if (dist(this.hook.x,this.hook.y,this.x,this.y) > height && !this.hook.twoHookMode){
+			if (dist(this.hook.x,this.hook.y,this.x,this.y) > height-100 && !this.hook.twoHookMode){
 				hookWillDelete = true;
 			}
 			if(keyIsPressed && key == "c"){
