@@ -33,6 +33,7 @@ class MapManager {
                 
               
                 player = null;
+                door = null;
 
 
 

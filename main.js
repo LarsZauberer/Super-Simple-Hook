@@ -50,6 +50,12 @@ const th = 18; // Tile Height
 let obstacleTiles;
 let targetTiles;
 
+let pauseMenu;
+
+let pauseButton;
+
+let mainMenu;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -91,12 +97,65 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
+									"emptyMap.json",
 									"Level1 (3) (1).json",
-									"Level2.json"
+									"Level2.json",
 								  ]);
 
+	mainMenu = new Menu("Super Simple Hook",
+	[
+		{
+			"label": "New Game",
+			"value": "",
+			"function": function() {
+				levelManager.loaded = 1;
+				levelManager.load();
+				pauseButton = createButton("Pause", "Pause");
+				pauseButton.position(0, 0);
+				pauseButton.mousePressed(function() {
+					pauseButton.remove();
+					pauseButton = null;
+					pauseMenu.show();
+					pauseMenu.shouldUpdate = true;
+				})
+				mainMenu.hide();
+			}
+		}
+	]);
 
-	
+
+	pauseMenu = new Menu("Pause",
+	[{
+		"label": "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCDkaJymmr9v5Vf9JKsIaf2tCnDrgk4OndJw&usqp=CAU'></img>",
+		"value": "Test",
+		"function": function() {
+			pauseButton = createButton("Pause", "Pause");
+			pauseButton.position(0, 0);
+			pauseButton.mousePressed(function() {
+				pauseButton.remove();
+				pauseButton = null;
+				pauseMenu.show();
+				pauseMenu.shouldUpdate = true;
+			})
+			pauseMenu.shouldUpdate = false;
+			pauseMenu.hide();
+		}
+	},
+	{
+		"label": "Main Menu",
+		"value": "",
+		"function": function() {
+			levelManager.loaded = 0;
+			levelManager.load();
+			pauseMenu.hide();
+			pauseMenu.shouldUpdate = false;
+			pauseButton = null;
+			mainMenu.show();
+		}
+	}
+], 40);
+
+	mainMenu.show();
 }
 
 
@@ -106,6 +165,7 @@ function draw() {
 
 
 	background(100);
+	push()
 
 	
 	
@@ -160,9 +220,9 @@ function draw() {
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
 	}
-	
-	
-	
+
+	if (pauseMenu.shouldUpdate) pauseMenu.update();
+	if (levelManager.loaded == 0) mainMenu.update();
 }
 
 
