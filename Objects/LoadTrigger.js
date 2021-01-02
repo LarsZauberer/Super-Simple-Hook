@@ -20,6 +20,7 @@ class LoadTrigger extends GameObject {
         // If Collided with player
         if(player && !debug){
             if (Matter.SAT.collides(this.body, player.body).collided) {
+                console.log(11)
                 this.nextLoad()
             }
         }

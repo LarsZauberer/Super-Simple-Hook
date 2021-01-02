@@ -100,7 +100,8 @@ function setup() {
 	// Level Manager
 	levelManager = new MapManager([
 									"emptyMap.json",
-									".json",
+									"level (17).json",
+									"level.json",
 								  ]);
 	
 	continueMap = window.localStorage.getItem("map");
@@ -189,6 +190,7 @@ function draw() {
 	push()
 
 	
+	console.log(loadTriggers)
 	
 
 	if (debug) {

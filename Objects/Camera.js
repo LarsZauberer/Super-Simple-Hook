@@ -16,7 +16,7 @@ class Camera {
             if(door == null){
                 this.x = -(this.player.x-width/2);
             }
-            else if(this.player.x < door.x-width/2+150) {
+            else if(this.player.x < loadTriggers[0].x-width/2+150) {
                 this.x = -(this.player.x-width/2);
             }
         }
