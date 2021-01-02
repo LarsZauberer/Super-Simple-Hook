@@ -196,10 +196,10 @@ function draw() {
 		levelManager.drawGrid();
 	}
 
-	
 	// Camera Calculation
-	if (player) {
+	if (player && pauseMenu.shouldUpdate == false) {
 		player.camera();
+		player.update();
 	}
 
 	image(tileCanvas, 0,height/18*-100)
@@ -230,7 +230,7 @@ function draw() {
 	
 	// Player Calculation
 	if(player){
-		player.update();
+		
 	}
 
 

@@ -30,7 +30,7 @@ class Menu {
         // Background
         pop();
         if (this.bg) {
-            background(this.bg);
+            background(this.bg, 200);
         }
         push();
         textSize(50);
