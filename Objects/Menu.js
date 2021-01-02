@@ -14,7 +14,9 @@ class Menu {
             let button = createButton(element.label, element.value);
             button.position(width/2-200, y);
             button.mousePressed(element.function);
-            button.style("background", "#ccc url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCDkaJymmr9v5Vf9JKsIaf2tCnDrgk4OndJw&usqp=CAU') no-repeat top left");
+            button.style("background", "#ccc url('Assets/UI/Button.png') no-repeat top left");
+            button.style("background-color", "Transparent")
+            button.style("border-color", "Transparent")
             button.style("width", "200px");
             button.style("height", "50px");
             this.btns.push(button);
