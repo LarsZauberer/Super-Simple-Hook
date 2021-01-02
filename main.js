@@ -190,7 +190,7 @@ function draw() {
 	push()
 
 	
-	console.log(loadTriggers)
+
 	
 
 	if (debug) {
