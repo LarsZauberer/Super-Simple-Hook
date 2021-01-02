@@ -29,7 +29,7 @@ class Menu {
         }
     }
 
-    update(w) {
+    update(w, ws) {
         // Background
         pop();
         if (this.bg) {
@@ -39,7 +39,7 @@ class Menu {
         textSize(50);
         stroke(255);
         fill(255);
-        text(this.title, width/2-100, height/8, w, 50);
+        text(this.title, width/2-w, height/8, ws, 50);
         pop();
     }
 }
