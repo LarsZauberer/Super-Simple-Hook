@@ -4,6 +4,7 @@ class Menu {
         this.buttons = buttons;
         this.btns = [];
         this.bg = bg;
+        this.shouldUpdate = false;
     }
 
     show() {
@@ -31,6 +32,8 @@ class Menu {
             background(this.bg);
         }
         textSize(50)
+        stroke(255);
+        fill(255);
         text(this.title, width/2-100, height/8, 50, 50);
     }
 }

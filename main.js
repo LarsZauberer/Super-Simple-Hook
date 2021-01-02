@@ -46,6 +46,8 @@ let targetTiles;
 
 let pauseMenu;
 
+let pauseButton;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -110,9 +112,16 @@ function setup() {
 		"function": function() {
 			console.log("");
 		}
-	}]);
+	}], 40);
 
-	pauseMenu.show();
+	pauseButton = createButton("Pause", "Pause");
+	pauseButton.position(0, 0);
+	pauseButton.mousePressed(function() {
+		pauseButton.remove();
+		pauseButton = null;
+		pauseMenu.show();
+		pauseMenu.shouldUpdate = true;
+	})
 }
 
 
@@ -166,7 +175,7 @@ function draw() {
 		loadTriggers[i].update();
 	}
 
-	pauseMenu.update();
+	if (pauseMenu.shouldUpdate) pauseMenu.update();
 }
 
 
