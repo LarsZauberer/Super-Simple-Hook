@@ -70,7 +70,7 @@ function setup() {
 	rectMode(CENTER);
     angleMode(DEGREES);
     
-    tileCanvas = createGraphics(width*2, height);
+    tileCanvas = createGraphics(width/32*200, height/18*200);
     tileCanvas.clear();
     tileCanvas.fill(100);
 
@@ -210,11 +210,19 @@ function draw() {
     
 
     if(tilemode){
-        image(tileCanvas, 0, 0)
+        image(tileCanvas, 0, height/18*-100)
 
         if(mouseIsPressed){
             let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
             let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
+
+            if (my < 0){
+                my += height/18*99;
+            }
+            else{
+                my += height/18*100;
+            }
+
             if(!foundTile(mapData.obstacleTiles) && specTileMode == 0){
                 if(tileNum > 12) tileNum = 0;
                 tilePlace(mx, my, tileNum, tilesManager.obstacTiles, mapData.obstacleTiles);
@@ -429,8 +437,8 @@ function keyReleased() {
 
 function mousePressed() {
     // First Position of the Obstacle/Target
-    let mx = Math.trunc(mouseX/(width/tw))*(width/tw);
-    let my = Math.trunc(mouseY/(height/th))*(height/th);
+    let mx = Math.trunc((mouseX-cameraX)/(width/tw))*(width/tw);
+    let my = Math.trunc((mouseY-cameraY)/(height/th))*(height/th);
     mouseDown = createVector(mx, my, 0);
 
     
