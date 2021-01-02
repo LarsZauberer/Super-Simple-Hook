@@ -145,7 +145,20 @@ function setup() {
 			pauseMenu.shouldUpdate = false;
 			pauseMenu.hide();
 		}
-	}], 40);
+	},
+	{
+		"label": "Main Menu",
+		"value": "",
+		"function": function() {
+			levelManager.loaded = 0;
+			levelManager.load();
+			pauseMenu.hide();
+			pauseMenu.shouldUpdate = false;
+			pauseButton = null;
+			mainMenu.show();
+		}
+	}
+], 40);
 
 	mainMenu.show();
 }
