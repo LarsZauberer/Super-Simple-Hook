@@ -8,7 +8,7 @@ class Menu {
     }
 
     show() {
-        let y = height/4
+        let y = height/8*3
         for (let index = 0; index < this.buttons.length; index++) {
             const element = this.buttons[index];
             let button = createButton(element.label, element.value);
@@ -18,7 +18,7 @@ class Menu {
             button.style("width", "200px");
             button.style("height", "50px");
             this.btns.push(button);
-            y += height/4;
+            y += height/8;
         }
     }
 
@@ -39,7 +39,7 @@ class Menu {
         textSize(50);
         stroke(255);
         fill(255);
-        text(this.title, width/2-w, height/8, ws, 50);
+        text(this.title, width/2-w, height/4, ws, 50);
         pop();
     }
 }
