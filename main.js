@@ -148,8 +148,8 @@ function setup() {
 
 	pauseMenu = new Menu("Pause",
 	[{
-		"label": "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCDkaJymmr9v5Vf9JKsIaf2tCnDrgk4OndJw&usqp=CAU'></img>",
-		"value": "Test",
+		"label": "Continue",
+		"value": "",
 		"function": function() {
 			pauseButton = createButton("Pause", "Pause");
 			pauseButton.position(0, 0);
