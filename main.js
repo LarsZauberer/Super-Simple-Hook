@@ -63,15 +63,21 @@ let dialogBack;
 let dialog;
 
 
+let playerImg
+
 function preload() {
 	soundmanager = new Sound([
 		"Assets/music/Try and Solve This Loop.wav"
+
+		
 	]);
 
 
 	tilesManager = new TileManager()
 
 	dialogBack = loadImage("Assets/UI/Dialog.png")
+
+	playerImg = loadImage("playerGif.gif")
 
 }
 

@@ -74,13 +74,21 @@ class Player extends GameObject{
 	mesh() {
 		/* Displays the matter.js calculation with p5js
 		*/
+
+
 		translate(this.body.position.x,this.body.position.y);
+		image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
+
+		
+		/*
 		rotate(this.body.angle);
 		rect(0, 0,this.size.x, this.size.y);
 
 		// Foot
 		fill(255, 0, 0)
 		rect(0, this.size.y/2-5, this.size.x-1, 10);
+		*/
+		
 	}
 
 
