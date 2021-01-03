@@ -116,7 +116,8 @@ class Player extends GameObject{
 					y: this.body.position.y
 				}, {
 					x: 0,
-					y: -0.3
+					// 593 because thats the pixel count where it works
+					y: -0.3*(height/593)
 				});
 				break;
 			}
