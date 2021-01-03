@@ -159,7 +159,17 @@ function setup() {
 		}
 	},
 	{
-		"label": "Main Menu",
+		"label": "Restart Level",
+		"value": "",
+		"function": function() {
+			levelManager.load();
+			pauseMenu.hide();
+			pauseMenu.shouldUpdate = false;
+			createPause();
+		}
+	},
+	{
+		"label": "Back to Main Menu",
 		"value": "",
 		"function": function() {
 			levelManager.loaded = 0;
