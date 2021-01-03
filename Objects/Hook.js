@@ -81,7 +81,7 @@ class Hook {
     
    pullPlayer(angle){
 
-    Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.035, y: sin(angle)*0.035}) 
+    Body.applyForce(this.player.body, {x: this.player.x, y: this.player.y}, {x: cos(angle)*0.035*(height/593), y: sin(angle)*0.035*(height/593)}) 
     }
 
 
@@ -118,8 +118,8 @@ class Hook {
                 
                
                 
-                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.02*pDirect, y: -sin(this.twoHookPullAngle)*0.02*pDirect})
-                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02*pDirect, y: sin(this.twoHookPullAngle)*0.02*pDirect})
+                Body.applyForce(this.pullObject1, this.pullObject1.position, {x: -cos(this.twoHookPullAngle)*0.02*pDirect*(height/593), y: -sin(this.twoHookPullAngle)*0.02*pDirect*(height/593)})
+                Body.applyForce(this.pullObject2, this.pullObject2.position, {x: cos(this.twoHookPullAngle)*0.02*pDirect*(height/593), y: sin(this.twoHookPullAngle)*0.02*pDirect*(height/593)})
             }
             this.hookTwo.mesh();
         }

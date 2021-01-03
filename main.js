@@ -25,7 +25,7 @@ let tileCanvas;
 
 
 
-let debug = true;
+let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
@@ -88,6 +88,7 @@ function createPause() {
 		pauseButton = null;
 		pauseMenu.show();
 		pauseMenu.shouldUpdate = true;
+		background(40, 200)
 	})
 }
 
@@ -199,10 +200,12 @@ function setup() {
 function draw() {
     /* Main Game Loop
     */
-
+	push()
+	   
+	if(pauseMenu.shouldUpdate == false){
 
 	background(100);
-	push()
+
 
 	
 
@@ -213,7 +216,7 @@ function draw() {
 	}
 
 	// Camera Calculation
-	if (player && pauseMenu.shouldUpdate == false) {
+	if (player) {
 		player.camera();
 		player.update();
 	}
@@ -263,8 +266,15 @@ function draw() {
 		dialog.show();
 	}
 
-	if (pauseMenu.shouldUpdate) pauseMenu.update(150, 50);
-	if (levelManager.loaded == 0) mainMenu.update(75, 500);
+
+	}
+
+	else{
+		pauseMenu.update(150, 50);
+		if (levelManager.loaded == 0) mainMenu.update(75, 500);
+	}
+
+
 }
 
 

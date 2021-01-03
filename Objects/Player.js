@@ -180,7 +180,7 @@ class Player extends GameObject{
 
 					if ((this.specificCollide(this.body, collidedObstacle) ||  this.specificCollide(this.body, this.hook.body)) && !this.hook.hookTwo){
 						hookWillDelete = true;
-						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.15})
+						Body.applyForce(this.body, this.body.position, {x: 0, y: -0.15*(height/593)})
 					}
 				}
 				//pullObstacles
