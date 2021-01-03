@@ -7,6 +7,8 @@ class LoadTrigger extends GameObject {
 
         this.fade = 0;
 
+        this.load = false;
+
         
     }
 
@@ -31,11 +33,12 @@ class LoadTrigger extends GameObject {
         player.death = true;
         background(0,this.fade)
         if(this.fade < 255) this.fade+=5
-        else{
+        else if(!this.load){
             tileCanvas.background(100);
             levelManager.loaded++;
             levelManager.load();
             window.localStorage.setItem("map", levelManager.loaded);
+            this.load = true;
         }
     }
 }
