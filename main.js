@@ -175,7 +175,7 @@ function setup() {
 		}
 	},
 	{
-		"label": "Back to Main Menu",
+		"label": "Main Menu",
 		"value": "",
 		"function": function() {
 			levelManager.loaded = 0;
