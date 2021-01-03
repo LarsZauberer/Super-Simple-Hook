@@ -58,6 +58,10 @@ let mainMenu;
 
 let continueMap = 1;
 
+let dialogBack;
+
+let dialogTest;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -66,6 +70,8 @@ function preload() {
 
 
 	tilesManager = new TileManager()
+
+	dialogBack = loadImage("Assets/UI/Dialog.png")
 
 }
 
@@ -183,6 +189,8 @@ function setup() {
 ], 40);
 
 	mainMenu.show();
+
+	dialogTest = new Dialog(["This is a test dialog", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."]);
 }
 
 
@@ -248,6 +256,10 @@ function draw() {
 		loadTriggers[i].update();
 	}
 
+	if (levelManager.loaded == 1 && dialogTest.update) {
+		dialogTest.show();
+	}
+
 	if (pauseMenu.shouldUpdate) pauseMenu.update(150, 50);
 	if (levelManager.loaded == 0) mainMenu.update(75, 500);
 }
@@ -257,14 +269,14 @@ function keyPressed() {
     /* Keypress Handling
     */
 	// Jumping
-	if (key == " " && !player.death) player.jump();
+	if (key == " " && !player.death && dialogTest.update == false) player.jump();
 }
 
 
 
 function mousePressed()
 {
-	player.hookIsShot = true;
+	if (dialogTest.update == false) player.hookIsShot = true;
 }
 
 
