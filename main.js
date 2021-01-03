@@ -69,6 +69,22 @@ function preload() {
 
 }
 
+function createPause() {
+	pauseButton = createButton("", "");
+	pauseButton.style("background", "url('Assets/UI/Pause.png') no-repeat top left");
+    pauseButton.style("background-color", "Transparent")
+	pauseButton.style("border-color", "Transparent")
+	pauseButton.style("width", "100px")
+	pauseButton.style("height", "100px")
+	pauseButton.position(0, 0);
+	pauseButton.mousePressed(function() {
+		pauseButton.remove();
+		pauseButton = null;
+		pauseMenu.show();
+		pauseMenu.shouldUpdate = true;
+	})
+}
+
 
 function setup() {
     /* Setting everything up
@@ -115,14 +131,7 @@ function setup() {
 			"function": function() {
 				levelManager.loaded = continueMap;
 				levelManager.load();
-				pauseButton = createButton("Pause", "Pause");
-				pauseButton.position(0, 0);
-				pauseButton.mousePressed(function() {
-					pauseButton.remove();
-					pauseButton = null;
-					pauseMenu.show();
-					pauseMenu.shouldUpdate = true;
-				})
+				createPause();
 				mainMenu.hide();
 			}
 		},
@@ -132,14 +141,7 @@ function setup() {
 			"function": function() {
 				levelManager.loaded = 1;
 				levelManager.load();
-				pauseButton = createButton("Pause", "Pause");
-				pauseButton.position(0, 0);
-				pauseButton.mousePressed(function() {
-					pauseButton.remove();
-					pauseButton = null;
-					pauseMenu.show();
-					pauseMenu.shouldUpdate = true;
-				})
+				createPause();
 				mainMenu.hide();
 			}
 		}
@@ -151,14 +153,7 @@ function setup() {
 		"label": "Continue",
 		"value": "",
 		"function": function() {
-			pauseButton = createButton("Pause", "Pause");
-			pauseButton.position(0, 0);
-			pauseButton.mousePressed(function() {
-				pauseButton.remove();
-				pauseButton = null;
-				pauseMenu.show();
-				pauseMenu.shouldUpdate = true;
-			})
+			createPause();
 			pauseMenu.shouldUpdate = false;
 			pauseMenu.hide();
 		}
