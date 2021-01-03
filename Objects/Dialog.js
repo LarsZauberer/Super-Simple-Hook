@@ -2,7 +2,6 @@ class Dialog {
     constructor(text) {
         this.text = text;
         this.frame = 0;
-        this.update = true;
         this.changed = millis();
     }
 
@@ -17,7 +16,7 @@ class Dialog {
         if (mouseIsPressed && this.changed+1000 < millis()) {
             this.frame++;
             if (this.frame > this.text.length-1) {
-                this.update = false;
+                dialog = null;
             }
             this.changed = millis();
         }

@@ -60,7 +60,7 @@ let continueMap = 1;
 
 let dialogBack;
 
-let dialogTest;
+let dialog;
 
 
 function preload() {
@@ -189,8 +189,6 @@ function setup() {
 ], 40);
 
 	mainMenu.show();
-
-	dialogTest = new Dialog(["This is a test dialog", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."]);
 }
 
 
@@ -256,8 +254,8 @@ function draw() {
 		loadTriggers[i].update();
 	}
 
-	if (levelManager.loaded == 1 && dialogTest.update) {
-		dialogTest.show();
+	if (dialog) {
+		dialog.show();
 	}
 
 	if (pauseMenu.shouldUpdate) pauseMenu.update(150, 50);
@@ -269,14 +267,14 @@ function keyPressed() {
     /* Keypress Handling
     */
 	// Jumping
-	if (key == " " && !player.death && dialogTest.update == false) player.jump();
+	if (key == " " && !player.death && dialog == null) player.jump();
 }
 
 
 
 function mousePressed()
 {
-	if (dialogTest.update == false) player.hookIsShot = true;
+	if (dialog == null) player.hookIsShot = true;
 }
 
 

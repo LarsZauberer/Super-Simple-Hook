@@ -106,6 +106,10 @@ class MapManager {
                 } catch (error) {
                     
                 }
+
+                if (map.dialog) {
+                    dialog = new Dialog(map.dialog);
+                }
             }
         };
         xml.open("GET", this.mapNames[this.loaded], true);
