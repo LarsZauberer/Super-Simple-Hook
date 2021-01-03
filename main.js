@@ -25,7 +25,7 @@ let tileCanvas;
 
 
 
-let debug = false;
+let debug = true;
 
 let objectRegistry = [
 					DevObstacle,
@@ -123,7 +123,11 @@ function setup() {
 	levelManager = new MapManager([
 									"emptyMap.json",
 									"level1.json",
-									"level.json",
+									"level2.json",
+									"level3.json",
+									"level4.json",
+									"level5.json",
+									
 								  ]);
 	
 	continueMap = window.localStorage.getItem("map");
