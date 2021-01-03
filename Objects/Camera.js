@@ -12,18 +12,14 @@ class Camera {
 
     update() {
         // Player is over the half of the screen
-        if (this.player.x > width/2) {
-            if(door == null){
+        if (this.player.x > width/2 && this.player.x < loadTriggers[0].x-width/2) {
                 this.x = -(this.player.x-width/2);
             }
-            else if(this.player.x < door.x-width/2+150) {
-                this.x = -(this.player.x-width/2);
-            }
-        }
+        
 
         if(this.player.y-this.player.size.y/2 < 0){
             this.y = -this.player.y+this.player.size.y/2
-            if(this.smooth < 200) this.smooth +=4
+            if(this.smooth < 150) this.smooth +=4
         }
         else if(this.smooth > 0){
             this.smooth-=3
