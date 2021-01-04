@@ -64,6 +64,8 @@ let dialog;
 
 
 let playerImg
+let playerRight
+let playerLeft
 
 function preload() {
 	soundmanager = new Sound([
@@ -77,7 +79,9 @@ function preload() {
 
 	dialogBack = loadImage("Assets/UI/Dialog.png")
 
-	playerImg = loadImage("playerGif.gif")
+	playerImg = loadImage("playerStanding.png")
+	playerRight = loadImage("playerRight.gif")
+	playerLeft = loadImage("playerLeft.gif")
 
 }
 
