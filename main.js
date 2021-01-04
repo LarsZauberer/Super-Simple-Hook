@@ -25,7 +25,7 @@ let tileCanvas;
 
 
 
-let debug = false;
+let debug = true;
 
 let objectRegistry = [
 					DevObstacle,
@@ -90,7 +90,7 @@ function createPause() {
 	pauseButton.style("background", "url('Assets/UI/Pause.png') no-repeat top left");
     pauseButton.style("background-color", "Transparent")
 	pauseButton.style("border-color", "Transparent")
-	pauseButton.style("width", "50%")
+	pauseButton.style("width", "100px")
 	pauseButton.style("height", "100px")
 	pauseButton.position(0, 0);
 	pauseButton.mousePressed(function() {
