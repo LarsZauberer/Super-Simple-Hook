@@ -76,8 +76,21 @@ class Player extends GameObject{
 		*/
 
 
+
 		translate(this.body.position.x,this.body.position.y);
-		image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
+
+		
+		if(keyIsDown(65)){
+			image(playerLeft, -5-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
+		}
+		else if(keyIsDown(68)){
+			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
+		}
+		else{
+			
+			image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
+		}
+		
 
 		
 		/*
