@@ -25,7 +25,7 @@ let tileCanvas;
 
 
 
-let debug = true;
+let debug = false;
 
 let objectRegistry = [
 					DevObstacle,
@@ -67,6 +67,7 @@ let playerImg
 let playerRight
 let playerLeft
 let bg;
+let pauseImg
 
 
 function preload() {
@@ -85,16 +86,16 @@ function preload() {
 	playerRight = loadImage("playerRight.gif")
 	playerLeft = loadImage("playerLeft.gif")
 	bg = loadImage("background.png");
+	pauseImg = loadImage("Assets/UI/Pause.png")
 
 }
 
 function createPause() {
 	pauseButton = createButton("", "");
-	pauseButton.style("background", "url('Assets/UI/Pause.png') no-repeat top left");
     pauseButton.style("background-color", "Transparent")
 	pauseButton.style("border-color", "Transparent")
-	pauseButton.style("width", "100px")
-	pauseButton.style("height", "100px")
+	pauseButton.style("width", "12%")
+	pauseButton.style("height", "12%")
 	pauseButton.position(0, 0);
 	pauseButton.mousePressed(function() {
 		pauseButton.remove();
@@ -270,6 +271,8 @@ function draw() {
 	for(let i = 0; i < lavaAni.length; i++){
 		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
 	}
+
+	image(pauseImg, 10,10, height/100*10,height/100*10)
 	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
@@ -280,6 +283,7 @@ function draw() {
 	}
 
 
+	
 	}
 
 	else{
