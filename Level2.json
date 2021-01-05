@@ -1,1 +1,45 @@
-{"player":{"x":5.422121744052452,"y":13.546712802768166,"sx":1.8,"sy":2.7},"door":null,"obstacles":[{"x":0,"y":0,"sx":2,"sy":16,"type":0},{"x":12,"y":14,"sx":3,"sy":2,"type":0},{"x":27,"y":9,"sx":4,"sy":7,"type":0},{"x":2,"y":0,"sx":9,"sy":3,"type":0},{"x":2,"y":3,"sx":13,"sy":2,"type":0},{"x":31,"y":3,"sx":5,"sy":13,"type":0},{"x":41,"y":7,"sx":2,"sy":2,"type":0},{"x":48,"y":5,"sx":2,"sy":2,"type":0},{"x":58,"y":8,"sx":2,"sy":2,"type":0},{"x":62,"y":9,"sx":7,"sy":9,"type":0},{"x":0,"y":-7,"sx":11,"sy":7,"type":0},{"x":11,"y":-7,"sx":21,"sy":1,"type":0},{"x":32,"y":-10,"sx":30,"sy":4,"type":0},{"x":0,"y":-10,"sx":32,"sy":3,"type":0},{"x":19,"y":6,"sx":4,"sy":2,"type":0},{"x":20,"y":1,"sx":3,"sy":2,"type":0},{"x":31,"y":-6,"sx":31,"sy":5,"type":0},{"x":62,"y":-10,"sx":7,"sy":12,"type":0},{"x":0,"y":16,"sx":15,"sy":2,"type":0},{"x":19,"y":12,"sx":5,"sy":6,"type":0},{"x":27,"y":16,"sx":9,"sy":2,"type":0}],"unstatics":[],"targets":[],"triggers":[],"loadTriggers":[{"x":69,"y":9,"sx":1,"sy":7,"type":5},{"x":36,"y":17,"sx":26,"sy":1,"type":6},{"x":24,"y":17,"sx":3,"sy":1,"type":6},{"x":15,"y":17,"sx":4,"sy":1,"type":6}],"obstacleTiles":[],"targetTiles":[],"lavaTiles":[],"soundtrack":"Try and Solve This Loop.wav"}
+{
+  "player": {
+    "x": 5.422121744052452,
+    "y": 13.546712802768166,
+    "sx": 1.8,
+    "sy": 2.7
+  },
+  "door": null,
+  "obstacles": [
+    { "x": 0, "y": 0, "sx": 2, "sy": 16, "type": 0 },
+    { "x": 12, "y": 14, "sx": 3, "sy": 2, "type": 0 },
+    { "x": 27, "y": 9, "sx": 4, "sy": 7, "type": 0 },
+    { "x": 2, "y": 0, "sx": 9, "sy": 3, "type": 0 },
+    { "x": 2, "y": 3, "sx": 13, "sy": 2, "type": 0 },
+    { "x": 31, "y": 3, "sx": 5, "sy": 13, "type": 0 },
+    { "x": 41, "y": 7, "sx": 2, "sy": 2, "type": 0 },
+    { "x": 48, "y": 5, "sx": 2, "sy": 2, "type": 0 },
+    { "x": 58, "y": 8, "sx": 2, "sy": 2, "type": 0 },
+    { "x": 62, "y": 9, "sx": 7, "sy": 9, "type": 0 },
+    { "x": 0, "y": -7, "sx": 11, "sy": 7, "type": 0 },
+    { "x": 11, "y": -7, "sx": 21, "sy": 1, "type": 0 },
+    { "x": 32, "y": -10, "sx": 30, "sy": 4, "type": 0 },
+    { "x": 0, "y": -10, "sx": 32, "sy": 3, "type": 0 },
+    { "x": 19, "y": 6, "sx": 4, "sy": 2, "type": 0 },
+    { "x": 20, "y": 1, "sx": 3, "sy": 2, "type": 0 },
+    { "x": 31, "y": -6, "sx": 31, "sy": 5, "type": 0 },
+    { "x": 62, "y": -10, "sx": 7, "sy": 12, "type": 0 },
+    { "x": 0, "y": 16, "sx": 15, "sy": 2, "type": 0 },
+    { "x": 19, "y": 12, "sx": 5, "sy": 6, "type": 0 },
+    { "x": 27, "y": 16, "sx": 9, "sy": 2, "type": 0 }
+  ],
+  "unstatics": [],
+  "targets": [],
+  "triggers": [],
+  "loadTriggers": [
+    { "x": 69, "y": 9, "sx": 1, "sy": 7, "type": 5 },
+    { "x": 36, "y": 17, "sx": 26, "sy": 1, "type": 6 },
+    { "x": 24, "y": 17, "sx": 3, "sy": 1, "type": 6 },
+    { "x": 15, "y": 17, "sx": 4, "sy": 1, "type": 6 }
+  ],
+  "obstacleTiles": [],
+  "targetTiles": [],
+  "lavaTiles": [],
+  "soundtrack": "Try and Solve This Loop.wav"
+}
