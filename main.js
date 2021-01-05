@@ -299,7 +299,7 @@ function keyPressed() {
     /* Keypress Handling
     */
 	// Jumping
-	if (key == " " && !player.death && dialog == null) player.jump();
+	if (key == " " && !player.death) player.jump();
 }
 
 
