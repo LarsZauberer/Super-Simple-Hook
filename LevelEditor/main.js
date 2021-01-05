@@ -57,8 +57,16 @@ const th = 18; // Tile Height
 // tile settings
 let tilemode = false;
 let tilesManager;
+
+let playerImg;
+let playerRight;
+let playerLeft;
+
 function preload(){
     tilesManager = new TileManager();
+    playerImg = loadImage("../playerStanding.png")
+	playerRight = loadImage("../playerRight.gif")
+	playerLeft = loadImage("../playerLeft.gif")
 }
 let tileCanvas;
 let tileNum = 0;
