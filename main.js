@@ -153,6 +153,8 @@ function setup() {
 			"label": "Continue",
 			"value": "",
 			"function": function() {
+				continueMap = window.localStorage.getItem("map");
+				if (continueMap == null) continueMap = 1;
 				levelManager.loaded = continueMap;
 				levelManager.load();
 				createPause();
