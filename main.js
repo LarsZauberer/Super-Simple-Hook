@@ -63,9 +63,9 @@ let dialogBack;
 let dialog;
 
 
-let playerImg
-let playerRight
-let playerLeft
+let playerImg;
+let playerRight;
+let playerLeft;
 
 function preload() {
 	soundmanager = new Sound([
