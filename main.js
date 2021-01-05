@@ -66,6 +66,8 @@ let dialog;
 let playerImg
 let playerRight
 let playerLeft
+let bg;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -82,6 +84,7 @@ function preload() {
 	playerImg = loadImage("playerStanding.png")
 	playerRight = loadImage("playerRight.gif")
 	playerLeft = loadImage("playerLeft.gif")
+	bg = loadImage("background.png");
 
 }
 
@@ -214,7 +217,7 @@ function draw() {
 	   
 	if(pauseMenu.shouldUpdate == false){
 
-	background(100);
+	background(bg);
 
 
 	
