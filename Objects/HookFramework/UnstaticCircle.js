@@ -18,7 +18,7 @@ class UnstaticCircle extends GameObject{
     mesh(){
         translate(this.body.position.x,this.body.position.y)
         rotate(degrees(this.body.angle))
-        fill(255)
+        fill(0, 0, 100)
         circle(0,0,this.size.x*2);
 
         

@@ -94,7 +94,7 @@ function preload() {
 
 function createPause() {
 	pauseButton = createButton("", "");
-    pauseButton.style("background-color", "Transparent")
+	pauseButton.style("background-color", "Transparent")
 	pauseButton.style("border-color", "Transparent")
 	pauseButton.style("width", "5%")
 	pauseButton.style("height", "9%")
@@ -140,6 +140,8 @@ function setup() {
 	levelManager = new MapManager([
 									"emptyMap.json",
 									"level1.json",
+									"level2.1.json",
+									"level3.1.json",
 									"level2.json",
 									"level3.json",
 									"level4.json",
@@ -156,6 +158,8 @@ function setup() {
 			"label": "Continue",
 			"value": "",
 			"function": function() {
+				continueMap = window.localStorage.getItem("map");
+				if (continueMap == null) continueMap = 1;
 				levelManager.loaded = continueMap;
 				levelManager.load();
 				createPause();
@@ -234,7 +238,6 @@ function draw() {
 	// Camera Calculation
 	if (player) {
 		player.camera();
-		player.update();
 	}
 
 	image(tileCanvas, 0,height/18*-100)
@@ -262,34 +265,36 @@ function draw() {
 	for (let i = 0; i < triggers.length; i++) {
 		triggers[i].update();
 	}
+
 	
-	// Player Calculation
-	if(player){
-		
+
+	
+
+	if (player){
+		player.update();
 	}
-
-
 
 	for(let i = 0; i < lavaAni.length; i++){
-		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
+		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 	}
 
-	if(levelManager.loaded != 0){
-	image(pauseImg, 10,10, height/100*7,height/100*7)
-	}
-	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
+	}
+
+
+	
+
+	
+	if (pauseButton) {
+		image(pauseImg, 10,10, height/100*7,height/100*7)
 	}
 
 	if (dialog) {
 		dialog.show();
 	}
-
-
 	
-	}
-
+}
 	else{
 		if (levelManager.loaded == 0) {
 			
