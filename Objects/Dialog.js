@@ -13,7 +13,7 @@ class Dialog {
         stroke(0)
         fill(0)
         text(this.text[this.frame], width/16*1.5, height/16*1.5, width/16*13.5, height/16*14);
-        if (mouseIsPressed && this.changed+1000 < millis()) {
+        if (mouseIsPressed && this.changed+500 < millis()) {
             this.frame++;
             if (this.frame > this.text.length-1) {
                 dialog = null;
