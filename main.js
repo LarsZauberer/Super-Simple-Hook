@@ -92,7 +92,7 @@ function preload() {
 
 function createPause() {
 	pauseButton = createButton("", "");
-    pauseButton.style("background-color", "Transparent")
+	pauseButton.style("background-color", "Transparent")
 	pauseButton.style("border-color", "Transparent")
 	pauseButton.style("width", "12%")
 	pauseButton.style("height", "12%")
@@ -266,11 +266,13 @@ function draw() {
 	for(let i = 0; i < lavaAni.length; i++){
 		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
 	}
-
-	image(pauseImg, 10,10, height/100*10,height/100*10)
 	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
+	}
+
+	if (pauseButton) {
+		image(pauseImg, 10,10, height/100*10,height/100*10);
 	}
 
 	if (dialog) {
