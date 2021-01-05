@@ -262,13 +262,6 @@ function draw() {
 	for (let i = 0; i < triggers.length; i++) {
 		triggers[i].update();
 	}
-	
-	// Player Calculation
-	if(player){
-		
-	}
-
-
 
 	for(let i = 0; i < lavaAni.length; i++){
 		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
@@ -283,14 +276,10 @@ function draw() {
 	if (dialog) {
 		dialog.show();
 	}
+	if (levelManager.loaded == 0) mainMenu.update(75, 500);
 
-
-	
-	}
-
-	else{
+	} else{
 		pauseMenu.update(150, 50);
-		if (levelManager.loaded == 0) mainMenu.update(75, 500);
 	}
 
 

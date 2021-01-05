@@ -14,6 +14,7 @@ class Door extends GameObject{
     }
 
     mesh(){
+        fill(255, 0, 255);
         rect(this.body.position.x,this.body.position.y,this.size.x,this.size.y)
         rect(this.x, this.y-this.h*1.5, this.w, 5)
     }
