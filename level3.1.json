@@ -408,5 +408,5 @@
     { "nr": 4, "x": 19, "y": 115 }
   ],
   "soundtrack": "Try and Solve This Loop.wav",
-  "dialog": ["Point at a target (orange boxes) with your cursor to shoot a hook. It helps you to reach new places."]
+  "dialog": ["Let's explain the hook mechanic.", "Point at a target (orange boxes) with your cursor and click shortly to shoot a hook.", "Between the target shouldn't be an obstacle. Otherwise the hook won't work.", "The hook automatically drags you to the target. It helps you to reach new places."]
 }
