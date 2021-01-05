@@ -68,6 +68,7 @@ let playerRight
 let playerLeft
 let bg;
 let pauseImg
+let buttonImg
 
 
 function preload() {
@@ -87,6 +88,7 @@ function preload() {
 	playerLeft = loadImage("playerLeft.gif")
 	bg = loadImage("background.png");
 	pauseImg = loadImage("Assets/UI/Pause.png")
+	buttonImg = loadImage("Assets/UI/Button.png")
 
 }
 
@@ -94,8 +96,8 @@ function createPause() {
 	pauseButton = createButton("", "");
     pauseButton.style("background-color", "Transparent")
 	pauseButton.style("border-color", "Transparent")
-	pauseButton.style("width", "12%")
-	pauseButton.style("height", "12%")
+	pauseButton.style("width", "5%")
+	pauseButton.style("height", "9%")
 	pauseButton.position(0, 0);
 	pauseButton.mousePressed(function() {
 		pauseButton.remove();
@@ -170,7 +172,7 @@ function setup() {
 				mainMenu.hide();
 			}
 		}
-	]);
+	], bg);
 
 
 	pauseMenu = new Menu("Pause",
@@ -216,7 +218,7 @@ function draw() {
     */
 	push()
 	   
-	if(pauseMenu.shouldUpdate == false){
+	if(pauseMenu.shouldUpdate == false && levelManager.loaded != 0){
 
 	background(bg);
 
@@ -272,7 +274,9 @@ function draw() {
 		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y, width/32, height/18)
 	}
 
-	image(pauseImg, 10,10, height/100*10,height/100*10)
+	if(levelManager.loaded != 0){
+	image(pauseImg, 10,10, height/100*7,height/100*7)
+	}
 	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
@@ -287,8 +291,15 @@ function draw() {
 	}
 
 	else{
-		pauseMenu.update(150, 50);
-		if (levelManager.loaded == 0) mainMenu.update(75, 500);
+		if (levelManager.loaded == 0) {
+			
+			mainMenu.update(-35, 500);
+			pauseMenu.shouldUpdate = false;
+			pauseMenu.hide();
+			
+			
+		}
+		else pauseMenu.update(50, 50);
 	}
 
 
