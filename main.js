@@ -69,6 +69,7 @@ let playerLeft
 let bg;
 let pauseImg
 let buttonImg
+let explenations = [];
 
 
 function preload() {
@@ -89,6 +90,10 @@ function preload() {
 	bg = loadImage("background.png");
 	pauseImg = loadImage("Assets/UI/Pause.png")
 	buttonImg = loadImage("Assets/UI/Button.png")
+	explenations.push(loadImage("Erklaerung1.png"));
+	explenations.push(loadImage("Erklaerung2.png"));
+	explenations.push(loadImage("Erklaerung3.png"));
+
 
 }
 
@@ -229,6 +234,8 @@ function draw() {
 
 	
 
+		
+	
 	
 
 	if (debug) {
