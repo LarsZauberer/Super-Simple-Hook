@@ -98,6 +98,21 @@ class MapManager {
                 }
 
 
+                //seperate level changes
+                
+            
+
+                if (levelManager.loaded == 1){
+                    tileCanvas.image(explenations[0], width/32*9,height/18*104, width/32*10,height/18*6)
+                }
+
+                if (levelManager.loaded == 3){
+                    tileCanvas.image(explenations[1], width/32*3,height/18*104, width/32*8,height/18*6)
+                }
+
+                
+                
+                
                 
 
                 // Load Music for the map:
