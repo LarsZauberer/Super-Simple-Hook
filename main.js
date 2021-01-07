@@ -152,26 +152,37 @@ function setup() {
 	continueMap = window.localStorage.getItem("map");
 	if (continueMap == null) continueMap = 1;
 
+	// Main Menu creation
 	mainMenu = new Menu("Super Simple Hook",
 	[
 		{
+			// Continue Button
 			"label": "Continue",
 			"value": "",
 			"function": function() {
+				// Load Save
 				continueMap = window.localStorage.getItem("map");
 				if (continueMap == null) continueMap = 1;
+
+				// Load Map
 				levelManager.loaded = continueMap;
 				levelManager.load();
+
+				// Create Pause Button and hide the main menu
 				createPause();
 				mainMenu.hide();
 			}
 		},
 		{
+			// New Game Button
 			"label": "New Game",
 			"value": "",
 			"function": function() {
+				// Load the first level
 				levelManager.loaded = 1;
 				levelManager.load();
+
+				// Show the Pause button and hide the main menu
 				createPause();
 				mainMenu.hide();
 			}
@@ -179,40 +190,52 @@ function setup() {
 	], bg);
 
 
+	// Pause Menu Creation
 	pauseMenu = new Menu("Pause",
 	[{
+		// Continue Button
 		"label": "Continue",
 		"value": "",
 		"function": function() {
+			// Create Pause button
 			createPause();
+			// Hide Pause menu
 			pauseMenu.shouldUpdate = false;
 			pauseMenu.hide();
 		}
 	},
 	{
+		// Restart Button
 		"label": "Restart Level",
 		"value": "",
 		"function": function() {
+			// Reload Map
 			levelManager.load();
+			// Hide Pause menu
 			pauseMenu.hide();
 			pauseMenu.shouldUpdate = false;
+			// Show Pause Button
 			createPause();
 		}
 	},
 	{
+		// Back to Main Menu
 		"label": "Main Menu",
 		"value": "",
 		"function": function() {
+			// Load Empty Map
 			levelManager.loaded = 0;
 			levelManager.load();
+			// Hide Pause Menu
 			pauseMenu.hide();
 			pauseMenu.shouldUpdate = false;
 			pauseButton = null;
+			// Show Main Menu
 			mainMenu.show();
 		}
 	}
 ]);
-
+	// Standard show Main Menu after setup
 	mainMenu.show();
 }
 
