@@ -224,7 +224,7 @@ function draw() {
             let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
             let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18);
 
-            if (my < 0){
+            if (my <= 0){
                 my += height/18*99;
             }
             else{
