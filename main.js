@@ -298,7 +298,14 @@ function draw() {
 	}
 
 	for(let i = 0; i < lavaAni.length; i++){
-		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
+		let y;
+		if(lavaAni[i].y-height/18*100 < 0){
+			y = lavaAni[i].y-height/18*99
+		}  
+		else{
+			y = lavaAni[i].y-height/18*100
+		}
+		image(lavaAni[i].nr, lavaAni[i].x, y, width/32, height/18)
 	}
 
 	for(let i = 0; i < loadTriggers.length; i++){
@@ -310,7 +317,7 @@ function draw() {
 
 	
 	if (pauseButton) {
-		image(pauseImg, 10,10, height/100*7,height/100*7)
+		image(pauseImg, 10-player.cam.x,10, height/100*7,height/100*7)
 	}
 
 	if (dialog) {
