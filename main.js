@@ -301,7 +301,7 @@ function draw() {
 
 	
 	if (pauseButton) {
-		image(pauseImg, 10-player.cam.x,10, height/100*7,height/100*7)
+		image(pauseImg, 10-player.cam.x,10-player.cam.smoothedY, height/100*7,height/100*7)
 	}
 
 	if (dialog) {
