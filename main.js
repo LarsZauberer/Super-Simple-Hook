@@ -333,7 +333,7 @@ function draw() {
 		dialog.show();
 	}
 	
-	if (levelManager.loaded == 0) {
+	if (levelManager.loaded == 0 && player) {
 		player.death = true;
 		mainMenu.update(-35, 500);
 		pauseMenu.shouldUpdate = false;
