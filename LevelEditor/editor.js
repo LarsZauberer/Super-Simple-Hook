@@ -2,28 +2,34 @@ function obstacleDraw(pos1, pos2, target, deathTrigger) {
     // Draw an Obstacle on the grid
     // Check if the obstacle already exists
     
-     if(pos1.y < 0){
-        pos1.y -= height/18;
-        if(pos2.y < 0){
-            pos2.y -= height/18;
-        }
+    
+   
+
+
+     if(pos1.y < 0) {
+        
+            pos1.y -= height/18;
+        
+       
      } 
 
+
+
+     if(pos2.y <= 0 && !keyIsDown(81)) {
+        pos2.y -= height/18;
+    }
+     
+
+     
      let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
 
 
   
 
-    let found = false;
-    for (let index = 0; index < obstacles.length; index++) {
-        const element = obstacles[index];
-        if (Math.round(element.x-element.size.x/2) == Math.round(pos1.x) && Math.round(element.y-element.size.y/2) == Math.round(pos1.y) && !target && !deathTrigger) {
-            found = true;
-        }
-    }
+  
 
     // Create a new obstacle if it doesn't exist
-    if (found == false && !tilemode) {
+    if (!tilemode) {
         if (target) {
             targets.push(new Target(world, pos1.x, pos1.y, size.x, size.y));
             mapData.targets.push({"x": Math.round(32/width*pos1.x), "y": Math.round(18/height*pos1.y), "sx": Math.round(32/width*size.x), "sy": Math.round(18/height*size.y)});
