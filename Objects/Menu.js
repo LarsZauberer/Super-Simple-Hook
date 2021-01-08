@@ -49,7 +49,7 @@ class Menu {
         }
 
         // Menu Title Text
-        textSize(50);
+        textSize(50*(height/880));
         stroke(255);
         fill(255);
         textFont('Helvetica')
@@ -60,4 +60,3 @@ class Menu {
         
     }
 }
-// TODO: Pause Button Fix
