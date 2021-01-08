@@ -49,6 +49,7 @@ class Menu {
         textSize(50);
         stroke(255);
         fill(255);
+        textFont('Helvetica')
         text(this.title, width/2-w, height/4, ws, 50);
 
         pop();

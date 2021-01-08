@@ -95,6 +95,8 @@ function preload() {
 	explenations.push(loadImage("Erklaerung3.png"));
 
 
+
+
 }
 
 function createPause() {
@@ -143,7 +145,7 @@ function setup() {
 
 	// Level Manager
 	levelManager = new MapManager([
-									"emptyMap.json",
+									"startscreen (1).json",
 									"level1.json",
 									"level2.1.json",
 									"level3.1.json",
@@ -192,7 +194,7 @@ function setup() {
 				mainMenu.hide();
 			}
 		}
-	], bg);
+	]);
 
 
 	// Pause Menu Creation
@@ -250,7 +252,7 @@ function draw() {
     */
 	push()
 	   
-	if(pauseMenu.shouldUpdate == false && levelManager.loaded != 0){
+	if(pauseMenu.shouldUpdate == false){
 
 	background(bg);
 
@@ -331,18 +333,19 @@ function draw() {
 		dialog.show();
 	}
 	
-}
-	else{
-		if (levelManager.loaded == 0) {
-			
-			mainMenu.update(-35, 500);
-			pauseMenu.shouldUpdate = false;
-			pauseMenu.hide();
-			
-			
-		}
-		else pauseMenu.update(50, 50);
+	if (levelManager.loaded == 0) {
+		player.death = true;
+		mainMenu.update(-35, 500);
+		pauseMenu.shouldUpdate = false;
+		pauseMenu.hide();
 	}
+	else{
+		player.death = false;
+	}
+
+	}
+		else pauseMenu.update(50, 50);
+	
 
 
 }
