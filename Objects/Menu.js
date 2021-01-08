@@ -20,7 +20,7 @@ class Menu {
             button.style("font-size", "25px")
             button.style("color", "Lightgray")
             button.style("width", "20%");
-            button.style("height", "50px");
+            button.style("height", "10%");
             this.btns.push(button);
             y += height/8;
         }
@@ -34,18 +34,21 @@ class Menu {
     }
 
     update(w, ws) {
-        // Background
+        // Background for the menu
         pop();
         if (this.bg) {
             background(this.bg);
         }
         push();
 
+        // Draw Button Graphics
         let y = height/8*3
-        for(let i = 0; i < this.buttons.length; i ++){
-        image(buttonImg, width/2-width/10, y, width/100*20,50)
-        y += height/8
+        for(let i = 0; i < this.buttons.length; i ++) {
+            image(buttonImg, width/2-width/10, y, width/100*20, 50)
+            y += height/8
         }
+
+        // Menu Title Text
         textSize(50);
         stroke(255);
         fill(255);
