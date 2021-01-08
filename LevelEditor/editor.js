@@ -1,9 +1,16 @@
 function obstacleDraw(pos1, pos2, target, deathTrigger) {
     // Draw an Obstacle on the grid
     // Check if the obstacle already exists
-    let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
+    
+     if(pos1.y < 0){
+        pos1.y -= height/18;
+        if(pos2.y < 0){
+            pos2.y -= height/18;
+        }
+     } 
 
-     if(pos1.y < 0) pos1.y -= height/18;
+     let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
+
 
   
 
