@@ -80,14 +80,13 @@ class Player extends GameObject{
 		translate(this.body.position.x,this.body.position.y);
 
 		
-		if(keyIsDown(65)){
+		if(keyIsDown(65) && !this.death){
 			image(playerLeft, -5-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
 		}
-		else if(keyIsDown(68)){
+		else if(keyIsDown(68) && !this.death){
 			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
 		}
 		else{
-			
 			image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
 		}
 		
