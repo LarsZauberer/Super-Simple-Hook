@@ -31,10 +31,11 @@ class Player extends GameObject{
 		Body.setInertia(this.body, Infinity);
  
 		// Friction Settings
+
 		this.body.friction = 0;
-		this.body.frictionAir = 0.1;
+		this.body.frictionAir = 0.1 * height/593;
 		this.foot.friction = 0;
-		this.foot.frictionAir = 0.1;
+		this.foot.frictionAir = 0.1 * height/593;
 
 		// Mass
 		Body.setMass(this.body, 4);
@@ -109,12 +110,12 @@ class Player extends GameObject{
 		*/
 
 		// Left
-		let leftForce = createVector(-0.01,0);
+		let leftForce = createVector(-0.01 * (height/593),0);
 		if (keyIsDown(65)) {
 			Body.applyForce(this.body, this.body.position, leftForce);
 		}
 		// Right
-		let rightForce = createVector(0.01,0);
+		let rightForce = createVector(0.01 * (height/593),0);
 		if (keyIsDown(68)) {
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}

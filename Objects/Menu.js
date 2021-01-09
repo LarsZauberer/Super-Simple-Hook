@@ -12,15 +12,19 @@ class Menu {
         for (let index = 0; index < this.buttons.length; index++) {
             const element = this.buttons[index];
             let button = createButton(element.label, element.value);
-            button.position(width/2-width/8, y);
+            button.position(width/2-width/10, y);
             button.mousePressed(element.function);
             
             button.style("background-color", "Transparent")
             button.style("border-color", "Transparent")
-            button.style("font-size", "25px")
+            let fontPercent = 150 * height/593
+            fontPercent.toString();
+            button.style("font-size", fontPercent + "%")
             button.style("color", "Lightgray")
-            button.style("width", "20%");
-            button.style("height", "50px");
+            let bwPercent = width/windowWidth*20
+            bwPercent.toString();
+            button.style("width", bwPercent + "%");
+            button.style("height", "9%");
             this.btns.push(button);
             y += height/8;
         }
@@ -33,26 +37,32 @@ class Menu {
         }
     }
 
-    update(w, ws) {
+    update() {
         // Background
         pop();
         if (this.bg) {
             background(this.bg);
         }
         push();
-
+        //Buttons
         let y = height/8*3
         for(let i = 0; i < this.buttons.length; i ++){
-        image(buttonImg, width/2-width/10, y, width/100*20,50)
+        
+        image(buttonImg, width/2-width/10, y, width/100*20,height/100*9)
         y += height/8
         }
-        textSize(50);
-        stroke(255);
+        //Title
+        let sText = 50 * height/593
+        let titlebounds = font.textBounds(this.title,width/2,height/4,sText)
+        rectMode(CORNERS)
+        textSize(sText);
+        noStroke();
         fill(255);
-        textFont('Helvetica')
-        text(this.title, width/2-w, height/4, ws, 50);
-
+        textFont(font)
+        text(this.title, width/2-titlebounds.w/2, height/4-titlebounds.h/2, 500, 50);
         pop();
+
+        
 
         
     }
