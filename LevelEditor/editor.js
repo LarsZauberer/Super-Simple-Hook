@@ -3,31 +3,8 @@ function obstacleDraw(pos1, pos2, target, deathTrigger) {
     // Check if the obstacle already exists
     
     
-   
 
-
-     if(pos1.y < 0) {
-        
-            pos1.y -= height/18;
-        
-       
-     } 
-
-
-
-     if(pos2.y <= 0 && !keyIsDown(81)) {
-        pos2.y -= height/18;
-    }
-     
-
-     
      let size = createVector(-(pos1.x-pos2.x), -(pos1.y-pos2.y));
-
-
-  
-
-  
-
     // Create a new obstacle if it doesn't exist
     if (!tilemode) {
         if (target) {
@@ -86,8 +63,8 @@ function spawnPlayer() {
 
 function spawnDoor() {
     // Spawn Door
-    door = new Door(world, Math.trunc((mouseX-cameraX)/(width/32))*(width/32), Math.trunc((mouseY-cameraY)/(height/18))*(height/18));
-    mapData.door = {"x": 32/width*Math.trunc((mouseX-cameraX)/(width/32))*(width/32), "y": 18/height*Math.trunc((mouseY-cameraY)/(height/18))*(height/18)};
+    door = new Door(world, Math.floor((mouseX-cameraX)/(width/32))*(width/32), Math.floor((mouseY-cameraY)/(height/18))*(height/18));
+    mapData.door = {"x": 32/width*Math.floor((mouseX-cameraX)/(width/32))*(width/32), "y": 18/height*Math.floor((mouseY-cameraY)/(height/18))*(height/18)};
 }
 
 
@@ -97,14 +74,11 @@ function tilePlace(posX, posY, nr, group, mapGroup){
 }
 
 function foundTile(mapGroup, returnIt){
-    let mx = Math.trunc((mouseX-cameraX)/(width/32))*(width/32);
-    let my = Math.trunc((mouseY-cameraY)/(height/18))*(height/18)
-    if (my <= 0){
-        my += height/18*99;
-    }
-    else{
+    let mx = Math.floor((mouseX-cameraX)/(width/32))*(width/32);
+    let my = Math.floor((mouseY-cameraY)/(height/18))*(height/18)
+    
         my += height/18*100;
-    }
+    
 
     for(let i = 0; i < mapGroup.length; i++){
         const element = mapGroup[i];
