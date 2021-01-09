@@ -28,7 +28,7 @@ class Camera {
 
         if(this.player.y-this.player.size.y/2 < 0){
             this.y = -this.player.y+this.player.size.y/2
-            if(this.smooth < 150) this.smooth +=4
+            if(this.smooth < height/4) this.smooth +=4
         }
         else if(this.smooth > 0){
             this.smooth-=3
