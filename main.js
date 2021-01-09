@@ -70,6 +70,7 @@ let bg;
 let pauseImg
 let buttonImg
 let explenations = [];
+let font
 
 
 function preload() {
@@ -94,6 +95,8 @@ function preload() {
 	explenations.push(loadImage("Erklaerung2.png"));
 	explenations.push(loadImage("Erklaerung3.png"));
 
+	font = loadFont("Helvetica.ttf")
+
 
 
 
@@ -103,9 +106,11 @@ function createPause() {
 	pauseButton = createButton("", "");
 	pauseButton.style("background-color", "Transparent")
 	pauseButton.style("border-color", "Transparent")
-	pauseButton.style("width", "5%")
-	pauseButton.style("height", "9%")
-	pauseButton.position(0, 0);
+	let pwPercent = width/windowWidth*4.5;
+	pwPercent.toString();
+	pauseButton.style("width", pwPercent + "%")
+	pauseButton.style("height", "8%")
+	pauseButton.position(10, 10);
 	pauseButton.mousePressed(function() {
 		pauseButton.remove();
 		pauseButton = null;
@@ -326,7 +331,7 @@ function draw() {
 
 	
 	if (pauseButton) {
-		image(pauseImg, 10-player.cam.x,10-player.cam.smoothedY, height/100*7,height/100*7)
+		image(pauseImg, 10-player.cam.x,10-player.cam.smoothedY, height/100*8,height/100*8)
 	}
 
 	if (dialog) {
@@ -335,7 +340,7 @@ function draw() {
 	
 	if (levelManager.loaded == 0 && player) {
 		player.death = true;
-		mainMenu.update(-35, 500);
+		mainMenu.update();
 		pauseMenu.shouldUpdate = false;
 		pauseMenu.hide();
 	}
@@ -344,7 +349,7 @@ function draw() {
 	}
 
 	}
-		else pauseMenu.update(50, 50);
+		else pauseMenu.update();
 	
 
 

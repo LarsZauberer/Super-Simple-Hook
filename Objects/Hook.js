@@ -22,7 +22,7 @@ class Hook {
 
 
         //for collision detection
-        this.body = Bodies.circle(this.x, this.y, 5, {isStatic: true});
+        this.body = Bodies.circle(this.x, this.y, height/100, {isStatic: true});
     }
 
     
@@ -68,8 +68,8 @@ class Hook {
 
 
     shoot(){
-        this.x += cos(this.angle)*10;
-        this.y += sin(this.angle)*10;
+        this.x += cos(this.angle)*10 * height/593;
+        this.y += sin(this.angle)*10 * height/593;
         Body.setPosition(this.body, {x: this.x, y: this.y});
     }
 
@@ -127,7 +127,7 @@ class Hook {
 
 
     mesh(){
-        circle(this.body.position.x,this.body.position.y,10)
+        circle(this.body.position.x,this.body.position.y,height/50)
             
         if(this.twoHookMode && this.hookTwo){
             line(this.x,this.y,this.hookTwo.body.position.x,this.hookTwo.body.position.y);
