@@ -20,7 +20,7 @@ class LoadTrigger extends GameObject {
         }
 
         // If Collided with player
-        if(player){
+        if (player){
             if (Matter.SAT.collides(this.body, player.body).collided) {
                 this.nextLoad()
             }
@@ -34,20 +34,14 @@ class LoadTrigger extends GameObject {
 
         if (this.fade < 255) {
             this.fade+=5;
-
-            // Next Level walking
-            let rightForce = createVector(0.01 * (height/593), 0);
-            Body.applyForce(player.body, player.body.position, rightForce);
-
-            // Animation
-            image(playerRight, 0-player.size.x/2,-player.size.y/2, player.size.x+5, player.size.y);
-
+            loading = true;
         } else if(!this.load) {
             tileCanvas.background(100);
             levelManager.loaded++;
             levelManager.load();
             window.localStorage.setItem("map", levelManager.loaded);
             this.load = true;
+            loading = false;
         }
     }
 }
