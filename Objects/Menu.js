@@ -53,13 +53,13 @@ class Menu {
         }
         //Title
         let sText = 50 * height/593
-        let titlebounds = font.textBounds(this.title,width/2,height/4,sText)
+        let titlebounds = font.textBounds(this.title, width/2, height/4, sText)
         rectMode(CORNERS)
         textSize(sText);
         noStroke();
         fill(255);
         textFont(font)
-        text(this.title, width/2-titlebounds.w/2, height/4-titlebounds.h/2, 500, 50);
+        text(this.title, width/2-titlebounds.w/2, height/4-titlebounds.h/2, titlebounds, 100);
         pop();
 
         
@@ -67,4 +67,3 @@ class Menu {
         
     }
 }
-// TODO: Pause Button Fix
