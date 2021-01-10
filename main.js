@@ -72,6 +72,8 @@ let buttonImg
 let explenations = [];
 let font
 
+let loading = false;
+
 
 function preload() {
 	soundmanager = new Sound([

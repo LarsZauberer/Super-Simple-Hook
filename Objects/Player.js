@@ -87,8 +87,10 @@ class Player extends GameObject{
 		else if(keyIsDown(68) && !this.death){
 			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
 		}
-		else{
+		else if (!loading){
 			image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
+		} else {
+			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
 		}
 	}
 
