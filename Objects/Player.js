@@ -90,18 +90,6 @@ class Player extends GameObject{
 		else{
 			image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
 		}
-		
-
-		
-		/*
-		rotate(this.body.angle);
-		rect(0, 0,this.size.x, this.size.y);
-
-		// Foot
-		fill(255, 0, 0)
-		rect(0, this.size.y/2-5, this.size.x-1, 10);
-		*/
-		
 	}
 
 
@@ -110,12 +98,12 @@ class Player extends GameObject{
 		*/
 
 		// Left
-		let leftForce = createVector(-0.01 * (height/593),0);
+		let leftForce = createVector(-0.01 * (height/593), 0);
 		if (keyIsDown(65)) {
 			Body.applyForce(this.body, this.body.position, leftForce);
 		}
 		// Right
-		let rightForce = createVector(0.01 * (height/593),0);
+		let rightForce = createVector(0.01 * (height/593), 0);
 		if (keyIsDown(68)) {
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}

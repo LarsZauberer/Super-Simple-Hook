@@ -30,9 +30,19 @@ class LoadTrigger extends GameObject {
 
     nextLoad(){
         player.death = true;
-        background(0,this.fade)
-        if(this.fade < 255) this.fade+=5
-        else if(!this.load){
+        background(0, this.fade)
+
+        if (this.fade < 255) {
+            this.fade+=5;
+
+            // Next Level walking
+            let rightForce = createVector(0.01 * (height/593), 0);
+            Body.applyForce(player.body, player.body.position, rightForce);
+
+            // Animation
+            image(playerRight, 0-player.size.x/2,-player.size.y/2, player.size.x+5, player.size.y);
+
+        } else if(!this.load) {
             tileCanvas.background(100);
             levelManager.loaded++;
             levelManager.load();
