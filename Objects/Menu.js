@@ -59,7 +59,7 @@ class Menu {
         noStroke();
         fill(255);
         textFont(font)
-        text(this.title, width/2-titlebounds.w/2, height/4-titlebounds.h/2, titlebounds, 100);
+        text(this.title, width/2-titlebounds.w/2, height/4-titlebounds.h/2, titlebounds.w*2, 100);
         pop();
 
         
