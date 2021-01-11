@@ -97,24 +97,6 @@ class MapManager {
                     lavaAni.push({nr: tilesManager.lavTiles[element.nr],x: element.x*width/32,y: element.y*height/18})
                 }
 
-
-                //seperate level changes
-                
-            
-
-                if (levelManager.loaded == 1){
-                    tileCanvas.image(explenations[0], width/32*9,height/18*104, width/32*10,height/18*6)
-                }
-
-                if (levelManager.loaded == 3){
-                    tileCanvas.image(explenations[1], width/32*3,height/18*104, width/32*8,height/18*6)
-                }
-
-                
-                
-                
-                
-
                 // Load Music for the map:
                 try {
                     soundmanager.play(map.soundtrack);
@@ -122,8 +104,23 @@ class MapManager {
                     
                 }
 
+                // Loading Dialog
                 if (map.dialog) {
                     dialog = new Dialog(map.dialog);
+                }
+
+                
+                //seperate level changes
+                
+            
+                // Explanations
+                switch (levelManager.loaded) {
+                    case 1:
+                        tileCanvas.image(explenations[0], width/32*9,height/18*104, width/32*10,height/18*6)
+                        break;
+                    case 3:
+                        tileCanvas.image(explenations[1], width/32*3,height/18*104, width/32*8,height/18*6)
+                        break;
                 }
             }
         };
