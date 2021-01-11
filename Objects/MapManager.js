@@ -99,7 +99,9 @@ class MapManager {
 
                 // Load Music for the map:
                 try {
-                    soundmanager.play(map.soundtrack);
+                    if (levelManager.loaded == 0) {
+                        soundmanager.play(map.soundtrack);
+                    }
                 } catch (error) {
                     
                 }
@@ -109,7 +111,7 @@ class MapManager {
                     dialog = new Dialog(map.dialog);
                 }
 
-                
+
                 //seperate level changes
                 
             
