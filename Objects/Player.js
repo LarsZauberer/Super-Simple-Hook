@@ -33,9 +33,9 @@ class Player extends GameObject{
 		// Friction Settings
 
 		this.body.friction = 0;
-		this.body.frictionAir = 0.1 * height/593;
+		this.body.frictionAir = 0.1
 		this.foot.friction = 0;
-		this.foot.frictionAir = 0.1 * height/593;
+		this.foot.frictionAir = 0.1
 
 		// Mass
 		Body.setMass(this.body, 4);
@@ -82,15 +82,15 @@ class Player extends GameObject{
 
 		
 		if(keyIsDown(65) && !this.death){
-			image(playerLeft, -5-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
+			image(playerLeft, -height/100-this.size.x/2,-this.size.y/2, this.size.x+height/100,this.size.y)
 		}
 		else if(keyIsDown(68) && !this.death){
-			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
+			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+height/100,this.size.y)
 		}
 		else if (!loading){
 			image(playerImg, 0-this.size.x/2,-this.size.y/2, this.size.x,this.size.y)
 		} else {
-			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+5,this.size.y)
+			image(playerRight, 0-this.size.x/2,-this.size.y/2, this.size.x+height/100,this.size.y)
 		}
 	}
 
@@ -128,7 +128,7 @@ class Player extends GameObject{
 				}, {
 					x: 0,
 					// 593 because thats the pixel count where it works
-					y: -0.35*(height/593)
+					y: -0.38*height/593 +0.05*height/593
 				});
 				break;
 			}
