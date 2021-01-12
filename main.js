@@ -145,7 +145,6 @@ function setup() {
         },
     });
 	world = engine.world;
-	// Engine.run(engine);
 
     // World Properties
 	world.gravity.scale = 0.0025;
@@ -261,6 +260,7 @@ function draw() {
     /* Main Game Loop
     */
 
+	// Consistant Updating
 	Engine.update(engine, 16)
 
 	push()
