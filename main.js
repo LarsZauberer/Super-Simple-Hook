@@ -157,9 +157,8 @@ function setup() {
 									"level2.json",
 									"level3.json",
 									"level4.json",
-									"level3.json",
-									"level4.json",
 									"level5.json",
+									
 									
 								  ]);
 	
