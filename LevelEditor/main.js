@@ -99,7 +99,12 @@ function setup() {
     // World Properties
     world.gravity.scale = 0;
 
-    mapName = prompt("Map Name");
+    mapName = window.localStorage.getItem("mapEditor");
+    if (!mapName) mapName = "";
+
+    mapName = prompt("Map Name", mapName);
+
+    window.localStorage.setItem("mapEditor", mapName);
 
     if (mapName.indexOf(".json") == -1) {
         mapName = "../" + mapName + ".json"
