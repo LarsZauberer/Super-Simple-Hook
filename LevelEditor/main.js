@@ -20,7 +20,7 @@ let objectRegistry = [
                       DeathTrigger
                      ]
 
-let mapEngine;
+let levelManager;
 
 // Namespace Variablename change
 let Engine = Matter.Engine,
@@ -72,6 +72,8 @@ let tileCanvas;
 let tileNum = 0;
 let specTileMode = 0;
 
+let loading = false;
+
 
 function setup() {
     createCanvas(windowHeight/9*16, windowHeight);
@@ -103,7 +105,7 @@ function setup() {
         mapName = "../" + mapName + ".json"
     }
 
-    mapEngine = new MapManager([mapName]);
+    levelManager = new MapManager([mapName]);
 
     translation = createVector(0, 0, 0)
 
@@ -142,7 +144,7 @@ function draw() {
     // Debug Modes
     if (debug) {
         // Debug Grid
-        mapEngine.drawGrid();
+        levelManager.drawGrid();
     }
 
     // Player Calculation
