@@ -130,7 +130,7 @@ function setup() {
 	createCanvas(windowHeight/9*16, windowHeight);
 	background(100);
 	rectMode(CENTER);
-    angleMode(DEGREES);
+	angleMode(DEGREES);
     
     tileCanvas = createGraphics(width/32*200, height/18*200);
     tileCanvas.clear();
@@ -145,7 +145,7 @@ function setup() {
         },
     });
 	world = engine.world;
-	Engine.run(engine);
+	// Engine.run(engine);
 
     // World Properties
 	world.gravity.scale = 0.0025;
@@ -263,6 +263,9 @@ function setup() {
 function draw() {
     /* Main Game Loop
     */
+
+	Engine.update(engine, 16)
+
 	push()
 	   
 	if(pauseMenu.shouldUpdate == false){
