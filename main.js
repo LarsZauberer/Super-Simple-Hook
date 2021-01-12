@@ -154,9 +154,9 @@ function setup() {
 	levelManager = new MapManager([
 									"startscreen (1).json",
 									"level1.json",
-									"level2.1.json",
-									"level3.1.json",
 									"level2.json",
+									"level3.json",
+									"level4.json",
 									"level3.json",
 									"level4.json",
 									"level5.json",
@@ -182,6 +182,9 @@ function setup() {
 				levelManager.loaded = continueMap;
 				levelManager.load();
 
+				// Play Music
+				soundmanager.play("Try and Solve This Loop.wav")
+
 				// Create Pause Button and hide the main menu
 				createPause();
 				mainMenu.hide();
@@ -195,6 +198,9 @@ function setup() {
 				// Load the first level
 				levelManager.loaded = 1;
 				levelManager.load();
+
+				// Play Music
+				soundmanager.play("Try and Solve This Loop.wav")
 
 				// Show the Pause button and hide the main menu
 				createPause();
