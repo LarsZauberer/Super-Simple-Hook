@@ -123,7 +123,7 @@ class MapManager {
                     case 3:
                         tileCanvas.image(explenations[1], width/32*3,height/18*104, width/32*8,height/18*6)
                         break;
-                    case 6:
+                    case 5:
                         tileCanvas.image(explenations[2], width/32*3,height/18*104, width/32*8,height/18*6) 
                 }
             }
