@@ -7,6 +7,8 @@ class UnstaticCircle extends GameObject{
         World.add(world, this.body)
 
         this.body.restitution = restitution;
+
+        this.body.friction = 1;
         
 
         Body.setMass(this.body, 3);
