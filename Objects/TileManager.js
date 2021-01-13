@@ -9,7 +9,7 @@ class TileManager{
 
     load(){
        for(let i = 1; i <= 13; i++){
-	        this.obstacTiles.push(loadImage("../Assets/obstacleTiles/" + i + ".jpg"))
+	        this.obstacTiles.push(loadImage("../Assets/obstacleTiles/" + i + ".png"))
         }
 
         for(let i = 1; i <= 25; i++){
