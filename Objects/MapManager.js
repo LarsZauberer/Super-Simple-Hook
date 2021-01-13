@@ -125,13 +125,13 @@ class MapManager {
                 // Explanations
                 switch (levelManager.loaded) {
                     case 1:
-                        tileCanvas.image(explenations[0], width/32*9,height/18*104, width/32*10,height/18*6)
+                        tileCanvas.image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
                         break;
                     case 3:
-                        tileCanvas.image(explenations[1], width/32*3,height/18*104, width/32*8,height/18*6)
+                        tileCanvas.image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
                         break;
                     case 5:
-                        tileCanvas.image(explenations[2], width/32*3,height/18*104, width/32*8,height/18*6) 
+                        tileCanvas.image(explenations[2], width/32*3,height/18*4, width/32*10,height/18*6) 
                 }
             }
         };
