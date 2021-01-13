@@ -16,10 +16,10 @@ class TileManager{
 	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + ".jpg"))
         }
 
-        for(let i = 1; i <= 5; i++){
+        for(let i = 1; i <= 4; i++){
             this.lavTiles.push(loadImage("../Assets/lavaTiles/" + i + ".gif"))
-            
         }
+        this.lavTiles.push(loadImage("../Assets/lavaTiles/5.png"))
         
 
     }

@@ -15,7 +15,7 @@ class Camera {
         
         if (this.player.x > width/2) {
             if(loadTriggers[0]){
-               if(this.player.x < loadTriggers[0].x-width/2){ 
+               if(this.player.x < loadTriggers[0].x-width/2-loadTriggers[0].size.x/2){ 
                     this.x = -(this.player.x-width/2);
                }
             }
