@@ -287,17 +287,8 @@ function draw() {
 		player.camera();
 	}
 
-	image(tileCanvas, 0,height/18*-100)
-	for(let i = 0; i < obstacleTiles.length; i++){
-		image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
-	}
-	for(let i = 0; i < targetTiles.length; i++){
-		image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
-	}
-	for(let i = 0; i < lavaAni.length; i++){
-		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
-	}
-
+	
+	
 	
 	if(door){
 		door.update();
@@ -322,19 +313,28 @@ function draw() {
 		triggers[i].update();
 	}
 
-	
-
-	
-
-	if (player){
+	if(player){
 		player.update();
 	}
 
+	if(!debug){
+
+		image(tileCanvas, 0,height/18*-100)
+		for(let i = 0; i < obstacleTiles.length; i++){
+			image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
+		}
+		for(let i = 0; i < targetTiles.length; i++){
+			image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
+		}
+		for(let i = 0; i < lavaAni.length; i++){
+			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
+		}
+	
+		}
 
 	
 
-
-
+	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
 	}
