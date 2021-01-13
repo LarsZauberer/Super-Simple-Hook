@@ -16,8 +16,9 @@ let unstatics = [];
 let targets = [];
 let triggers = [];
 let loadTriggers = [];
-
-let lavaAni = []
+let lavaAni = [];
+let obstacleTiles = [];
+let targetTiles = [];
 
 let tileCanvas;
 
@@ -47,8 +48,7 @@ let tilesManager;
 const tw = 32; // Tile Width
 const th = 18; // Tile Height
 
-let obstacleTiles;
-let targetTiles;
+
 
 let pauseMenu;
 
@@ -272,7 +272,7 @@ function draw() {
 	background(bg);
 
 
-	
+
 
 		
 	
@@ -288,6 +288,15 @@ function draw() {
 	}
 
 	image(tileCanvas, 0,height/18*-100)
+	for(let i = 0; i < obstacleTiles.length; i++){
+		image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
+	}
+	for(let i = 0; i < targetTiles.length; i++){
+		image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
+	}
+	for(let i = 0; i < lavaAni.length; i++){
+		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
+	}
 
 	
 	if(door){
@@ -321,18 +330,15 @@ function draw() {
 		player.update();
 	}
 
-	for(let i = 0; i < lavaAni.length; i++){
-		image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
-	}
+
+	
+
+
 
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
 	}
 
-
-	
-
-	
 	if (pauseButton) {
 		image(pauseImg, 10-player.cam.x,10-player.cam.smoothedY, height/100*8,height/100*8)
 	}
