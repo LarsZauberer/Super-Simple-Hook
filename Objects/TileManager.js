@@ -13,7 +13,7 @@ class TileManager{
         }
 
         for(let i = 1; i <= 25; i++){
-	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + ".jpg"))
+	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + "-min.jpg"))
         }
 
         for(let i = 1; i <= 4; i++){
