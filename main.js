@@ -16,6 +16,8 @@ let unstatics = [];
 let targets = [];
 let triggers = [];
 let loadTriggers = [];
+
+// Graphics
 let lavaAni = [];
 let obstacleTiles = [];
 let targetTiles = [];
