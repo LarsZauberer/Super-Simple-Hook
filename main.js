@@ -315,9 +315,7 @@ function draw() {
 		triggers[i].update();
 	}
 
-	if(player){
-		player.update();
-	}
+	
 
 	if(!debug){
 
@@ -328,11 +326,18 @@ function draw() {
 		for(let i = 0; i < targetTiles.length; i++){
 			image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
 		}
+	}
+
+		if(player){
+			player.update();
+		}
+
+
 		for(let i = 0; i < lavaAni.length; i++){
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
 	
-		}
+		
 
 	
 
