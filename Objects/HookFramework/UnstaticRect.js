@@ -7,6 +7,7 @@ class UnstaticRect extends GameObject{
         World.add(world, this.body)
         
         this.body.restitution = restitution
+        this.body.friction = 0.7;
 
         Body.setMass(this.body, 3);
         this.body.friction = 0.1;
