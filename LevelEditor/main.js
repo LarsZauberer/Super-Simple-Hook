@@ -228,15 +228,7 @@ function draw() {
 
 
     if(tilemode){
-        for(let i = 0; i < obstacleTiles.length; i++){
-            image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
-        }
-        for(let i = 0; i < targetTiles.length; i++){
-            image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
-        }
-        for(let i = 0; i < lavaAni.length; i++){
-            image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
-        }
+        image(tileCanvas, 0, height/18*-100)
 
         if(mouseIsPressed){
             let mx = Math.floor((mouseX-cameraX)/(width/32))*(width/32);

@@ -154,6 +154,7 @@ function setup() {
 	// Level Manager
 	levelManager = new MapManager([
 									"startscreen (1).json",
+									"level (30).json",
 									"level1.json",
 									"level2.json",
 									"level3.json",
