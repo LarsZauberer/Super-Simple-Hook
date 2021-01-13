@@ -30,6 +30,8 @@ class MapManager {
                 triggers = [];
                 loadTriggers = [];
                 lavaAni = [];
+                obstacleTiles = [];
+                targetTiles = [];
 
                 tileCanvas.clear();
                 
@@ -80,13 +82,18 @@ class MapManager {
 
                 for(let index = 0; index < map.obstacleTiles.length; index++){
                     const element = map.obstacleTiles[index];
-                    tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
-                    
+                    if(debug){
+                        tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x*width/32, (element.y)*height/18, width/32, height/18)
+                    }
+                    obstacleTiles.push({nr: tilesManager.obstacTiles[element.nr], x: element.x*width/32, y: element.y*height/18}) 
                 }
 
                 for(let index = 0; index < map.targetTiles.length; index++){
                     const element = map.targetTiles[index];
-                    tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, element.y*height/18, width/32, height/18)
+                    if(debug){
+                        tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, (element.y)*height/18, width/32, height/18)
+                    }
+                    obstacleTiles.push({nr: tilesManager.tarTiles[element.nr], x: element.x*width/32, y: element.y*height/18}) 
                 }
 
                 for(let index = 0; index < map.lavaTiles.length; index++){
