@@ -154,7 +154,6 @@ function setup() {
 	// Level Manager
 	levelManager = new MapManager([
 									"startscreen (1).json",
-									"level (30).json",
 									"level1.json",
 									"level2.json",
 									"level3.json",
@@ -334,9 +333,11 @@ function draw() {
 		}
 
 
+	if(!debug){
 		for(let i = 0; i < lavaAni.length; i++){
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
+	}
 	
 		
 
@@ -361,7 +362,7 @@ function draw() {
 		pauseMenu.shouldUpdate = false;
 		pauseMenu.hide();
 	}
-	else{
+	if(levelManager.loaded == 1){
 		player.death = false;
 	}
 
