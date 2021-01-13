@@ -318,8 +318,6 @@ function draw() {
 	
 
 	if(!debug){
-
-		image(tileCanvas, 0,height/18*-100)
 		for(let i = 0; i < obstacleTiles.length; i++){
 			image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
 		}
