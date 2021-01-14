@@ -18,8 +18,12 @@ class UnstaticRect extends GameObject{
     mesh(){
         translate(this.body.position.x,this.body.position.y)
         rotate(degrees(this.body.angle))
+        image(unstaticImg, -this.size.x/2,-this.size.y/2,this.size.x,this.size.y)
+
+        if (debug){
         fill(0, 0, 100)
         rect(0,0,this.size.x,this.size.y);
+        }
 
         
     }
