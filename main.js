@@ -74,6 +74,8 @@ let buttonImg
 let explenations = [];
 let font
 let unstaticImg;
+let doorImg;
+let triggerImg
 
 let loading = false;
 
@@ -100,6 +102,8 @@ function preload() {
 	explenations.push(loadImage("Erklaerung2.png"));
 	explenations.push(loadImage("Erklaerung3.png"));
 	unstaticImg = loadImage("unstaticImg.png")
+	doorImg = loadImage("door.png")
+	triggerImg = loadImage("button.png")
 	font = loadFont("Helvetica.ttf")
 
 
@@ -129,7 +133,9 @@ function createPause() {
 function setup() {
     /* Setting everything up
     */
-    // P5JS Settings
+	// P5JS Settings
+	
+
 	createCanvas(windowHeight/9*16, windowHeight);
 	background(100);
 	rectMode(CENTER);
