@@ -64,12 +64,14 @@ let tilesManager;
 let playerImg;
 let playerRight;
 let playerLeft;
+let unstaticImg;
 
 function preload(){
     tilesManager = new TileManager();
     playerImg = loadImage("../playerStanding.png")
 	playerRight = loadImage("../playerRight.gif")
-	playerLeft = loadImage("../playerLeft.gif")
+    playerLeft = loadImage("../playerLeft.gif")
+    unstaticImg = loadImage("../unstaticImg.png")
 }
 let tileCanvas;
 let tileNum = 0;
