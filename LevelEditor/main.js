@@ -65,6 +65,8 @@ let playerImg;
 let playerRight;
 let playerLeft;
 let unstaticImg;
+let doorImg;
+let triggerImg
 
 function preload(){
     tilesManager = new TileManager();
@@ -72,6 +74,8 @@ function preload(){
 	playerRight = loadImage("../playerRight.gif")
     playerLeft = loadImage("../playerLeft.gif")
     unstaticImg = loadImage("../unstaticImg.png")
+    doorImg = loadImage("../door.png")
+	triggerImg = loadImage("../button.png")
 }
 let tileCanvas;
 let tileNum = 0;
