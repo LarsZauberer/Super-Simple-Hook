@@ -73,6 +73,7 @@ let pauseImg
 let buttonImg
 let explenations = [];
 let font
+let unstaticImg;
 
 let loading = false;
 
@@ -98,8 +99,8 @@ function preload() {
 	explenations.push(loadImage("Erklaerung1.png"));
 	explenations.push(loadImage("Erklaerung2.png"));
 	explenations.push(loadImage("Erklaerung3.png"));
-
 	font = loadFont("Helvetica.ttf")
+	unstaticImg = loadImage("unstaticImg.png")
 
 
 
@@ -134,12 +135,9 @@ function setup() {
 	rectMode(CENTER);
 	angleMode(DEGREES);
 	
-	if(debug){
-		tileCanvas = createGraphics(width/32*200, height/18*200);
-	}
-	else{
+	
 		tileCanvas = createGraphics(width, height);
-	}
+	
    
     tileCanvas.clear();
 
@@ -343,9 +341,6 @@ function draw() {
 		for(let i = 0; i < lavaAni.length; i++){
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
-	}
-	else{
-		image(tileCanvas, 0, height/18*-100);
 	}
 	
 		
