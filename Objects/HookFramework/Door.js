@@ -1,6 +1,6 @@
 class Door extends GameObject{
     constructor(world, x, y){
-        let w = 0.9*width/32
+        let w = 1*width/32
         let h = 5*height/18
 
         let x1 = x+(width/32)/2;
@@ -14,9 +14,15 @@ class Door extends GameObject{
     }
 
     mesh(){
+        if(debug){
         fill(255, 0, 255);
         rect(this.body.position.x,this.body.position.y,this.size.x,this.size.y)
         rect(this.x, this.y-this.h*1.5, this.w, 5)
+        }
+        else{
+            image(doorImg, this.body.position.x-this.size.x/2,this.body.position.y-this.size.y/2+(height/593*3),this.size.x,this.size.y-(height/593*3))
+        }
+        
     }
 
     update(){

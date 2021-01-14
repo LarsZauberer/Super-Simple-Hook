@@ -74,6 +74,8 @@ let buttonImg
 let explenations = [];
 let font
 let unstaticImg;
+let doorImg;
+let triggerImg
 
 let loading = false;
 
@@ -101,6 +103,8 @@ function preload() {
 	explenations.push(loadImage("Erklaerung3.png"));
 	font = loadFont("Helvetica.ttf")
 	unstaticImg = loadImage("unstaticImg.png")
+	doorImg = loadImage("door.png")
+	triggerImg = loadImage("button.png")
 
 
 
