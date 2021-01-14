@@ -99,8 +99,8 @@ function preload() {
 	explenations.push(loadImage("Erklaerung1.png"));
 	explenations.push(loadImage("Erklaerung2.png"));
 	explenations.push(loadImage("Erklaerung3.png"));
-	font = loadFont("Helvetica.ttf")
 	unstaticImg = loadImage("unstaticImg.png")
+	font = loadFont("Helvetica.ttf")
 
 
 
