@@ -107,7 +107,7 @@ function preload() {
 	explenations.push(loadImage("Erklaerung3.png"));
 	unstaticImg = loadImage("unstaticImg.png")
 	doorImg = loadImage("door.png")
-	redTrigImg = loadImage("buttonRed.png")
+	redTrigImg = loadImage("button.png")
 	greenTrigImg = loadImage("buttonGreen.png")
 	font = loadFont("Helvetica.ttf")
 
