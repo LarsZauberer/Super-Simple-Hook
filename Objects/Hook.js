@@ -97,11 +97,16 @@ class Hook {
                 if(this.hookTwo.collidedAny(unstatics)){
                     this.twoHookPull = true;
                     this.pullObject2 = this.hookTwo.collidedAny(unstatics, "return")
+                    shotTwice = true;
                 }
                 if(this.hookTwo.collidedAny(targets)){
                     this.twoHookPull = true
                     this.pullObject2 = this.hookTwo.collidedAny(targets, "return")
-                }  
+                    shotTwice = true;
+                }
+                if (this.pullObject2 == this.pullObject1) {
+                    shotTwice = false;
+                }
             }
             else{
                 let pDirect;
