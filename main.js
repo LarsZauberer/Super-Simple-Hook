@@ -419,7 +419,6 @@ function mouseReleased(){
 			hook2 = player.shootHook(hook2)
 			hook2.getMeshed = false;
 			player.hook.hookTwo = hook2;
-			shotTwice = true;
 		}
 	}
 }
