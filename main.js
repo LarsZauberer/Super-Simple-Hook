@@ -64,6 +64,9 @@ let dialogBack;
 
 let dialog;
 
+let hook2;
+
+let shotTwice = false;
 
 let playerImg
 let playerRight
@@ -173,10 +176,8 @@ function setup() {
 									"level5.json",
 									"level6.json",
 									"level7.json",
+									"level8.json",
 								  ]);
-
-	continueMap = window.localStorage.getItem("map");
-	if (continueMap == null) continueMap = 1;
 
 	// Main Menu creation
 	mainMenu = new Menu("Super Simple Hook",
@@ -191,7 +192,7 @@ function setup() {
 				if (continueMap == null) continueMap = 1;
 
 				// Load Map
-				levelManager.loaded = continueMap;
+				levelManager.loaded = parseInt(continueMap, 10);
 				levelManager.load();
 
 				// Play Music
@@ -397,18 +398,26 @@ function keyPressed() {
 
 function mousePressed()
 {
-	if (dialog == null) player.hookIsShot = true;
+	if (!dialog && !shotTwice) player.hookIsShot = true;
+	if (shotTwice) {
+		shotTwice = false;
+		try {
+			player.hook.delete(world)
+		} catch (error) {
+			
+		}
+	}
 }
 
 
-let hook2
+
 function mouseReleased(){
 	if(player.hook){
 		if(player.hook.twoHookMode){
-		player.hookIsShot = true;
-		hook2 = player.shootHook(hook2)
-		hook2.getMeshed = false;
-		player.hook.hookTwo = hook2;
+			player.hookIsShot = true;
+			hook2 = player.shootHook(hook2)
+			hook2.getMeshed = false;
+			player.hook.hookTwo = hook2;
 		}
 	}
 }
