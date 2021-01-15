@@ -401,8 +401,12 @@ function mousePressed()
 {
 	if (!dialog && !shotTwice) player.hookIsShot = true;
 	if (shotTwice) {
-		player.hook.delete(world)
 		shotTwice = false;
+		try {
+			player.hook.delete(world)
+		} catch (error) {
+			
+		}
 	}
 }
 
