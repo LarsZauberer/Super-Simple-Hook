@@ -131,7 +131,7 @@ class MapManager {
                         tileCanvas.image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
                         break;
                     case 5:
-                        tileCanvas.image(explenations[2], width/32*3,height/18*4, width/32*10,height/18*6) 
+                        tileCanvas.image(explenations[2], width/32*3,height/18*4, width/32*12,height/18*6) 
                 }
             }
         };
