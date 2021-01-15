@@ -243,6 +243,7 @@ function setup() {
 		"value": "",
 		"function": function() {
 			// Reload Map
+			
 			levelManager.load();
 			// Hide Pause menu
 			pauseMenu.hide();
@@ -336,6 +337,9 @@ function draw() {
 		for(let i = 0; i < obstacleTiles.length; i++){
 			image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
 		}
+		console.log(obstacleTiles.length)
+		console.log(targetTiles.length)
+
 		for(let i = 0; i < targetTiles.length; i++){
 			image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
 		}
@@ -398,15 +402,8 @@ function keyPressed() {
 
 function mousePressed()
 {
-	if (!dialog && !shotTwice) player.hookIsShot = true;
-	if (shotTwice) {
-		shotTwice = false;
-		try {
-			player.hook.delete(world)
-		} catch (error) {
-			
-		}
-	}
+	if (!dialog) player.hookIsShot = true;
+	
 }
 
 
