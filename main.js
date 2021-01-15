@@ -177,9 +177,6 @@ function setup() {
 									"level8.json",
 								  ]);
 
-	continueMap = window.localStorage.getItem("map");
-	if (continueMap == null) continueMap = 1;
-
 	// Main Menu creation
 	mainMenu = new Menu("Super Simple Hook",
 	[
@@ -193,7 +190,7 @@ function setup() {
 				if (continueMap == null) continueMap = 1;
 
 				// Load Map
-				levelManager.loaded = continueMap;
+				levelManager.loaded = parseInt(continueMap, 10);
 				levelManager.load();
 
 				// Play Music
