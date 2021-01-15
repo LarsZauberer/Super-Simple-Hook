@@ -35,7 +35,9 @@ class Button extends GameObject{
         pop()
         rect(this.base.position.x, this.base.position.y, this.size.x+10,this.size.y)
         }
+        else{
 
+        
 
         if(this.triggered()){
             image(greenTrigImg, this.x-this.size.x/2-5, this.y-this.size.y + this.size.y/2, this.size.x+10, this.size.y*1.7)
@@ -45,6 +47,8 @@ class Button extends GameObject{
         }
         
         
+    }
+    
     }
 
 
