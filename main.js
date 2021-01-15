@@ -370,10 +370,19 @@ function draw() {
 	}
 	
 	if (levelManager.loaded == 0 && player) {
+		// General Settings
 		player.death = true;
 		mainMenu.update();
 		pauseMenu.shouldUpdate = false;
 		pauseMenu.hide();
+
+		// Music Credits
+		let textS = 25 * height/593;
+		textSize(textS);
+		rectMode(CORNER);
+		stroke(255);
+		fill(255);
+		text("Music by Tim Beek", width/8*6.3, height/4*4-textS, width, height)
 	}
 	if(levelManager.loaded == 1){
 		player.death = false;
