@@ -7,7 +7,7 @@ class Camera {
         this.player = player;
 
         this.smooth = 0
-        this.smoothedY = 0
+        this.smoothedY = 0    
     }
 
     update() {
