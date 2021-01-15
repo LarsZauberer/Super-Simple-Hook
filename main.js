@@ -171,6 +171,7 @@ function setup() {
 									"level5.json",
 									"level6.json",
 									"level7.json",
+									"level8.json",
 								  ]);
 
 	continueMap = window.localStorage.getItem("map");
