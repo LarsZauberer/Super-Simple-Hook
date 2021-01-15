@@ -393,7 +393,7 @@ function draw() {
 		else pauseMenu.update();
 	
 
-
+	resetMatrix();
 }
 
 
