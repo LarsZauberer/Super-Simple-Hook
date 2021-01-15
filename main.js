@@ -64,6 +64,9 @@ let dialogBack;
 
 let dialog;
 
+let hook2;
+
+let shotTwice = false;
 
 let playerImg
 let playerRight
@@ -396,18 +399,23 @@ function keyPressed() {
 
 function mousePressed()
 {
-	if (dialog == null) player.hookIsShot = true;
+	if (!dialog && !shotTwice) player.hookIsShot = true;
+	if (shotTwice) {
+		player.hook.delete(world)
+		shotTwice = false;
+	}
 }
 
 
-let hook2
+
 function mouseReleased(){
 	if(player.hook){
 		if(player.hook.twoHookMode){
-		player.hookIsShot = true;
-		hook2 = player.shootHook(hook2)
-		hook2.getMeshed = false;
-		player.hook.hookTwo = hook2;
+			player.hookIsShot = true;
+			hook2 = player.shootHook(hook2)
+			hook2.getMeshed = false;
+			player.hook.hookTwo = hook2;
+			shotTwice = true;
 		}
 	}
 }
