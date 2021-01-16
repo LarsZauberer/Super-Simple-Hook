@@ -10,7 +10,9 @@ class MapManager {
 
     load() {
         // Load Map File and Generate
-        
+        if (this.loaded >= this.mapNames.length-1) {
+            return;
+        }
 
         let xml = new XMLHttpRequest();
         xml.onreadystatechange = function() {

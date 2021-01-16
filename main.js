@@ -84,6 +84,8 @@ let redTrigImg;
 
 let loading = false;
 
+let endTimer = 0;
+
 
 function preload() {
 	soundmanager = new Sound([
@@ -338,8 +340,6 @@ function draw() {
 		triggers[i].update();
 	}
 
-	
-
 	if(!debug){
 		
 		
@@ -362,7 +362,30 @@ function draw() {
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
 
-
+	if (levelManager.loaded > levelManager.mapNames.length-1) {
+		push();
+		background(0)
+		endTimer++;
+		let textS = 75 * height/593;
+		textSize(textS);
+		fill(255);
+		stroke(255);
+		rectMode(CORNER);
+		text("Success! You beat the game! Please give us positive feedback!", width/8*1, height/8*2, width/4*3, height/8*6);
+		pop();
+		if (endTimer >= 360) {
+			endTimer = 0;
+			// Load Empty Map
+			levelManager.loaded = 0;
+			levelManager.load();
+			// Hide Pause Menu
+			pauseMenu.hide();
+			pauseMenu.shouldUpdate = false;
+			pauseButton = null;
+			// Show Main Menu
+			mainMenu.show();
+		}
+	}
 
 		
 
