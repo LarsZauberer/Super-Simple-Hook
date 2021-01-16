@@ -86,9 +86,8 @@ let loading = false;
 
 function preload() {
 	soundmanager = new Sound([
-		"Assets/music/Try and Solve This Loop.wav"
-
-		
+		"Assets/music/Try and Solve This Loop.wav",
+		"Assets/music/Quantum Loop.wav",
 	]);
 
 
@@ -380,10 +379,21 @@ function draw() {
 	}
 	
 	if (levelManager.loaded == 0 && player) {
+		// General Settings
 		player.death = true;
 		mainMenu.update();
 		pauseMenu.shouldUpdate = false;
 		pauseMenu.hide();
+
+		// Music Credits
+		push();
+		let textS = 25 * height/593;
+		textSize(textS);
+		rectMode(CORNER);
+		stroke(255);
+		fill(255);
+		text("Music by Tim Beek", width/8*6.3, height/4*4-textS, width, height)
+		pop();
 	}
 	if(levelManager.loaded == 1){
 		player.death = false;
@@ -393,7 +403,7 @@ function draw() {
 		else pauseMenu.update();
 	
 
-
+	resetMatrix();
 }
 
 
