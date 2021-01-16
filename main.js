@@ -178,6 +178,8 @@ function setup() {
 									"level6.json",
 									"level7.json",
 									"level8.json",
+									"level9.json",
+
 								  ]);
 
 	// Main Menu creation
@@ -298,6 +300,18 @@ function draw() {
 		player.camera();
 	}
 
+
+	switch (levelManager.loaded) {
+		case 1:
+			image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
+			break;
+		case 3:
+			image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
+			break;
+		case 5:
+			image(explenations[2], width/32*3,height/18*4, width/32*11,height/18*6) 
+	}
+
 	
 	
 	
@@ -350,16 +364,7 @@ function draw() {
 
 
 
-		switch (levelManager.loaded) {
-			case 1:
-				image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
-				break;
-			case 3:
-				image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
-				break;
-			case 5:
-				image(explenations[2], width/32*3,height/18*4, width/32*11,height/18*6) 
-		}
+		
 
 	}
 	
