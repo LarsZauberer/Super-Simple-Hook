@@ -419,14 +419,15 @@ function keyPressed() {
 function mousePressed()
 {
 	if (!dialog && !shotTwice) player.hookIsShot = true;
-	if (shotTwice) {
-		shotTwice = false;
-		try {
-			player.hook.delete(world)
-		} catch (error) {
-			
+		// Hook Releasing
+		if (shotTwice) {
+			shotTwice = false;
+			try {
+				player.hook.delete(world)
+			} catch (error) {
+				
+			}
 		}
-	}
 	
 }
 
