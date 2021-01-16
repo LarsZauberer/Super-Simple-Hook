@@ -197,7 +197,7 @@ function setup() {
 				if (continueMap == null) continueMap = 1;
 
 				// Load Map
-				levelManager.loaded = parseInt(continueMap, 10);
+				levelManager.loaded = 9//parseInt(continueMap, 10);
 				levelManager.load();
 
 				// Play Music
@@ -361,6 +361,16 @@ function draw() {
 		for(let i = 0; i < lavaAni.length; i++){
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
+	}
+	
+		
+
+	
+
+	
+	for(let i = 0; i < loadTriggers.length; i++){
+		loadTriggers[i].update();
+	}
 
 	if (levelManager.loaded > levelManager.mapNames.length-1) {
 		push();
@@ -370,11 +380,12 @@ function draw() {
 		textSize(textS);
 		fill(255);
 		stroke(255);
-		rectMode(CORNER);
+		rectMode(CORNERS);
 		text("Success! You beat the game! Please give us positive feedback!", width/8*1, height/8*2, width/4*3, height/8*6);
 		pop();
 		if (endTimer >= 360) {
 			endTimer = 0;
+			window.localStorage.setItem("map", 1)
 			// Load Empty Map
 			levelManager.loaded = 0;
 			levelManager.load();
@@ -385,19 +396,6 @@ function draw() {
 			// Show Main Menu
 			mainMenu.show();
 		}
-	}
-
-		
-
-	}
-	
-		
-
-	
-
-	
-	for(let i = 0; i < loadTriggers.length; i++){
-		loadTriggers[i].update();
 	}
 
 	if (pauseButton) {
