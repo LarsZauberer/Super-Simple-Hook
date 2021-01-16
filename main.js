@@ -242,6 +242,7 @@ function setup() {
 		"value": "",
 		"function": function() {
 			// Reload Map
+			
 			levelManager.load();
 			// Hide Pause menu
 			pauseMenu.hide();
@@ -286,12 +287,6 @@ function draw() {
 	background(bg);
 
 
-
-
-		
-	
-	
-
 	if (debug) {
 		levelManager.drawGrid();
 	}
@@ -330,11 +325,12 @@ function draw() {
 	
 
 	if(!debug){
-		image(tileCanvas,0,0)
+		
 		
 		for(let i = 0; i < obstacleTiles.length; i++){
 			image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
 		}
+
 		for(let i = 0; i < targetTiles.length; i++){
 			image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
 		}
@@ -349,6 +345,20 @@ function draw() {
 		for(let i = 0; i < lavaAni.length; i++){
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
+
+
+
+		switch (levelManager.loaded) {
+			case 1:
+				image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
+				break;
+			case 3:
+				image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
+				break;
+			case 5:
+				image(explenations[2], width/32*3,height/18*4, width/32*11,height/18*6) 
+		}
+
 	}
 	
 		
@@ -377,12 +387,12 @@ function draw() {
 
 		// Music Credits
 		push();
-		let textS = 25 * height/593;
+		let textS = 15 * height/593;
 		textSize(textS);
 		rectMode(CORNER);
 		stroke(255);
 		fill(255);
-		text("Music by Tim Beek", width/8*6.3, height/4*4-textS, width, height)
+		text("Music by Tim Beek", width/8*7, height/4*4-textS, width, height)
 		pop();
 	}
 	if(levelManager.loaded == 1){
@@ -408,15 +418,8 @@ function keyPressed() {
 
 function mousePressed()
 {
-	if (!dialog && !shotTwice) player.hookIsShot = true;
-	if (shotTwice) {
-		shotTwice = false;
-		try {
-			player.hook.delete(world)
-		} catch (error) {
-			
-		}
-	}
+	if (!dialog) player.hookIsShot = true;
+	
 }
 
 
