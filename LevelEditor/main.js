@@ -443,6 +443,22 @@ function keyPressed() {
                 //]
                 tileNum = 24;
                 break;
+            case 68:
+                //d
+                tileNum = 25;
+                break;
+            case 70:
+                //f
+                tileNum = 26;
+                break;
+            case 71:
+                //g
+                tileNum = 27;
+                break;
+            case 72:
+                //h
+                tileNum = 28;
+                break;
 
         }
     }

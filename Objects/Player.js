@@ -147,9 +147,6 @@ class Player extends GameObject{
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > height-height/6 && !this.hook.twoHookMode){
 				hookWillDelete = true;
 			}
-			if(keyIsPressed && key == "c"){
-				hookWillDelete = true;
-			}
 			if(this.hook.playerGetsPulled && !this.hook.twoHookMode && this.specificCollide(this.body, this.hook.body)){
 				hookWillDelete = true;
 			}
