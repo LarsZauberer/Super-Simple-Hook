@@ -288,12 +288,6 @@ function draw() {
 	background(bg);
 
 
-
-
-		
-	
-	
-
 	if (debug) {
 		levelManager.drawGrid();
 	}
@@ -332,13 +326,11 @@ function draw() {
 	
 
 	if(!debug){
-		image(tileCanvas,0,0)
+		
 		
 		for(let i = 0; i < obstacleTiles.length; i++){
 			image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
 		}
-		console.log(obstacleTiles.length)
-		console.log(targetTiles.length)
 
 		for(let i = 0; i < targetTiles.length; i++){
 			image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
@@ -354,6 +346,20 @@ function draw() {
 		for(let i = 0; i < lavaAni.length; i++){
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
+
+
+
+		switch (levelManager.loaded) {
+			case 1:
+				image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
+				break;
+			case 3:
+				image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
+				break;
+			case 5:
+				image(explenations[2], width/32*3,height/18*4, width/32*11,height/18*6) 
+		}
+
 	}
 	
 		
