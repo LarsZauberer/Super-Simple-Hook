@@ -109,7 +109,7 @@ class MapManager {
                 // Load Music for the map:
                 try {
                     if (levelManager.loaded == 0) {
-                        soundmanager.play(map.soundtrack);
+                        soundmanager.play("Quantum Loop.wav");
                     }
                 } catch (error) {
                     
