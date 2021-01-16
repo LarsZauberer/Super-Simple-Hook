@@ -10,7 +10,7 @@ class MapManager {
 
     load() {
         // Load Map File and Generate
-        if (this.loaded >= this.mapNames.length) {
+        if (this.loaded >= this.mapNames.length-1) {
             return;
         }
 
