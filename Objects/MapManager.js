@@ -121,20 +121,7 @@ class MapManager {
                 }
 
 
-                //seperate level changes
                 
-            
-                // Explanations
-                switch (levelManager.loaded) {
-                    case 1:
-                        tileCanvas.image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
-                        break;
-                    case 3:
-                        tileCanvas.image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
-                        break;
-                    case 5:
-                        tileCanvas.image(explenations[2], width/32*3,height/18*4, width/32*11,height/18*6) 
-                }
             }
         };
         xml.open("GET", this.mapNames[this.loaded], true);
