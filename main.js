@@ -418,7 +418,15 @@ function keyPressed() {
 
 function mousePressed()
 {
-	if (!dialog) player.hookIsShot = true;
+	if (!dialog && !shotTwice) player.hookIsShot = true;
+	if (shotTwice) {
+		shotTwice = false;
+		try {
+			player.hook.delete(world)
+		} catch (error) {
+			
+		}
+	}
 	
 }
 
