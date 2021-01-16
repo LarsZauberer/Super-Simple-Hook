@@ -77,6 +77,7 @@ let buttonImg
 let explenations = [];
 let font
 let unstaticImg;
+let circleImg;
 let doorImg;
 let greenTrigImg;
 let redTrigImg;
@@ -106,9 +107,10 @@ function preload() {
 	explenations.push(loadImage("Erklaerung3.png"));
 	unstaticImg = loadImage("unstaticImg.png")
 	doorImg = loadImage("door.png")
-	redTrigImg = loadImage("button.png")
+	redTrigImg = loadImage("buttonRed.png")
 	greenTrigImg = loadImage("buttonGreen.png")
-	font = loadFont("Helvetica.ttf")
+	font = loadFont("Helvetica.ttf");
+	circleImg = loadImage("circle.png")
 
 
 
