@@ -10,6 +10,8 @@ class MapManager {
 
     load() {
         // Load Map File and Generate
+        
+
         let xml = new XMLHttpRequest();
         xml.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -93,7 +95,7 @@ class MapManager {
                     if(debug){
                         tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, (element.y)*height/18, width/32, height/18)
                     }
-                    obstacleTiles.push({nr: tilesManager.tarTiles[element.nr], x: element.x*width/32, y: element.y*height/18}) 
+                    targetTiles.push({nr: tilesManager.tarTiles[element.nr], x: element.x*width/32, y: element.y*height/18}) 
                 }
 
                 for(let index = 0; index < map.lavaTiles.length; index++){
