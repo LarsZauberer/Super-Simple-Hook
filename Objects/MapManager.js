@@ -26,6 +26,7 @@ class MapManager {
 
                 // Reset the world
                 World.clear(world);
+                Engine.clear(engine)
                 obstacles = [];
                 unstatics = [];
                 targets = [];
