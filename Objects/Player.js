@@ -61,8 +61,12 @@ class Player extends GameObject{
 
 			//hook mechanics
 			this.hookMechanics();
+
 		}
 		
+		
+		
+
 		// Mass
 		Body.setMass(this.body, 4);
 		Body.setMass(this.foot, 4);
@@ -109,10 +113,9 @@ class Player extends GameObject{
 		if (keyIsDown(68)) {
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}
-
-		
-		
 	}
+
+	
 
 
 	jump() {
