@@ -166,10 +166,12 @@ class Player extends GameObject{
 				}
 				if(this.hook.pullObject1 == this.hook.pullObject2 ){
 					hookWillDelete = true;
+					shotTwice = false;
 				}
 				if(this.hook.pullObject2){
 					if(this.hook.pullObject1.isStatic && this.hook.pullObject2.isStatic){
 						hookWillDelete = true;
+						shotTwice = false;
 					}
 				}
 			}
