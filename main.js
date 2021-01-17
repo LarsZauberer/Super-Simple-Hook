@@ -143,7 +143,6 @@ function setup() {
 	
 
 	createCanvas(windowHeight/9*16, windowHeight);
-	background(100);
 	rectMode(CENTER);
 	angleMode(DEGREES);
 	
@@ -288,7 +287,9 @@ function draw() {
 	   
 	if(pauseMenu.shouldUpdate == false){
 
+		
 	background(bg);
+		
 
 
 	if (debug) {
