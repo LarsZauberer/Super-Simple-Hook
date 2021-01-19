@@ -106,7 +106,7 @@ function preload() {
 	buttonImg = loadImage("Assets/UI/Button.png")
 	explenations.push(loadImage("Erklaerung1.png"));
 	explenations.push(loadImage("Erklaerung2.png"));
-	explenations.push(loadImage("Erklaerung3.png"));
+	explenations.push(loadImage("Erklaerung3.gif"));
 	unstaticImg = loadImage("unstaticImg.png")
 	doorImg = loadImage("door.png")
 	redTrigImg = loadImage("buttonRed.png")
@@ -312,7 +312,7 @@ function draw() {
 			image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
 			break;
 		case 5:
-			image(explenations[2], width/32*3,height/18*4, width/32*11,height/18*6) 
+			image(explenations[2], width/32*3,height/18*4, width/32*9,height/18*6) 
 	}
 
 	
