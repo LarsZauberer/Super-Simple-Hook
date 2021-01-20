@@ -198,7 +198,7 @@ function setup() {
 				if (continueMap == "null") continueMap = 1;
 
 				// Load Map
-				levelManager.loaded = 9//parseInt(continueMap, 10);
+				levelManager.loaded = parseInt(continueMap, 10);
 				levelManager.load();
 
 				// Play Music
@@ -275,6 +275,7 @@ function setup() {
 		}
 	}
 ]);
+
 	if (window.localStorage.getItem("reloaded") == "true") {
 		window.localStorage.setItem("reloaded", false);
 		// Load Save
@@ -412,7 +413,7 @@ function draw() {
 		}
 	}
 
-	if (pauseButton) {
+	if (pauseButton && player) {
 		image(pauseImg, 10-player.cam.x,10-player.cam.smoothedY, height/100*8,height/100*8)
 	}
 
