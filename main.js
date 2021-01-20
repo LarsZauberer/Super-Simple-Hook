@@ -280,7 +280,6 @@ function setup() {
 		window.localStorage.setItem("reloaded", false);
 		// Load Save
 		continueMap = window.localStorage.getItem("map");
-		console.log(continueMap);
 		if (continueMap == "null") continueMap = 1;
 		levelManager.loaded = parseInt(continueMap, 10);
 		levelManager.load();
