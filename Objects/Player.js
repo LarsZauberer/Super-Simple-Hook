@@ -61,8 +61,12 @@ class Player extends GameObject{
 
 			//hook mechanics
 			this.hookMechanics();
+
 		}
 		
+		
+		
+
 		// Mass
 		Body.setMass(this.body, 4);
 		Body.setMass(this.foot, 4);
@@ -109,10 +113,9 @@ class Player extends GameObject{
 		if (keyIsDown(68)) {
 			Body.applyForce(this.body, this.body.position, rightForce);
 		}
-
-		
-		
 	}
+
+	
 
 
 	jump() {
@@ -147,9 +150,6 @@ class Player extends GameObject{
 			if (dist(this.hook.x,this.hook.y,this.x,this.y) > height-height/6 && !this.hook.twoHookMode){
 				hookWillDelete = true;
 			}
-			if(keyIsPressed && key == "c"){
-				hookWillDelete = true;
-			}
 			if(this.hook.playerGetsPulled && !this.hook.twoHookMode && this.specificCollide(this.body, this.hook.body)){
 				hookWillDelete = true;
 			}
@@ -166,10 +166,12 @@ class Player extends GameObject{
 				}
 				if(this.hook.pullObject1 == this.hook.pullObject2 ){
 					hookWillDelete = true;
+					shotTwice = false;
 				}
 				if(this.hook.pullObject2){
 					if(this.hook.pullObject1.isStatic && this.hook.pullObject2.isStatic){
 						hookWillDelete = true;
+						shotTwice = false;
 					}
 				}
 			}

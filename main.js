@@ -64,6 +64,9 @@ let dialogBack;
 
 let dialog;
 
+let hook2;
+
+let shotTwice = false;
 
 let playerImg
 let playerRight
@@ -73,15 +76,21 @@ let pauseImg
 let buttonImg
 let explenations = [];
 let font
+let unstaticImg;
+let circleImg;
+let doorImg;
+let greenTrigImg;
+let redTrigImg;
 
 let loading = false;
+
+let endTimer = 0;
 
 
 function preload() {
 	soundmanager = new Sound([
-		"Assets/music/Try and Solve This Loop.wav"
-
-		
+		"Assets/music/Try and Solve This Loop.wav",
+		"Assets/music/Quantum Loop.wav",
 	]);
 
 
@@ -97,9 +106,13 @@ function preload() {
 	buttonImg = loadImage("Assets/UI/Button.png")
 	explenations.push(loadImage("Erklaerung1.png"));
 	explenations.push(loadImage("Erklaerung2.png"));
-	explenations.push(loadImage("Erklaerung3.png"));
-
-	font = loadFont("Helvetica.ttf")
+	explenations.push(loadImage("Erklaerung3.gif"));
+	unstaticImg = loadImage("unstaticImg.png")
+	doorImg = loadImage("door.png")
+	redTrigImg = loadImage("buttonRed.png")
+	greenTrigImg = loadImage("buttonGreen.png")
+	font = loadFont("Helvetica.ttf");
+	circleImg = loadImage("circle.png")
 
 
 
@@ -128,18 +141,16 @@ function createPause() {
 function setup() {
     /* Setting everything up
     */
-    // P5JS Settings
+	// P5JS Settings
+	
+
 	createCanvas(windowHeight/9*16, windowHeight);
-	background(100);
 	rectMode(CENTER);
 	angleMode(DEGREES);
 	
-	if(debug){
-		tileCanvas = createGraphics(width/32*200, height/18*200);
-	}
-	else{
+	
 		tileCanvas = createGraphics(width, height);
-	}
+	
    
     tileCanvas.clear();
 
@@ -167,7 +178,9 @@ function setup() {
 									"level5.json",
 									"level6.json",
 									"level7.json",
-								  ]);
+									"level8.json",
+									"level9.json",
+								]);
 
 	continueMap = window.localStorage.getItem("map");
 	if (continueMap == "null") continueMap = 1;
@@ -185,7 +198,7 @@ function setup() {
 				if (continueMap == "null") continueMap = 1;
 
 				// Load Map
-				levelManager.loaded = continueMap;
+				levelManager.loaded = 9//parseInt(continueMap, 10);
 				levelManager.load();
 
 				// Play Music
@@ -236,6 +249,7 @@ function setup() {
 		"value": "",
 		"function": function() {
 			// Reload Map
+			
 			levelManager.load();
 			// Hide Pause menu
 			pauseMenu.hide();
@@ -288,14 +302,10 @@ function draw() {
 	   
 	if(pauseMenu.shouldUpdate == false){
 
-	background(bg);
-
-
-
-
 		
-	
-	
+	background(bg);
+		
+
 
 	if (debug) {
 		levelManager.drawGrid();
@@ -304,6 +314,18 @@ function draw() {
 	// Camera Calculation
 	if (player) {
 		player.camera();
+	}
+
+
+	switch (levelManager.loaded) {
+		case 1:
+			image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
+			break;
+		case 3:
+			image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
+			break;
+		case 5:
+			image(explenations[2], width/32*3,height/18*4, width/32*9,height/18*6) 
 	}
 
 	
@@ -332,14 +354,13 @@ function draw() {
 		triggers[i].update();
 	}
 
-	
-
 	if(!debug){
-		image(tileCanvas,0,0)
+		
 		
 		for(let i = 0; i < obstacleTiles.length; i++){
 			image(obstacleTiles[i].nr, obstacleTiles[i].x, obstacleTiles[i].y-height/18*100, width/32, height/18)
 		}
+
 		for(let i = 0; i < targetTiles.length; i++){
 			image(targetTiles[i].nr, targetTiles[i].x, targetTiles[i].y-height/18*100, width/32, height/18)
 		}
@@ -355,9 +376,6 @@ function draw() {
 			image(lavaAni[i].nr, lavaAni[i].x, lavaAni[i].y-height/18*100, width/32, height/18)
 		}
 	}
-	else{
-		image(tileCanvas, 0, height/18*-100);
-	}
 	
 		
 
@@ -366,6 +384,32 @@ function draw() {
 	
 	for(let i = 0; i < loadTriggers.length; i++){
 		loadTriggers[i].update();
+	}
+
+	if (levelManager.loaded > levelManager.mapNames.length-1) {
+		push();
+		background(0)
+		endTimer++;
+		let textS = 75 * height/593;
+		textSize(textS);
+		fill(255);
+		stroke(255);
+		rectMode(CORNERS);
+		text("Success! You beat the game! Please give us positive feedback!", width/8*1, height/8*2, width/4*3, height/8*6);
+		pop();
+		if (endTimer >= 360) {
+			endTimer = 0;
+			window.localStorage.setItem("map", 1)
+			// Load Empty Map
+			levelManager.loaded = 0;
+			levelManager.load();
+			// Hide Pause Menu
+			pauseMenu.hide();
+			pauseMenu.shouldUpdate = false;
+			pauseButton = null;
+			// Show Main Menu
+			mainMenu.show();
+		}
 	}
 
 	if (pauseButton) {
@@ -377,10 +421,21 @@ function draw() {
 	}
 	
 	if (levelManager.loaded == 0 && player) {
+		// General Settings
 		player.death = true;
 		mainMenu.update();
 		pauseMenu.shouldUpdate = false;
 		pauseMenu.hide();
+
+		// Music Credits
+		push();
+		let textS = 15 * height/593;
+		textSize(textS);
+		rectMode(CORNER);
+		stroke(255);
+		fill(255);
+		text("Music by Tim Beek", width/8*7, height/4*4-textS, width, height)
+		pop();
 	}
 	if(levelManager.loaded == 1){
 		player.death = false;
@@ -390,7 +445,7 @@ function draw() {
 		else pauseMenu.update();
 	
 
-
+	resetMatrix();
 }
 
 
@@ -405,19 +460,31 @@ function keyPressed() {
 
 function mousePressed()
 {
-	if (dialog == null) player.hookIsShot = true;
+	if (!dialog && !shotTwice) player.hookIsShot = true;
+		// Hook Releasing
+		if (shotTwice) {
+			shotTwice = false;
+			try {
+				player.hook.delete(world)
+			} catch (error) {
+				
+			}
+		}
+	
 }
 
 
-let hook2
+
 function mouseReleased(){
 	if(player.hook){
 		if(player.hook.twoHookMode){
-		player.hookIsShot = true;
-		hook2 = player.shootHook(hook2)
-		hook2.getMeshed = false;
-		player.hook.hookTwo = hook2;
+			player.hookIsShot = true;
+			hook2 = player.shootHook(hook2)
+			hook2.getMeshed = false;
+			player.hook.hookTwo = hook2;
 		}
 	}
 }
+
+
 

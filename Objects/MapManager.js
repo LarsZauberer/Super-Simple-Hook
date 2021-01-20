@@ -10,6 +10,10 @@ class MapManager {
 
     load() {
         // Load Map File and Generate
+        if (this.loaded > this.mapNames.length-1) {
+            return;
+        }
+
         let xml = new XMLHttpRequest();
         xml.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -24,6 +28,7 @@ class MapManager {
 
                 // Reset the world
                 World.clear(world);
+                Engine.clear(engine)
                 obstacles = [];
                 unstatics = [];
                 targets = [];
@@ -93,7 +98,7 @@ class MapManager {
                     if(debug){
                         tileCanvas.image(tilesManager.tarTiles[element.nr], element.x*width/32, (element.y)*height/18, width/32, height/18)
                     }
-                    obstacleTiles.push({nr: tilesManager.tarTiles[element.nr], x: element.x*width/32, y: element.y*height/18}) 
+                    targetTiles.push({nr: tilesManager.tarTiles[element.nr], x: element.x*width/32, y: element.y*height/18}) 
                 }
 
                 for(let index = 0; index < map.lavaTiles.length; index++){
@@ -107,7 +112,7 @@ class MapManager {
                 // Load Music for the map:
                 try {
                     if (levelManager.loaded == 0) {
-                        soundmanager.play(map.soundtrack);
+                        soundmanager.play("Quantum Loop.wav");
                     }
                 } catch (error) {
                     
@@ -119,20 +124,7 @@ class MapManager {
                 }
 
 
-                //seperate level changes
                 
-            
-                // Explanations
-                switch (levelManager.loaded) {
-                    case 1:
-                        tileCanvas.image(explenations[0], width/32*9,height/18*4, width/32*10,height/18*6)
-                        break;
-                    case 3:
-                        tileCanvas.image(explenations[1], width/32*3,height/18*4, width/32*8,height/18*6)
-                        break;
-                    case 5:
-                        tileCanvas.image(explenations[2], width/32*3,height/18*4, width/32*10,height/18*6) 
-                }
             }
         };
         xml.open("GET", this.mapNames[this.loaded], true);

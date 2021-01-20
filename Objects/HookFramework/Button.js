@@ -2,7 +2,7 @@ class Button extends GameObject{
     constructor(world, x,y){
         //unstatic
         let w = 3*width/32
-        let h = (height/18)/4;
+        let h = (height/18)/3.5;
 
         let y1 = y - 2*h+3
 
@@ -29,11 +29,26 @@ class Button extends GameObject{
         
         fill(255)
         push();
-        if(this.triggered()) {fill(0)}
+        if(debug){
+            if(this.triggered()) {fill(0)}
         rect(this.x,this.y,this.size.x,this.size.y);
         pop()
         rect(this.base.position.x, this.base.position.y, this.size.x+10,this.size.y)
+        }
+        else{
+
         
+
+        if(this.triggered()){
+            image(greenTrigImg, this.x-this.size.x/2-5, this.y-this.size.y + this.size.y/2, this.size.x+10, this.size.y*1.7)
+        }
+        else{
+            image(redTrigImg, this.x-this.size.x/2-5, this.y-this.size.y + this.size.y/2, this.size.x+10, this.size.y*1.7)
+        }
+        
+        
+    }
+    
     }
 
 

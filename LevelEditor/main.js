@@ -64,12 +64,20 @@ let tilesManager;
 let playerImg;
 let playerRight;
 let playerLeft;
+let unstaticImg;
+let doorImg;
+let greenTrigImg;
+let redTrigImg;
 
 function preload(){
     tilesManager = new TileManager();
     playerImg = loadImage("../playerStanding.png")
 	playerRight = loadImage("../playerRight.gif")
-	playerLeft = loadImage("../playerLeft.gif")
+    playerLeft = loadImage("../playerLeft.gif")
+    unstaticImg = loadImage("../unstaticImg.png")
+    doorImg = loadImage("../door.png")
+    redTrigImg = loadImage("../buttonRed.png")
+	greenTrigImg = loadImage("../buttonGreen.png")
 }
 let tileCanvas;
 let tileNum = 0;
@@ -434,6 +442,22 @@ function keyPressed() {
             case 192:
                 //]
                 tileNum = 24;
+                break;
+            case 68:
+                //d
+                tileNum = 25;
+                break;
+            case 70:
+                //f
+                tileNum = 26;
+                break;
+            case 71:
+                //g
+                tileNum = 27;
+                break;
+            case 72:
+                //h
+                tileNum = 28;
                 break;
 
         }

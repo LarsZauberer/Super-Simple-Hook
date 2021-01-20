@@ -18,10 +18,17 @@ class UnstaticCircle extends GameObject{
 
 
     mesh(){
+        
         translate(this.body.position.x,this.body.position.y)
         rotate(degrees(this.body.angle))
+
+        if(debug){
         fill(0, 0, 100)
         circle(0,0,this.size.x*2);
+        }
+        else{
+            image(circleImg, 0-this.size.x, 0-this.size.x, this.size.x*2, this.size.x*2)
+        }
 
         
     } 
