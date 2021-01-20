@@ -170,7 +170,7 @@ function setup() {
 								  ]);
 
 	continueMap = window.localStorage.getItem("map");
-	if (continueMap == null) continueMap = 1;
+	if (continueMap == "null") continueMap = 1;
 
 	// Main Menu creation
 	mainMenu = new Menu("Super Simple Hook",
@@ -182,7 +182,7 @@ function setup() {
 			"function": function() {
 				// Load Save
 				continueMap = window.localStorage.getItem("map");
-				if (continueMap == null) continueMap = 1;
+				if (continueMap == "null") continueMap = 1;
 
 				// Load Map
 				levelManager.loaded = continueMap;
@@ -261,8 +261,19 @@ function setup() {
 		}
 	}
 ]);
-	// Standard show Main Menu after setup
-	mainMenu.show();
+	if (window.localStorage.getItem("reloaded") == "true") {
+		window.localStorage.setItem("reloaded", false);
+		// Load Save
+		continueMap = window.localStorage.getItem("map");
+		console.log(continueMap);
+		if (continueMap == "null") continueMap = 1;
+		levelManager.loaded = parseInt(continueMap, 10);
+		levelManager.load();
+		createPause();
+	} else {
+		// Standard show Main Menu after setup
+		mainMenu.show();
+	}
 }
 
 
