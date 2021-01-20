@@ -37,7 +37,6 @@ class LoadTrigger extends GameObject {
             loading = true;
         } else if (!this.load) {
             this.load = true;
-            tileCanvas.background(100);
             window.localStorage.setItem("map", levelManager.loaded + 1);
             window.localStorage.setItem("reloaded", true);
             window.location.reload();
