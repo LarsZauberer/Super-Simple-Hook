@@ -80,30 +80,41 @@ let loading = false;
 let endTimer = 0;
 
 function preload() {
+	// Sound Loading
 	soundmanager = new Sound([
 		"Assets/music/Try and Solve This Loop.wav",
 		"Assets/music/Quantum Loop.wav",
 	]);
 
+	// Tiles
 	tilesManager = new TileManager();
 
+	// Dialog
 	dialogBack = loadImage("Assets/UI/Dialog.png");
 
+	// Object Images
+	// Player
 	playerImg = loadImage("playerStanding.png");
 	playerRight = loadImage("playerRight.gif");
 	playerLeft = loadImage("playerLeft.gif");
+	// Background
 	bg = loadImage("background.png");
+	// Menu
 	pauseImg = loadImage("Assets/UI/Pause.png");
 	buttonImg = loadImage("Assets/UI/Button.png");
+	// Tutorial
 	explenations.push(loadImage("Erklaerung1.png"));
 	explenations.push(loadImage("Erklaerung2.png"));
 	explenations.push(loadImage("Erklaerung3.gif"));
+	// Unstatics
 	unstaticImg = loadImage("unstaticImg.png");
+	circleImg = loadImage("circle.png");
+	// Door
 	doorImg = loadImage("door.png");
+	// Button
 	redTrigImg = loadImage("buttonRed.png");
 	greenTrigImg = loadImage("buttonGreen.png");
 	font = loadFont("Helvetica.ttf");
-	circleImg = loadImage("circle.png");
 }
 
 function createPause() {
