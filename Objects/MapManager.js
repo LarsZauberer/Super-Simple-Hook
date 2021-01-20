@@ -38,9 +38,6 @@ class MapManager {
                 obstacleTiles = [];
                 targetTiles = [];
 
-                tileCanvas.clear();
-
-
                 player = null;
                 door = null;
 
@@ -125,6 +122,8 @@ class MapManager {
                 try {
                     if (levelManager.loaded == 0) {
                         soundmanager.play("Quantum Loop.wav");
+                    } else {
+                        soundmanager.play(map.soundtrack);
                     }
                 } catch (error) {
 

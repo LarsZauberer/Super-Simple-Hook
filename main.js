@@ -6,9 +6,11 @@ let Engine = Matter.Engine,
 	Detector = Matter.Detector;
 
 // Globale Variables
+// Matter Variables
 let engine;
 let world;
 
+// Objects in the world
 let player;
 let door;
 let obstacles = [];
@@ -17,12 +19,10 @@ let targets = [];
 let triggers = [];
 let loadTriggers = [];
 
-// Graphics
+// Graphics Arrays
 let lavaAni = [];
 let obstacleTiles = [];
 let targetTiles = [];
-
-let tileCanvas;
 
 let debug = false;
 
@@ -133,10 +133,6 @@ function setup() {
 	createCanvas((windowHeight / 9) * 16, windowHeight);
 	rectMode(CENTER);
 	angleMode(DEGREES);
-
-	tileCanvas = createGraphics(width, height);
-
-	tileCanvas.clear();
 
 	// Matter JS Settings
 	engine = Engine.create({
