@@ -36,12 +36,11 @@ class LoadTrigger extends GameObject {
             this.fade+=5;
             loading = true;
         } else if(!this.load) {
-            tileCanvas.background(100);
-            levelManager.loaded++;
-            levelManager.load();
-            window.localStorage.setItem("map", levelManager.loaded);
             this.load = true;
-            loading = false;
+            tileCanvas.background(100);
+            window.localStorage.setItem("map", levelManager.loaded + 1);
+            window.localStorage.setItem("reloaded", true);
+            window.location.reload();
         }
     }
 }
