@@ -1,10 +1,10 @@
-class Door extends GameObject{
-    constructor(world, x, y){
-        let w = 1*width/32
-        let h = 5*height/18
+class Door extends GameObject {
+    constructor(world, x, y) {
+        let w = 1 * width / 32
+        let h = 5 * height / 18
 
-        let x1 = x+(width/32)/2;
-        let y1 = y+h*1.5
+        let x1 = x + (width / 32) / 2;
+        let y1 = y + h * 1.5
 
         super(world, x1, y1, w, h, true)
 
@@ -13,57 +13,60 @@ class Door extends GameObject{
         this.w = w;
     }
 
-    mesh(){
-        if(debug){
-        fill(255, 0, 255);
-        rect(this.body.position.x,this.body.position.y,this.size.x,this.size.y)
-        rect(this.x, this.y-this.h*1.5, this.w, 5)
+    mesh() {
+        if (debug) {
+            fill(255, 0, 255);
+            rect(this.body.position.x, this.body.position.y, this.size.x, this.size.y)
+            rect(this.x, this.y - this.h * 1.5, this.w, 5)
+        } else {
+            image(doorImg, this.body.position.x - this.size.x / 2, this.body.position.y - this.size.y / 2 + (height / 593 * 3), this.size.x, this.size.y - (height / 593 * 3))
         }
-        else{
-            image(doorImg, this.body.position.x-this.size.x/2,this.body.position.y-this.size.y/2+(height/593*3),this.size.x,this.size.y-(height/593*3))
-        }
-        
+
     }
 
-    update(){
-      
+    update() {
+
         let allTriggered;
-        for(let i = 0; i < triggers.length; i++){
+        for (let i = 0; i < triggers.length; i++) {
             if (triggers[i].triggered()) {
                 allTriggered = true;
-            }
-            else {
+            } else {
                 allTriggered = false;
                 break;
             }
         }
-        if(allTriggered){
+        if (allTriggered) {
             this.open();
-        }
-        else if(this.body.position.y < this.y){
-            Body.setPosition(this.body, {x: this.x, y: this.y-this.currentPos})
-            this.currentPos-=4;
+        } else if (this.body.position.y < this.y) {
+            Body.setPosition(this.body, {
+                x: this.x,
+                y: this.y - this.currentPos
+            })
+            this.currentPos -= 4;
         }
 
         this.mesh();
 
 
-        if(player){
-            if(player.hook){
+        if (player) {
+            if (player.hook) {
                 let collision = Matter.SAT.collides(this.body, player.hook.body);
                 if (collision.collided) {
-                player.hook.delete(world)
+                    player.hook.delete(world)
                 }
             }
         }
     }
-    
 
 
-    open(){
-        if(this.body.position.y > this.y-this.h){
-        this.currentPos+=4;
-        Body.setPosition(this.body, {x: this.x, y: this.y-this.currentPos})
+
+    open() {
+        if (this.body.position.y > this.y - this.h) {
+            this.currentPos += 4;
+            Body.setPosition(this.body, {
+                x: this.x,
+                y: this.y - this.currentPos
+            })
         }
     }
 
