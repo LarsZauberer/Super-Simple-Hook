@@ -1,5 +1,5 @@
-class TileManager{
-    constructor(){
+class TileManager {
+    constructor() {
         this.obstacTiles = [];
         this.tarTiles = [];
         this.lavTiles = []
@@ -7,20 +7,20 @@ class TileManager{
         this.load()
     }
 
-    load(){
-       for(let i = 1; i <= 13; i++){
-	        this.obstacTiles.push(loadImage("../Assets/obstacleTiles/" + i + ".png"))
+    load() {
+        for (let i = 1; i <= 13; i++) {
+            this.obstacTiles.push(loadImage("../Assets/obstacleTiles/" + i + ".png"))
         }
 
-        for(let i = 1; i <= 29; i++){
-	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + "b.jpg"))
+        for (let i = 1; i <= 29; i++) {
+            this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + "b.jpg"))
         }
 
-        for(let i = 1; i <= 4; i++){
+        for (let i = 1; i <= 4; i++) {
             this.lavTiles.push(loadImage("../Assets/lavaTiles/" + i + ".gif"))
         }
         this.lavTiles.push(loadImage("../Assets/lavaTiles/5c.png"))
-        
+
 
     }
 
