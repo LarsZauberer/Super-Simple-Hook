@@ -22,7 +22,7 @@ class Hook {
 
 
         //for collision detection
-        this.body = Bodies.circle(this.x, this.y, height/100, {isStatic: true});
+        this.body = Bodies.circle(this.x, this.y, height/120, {isStatic: true});
     }
 
     
@@ -97,11 +97,14 @@ class Hook {
                 if(this.hookTwo.collidedAny(unstatics)){
                     this.twoHookPull = true;
                     this.pullObject2 = this.hookTwo.collidedAny(unstatics, "return")
+                    shotTwice = true;
                 }
                 if(this.hookTwo.collidedAny(targets)){
                     this.twoHookPull = true
                     this.pullObject2 = this.hookTwo.collidedAny(targets, "return")
-                }  
+                    shotTwice = true;
+                }
+        
             }
             else{
                 let pDirect;
@@ -127,7 +130,8 @@ class Hook {
 
 
     mesh(){
-        circle(this.body.position.x,this.body.position.y,height/50)
+        fill(0);
+        circle(this.body.position.x,this.body.position.y,height/60)
             
         if(this.twoHookMode && this.hookTwo){
             line(this.x,this.y,this.hookTwo.body.position.x,this.hookTwo.body.position.y);

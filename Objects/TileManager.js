@@ -12,14 +12,14 @@ class TileManager{
 	        this.obstacTiles.push(loadImage("../Assets/obstacleTiles/" + i + ".png"))
         }
 
-        for(let i = 1; i <= 25; i++){
-	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + "-min.jpg"))
+        for(let i = 1; i <= 29; i++){
+	        this.tarTiles.push(loadImage("../Assets/targetTiles/" + i + "b.jpg"))
         }
 
         for(let i = 1; i <= 4; i++){
             this.lavTiles.push(loadImage("../Assets/lavaTiles/" + i + ".gif"))
         }
-        this.lavTiles.push(loadImage("../Assets/lavaTiles/5.png"))
+        this.lavTiles.push(loadImage("../Assets/lavaTiles/5c.png"))
         
 
     }
