@@ -18,25 +18,27 @@ class GameObject {
         this.size = createVector(sx, sy);
 
         // Matter.js Body
-        this.body = Bodies.rectangle(x, y, sx, sy, {isStatic: staticMesh});
+        this.body = Bodies.rectangle(x, y, sx, sy, {
+            isStatic: staticMesh
+        });
         World.add(world, this.body)
     }
 
-    update () {
+    update() {
         // GameObject Update
         push();
         this.mesh();
         pop();
 
 
-        if(!this.body.isStatic){
-                if(!debug){
-                    let fixForce = createVector(0, -0.01+height/593*0.01)
-                    Body.applyForce(this.body, this.body.position, fixForce)
-                }
+        if (!this.body.isStatic) {
+            if (!debug) {
+                let fixForce = createVector(0, -0.01 + height / 593 * 0.01)
+                Body.applyForce(this.body, this.body.position, fixForce)
+            }
         }
-        
-        
+
+
         // Change the position to the calculated physics position
         this.x = this.body.position.x
         this.y = this.body.position.y
