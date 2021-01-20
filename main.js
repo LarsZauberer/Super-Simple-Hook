@@ -114,21 +114,31 @@ function preload() {
 	// Button
 	redTrigImg = loadImage("buttonRed.png");
 	greenTrigImg = loadImage("buttonGreen.png");
+	// Font
 	font = loadFont("Helvetica.ttf");
 }
 
 function createPause() {
-	pauseButton = createButton("", "");
-	pauseButton.style("background-color", "Transparent");
-	pauseButton.style("border-color", "Transparent");
+	// Pause Button Creation
+	// Length Calculation
 	let pwPercent = (width / windowWidth) * 4.5;
 	pwPercent.toString();
+
+	// Create Button
+	pauseButton = createButton("", "");
+	// Style of the button
+	pauseButton.style("background-color", "Transparent");
+	pauseButton.style("border-color", "Transparent");
 	pauseButton.style("width", pwPercent + "%");
 	pauseButton.style("height", "8%");
+	// Position of the button
 	pauseButton.position(10, 10);
+	// Function of the button
 	pauseButton.mousePressed(function () {
+		// Remove the pause Button
 		pauseButton.remove();
 		pauseButton = null;
+		// Show the pause Menu
 		pauseMenu.show();
 		pauseMenu.shouldUpdate = true;
 		background(40, 200);
