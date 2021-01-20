@@ -149,12 +149,11 @@ function setup() {
 	/* Setting everything up
 	 */
 	// P5JS Settings
-
 	createCanvas((windowHeight / 9) * 16, windowHeight);
 	rectMode(CENTER);
 	angleMode(DEGREES);
 
-	// Matter JS Settings
+	// Matter JS Engine Settings
 	engine = Engine.create({
 		element: document.body,
 		engine: engine,
@@ -168,7 +167,7 @@ function setup() {
 	// World Properties
 	world.gravity.scale = 0.0025;
 
-	// Level Manager
+	// Level Manager with all Levels
 	levelManager = new MapManager([
 		"startscreen (1).json",
 		"level1.json",
@@ -181,9 +180,6 @@ function setup() {
 		"level8.json",
 		"level9.json",
 	]);
-
-	continueMap = window.localStorage.getItem("map");
-	if (continueMap == "null") continueMap = 1;
 
 	// Main Menu creation
 	mainMenu = new Menu("Super Simple Hook", [{
@@ -264,13 +260,17 @@ function setup() {
 		},
 	]);
 
+	// Jumping directly into a level
 	if (window.localStorage.getItem("reloaded") == "true") {
+		// Reset Reloading 
 		window.localStorage.setItem("reloaded", false);
 		// Load Save
 		continueMap = window.localStorage.getItem("map");
 		if (continueMap == "null") continueMap = 1;
+		// Load into the level
 		levelManager.loaded = parseInt(continueMap, 10);
 		levelManager.load();
+		// Create Pause Button
 		createPause();
 	} else {
 		// Standard show Main Menu after setup
