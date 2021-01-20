@@ -261,15 +261,7 @@ function setup() {
 		"label": "Main Menu",
 		"value": "",
 		"function": function() {
-			// Load Empty Map
-			levelManager.loaded = 0;
-			levelManager.load();
-			// Hide Pause Menu
-			pauseMenu.hide();
-			pauseMenu.shouldUpdate = false;
-			pauseButton = null;
-			// Show Main Menu
-			mainMenu.show();
+			window.location.reload()
 		}
 	}
 ]);
@@ -447,6 +439,7 @@ function keyPressed() {
 
 function mousePressed()
 {
+	if(player){
 	if (!dialog && !shotTwice) player.hookIsShot = true;
 		// Hook Releasing
 		if (shotTwice) {
@@ -457,18 +450,20 @@ function mousePressed()
 				
 			}
 		}
-	
+	}
 }
 
 
 
 function mouseReleased(){
-	if(player.hook){
-		if(player.hook.twoHookMode){
-			player.hookIsShot = true;
-			hook2 = player.shootHook(hook2)
-			hook2.getMeshed = false;
-			player.hook.hookTwo = hook2;
+	if(player){
+		if(player.hook){
+			if(player.hook.twoHookMode){
+				player.hookIsShot = true;
+				hook2 = player.shootHook(hook2)
+				hook2.getMeshed = false;
+				player.hook.hookTwo = hook2;
+			}
 		}
 	}
 }
