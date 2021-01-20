@@ -105,7 +105,7 @@ function preload() {
 	pauseImg = loadImage("Assets/UI/Pause.png")
 	buttonImg = loadImage("Assets/UI/Button.png")
 	explenations.push(loadImage("Erklaerung1.png"));
-	explenations.push(loadImage("Erklaerung2.png"));
+	explenations.push(loadImage("Erklaerung2.gif"));
 	explenations.push(loadImage("Erklaerung3.gif"));
 	unstaticImg = loadImage("unstaticImg.png")
 	doorImg = loadImage("door.png")
