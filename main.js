@@ -24,8 +24,10 @@ let lavaAni = [];
 let obstacleTiles = [];
 let targetTiles = [];
 
+// Debug Mode Variable (Used in the console to show hitboxes etc.)
 let debug = false;
 
+// Object Loading Registry
 let objectRegistry = [
 	DevObstacle,
 	UnstaticRect,
@@ -36,32 +38,27 @@ let objectRegistry = [
 	DeathTrigger,
 ];
 
-let cam;
-
+// Management Systems
 let levelManager;
-let grid;
 let soundmanager;
 let tilesManager;
 
-const tw = 32; // Tile Width
-const th = 18; // Tile Height
-
+// Menus
 let pauseMenu;
-
 let pauseButton;
-
 let mainMenu;
 
 let continueMap = 1;
 
+// Dialog (not used but working)
 let dialogBack;
-
 let dialog;
 
+// Double Hook Variables
 let hook2;
-
 let shotTwice = false;
 
+// Images/Gifs
 let playerImg;
 let playerRight;
 let playerLeft;
@@ -76,8 +73,10 @@ let doorImg;
 let greenTrigImg;
 let redTrigImg;
 
+// Is the game Loading
 let loading = false;
 
+// End Message Timer
 let endTimer = 0;
 
 function preload() {
