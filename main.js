@@ -462,6 +462,7 @@ function keyPressed() {
 
 function mousePressed() {
 	if (player) {
+		//enable player -> shootHook()
 		if (!dialog && !shotTwice) player.hookIsShot = true;
 		// Hook Releasing
 		if (shotTwice) {
@@ -477,6 +478,7 @@ function mouseReleased() {
 	if (player) {
 		if (player.hook) {
 			if (player.hook.twoHookMode) {
+				//shoot 2nd Hook
 				player.hookIsShot = true;
 				hook2 = player.shootHook(hook2);
 				hook2.getMeshed = false;

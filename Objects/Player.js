@@ -148,32 +148,41 @@ class Player extends GameObject {
 
 	hookMechanics() {
 		this.hook = this.shootHook(this.hook)
+
 		if (this.hook != null) {
+			//update Hook
 			this.hook.update();
-			//hook deleting because distance
+
+
+			//hook deleting
+
+			//because distance
 			let hookWillDelete = false;
 			if (dist(this.hook.x, this.hook.y, this.x, this.y) > height - height / 6 && !this.hook.twoHookMode) {
 				hookWillDelete = true;
 			}
+			//because Player hit Hook
 			if (this.hook.playerGetsPulled && !this.hook.twoHookMode && this.specificCollide(this.body, this.hook.body)) {
 				hookWillDelete = true;
 			}
 
 
-
-
 			if (this.hook.hookTwo) {
+				//because distance
 				if (dist(this.hook.x, this.hook.y, this.hook.hookTwo.body.position.x, this.hook.hookTwo.body.position.y) > height + 100) {
 					hookWillDelete = true;
 				}
+				//because didn't hit target
 				if (this.hook.hookTwo.collidedAny(obstacles) && this.hook.pullObject2 == null) {
 					hookWillDelete = true;
 				}
+				//because same object
 				if (this.hook.pullObject1 == this.hook.pullObject2) {
 					hookWillDelete = true;
 					shotTwice = false;
 				}
 				if (this.hook.pullObject2) {
+					//because both objects are static (nothing to pull)
 					if (this.hook.pullObject1.isStatic && this.hook.pullObject2.isStatic) {
 						hookWillDelete = true;
 						shotTwice = false;
@@ -186,6 +195,8 @@ class Player extends GameObject {
 			//pullplayer
 			if ((this.hook.collidedAny(targets) || this.hook.collidedAny(unstatics)) && !mouseIsPressed) {
 				this.hook.playerGetsPulled = true;
+
+				//save Obstacle 
 				let collidedObstacle
 				if (this.hook.collidedAny(targets)) {
 					collidedObstacle = this.hook.collidedAny(targets, "return")
@@ -193,8 +204,7 @@ class Player extends GameObject {
 				} else {
 					collidedObstacle = this.hook.collidedAny(unstatics, "return")
 				}
-				this.hook.pullAngle = atan2(this.hook.y - this.y, this.hook.x, this.x)
-
+				//upForce when pulling is Done
 				if ((this.specificCollide(this.body, collidedObstacle) || this.specificCollide(this.body, this.hook.body)) && !this.hook.hookTwo) {
 					hookWillDelete = true;
 					Body.applyForce(this.body, this.body.position, {
@@ -203,14 +213,17 @@ class Player extends GameObject {
 					})
 				}
 			}
-			//pullObstacles
+			//pullObstacles (twoHooks)
 			else if (this.hook.collidedAny(targets) && mouseIsPressed) {
+				//save first object and enable twoHookMode
 				this.hook.pullObject1 = this.hook.collidedAny(targets, "return")
 				this.hook.twoHookMode = true
 			} else if (this.hook.collidedAny(unstatics) && mouseIsPressed) {
+				//same
 				this.hook.pullObject1 = this.hook.collidedAny(unstatics, "return")
 				this.hook.twoHookMode = true
 			} else if (this.hook.collidedAny(obstacles)) {
+				//if obstacle collided, but nothing else, delete Hook
 				hookWillDelete = true;
 			}
 
@@ -226,20 +239,23 @@ class Player extends GameObject {
 
 	shootHook(hook) {
 		if (this.hookIsShot) {
+			//direction (-1 = left to player, 1 = right to player)
 			let direction = -1;
 			if (mouseX - this.cam.x > this.body.position.x) {
 				direction = 1
 			}
-
 			let shotAngle = atan2(mouseY - this.cam.smoothedY - this.body.position.y, mouseX - this.cam.x - (this.body.position.x + this.size.x / 2 * direction));
 			hook = new Hook(this.body.position.x + this.size.x / 2 * direction, this.body.position.y, shotAngle, this.size.x / 2 * direction, this)
 		}
 		this.hookIsShot = false;
 		return hook;
+		//returns newly shot hook object (needed for hook2)
 	}
 
 
+
 	specificCollide(player, body2) {
+		//for foot/player collision
 		if (body2 != player && body2 != this.body) {
 			let collision = Matter.SAT.collides(player, body2);
 			if (collision.collided) {

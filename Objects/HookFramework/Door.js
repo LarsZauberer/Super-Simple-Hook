@@ -1,5 +1,6 @@
 class Door extends GameObject {
     constructor(world, x, y) {
+        //position calculation
         let w = 1 * width / 32
         let h = 5 * height / 18
 
@@ -26,6 +27,7 @@ class Door extends GameObject {
 
     update() {
 
+        //Checks if every button is triggered
         let allTriggered;
         for (let i = 0; i < triggers.length; i++) {
             if (triggers[i].triggered()) {
@@ -38,6 +40,7 @@ class Door extends GameObject {
         if (allTriggered) {
             this.open();
         } else if (this.body.position.y < this.y) {
+            //close Door if it is higher than closed position
             Body.setPosition(this.body, {
                 x: this.x,
                 y: this.y - this.currentPos
@@ -48,6 +51,7 @@ class Door extends GameObject {
         this.mesh();
 
 
+        //delete Hook in case of collision
         if (player) {
             if (player.hook) {
                 let collision = Matter.SAT.collides(this.body, player.hook.body);
@@ -61,6 +65,7 @@ class Door extends GameObject {
 
 
     open() {
+        //open door until max
         if (this.body.position.y > this.y - this.h) {
             this.currentPos += 4;
             Body.setPosition(this.body, {
