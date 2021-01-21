@@ -17,8 +17,6 @@ class Hook {
         this.pullObject1;
         this.pullObject2;
         this.twoHookPullAngle;
-        this.hook2posX = 0;
-        this.hook2posY = 0;
 
 
         //for collision detection
@@ -50,13 +48,15 @@ class Hook {
 
 
     collidedAny(collObstacle, returnIt) {
-
+        //collided obstacle of certain type
         for (let i = 0; i < collObstacle.length; i++) {
             let collision = Matter.SAT.collides(this.body, collObstacle[i].body);
             if (collision.collided) {
                 if (returnIt == null) {
+                    //if Hook Collided
                     return true;
                 } else {
+                    //return Collided obstacle
                     return collObstacle[i].body
                 }
             }
@@ -67,6 +67,7 @@ class Hook {
 
 
     shoot() {
+        //if Hook didn't collide yet
         this.x += cos(this.angle) * 10 * height / 593;
         this.y += sin(this.angle) * 10 * height / 593;
         Body.setPosition(this.body, {
@@ -82,7 +83,6 @@ class Hook {
 
 
     pullPlayer(angle) {
-
         Body.applyForce(this.player.body, {
             x: this.player.x,
             y: this.player.y
@@ -96,12 +96,16 @@ class Hook {
 
     //twoHook
     twoHooks() {
+        //put Hook at the center of unstatic objects
         if (!this.pullObject1.isStatic) {
             Body.setPosition(this.body, this.pullObject1.position)
         }
+        //if second Hook got shot yet
         if (this.hookTwo) {
+            //if second Hook got shot but didn't collide yet
             if (!this.twoHookPull) {
                 this.hookTwo.shoot();
+                //collision of 2nd Hook
                 if (this.hookTwo.collidedAny(unstatics)) {
                     this.twoHookPull = true;
                     this.pullObject2 = this.hookTwo.collidedAny(unstatics, "return")
@@ -113,21 +117,24 @@ class Hook {
                     shotTwice = true;
                 }
 
-            } else {
-                let pDirect;
+            } 
+            //2nd Hook collided (Pulling)
+            else {
+                let pDirect; //Direction of the pull (depending on which object got hit first, unstatic or Target)
                 if (!this.pullObject2.isStatic) {
+                    //put 2nd Hook at center of unstatic obstacle
                     Body.setPosition(this.hookTwo.body, this.pullObject2.position);
                     this.twoHookPullAngle = atan2(this.y - this.hookTwo.body.position.y, this.x - this.hookTwo.body.position.x);
                     pDirect = 1;
                 }
                 if (this.pullObject2.isStatic) {
+                    //if 2nd Object is static, first object has to be unstatic -> Hook to center
                     Body.setPosition(this.body, this.pullObject1.position);
                     this.twoHookPullAngle = atan2(this.hookTwo.body.position.y - this.y, this.hookTwo.body.position.x - this.x);
                     pDirect = -1;
                 }
 
-
-
+                //pull
                 Body.applyForce(this.pullObject1, this.pullObject1.position, {
                     x: -cos(this.twoHookPullAngle) * 0.02 * pDirect * (height / 593),
                     y: -sin(this.twoHookPullAngle) * 0.02 * pDirect * (height / 593)
@@ -137,7 +144,11 @@ class Hook {
                     y: sin(this.twoHookPullAngle) * 0.02 * pDirect * (height / 593)
                 })
             }
+
+            //mesh 2nd Hook 
+            //But without line to player (getMeshed = false)
             this.hookTwo.mesh();
+
         }
     }
 

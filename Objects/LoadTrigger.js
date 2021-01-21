@@ -4,9 +4,7 @@ class LoadTrigger extends GameObject {
         y = y - sy / 2;
 
         super(world, x, y, sx, sy, true);
-
         this.fade = 0;
-
         this.load = false;
 
 
@@ -32,10 +30,12 @@ class LoadTrigger extends GameObject {
         player.death = true;
         background(0, this.fade)
 
+
         if (this.fade < 255) {
             this.fade += 5;
             loading = true;
         } else if (!this.load) {
+            //load Level if background is completely black
             this.load = true;
             tileCanvas.background(100);
             window.localStorage.setItem("map", levelManager.loaded + 1);
