@@ -492,7 +492,6 @@ function mousePressed() {
 
 function mouseReleased() {
 	// Calculate the Hook
-	// TODO: Commenting Robin
 	if (player) {
 		if (player.hook) {
 			if (player.hook.twoHookMode) {
