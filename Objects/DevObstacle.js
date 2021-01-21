@@ -10,15 +10,10 @@ class DevObstacle extends GameObject {
     }
 
     mesh() {
-        // Mesh of the obstacle
-
+        // Debug mesh of the obstacle
         if (debug) {
             fill(255, 255, 255);
             rect(this.x, this.y, this.size.x, this.size.y);
         }
-
-
-        // Setting the ground mesh for the obstacle
-        //this.ground.mesh = this.groundMesh; 
     }
 }
