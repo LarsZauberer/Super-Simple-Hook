@@ -134,7 +134,11 @@ class MapManager {
                 // Load Music for the map:
                 try {
                     if (levelManager.loaded == 0) {
+                        // Start Screen Music
                         soundmanager.play("Quantum Loop.wav");
+                    } else {
+                        // Music in the other levels
+                        soundmanager.play(map.soundtrack);
                     }
                 } catch (error) {
 
