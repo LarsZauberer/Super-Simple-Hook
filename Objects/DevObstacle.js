@@ -1,6 +1,10 @@
-class DevObstacle extends Obstacle {
+class DevObstacle extends GameObject {
     constructor(world, x, y, sx, sy, tile) {
         // Constructor
+        // Position Calculation
+		x = x + sx / 2;
+        y = y + sy / 2;
+
         super(world, x, y, sx, sy, true);
         this.tile = tile;
     }
