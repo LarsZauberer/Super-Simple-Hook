@@ -282,6 +282,12 @@ function draw() {
 			levelManager.drawGrid();
 		}
 
+		// Player Calculation
+		if (player) {
+			player.camera();
+			player.update();
+		}
+
 		// Draw the explanations in the specified levels
 		switch (levelManager.loaded) {
 			case 1:
@@ -375,12 +381,6 @@ function draw() {
 					height / 18
 				);
 			}
-		}
-
-		// Player Calculation
-		if (player) {
-			player.update();
-			player.camera();
 		}
 
 		// Load Triggers Calculations
