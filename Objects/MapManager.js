@@ -20,6 +20,7 @@ class MapManager {
                 // Load Json
                 let map = JSON.parse(this.responseText);
 
+                // Editor map data saving
                 try {
                     mapData = map;
                 } catch (error) {
@@ -40,16 +41,19 @@ class MapManager {
 
                 tileCanvas.clear();
 
-
                 player = null;
                 door = null;
 
 
 
+                // Load Level
+
                 // Create Player
                 if (map.player) {
                     player = new Player(world, width / 32 * map.player.x, height / 18 * map.player.y, width / 32 * map.player.sx, height / 18 * map.player.sy);
                 }
+
+                // Create door
                 if (map.door) {
                     door = new Door(world, width / 32 * map.door.x, height / 18 * map.door.y);
                 }
@@ -85,8 +89,10 @@ class MapManager {
                     loadTriggers.push(new objectRegistry[element.type](world, width / 32 * element.x, height / 18 * element.y, width / 32 * element.sx, height / 18 * element.sy))
                 }
 
+                // Create obstacle Tiles
                 for (let index = 0; index < map.obstacleTiles.length; index++) {
                     const element = map.obstacleTiles[index];
+                    // Old Tile management system for the editor
                     if (debug) {
                         tileCanvas.image(tilesManager.obstacTiles[element.nr], element.x * width / 32, (element.y) * height / 18, width / 32, height / 18)
                     }
@@ -97,8 +103,10 @@ class MapManager {
                     })
                 }
 
+                // Create Target Tiles
                 for (let index = 0; index < map.targetTiles.length; index++) {
                     const element = map.targetTiles[index];
+                    // Old Tile management system for the editor
                     if (debug) {
                         tileCanvas.image(tilesManager.tarTiles[element.nr], element.x * width / 32, (element.y) * height / 18, width / 32, height / 18)
                     }
@@ -109,8 +117,10 @@ class MapManager {
                     })
                 }
 
+                // Create Lava Tiles
                 for (let index = 0; index < map.lavaTiles.length; index++) {
                     const element = map.lavaTiles[index];
+                    // Old Tile management system for the editor
                     if (debug) {
                         tileCanvas.image(tilesManager.lavTiles[element.nr], element.x * width / 32, element.y * height / 18, width / 32, height / 18)
                     }
