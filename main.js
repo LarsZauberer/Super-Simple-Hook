@@ -104,7 +104,7 @@ function preload() {
 	buttonImg = loadImage("Assets/UI/Button.png");
 	// Tutorial
 	explenations.push(loadImage("Erklaerung1.png"));
-	explenations.push(loadImage("Erklaerung2.png"));
+	explenations.push(loadImage("Erklaerung2.gif"));
 	explenations.push(loadImage("Erklaerung3.gif"));
 	// Unstatics
 	unstaticImg = loadImage("unstaticImg.png");
@@ -285,22 +285,29 @@ function draw() {
 	// Consistant Updating
 	Engine.update(engine, 16);
 
+	// Save normal transformation
 	push();
 
+	// If the game isn't paused
 	if (pauseMenu.shouldUpdate == false) {
+		// Redraw Background
 		background(bg);
 
+		// If the debug mode is enabled draw the grid
 		if (debug) {
 			levelManager.drawGrid();
 		}
 
-		// Camera Calculation
+		// Player Calculation
 		if (player) {
 			player.camera();
+			player.update();
 		}
 
+		// Draw the explanations in the specified levels
 		switch (levelManager.loaded) {
 			case 1:
+				// Explanation 1
 				image(
 					explenations[0],
 					(width / 32) * 9,
@@ -310,6 +317,7 @@ function draw() {
 				);
 				break;
 			case 3:
+				// Explanation 2
 				image(
 					explenations[1],
 					(width / 32) * 3,
@@ -319,6 +327,7 @@ function draw() {
 				);
 				break;
 			case 5:
+				// Explanation 3
 				image(
 					explenations[2],
 					(width / 32) * 3,
@@ -328,6 +337,7 @@ function draw() {
 				);
 		}
 
+		// Update the door
 		if (door) {
 			door.update();
 		}
@@ -342,15 +352,20 @@ function draw() {
 			unstatics[i].update();
 		}
 
+		// Target calculations
 		for (let i = 0; i < targets.length; i++) {
 			targets[i].update();
 		}
 
+		// Trigger calculations
 		for (let i = 0; i < triggers.length; i++) {
 			triggers[i].update();
 		}
 
+		// If the debug Mode isn't enabled
+		// Draw all Tile designs
 		if (!debug) {
+			// Obstacle Tiles
 			for (let i = 0; i < obstacleTiles.length; i++) {
 				image(
 					obstacleTiles[i].nr,
@@ -361,6 +376,7 @@ function draw() {
 				);
 			}
 
+			// Target Tiles
 			for (let i = 0; i < targetTiles.length; i++) {
 				image(
 					targetTiles[i].nr,
@@ -370,13 +386,8 @@ function draw() {
 					height / 18
 				);
 			}
-		}
 
-		if (player) {
-			player.update();
-		}
-
-		if (!debug) {
+			// Lava Tiles
 			for (let i = 0; i < lavaAni.length; i++) {
 				image(
 					lavaAni[i].nr,
@@ -388,11 +399,14 @@ function draw() {
 			}
 		}
 
+		// Load Triggers Calculations
 		for (let i = 0; i < loadTriggers.length; i++) {
 			loadTriggers[i].update();
 		}
 
+		// Did you beat the game?
 		if (levelManager.loaded > levelManager.mapNames.length - 1) {
+			// Congrats message
 			push();
 			background(0);
 			endTimer++;
@@ -409,6 +423,7 @@ function draw() {
 				(height / 8) * 6
 			);
 			pop();
+			// Delay to switch back to the start screen
 			if (endTimer >= 360) {
 				endTimer = 0;
 				window.localStorage.setItem("map", 1);
@@ -424,6 +439,7 @@ function draw() {
 			}
 		}
 
+		// Update the pause button
 		if (pauseButton && player) {
 			image(
 				pauseImg,
@@ -434,10 +450,12 @@ function draw() {
 			);
 		}
 
+		// Update Dialog
 		if (dialog) {
 			dialog.show();
 		}
 
+		// Startscreen Update 
 		if (levelManager.loaded == 0 && player) {
 			// General Settings
 			player.death = true;
@@ -461,11 +479,9 @@ function draw() {
 			);
 			pop();
 		}
-		if (levelManager.loaded == 1) {
-			player.death = false;
-		}
-	} else pauseMenu.update();
+	} else pauseMenu.update(); // If pause -> Update Pause
 
+	// Reset everything to default
 	resetMatrix();
 }
 
@@ -478,8 +494,9 @@ function keyPressed() {
 
 function mousePressed() {
 	if (player) {
+		// Shoot a hook
 		if (!dialog && !shotTwice) player.hookIsShot = true;
-		// Hook Releasing
+		// Hook Releasing unstatic object
 		if (shotTwice) {
 			shotTwice = false;
 			try {
@@ -490,9 +507,11 @@ function mousePressed() {
 }
 
 function mouseReleased() {
+	// Calculate the Hook
 	if (player) {
 		if (player.hook) {
 			if (player.hook.twoHookMode) {
+				//shoot 2nd Hook
 				player.hookIsShot = true;
 				hook2 = player.shootHook(hook2);
 				hook2.getMeshed = false;
