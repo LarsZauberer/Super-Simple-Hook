@@ -1,11 +1,9 @@
 class Button extends GameObject {
     constructor(world, x, y) {
-        //unstatic
+        //position calculation
         let w = 3 * width / 32
         let h = (height / 18) / 3.5;
-
         let y1 = y - 2 * h + 3
-
         super(world, x + w / 2, y1 + h / 2, w - 10, h, true);
         this.base = Bodies.rectangle(this.x, this.y + h / 2, w, h, {
             isStatic: true
@@ -14,6 +12,7 @@ class Button extends GameObject {
     }
 
     update() {
+        //hookdelete
         if (player) {
             if (player.hook) {
                 let collision = Matter.SAT.collides(this.base, player.hook.body);
@@ -28,7 +27,6 @@ class Button extends GameObject {
 
 
     mesh() {
-
         fill(255)
         push();
         if (debug) {
@@ -39,9 +37,7 @@ class Button extends GameObject {
             pop()
             rect(this.base.position.x, this.base.position.y, this.size.x + 10, this.size.y)
         } else {
-
-
-
+            //Image depending on state
             if (this.triggered()) {
                 image(greenTrigImg, this.x - this.size.x / 2 - 5, this.y - this.size.y + this.size.y / 2, this.size.x + 10, this.size.y * 1.7)
             } else {
@@ -56,6 +52,7 @@ class Button extends GameObject {
 
 
     triggered() {
+        //if Anything is on top of button
         let allBodies = Matter.Composite.allBodies(this.world)
         for (let i = 0; i < allBodies.length; i++) {
             var collision = Matter.SAT.collides(this.body, allBodies[i]);
