@@ -1,3 +1,25 @@
+/* Super Simple Hook
+A little 2D puzzle jump and run game.
+The main mechanic of the game is the grappling hook. You can use the
+grappling hook to hook yourself to orange walls. It is possible to
+hook other object to these walls to. The goal of the game is to
+reach the exit of each level. 
+
+Author: Robin Steiner, Ian Wasser
+Attributes:
+	Code Snippets:
+		https://stackoverflow.com/questions/7346563/loading-local-json-file
+		https://www.w3schools.com/js/js_json_http.asp
+		https://stackoverflow.com/questions/32283510/closest-value-snapping
+		https://stackoverflow.com/questions/34156282/how-do-i-save-json-to-local-text-file
+		https://www.mediaevent.de/javascript/string-search.html
+		https://stackoverflow.com/questions/1621891/html-how-to-make-a-submit-button-with-text-image-in-it
+		https://stackoverflow.com/questions/22672368/how-to-make-a-transparent-html-button
+
+	Music:
+		Created by Tim Beek: https://timbeek.com/
+*/
+
 // Namespace Variablename change
 let Engine = Matter.Engine,
 	World = Matter.World,
