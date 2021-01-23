@@ -30,14 +30,13 @@ class GameObject {
         this.mesh();
         pop();
 
-
+        //general physics fix
         if (!this.body.isStatic) {
             if (!debug) {
                 let fixForce = createVector(0, -0.01 + height / 593 * 0.01)
                 Body.applyForce(this.body, this.body.position, fixForce)
             }
         }
-
 
         // Change the position to the calculated physics position
         this.x = this.body.position.x

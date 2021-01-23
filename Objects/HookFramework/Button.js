@@ -43,13 +43,8 @@ class Button extends GameObject {
             } else {
                 image(redTrigImg, this.x - this.size.x / 2 - 5, this.y - this.size.y + this.size.y / 2, this.size.x + 10, this.size.y * 1.7)
             }
-
-
         }
-
     }
-
-
 
     triggered() {
         //if Anything is on top of button
