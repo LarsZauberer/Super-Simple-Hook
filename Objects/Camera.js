@@ -21,8 +21,7 @@ class Camera {
             }
         }
 
-
-
+        //if player over screen, move camera up
         if (this.player.y - this.player.size.y / 2 < 0) {
             this.y = -this.player.y + this.player.size.y / 2
             if (this.smooth < height / 4) this.smooth += 4
@@ -31,6 +30,7 @@ class Camera {
         }
 
 
+        //if player under screen, move camera down
         if (this.player.y + this.player.size.y / 2 > height) {
             this.y = -this.player.y - this.player.size.y / 2 + height
             if (this.smooth > -100) this.smooth -= 2
@@ -38,8 +38,7 @@ class Camera {
             this.smooth += 3
         }
 
-
-
+        //smoothed y-camera
         this.smoothedY = this.y + this.smooth
 
         // Translate Screen

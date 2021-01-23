@@ -298,10 +298,9 @@ function draw() {
 			levelManager.drawGrid();
 		}
 
-		// Player Calculation
+		// Camera Calculation
 		if (player) {
 			player.camera();
-			player.update();
 		}
 
 		// Draw the explanations in the specified levels
@@ -385,6 +384,12 @@ function draw() {
 					width / 32,
 					height / 18
 				);
+			}
+
+
+			//player Calculation
+			if(player){
+				player.update();
 			}
 
 			// Lava Tiles

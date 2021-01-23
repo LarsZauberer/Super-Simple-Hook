@@ -5,6 +5,8 @@ class DeathTrigger extends GameObject {
         super(world, x, y, w, h, true);
 
         this.fade = 0;
+
+        this.load = false;
     }
 
     mesh() {
@@ -13,14 +15,14 @@ class DeathTrigger extends GameObject {
             rect(this.x, this.y, this.size.x, this.size.y);
         }
 
-
         if (player) {
+            //kill Player on collision
             if (Matter.SAT.collides(this.body, player.body).collided) {
-
                 player.death = true;
                 this.death()
             }
             if (player.hook) {
+                //delete Hook on collision
                 if (Matter.SAT.collides(this.body, player.hook.body).collided) {
                     player.hook.delete(world);
                 }
@@ -28,6 +30,7 @@ class DeathTrigger extends GameObject {
         }
 
         for (let i = 0; i < unstatics.length; i++) {
+            //reset Position of unstatics on collision
             if (Matter.SAT.collides(this.body, unstatics[i].body).collided) {
                 Body.setPosition(unstatics[i].body, unstatics[i].startPos)
             }
@@ -37,11 +40,15 @@ class DeathTrigger extends GameObject {
 
 
     death() {
+        //fade background and restart level
         background(0, this.fade)
         if (this.fade < 255) this.fade += 4
-        else {
-            tileCanvas.background(100)
-            levelManager.load()
+        else if(!this.load){
+
+            this.load = true;
+            window.localStorage.setItem("map", levelManager.loaded);
+            window.localStorage.setItem("reloaded", true);
+            window.location.reload();
         }
 
 
