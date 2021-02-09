@@ -2,8 +2,8 @@
 A little 2D puzzle jump and run game.
 The main mechanic of the game is the grappling hook. You can use the
 grappling hook to hook yourself to orange walls. It is possible to
-hook other object to these walls to. The goal of the game is to
-reach the exit of each level. 
+hook other objects to these walls too. The goal of the game is to
+reach the exit of each level.
 
 Author: Robin Steiner, Ian Wasser
 Attributes:
