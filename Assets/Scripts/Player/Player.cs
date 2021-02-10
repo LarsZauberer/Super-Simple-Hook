@@ -35,5 +35,9 @@ public class Player : MonoBehaviour
         if (camStartPos.x < transform.position.x) {
             camObj.transform.position = new Vector3(transform.position.x, camObj.transform.position.y, -10);
         }
+
+        if (camStartPos.y < transform.position.y) {
+            camObj.transform.position = new Vector3(camObj.transform.position.x, transform.position.y, -10);
+        }
     }
 }
