@@ -5,12 +5,15 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     public bool isActive = false;
-    // TODO: Sprite Component
+    public SpriteRenderer spriteRenderer;
+    public Sprite spriteOff;
+    public Sprite spriteOn;
 
     void FixedUpdate() {
-        // TODO: Change Sprite
         if (isActive) {
-
+            spriteRenderer.sprite = spriteOn;
+        } else {
+            spriteRenderer.sprite = spriteOff;
         }
     }
 
