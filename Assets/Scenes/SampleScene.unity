@@ -1559,6 +1559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1551824122}
   runSpeed: 80
+  camObj: {fileID: 519420028}
 --- !u!50 &1551824124
 Rigidbody2D:
   serializedVersion: 4
@@ -2228,7 +2229,7 @@ PrefabInstance:
     - target: {fileID: 7188535337102831262, guid: d4bdf011d4d149f42b5a06977a02fdab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.26
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 7188535337102831262, guid: d4bdf011d4d149f42b5a06977a02fdab,
         type: 3}
