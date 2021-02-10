@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 526572314}
   - component: {fileID: 526572313}
   - component: {fileID: 526572312}
+  - component: {fileID: 526572315}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -344,6 +345,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &526572315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526572311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad6925ef02e2b4fbb87ae88a94dc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768009921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dffaca6d717a0b40a7116d8119f8dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
+  m_JumpForce: 600
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -1221,7 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1551824122}
-  runSpeed: 40
+  runSpeed: 80
 --- !u!50 &1551824124
 Rigidbody2D:
   serializedVersion: 4
@@ -1237,7 +1250,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
