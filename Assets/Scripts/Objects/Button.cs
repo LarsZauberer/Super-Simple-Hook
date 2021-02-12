@@ -19,9 +19,16 @@ public class Button : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col) {
         isActive = true;
+        Debug.Log("Enter: " + col.gameObject);
+    }
+
+    private void OnCollisionStay2D(Collision2D col) {
+        isActive = true;
+        Debug.Log("Stay: " + col.gameObject);
     }
 
     void OnCollisionExit2D(Collision2D col) {
         isActive = false;
+        Debug.Log("Exit: " + col.gameObject);
     }
 }
