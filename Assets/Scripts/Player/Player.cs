@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
             GetComponent<Animator>().SetBool("isWalking", false);
         }
 
-        camFollow();
+        // camFollow();
     }
 
     void camFollow() {
