@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
 
+        if (horizontalMove != 0) {
+            GetComponent<Animator>().SetBool("isWalking", true);
+        } else {
+            GetComponent<Animator>().SetBool("isWalking", false);
+        }
+
         camFollow();
     }
 
