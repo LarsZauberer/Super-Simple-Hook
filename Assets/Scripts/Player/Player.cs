@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Global Variables
     public CharacterController2D controller;
     public float runSpeed = 40f;
     public GameObject camObj;
