@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Vector2 camStartPos;
     float horizontalMove = 0f;
     bool jump = false;
+    public bool dead = false;
 
     void Start() {
         camStartPos = camObj.transform.position;
@@ -26,16 +27,16 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate() {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-        jump = false;
+        if (!dead) {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
 
-        if (horizontalMove != 0) {
-            GetComponent<Animator>().SetBool("isWalking", true);
-        } else {
-            GetComponent<Animator>().SetBool("isWalking", false);
+            if (horizontalMove != 0) {
+                GetComponent<Animator>().SetBool("isWalking", true);
+            } else {
+                GetComponent<Animator>().SetBool("isWalking", false);
+            }
         }
-
-        // camFollow();
     }
 
     void camFollow() {

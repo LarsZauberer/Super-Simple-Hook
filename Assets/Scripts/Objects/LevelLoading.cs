@@ -10,6 +10,9 @@ public class LevelLoading : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         // Fading
         if (other.gameObject.tag == "Player") {
+            Player p = other.gameObject.GetComponent<Player>();
+            p.dead = true;
+
             GameObject fadeObj = GameObject.Find("Fade");
             Fade fading = fadeObj.GetComponent<Fade>();
             fading.isFading = true;
