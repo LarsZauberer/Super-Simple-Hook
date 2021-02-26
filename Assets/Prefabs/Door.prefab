@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3459d67cf6ea1a545b98d045da183c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openHeight: 3
+  openHeight: 3.5
   openingSpeed: 1
