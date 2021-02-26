@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
             } else {
                 GetComponent<Animator>().SetBool("isWalking", false);
             }
+        } else {
+            GetComponent<Animator>().SetBool("isWalking", true);
         }
     }
 
