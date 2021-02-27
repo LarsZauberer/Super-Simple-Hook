@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class HookBehavior : MonoBehaviour
 {
-    public float shootingSpeed = 20f;
+    public float shootingSpeed = 100f;
     public Vector2 dir;
     private Rigidbody2D r;
     public bool Hooked = false;
+    public float pullSpeed = 100f;
+    public float xPower = 50f, yPower = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,12 @@ public class HookBehavior : MonoBehaviour
     {
         if (!Hooked) {
             r.AddForce(dir*Time.fixedDeltaTime*shootingSpeed, ForceMode2D.Impulse);
+        } else {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+            // rb.gravityScale = 0f;
+
+            MovePlayer();
         }
     }
 
@@ -29,5 +37,30 @@ public class HookBehavior : MonoBehaviour
         } else if (other.tag != "Player" && other.tag != "MainCamera") {
             Destroy(gameObject);
         }
+    }
+
+    private void MovePlayer() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Player script = player.GetComponent<Player>();
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        
+        Vector2 forceVector = CalculateDirection(transform.position, player.transform.position);
+
+        Debug.Log(forceVector*Time.fixedDeltaTime*pullSpeed);
+        rb.AddForce(forceVector*Time.fixedDeltaTime*pullSpeed, ForceMode2D.Impulse);
+    }
+
+    public Vector2 CalculateDirection(Vector3 mouse, Vector3 player) {
+        Vector2 vec = new Vector2();
+        vec.x = mouse.x-player.x;
+        vec.y = mouse.y-player.y;
+
+        vec = vec/vec.magnitude;
+
+        // x, y + power
+        vec.x *= xPower;
+        vec.y *= yPower;
+
+        return vec;
     }
 }
