@@ -143,5 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cd6b288bec1cc43828ab4e54d3e60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSpeed: 10
+  shootingSpeed: 50
   dir: {x: 0, y: 0}
+  Hooked: 0
+  pullSpeed: 125
+  xPower: 2
+  yPower: 0.5

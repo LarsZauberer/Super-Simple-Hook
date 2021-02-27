@@ -18,7 +18,7 @@ public class Hook : MonoBehaviour
 
     public void Shoot() {
         if (obj) {
-            Destroy(obj);
+            deleteHook();
         }
         mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         obj = Instantiate(hook) as GameObject;
@@ -39,6 +39,14 @@ public class Hook : MonoBehaviour
 
     [Command()]
     public void deleteHook() {
+        Rigidbody2D playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        playerRb.gravityScale = 3f;
         Destroy(obj);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Targets") {
+            deleteHook();
+        }
     }
 }
