@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using QFSW.QC;
 
 public class Hook : MonoBehaviour
 {
     private Vector3 mousePoint;
     public GameObject hook;
+    public GameObject obj;
 
     void Update()
     {
@@ -15,8 +17,11 @@ public class Hook : MonoBehaviour
     }
 
     public void Shoot() {
+        if (obj) {
+            Destroy(obj);
+        }
         mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        GameObject obj = Instantiate(hook) as GameObject;
+        obj = Instantiate(hook) as GameObject;
         obj.transform.position = transform.position;
         HookBehavior hb = obj.GetComponent<HookBehavior>();
         hb.dir = CalculateDirection(mousePoint, transform.position);
@@ -30,5 +35,10 @@ public class Hook : MonoBehaviour
         vec = vec/vec.magnitude;
 
         return vec;
+    }
+
+    [Command()]
+    public void deleteHook() {
+        Destroy(obj);
     }
 }
