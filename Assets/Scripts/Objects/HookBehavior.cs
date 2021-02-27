@@ -18,4 +18,10 @@ public class HookBehavior : MonoBehaviour
     {
         r.AddForce(dir*Time.fixedDeltaTime*shootingSpeed, ForceMode2D.Impulse);
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Targets") {
+            Destroy(gameObject);
+        }
+    }
 }
