@@ -1026,6 +1026,7 @@ GameObject:
   - component: {fileID: 685362901}
   - component: {fileID: 685362900}
   - component: {fileID: 685362899}
+  - component: {fileID: 685362902}
   m_Layer: 0
   m_Name: Targets
   m_TagString: Targets
@@ -1208,6 +1209,27 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &685362902
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685362897}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &768009921
 GameObject:
   m_ObjectHideFlags: 0
@@ -10524,6 +10546,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5763763162042969811, guid: 4f82f4c1da74fbc4da7731dc62fb2165,
         type: 3}
+    - target: {fileID: 2708059942275157637, guid: d83047ec43286764f8c30b46f65db4f0,
+        type: 3}
+      propertyPath: hookPrefab
+      value: 
+      objectReference: {fileID: 5763763162042969811, guid: 4f82f4c1da74fbc4da7731dc62fb2165,
+        type: 3}
     - target: {fileID: 2708059942275157883, guid: d83047ec43286764f8c30b46f65db4f0,
         type: 3}
       propertyPath: m_RootOrder
@@ -10939,40 +10967,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9039277333789250394, guid: f1b637442ecec244bab0518128285747,
-        type: 3}
-      propertyPath: m_Mass
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039277333789250395, guid: f1b637442ecec244bab0518128285747,
         type: 3}
       propertyPath: m_Name
       value: UnstaticRect
       objectReference: {fileID: 0}
-    - target: {fileID: 9039277333789250395, guid: f1b637442ecec244bab0518128285747,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 9039277333789250407, guid: f1b637442ecec244bab0518128285747,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039277333789250407, guid: f1b637442ecec244bab0518128285747,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7458552
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039277333789250407, guid: f1b637442ecec244bab0518128285747,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7458552
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039277333789250407, guid: f1b637442ecec244bab0518128285747,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.243092
       objectReference: {fileID: 0}
     - target: {fileID: 9039277333789250407, guid: f1b637442ecec244bab0518128285747,
         type: 3}
