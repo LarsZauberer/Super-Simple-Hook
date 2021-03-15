@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Targets
+  - Unstatic
   layers:
   - Default
   - TransparentFX
